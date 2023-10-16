@@ -10,4 +10,8 @@ module com.example.blackjackjavafx {
     exports com.example.blackjackjavafx;
     exports com.example.blackjackjavafx.card;
     opens com.example.blackjackjavafx.card to javafx.fxml;
+    exports com.example.blackjackjavafx.gameState;
+    opens com.example.blackjackjavafx.gameState to javafx.fxml;
+    exports com.example.blackjackjavafx.jeton;
+    opens com.example.blackjackjavafx.jeton to javafx.fxml;
 }
