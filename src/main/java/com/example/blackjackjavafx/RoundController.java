@@ -1,9 +1,13 @@
 package com.example.blackjackjavafx;
 
 import com.example.blackjackjavafx.card.Card;
+import com.example.blackjackjavafx.gameState.GameState;
+import com.example.blackjackjavafx.gameState.IGameStateListener;
+import com.example.blackjackjavafx.notifier.Listener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RoundController implements Initializable {
+public class RoundController implements Initializable  {
 
     //region FXML variables
     @FXML
@@ -34,40 +38,140 @@ public class RoundController implements Initializable {
     public Label deckSizeText;
     public HBox cardBoxPlayer;
     public HBox cardBoxDealer;
+    public Label miseRoundText;
+    public SubScene subSceneMise;
     //endregion
     private DeckHandler deck;
+    private Integer miseInGame;
     // region Getter Setter
     public int GetPlayerHandValue() { return GetHandValue(playerHand); }
     public int GetDealerHandValue() { return GetHandValue(dealerHand); }
     //endregion
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        buttonRestartRound.setVisible(false);
+        // Register the class on the gameStateInitiater
+        BlackJackApplication.gameStateInitiater.addListener(new Listener<GameState>() {
+            @Override
+            public void onEvent(GameState event) {
+                switch (event) {
+                    case MainMenu -> {
+
+                    }
+                    case PreRound -> {
+                        PreRound();
+                    }
+                    case StartRound -> {
+                        StartRound();
+                    }
+                    case PlayerTurn -> {
+                        PlayerTurn();
+                    }
+                    case DealerTurn -> {
+                        DealerTurn();
+                    }
+                    case ComparateCards -> {
+                        RoundResult();
+                    }
+                    case EndOfRound -> {
+                        buttonRestartRound.setVisible(true);
+                    }
+                }
+            }
+        });
+        BlackJackApplication.miseNotifier.addListener(new Listener<Integer>() {
+            @Override
+            public void onEvent(Integer event) {
+                miseInGame = event;
+                miseRoundText.setText("Votre mise :"+miseInGame);
+            }
+        });
+
+
+    }
+
+    private void PreRound()
+    {
+        // Disable player button
+        buttonStand.setVisible(false);
+        buttonHit.setVisible(false);
+        messageRoundText.setText("Préparation");
         playerHand = new ArrayList<>();
         dealerHand = new ArrayList<>();
         deck = new DeckHandler();
+        buttonRestartRound.setVisible(false);
+
+    }
+    private void StartRound() {
+
+        messageRoundText.setText("Distribution des cartes");
         for (int i = 0; i < 2; i++)
         {
             playerHand.add(deck.Distribute());
             dealerHand.add(deck.Distribute());
         }
         deckSizeText.setText("Taille du deck : "+deck.get_deck().size());
-        messageRoundText.setText("Faites un choix !");
+
         handPlayerText.setText("Votre main : " + GetPlayerHandValue());
         handDealerText.setText("Main du croupier : " + GetDealerHandValue());
 
+        BlackJackApplication.gameStateInitiater.notify(GameState.PlayerTurn);
+    }
+
+    private void PlayerTurn() {
+        messageRoundText.setText("Faites un choix !");
         buttonHit.setVisible(true);
         buttonStand.setVisible(true);
 
         UpdateCardBoxPlayer(cardBoxDealer,dealerHand);
         UpdateCardBoxPlayer(cardBoxPlayer,playerHand);
-
     }
+
+    private void EndPlayerTurn() {
+        messageRoundText.setText("Fin de tour du joueur");
+        // Disable player button
+        buttonStand.setVisible(false);
+        buttonHit.setVisible(false);
+        BlackJackApplication.gameStateInitiater.notify(GameState.DealerTurn);
+    }
+    private void DealerTurn() {
+        messageRoundText.setText("Tour du croupier");
+        // Tour du croupier
+        while (GetDealerHandValue() < 17) {
+            dealerHand.add(deck.Distribute());
+            UpdateCardBoxPlayer(cardBoxDealer,dealerHand);
+            handDealerText.setText("Main du croupier : " + GetDealerHandValue());
+        }
+        BlackJackApplication.gameStateInitiater.notify(GameState.ComparateCards);
+    }
+    private void RoundResult()
+    {
+        int playerScore = GetPlayerHandValue();
+        int dealerScore = GetDealerHandValue();
+        // Détermine le résultat
+        if (playerScore > 21)
+        {
+            messageRoundText.setText("Vous avez perdu !");
+        }
+        else if (dealerScore > 21 || playerScore > dealerScore)
+        {
+            messageRoundText.setText("Vous avez gagné !");
+        }
+        else if (playerScore == dealerScore)
+        {
+            messageRoundText.setText("Égalité !");
+        } else {
+            messageRoundText.setText("Le croupier a gagné !");
+        }
+        BlackJackApplication.gameStateInitiater.notify(GameState.EndOfRound);
+    }
+
+
     // region Button Event
     public void onRestartButtonClick(ActionEvent actionEvent)
     {
-        initialize(null,null);
+        BlackJackApplication.gameStateInitiater.notify(GameState.PreRound);
     }
 
     @FXML
@@ -89,43 +193,8 @@ public class RoundController implements Initializable {
 
     }
     //endregion
-    private void EndPlayerTurn() {
-        // Disable player button
-        buttonStand.setVisible(false);
-        buttonHit.setVisible(false);
 
-        DealerTurn();
-        RoundResult();
-        buttonRestartRound.setVisible(true);
 
-    }
-
-    private void RoundResult()
-    {
-        int playerScore = GetPlayerHandValue();
-        int dealerScore = GetDealerHandValue();
-        // Détermine le résultat
-        if (playerScore > 21) {
-
-            messageRoundText.setText("Vous avez perdu !");
-        } else if (dealerScore > 21 || playerScore > dealerScore) {
-            messageRoundText.setText("Vous avez gagné !");
-        } else if (playerScore == dealerScore) {
-            messageRoundText.setText("Égalité !");
-        } else {
-            messageRoundText.setText("Le croupier a gagné !");
-        }
-    }
-
-    private void DealerTurn() {
-        BlackJackApplication.state = GameState.DealerTurn;
-        // Tour du croupier
-        while (GetDealerHandValue() < 17) {
-            dealerHand.add(deck.Distribute());
-            UpdateCardBoxPlayer(cardBoxDealer,dealerHand);
-            handDealerText.setText("Main du croupier : " + GetDealerHandValue());
-        }
-    }
 
     private void UpdateCardBoxPlayer(HBox hBox, List<Card> hand) {
         hBox.getChildren().clear();
@@ -170,7 +239,6 @@ public class RoundController implements Initializable {
 
         return score;
     }
-
 
 
 

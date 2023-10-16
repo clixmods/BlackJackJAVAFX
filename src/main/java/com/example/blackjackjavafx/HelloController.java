@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx;
 
+import com.example.blackjackjavafx.gameState.GameState;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -9,6 +10,8 @@ public class HelloController {
     @FXML
     protected void onStartGameButtonClick() {
         clixText.setText("Salut Clix");
+        BlackJackApplication.gameStateInitiater.notify(GameState.PreRound);
         SceneHandler.SetScene(SceneHandler.sceneGame);
+
     }
 }

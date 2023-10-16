@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.SubScene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" prefHeight="464.0" prefWidth="700.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.RoundController">
@@ -16,7 +19,9 @@
       <Label fx:id="handDealerText" />
       <Label fx:id="messageRoundText" />
       <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" />
+      <Label fx:id="miseRoundText" />
       <Label fx:id="handPlayerText" />
+      <HBox fx:id="cardBoxPlayer" />
       <HBox prefHeight="100.0" prefWidth="534.0" spacing="20.0">
          <children>
             <Button fx:id="buttonStand" onAction="#onStandButtonClick" text="Stand" />
@@ -29,6 +34,13 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <HBox fx:id="cardBoxPlayer" />
+      <SubScene fx:id="subSceneMise" fill="RED" height="118.0" width="654.0">
+        <root>
+          <Region />
+        </root>
+         <effect>
+            <ColorAdjust brightness="-0.48" />
+         </effect>
+      </SubScene>
    </children>
 </VBox>
