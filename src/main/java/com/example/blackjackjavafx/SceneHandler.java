@@ -1,7 +1,6 @@
 package com.example.blackjackjavafx;
 
 import com.example.blackjackjavafx.gameState.GameState;
-import com.example.blackjackjavafx.gameState.IGameStateListener;
 import com.example.blackjackjavafx.notifier.Listener;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,7 +32,7 @@ public class SceneHandler implements Initializable {
                     case MainMenu -> {
 
                     }
-                    case PreRound -> {
+                    case SelectionMise -> {
                         stackPane.getChildren().add(subSceneMise); // Ajoutez la SubScene "mise" au StackPane
                         subSceneMise.setVisible(true);
                     }

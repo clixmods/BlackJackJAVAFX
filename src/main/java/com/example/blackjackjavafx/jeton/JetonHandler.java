@@ -3,6 +3,10 @@ package com.example.blackjackjavafx.jeton;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Le gestionnaire des jetons
+ */
 public class JetonHandler {
 
     public List<Jeton> jetons = new ArrayList<>();
@@ -16,6 +20,10 @@ public class JetonHandler {
         baseJetons.add(new Jeton(1, "/images.jeton/jeton_yellow.png"));
     }
 
+    /**
+     * Cette méthode permet de gérer les jetons disponibles par rapport à la somme d'argent donnée en parametre
+     * @param moneyToConvert
+     */
     public void UpdateJetonFromMoney(int moneyToConvert)
     {
         jetons.clear();

@@ -2,7 +2,6 @@ package com.example.blackjackjavafx;
 
 import com.example.blackjackjavafx.card.Card;
 import com.example.blackjackjavafx.gameState.GameState;
-import com.example.blackjackjavafx.gameState.IGameStateListener;
 import com.example.blackjackjavafx.notifier.Listener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,7 +58,7 @@ public class RoundController implements Initializable  {
                     case MainMenu -> {
 
                     }
-                    case PreRound -> {
+                    case SelectionMise -> {
                         PreRound();
                     }
                     case StartRound -> {
@@ -147,6 +146,7 @@ public class RoundController implements Initializable  {
     }
     private void RoundResult()
     {
+        BlackJackApplication.gameStateInitiater.notify(GameState.EndOfRound);
         int playerScore = GetPlayerHandValue();
         int dealerScore = GetDealerHandValue();
         // Détermine le résultat
@@ -157,21 +157,24 @@ public class RoundController implements Initializable  {
         else if (dealerScore > 21 || playerScore > dealerScore)
         {
             messageRoundText.setText("Vous avez gagné !");
+            BlackJackApplication.gameStateInitiater.notify(GameState.PlayerWin);
         }
         else if (playerScore == dealerScore)
         {
             messageRoundText.setText("Égalité !");
+            BlackJackApplication.gameStateInitiater.notify(GameState.Equality);
         } else {
             messageRoundText.setText("Le croupier a gagné !");
+            BlackJackApplication.gameStateInitiater.notify(GameState.PlayerLose);
         }
-        BlackJackApplication.gameStateInitiater.notify(GameState.EndOfRound);
+
     }
 
 
     // region Button Event
     public void onRestartButtonClick(ActionEvent actionEvent)
     {
-        BlackJackApplication.gameStateInitiater.notify(GameState.PreRound);
+        BlackJackApplication.gameStateInitiater.notify(GameState.SelectionMise);
     }
 
     @FXML

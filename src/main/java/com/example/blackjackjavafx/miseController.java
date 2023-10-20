@@ -1,10 +1,13 @@
 package com.example.blackjackjavafx;
 
-import com.example.blackjackjavafx.card.Card;
 import com.example.blackjackjavafx.gameState.GameState;
 import com.example.blackjackjavafx.jeton.Jeton;
 import com.example.blackjackjavafx.jeton.JetonHandler;
 import com.example.blackjackjavafx.notifier.Listener;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -23,6 +26,8 @@ import java.util.ResourceBundle;
 
 
 public class miseController implements Initializable {
+    public Label argentJoueurText;
+
     private class ButtonJetonData
     {
         public Button button;
@@ -41,24 +46,50 @@ public class miseController implements Initializable {
     private int _mise;
     public List<ButtonJetonData> buttonsJeton = new ArrayList<>() {
     };
-    private int money = 1000;
+    private IntegerProperty money = new SimpleIntegerProperty(1000);
     private JetonHandler jetonHandler;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         jetonHandler = new JetonHandler();
+        money.addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                argentJoueurText.setText("Argent du joueur : "+newValue+" €");
+                jetonHandler.UpdateJetonFromMoney((Integer) newValue);
+                UIUpdateButtonsJeton();
+            }
+        });
+        // Le miseController va écouter les changements de phase de jeu
         BlackJackApplication.gameStateInitiater.addListener(new Listener<GameState>() {
             @Override
             public void onEvent(GameState event) {
-                if (Objects.requireNonNull(event) == GameState.PreRound) {
-                    jetonHandler.UpdateJetonFromMoney(money);
-                    UpdateJetons();
+                // Si on entre en phase SelectionMise, on prepare les jetons
+                if (Objects.requireNonNull(event) == GameState.SelectionMise) {
+                    miseJoueurText.setText("Selectionner votre mise");
+                    _mise = 0;
+                    argentJoueurText.setText("Argent du joueur : "+money.getValue()+" €");
+                    jetonHandler.UpdateJetonFromMoney(money.getValue());
+                    UIUpdateButtonsJeton();
+                }
+                // Si le joueur a gagné
+                else if (Objects.requireNonNull(event) == GameState.PlayerWin) {
+                    _mise *= 2;
+                    money.setValue(money.getValue() + _mise);
+                    _mise = 0;
+                }
+                else if (Objects.requireNonNull(event) == GameState.PlayerLose) {
+                    _mise = 0;
                 }
             }
         });
 
+
+        UIGenerateJetonsButtons();
+    }
+
+    private void UIGenerateJetonsButtons() {
+        hBoxJetons.getChildren().clear();
         for (int i = 0; i < jetonHandler.baseJetons.size(); i++)
         {
-
                 InputStream inputStream = getClass().getResourceAsStream(jetonHandler.baseJetons.get(i).get_imageURL());
                 //if(inputStream != null)
                 {
@@ -74,11 +105,11 @@ public class miseController implements Initializable {
                     int finalI = i;
                     buttonJeton.setOnAction(actionEvent -> {
                         _mise += jetonHandler.baseJetons.get(finalI).get_value() ;
-                        money -=  jetonHandler.baseJetons.get(finalI).get_value();
+                        money.setValue(money.getValue() - jetonHandler.baseJetons.get(finalI).get_value());  ;
 
                         miseJoueurText.setText("Votre mise "+_mise);
-                        jetonHandler.UpdateJetonFromMoney(money);
-                        UpdateJetons();
+
+                        UIUpdateButtonsJeton();
                     }); ;
                     hBoxJetons.getChildren().add(buttonJeton);
                     buttonsJeton.add(new ButtonJetonData(buttonJeton, jetonHandler.baseJetons.get(i)));
@@ -89,19 +120,14 @@ public class miseController implements Initializable {
     public void onValidButtonClick(ActionEvent actionEvent) {
         BlackJackApplication.miseNotifier.notify(_mise);
         BlackJackApplication.gameStateInitiater.notify(GameState.StartRound);
-        _mise = 0;
+        //_mise = 0;
 
     }
-
-    public void onJetonTestButtonClick(ActionEvent actionEvent) {
-        _mise ++;
-        money -=  1;
-        jetonHandler.UpdateJetonFromMoney(money);
-        UpdateJetons();
-    }
-
-
-    private void UpdateJetons() {
+    /**
+     * Cette méthode permet de gérer de check la disponibilité des jetons. Elle gère ainsi l'affichage de l'UI.
+     * N'hésitez pas à l'appeller lorsque le @JetonHandler effectue un changement (notifier ?)
+     */
+    private void UIUpdateButtonsJeton() {
         for (int i = 0; i < buttonsJeton.size(); i++)
         {
             buttonsJeton.get(i).button.setVisible(jetonHandler.jetons.contains(buttonsJeton.get(i).jeton));
