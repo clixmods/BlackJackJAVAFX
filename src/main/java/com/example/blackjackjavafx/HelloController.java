@@ -10,7 +10,7 @@ public class HelloController {
     @FXML
     protected void onStartGameButtonClick() {
         clixText.setText("Salut Clix");
-        BlackJackApplication.gameStateInitiater.notify(GameState.PreRound);
+        BlackJackApplication.gameStateInitiater.notify(GameState.SelectionMise);
         SceneHandler.SetScene(SceneHandler.sceneGame);
 
     }

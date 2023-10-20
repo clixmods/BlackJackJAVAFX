@@ -13,19 +13,11 @@
       <Insets bottom="20.0" left="80.0" right="80.0" top="20.0" />
    </padding>
    <children>
-      <Label fx:id="miseJoueurText" text="Coucou" />
+      <Label fx:id="argentJoueurText" text="Argent du joueur : 0" />
+      <Label fx:id="miseJoueurText" text="Sélectionner votre mise" />
       <Button fx:id="buttonValidMise" mnemonicParsing="false" onAction="#onValidButtonClick" text="Valid" />
       <HBox fx:id="hBoxJetons" prefHeight="158.0" prefWidth="834.0">
          <children>
-            <Button fx:id="buttonMiseTest" mnemonicParsing="false" onAction="#onJetonTestButtonClick">
-               <graphic>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images.jeton/jeton_yellow.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
          </children>
       </HBox>
    </children>

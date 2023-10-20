@@ -3,11 +3,15 @@ package com.example.blackjackjavafx.gameState;
 public enum GameState
 {
     MainMenu,
-    PreRound,
+    SelectionMise,
     StartRound,
     PlayerTurn,
     DealerTurn,
     ComparateCards,
-    EndOfRound
+    EndOfRound,
+    PlayerWin,
+    Equality,
+    PlayerLose
+
 
 }
