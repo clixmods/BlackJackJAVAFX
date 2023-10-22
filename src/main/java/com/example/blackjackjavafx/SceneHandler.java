@@ -7,7 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -52,14 +53,21 @@ public class SceneHandler implements Initializable {
         Group root = new Group();
         _stageApplication = stage;
         sceneInit = new Scene(_fxmlLoader.load(), 640, 700);
+        subSceneMise = new SubScene(_miseFxmlLoader.load(), 640, 700);
         sceneGame = new Scene(_gameFxmlLoader.load(), 640, 700);
         // Chargez la scène "mise" dans une SubScene
-        subSceneMise = new SubScene(_miseFxmlLoader.load(), 640, 700);
+
 
         // Créez un StackPane pour contenir la scène "game" et la SubScene "mise"
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneGame.getRoot()); // Ajoutez la scène "game" au StackPane
 
+        Image img = new Image(
+                "/opera_y1iB56RCrT.png");
+        BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.REPEAT,
+                BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background bGround = new Background(bImg);
+        stackPane.setBackground(bGround);
         // Configurez la scène "game" pour utiliser le StackPane comme racine
         sceneGame.setRoot(stackPane);
 

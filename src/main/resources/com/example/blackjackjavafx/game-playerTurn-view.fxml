@@ -5,42 +5,48 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="464.0" prefWidth="700.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.RoundController">
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-   <children>
-      <HBox fx:id="cardBoxDealer" />
-      <Label fx:id="deckSizeText" />
-      <Label fx:id="handDealerText" />
-      <Label fx:id="messageRoundText" />
-      <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" />
-      <Label fx:id="miseRoundText" />
-      <Label fx:id="handPlayerText" />
-      <HBox fx:id="cardBoxPlayer" />
-      <HBox prefHeight="100.0" prefWidth="534.0" spacing="20.0">
-         <children>
-            <Button fx:id="buttonStand" onAction="#onStandButtonClick" text="Stand" />
-            <Button fx:id="buttonHit" onAction="#onHitButtonClick" text="Hit" />
-         </children>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.RoundController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="464.0" prefWidth="700.0" spacing="20.0">
          <padding>
-            <Insets left="273.0" top="40.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
+         <children>
+            <HBox fx:id="cardBoxDealer" alignment="CENTER" spacing="10.0" />
+            <Label fx:id="deckSizeText" text="TAILLE DU DECK" textFill="WHITE" />
+            <Label fx:id="handDealerText" text="Main du croupier" textFill="WHITE" />
+            <Label fx:id="messageRoundText" scaleX="1.5" scaleY="1.5" scaleZ="1.5" text="messageRoundText" textFill="WHITE" />
+            <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" />
+            <Label fx:id="miseRoundText" textFill="WHITE" />
+            <Label fx:id="handPlayerText" textFill="WHITE" />
+            <HBox fx:id="cardBoxPlayer" alignment="CENTER" spacing="10.0" />
+            <SubScene fx:id="subSceneMise" fill="WHITE" height="11.0" opacity="0.0" width="654.0">
+              <root>
+                <Region />
+              </root>
+               <effect>
+                  <ColorAdjust brightness="-0.48" />
+               </effect>
+            </SubScene>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="65.0" prefWidth="325.0" spacing="60.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="buttonStand" onAction="#onStandButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Stand" />
+            <Button fx:id="buttonHit" onAction="#onHitButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Hit" />
+            <Button fx:id="buttonDouble" mnemonicParsing="false" onAction="#onDoubleButtonClick" scaleX="1.5" scaleY="1.5" scaleZ="1.5" text="Double !" />
+         </children>
       </HBox>
-      <SubScene fx:id="subSceneMise" fill="RED" height="118.0" width="654.0">
-        <root>
-          <Region />
-        </root>
-         <effect>
-            <ColorAdjust brightness="-0.48" />
-         </effect>
-      </SubScene>
-   </children>
-</VBox>
+   </bottom>
+   <padding>
+      <Insets bottom="50.0" top="50.0" />
+   </padding>
+</BorderPane>
