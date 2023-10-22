@@ -75,10 +75,11 @@ public class miseController implements Initializable {
                 }
                 // Si le joueur a gagné
                 else if (Objects.requireNonNull(event) == GameState.PlayerWin) {
+                    int miseBonus = _mise;
                     _mise *= 2;
                     if(doubleMise)
                     {
-                        _mise *= 2;
+                        _mise += miseBonus;
                     }
                     BlackJackApplication.Money.setValue(BlackJackApplication.Money.getValue() + _mise);
                     _mise = 0;
