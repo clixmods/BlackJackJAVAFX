@@ -28,20 +28,32 @@ public class RoundController implements Initializable  {
     public List<Card> dealerHand = new ArrayList<>();
     @FXML
     public Label handPlayerText;
+    @FXML
     public Label handDealerText;
+    @FXML
     public Button buttonStand;
+    @FXML
     public Button buttonHit;
-
+    public Button buttonDouble;
+    @FXML
     public Label messageRoundText;
+    @FXML
     public Button buttonRestartRound;
+    @FXML
     public Label deckSizeText;
+    @FXML
     public HBox cardBoxPlayer;
+    @FXML
     public HBox cardBoxDealer;
+    @FXML
     public Label miseRoundText;
+    @FXML
     public SubScene subSceneMise;
+    
     //endregion
     private DeckHandler deck;
-    private Integer miseInGame;
+    private Integer miseInGame = 0;
+    private boolean playerUseDouble;
     // region Getter Setter
     public int GetPlayerHandValue() { return GetHandValue(playerHand); }
     public int GetDealerHandValue() { return GetHandValue(dealerHand); }
@@ -59,7 +71,7 @@ public class RoundController implements Initializable  {
 
                     }
                     case SelectionMise -> {
-                        PreRound();
+                        SelectionMise();
                     }
                     case StartRound -> {
                         StartRound();
@@ -83,18 +95,17 @@ public class RoundController implements Initializable  {
             @Override
             public void onEvent(Integer event) {
                 miseInGame = event;
-                miseRoundText.setText("Votre mise :"+miseInGame);
+                miseRoundText.setText("Votre mise :"+miseInGame+ " €");
             }
         });
 
 
     }
 
-    private void PreRound()
+    private void SelectionMise()
     {
         // Disable player button
-        buttonStand.setVisible(false);
-        buttonHit.setVisible(false);
+        SetVisiblePlayerButtons(false);
         messageRoundText.setText("Préparation");
         playerHand = new ArrayList<>();
         dealerHand = new ArrayList<>();
@@ -107,40 +118,44 @@ public class RoundController implements Initializable  {
         messageRoundText.setText("Distribution des cartes");
         for (int i = 0; i < 2; i++)
         {
-            playerHand.add(deck.Distribute());
-            dealerHand.add(deck.Distribute());
+            PlayerHitCard();
         }
+        DealerHitCard();
         deckSizeText.setText("Taille du deck : "+deck.get_deck().size());
-
-        handPlayerText.setText("Votre main : " + GetPlayerHandValue());
-        handDealerText.setText("Main du croupier : " + GetDealerHandValue());
-
         BlackJackApplication.gameStateInitiater.notify(GameState.PlayerTurn);
-    }
 
+    }
     private void PlayerTurn() {
         messageRoundText.setText("Faites un choix !");
-        buttonHit.setVisible(true);
-        buttonStand.setVisible(true);
-
-        UpdateCardBoxPlayer(cardBoxDealer,dealerHand);
-        UpdateCardBoxPlayer(cardBoxPlayer,playerHand);
+        SetVisiblePlayerButtons(true);
     }
-
     private void EndPlayerTurn() {
         messageRoundText.setText("Fin de tour du joueur");
-        // Disable player button
-        buttonStand.setVisible(false);
-        buttonHit.setVisible(false);
+        SetVisiblePlayerButtons(false);
         BlackJackApplication.gameStateInitiater.notify(GameState.DealerTurn);
     }
+
+    private void SetVisiblePlayerButtons(boolean value) {
+        // Disable player button
+        buttonStand.setVisible(value);
+        buttonHit.setVisible(value);
+        // On check si il peut double, sinon on cache de force le boutton
+        if(BlackJackApplication.Money.getValue() <= miseInGame*2 )
+        {
+            buttonDouble.setVisible(false);
+        }
+        else
+        {
+            buttonDouble.setVisible(value);
+        }
+
+    }
+
     private void DealerTurn() {
         messageRoundText.setText("Tour du croupier");
         // Tour du croupier
         while (GetDealerHandValue() < 17) {
-            dealerHand.add(deck.Distribute());
-            UpdateCardBoxPlayer(cardBoxDealer,dealerHand);
-            handDealerText.setText("Main du croupier : " + GetDealerHandValue());
+            DealerHitCard();
         }
         BlackJackApplication.gameStateInitiater.notify(GameState.ComparateCards);
     }
@@ -152,24 +167,30 @@ public class RoundController implements Initializable  {
         // Détermine le résultat
         if (playerScore > 21)
         {
-            messageRoundText.setText("Vous avez perdu !");
+            messageRoundText.setText("Vous avez perdu ! \n Vous avez perdu "+miseInGame+ " €");
+            CallGameStateNotifierForPlayerLose();
         }
         else if (dealerScore > 21 || playerScore > dealerScore)
         {
-            messageRoundText.setText("Vous avez gagné !");
+            messageRoundText.setText("Vous avez gagné ! \n Vous remportez "+miseInGame+ " €");
             BlackJackApplication.gameStateInitiater.notify(GameState.PlayerWin);
         }
         else if (playerScore == dealerScore)
         {
             messageRoundText.setText("Égalité !");
             BlackJackApplication.gameStateInitiater.notify(GameState.Equality);
-        } else {
-            messageRoundText.setText("Le croupier a gagné !");
-            BlackJackApplication.gameStateInitiater.notify(GameState.PlayerLose);
+        }
+        else
+        {
+            messageRoundText.setText("Le croupier a gagné ! \n Vous avez perdu "+miseInGame+ " €");
+            CallGameStateNotifierForPlayerLose();
         }
 
     }
 
+    private void CallGameStateNotifierForPlayerLose() {
+        BlackJackApplication.gameStateInitiater.notify(GameState.PlayerLose);
+    }
 
     // region Button Event
     public void onRestartButtonClick(ActionEvent actionEvent)
@@ -185,21 +206,50 @@ public class RoundController implements Initializable  {
     @FXML
     public void onHitButtonClick(ActionEvent actionEvent)
     {
-        playerHand.add(deck.Distribute());
-        int playerHandValue = GetPlayerHandValue();
-        handPlayerText.setText("Votre main : " + playerHandValue);
-        UpdateCardBoxPlayer(cardBoxPlayer,playerHand);
+        int playerHandValue = PlayerHitCard();
         if(playerHandValue >= 21)
         {
             EndPlayerTurn();
         }
 
     }
+    public void onDoubleButtonClick(ActionEvent actionEvent)
+    {
+        miseController.doubleMise = true;
+        miseInGame *= 2;
+        PlayerHitCard();
+        EndPlayerTurn();
+    }
+
+
     //endregion
 
+    /**
+     * Instruction when a player hit a card
+     * @return
+     */
+    private int PlayerHitCard() {
+        playerHand.add(deck.Distribute());
+        int playerHandValue = GetPlayerHandValue();
+        handPlayerText.setText("Votre main : " + playerHandValue);
+        UIUpdateCardBox(cardBoxPlayer,playerHand);
+        return playerHandValue;
+    }
 
+    private int DealerHitCard() {
+        dealerHand.add(deck.Distribute());
+        int dealerHandValue = GetDealerHandValue();
+        handDealerText.setText("Main du croupier : " + dealerHandValue);
+        UIUpdateCardBox(cardBoxDealer,dealerHand);
+        return dealerHandValue;
+    }
 
-    private void UpdateCardBoxPlayer(HBox hBox, List<Card> hand) {
+    /**
+     * Gère l'affichage des cartes du joueur
+     * @param hBox
+     * @param hand
+     */
+    private void UIUpdateCardBox(HBox hBox, List<Card> hand) {
         hBox.getChildren().clear();
         for (int i = 0; i < hand.size(); i++)
         {
@@ -217,6 +267,10 @@ public class RoundController implements Initializable  {
         }
         hBox.setVisible(true);
     }
+
+    /**
+       Permet de calculer le nombre de point d'une liste de carte suivant les règles du black jack
+     */
     private int GetHandValue(List<Card> hand)
     {
         int score = 0;

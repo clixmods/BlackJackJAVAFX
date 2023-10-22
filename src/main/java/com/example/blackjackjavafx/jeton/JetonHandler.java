@@ -13,11 +13,11 @@ public class JetonHandler {
     public List<Jeton> baseJetons = new ArrayList<>();
     public JetonHandler()
     {
-        baseJetons.add(new Jeton(500, "/images.jeton/jeton_blue.png"));
-        baseJetons.add(new Jeton(100, "/images.jeton/jeton_green.png"));
-        baseJetons.add(new Jeton(50, "/images.jeton/jeton_purple.png"));
-        baseJetons.add(new Jeton(20, "/images.jeton/jeton_red.png"));
-        baseJetons.add(new Jeton(1, "/images.jeton/jeton_yellow.png"));
+        baseJetons.add(new Jeton(500, "/images.jeton/jeton_500.png"));
+        baseJetons.add(new Jeton(100, "/images.jeton/jeton_100.png"));
+        baseJetons.add(new Jeton(50, "/images.jeton/jeton_50.png"));
+        baseJetons.add(new Jeton(20, "/images.jeton/jeton_20.png"));
+        baseJetons.add(new Jeton(1, "/images.jeton/jeton_1.png"));
     }
 
     /**

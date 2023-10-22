@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 public class miseController implements Initializable {
     public Label argentJoueurText;
 
+
     private class ButtonJetonData
     {
         public Button button;
@@ -40,18 +41,19 @@ public class miseController implements Initializable {
         }
     }
     public Button buttonValidMise;
-    public Button buttonMiseTest;
     public HBox hBoxJetons;
     public Label miseJoueurText;
     private int _mise;
+    public static boolean doubleMise;
     public List<ButtonJetonData> buttonsJeton = new ArrayList<>() {
     };
-    private IntegerProperty money = new SimpleIntegerProperty(1000);
+   
+    
     private JetonHandler jetonHandler;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         jetonHandler = new JetonHandler();
-        money.addListener(new ChangeListener<Number>() {
+        BlackJackApplication.Money.addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 argentJoueurText.setText("Argent du joueur : "+newValue+" €");
                 jetonHandler.UpdateJetonFromMoney((Integer) newValue);
@@ -65,18 +67,31 @@ public class miseController implements Initializable {
                 // Si on entre en phase SelectionMise, on prepare les jetons
                 if (Objects.requireNonNull(event) == GameState.SelectionMise) {
                     miseJoueurText.setText("Selectionner votre mise");
+                    doubleMise = false;
                     _mise = 0;
-                    argentJoueurText.setText("Argent du joueur : "+money.getValue()+" €");
-                    jetonHandler.UpdateJetonFromMoney(money.getValue());
+                    argentJoueurText.setText("Argent du joueur : "+BlackJackApplication.Money.getValue()+" €");
+                    jetonHandler.UpdateJetonFromMoney(BlackJackApplication.Money.getValue());
                     UIUpdateButtonsJeton();
                 }
                 // Si le joueur a gagné
                 else if (Objects.requireNonNull(event) == GameState.PlayerWin) {
                     _mise *= 2;
-                    money.setValue(money.getValue() + _mise);
+                    if(doubleMise)
+                    {
+                        _mise *= 2;
+                    }
+                    BlackJackApplication.Money.setValue(BlackJackApplication.Money.getValue() + _mise);
+                    _mise = 0;
+                }
+                else if (Objects.requireNonNull(event) == GameState.Equality) {
+                    BlackJackApplication.Money.setValue(BlackJackApplication.Money.getValue() + _mise);
                     _mise = 0;
                 }
                 else if (Objects.requireNonNull(event) == GameState.PlayerLose) {
+                    if(doubleMise)
+                    {
+                        BlackJackApplication.Money.setValue(BlackJackApplication.Money.getValue() - _mise);
+                    }
                     _mise = 0;
                 }
             }
@@ -105,7 +120,7 @@ public class miseController implements Initializable {
                     int finalI = i;
                     buttonJeton.setOnAction(actionEvent -> {
                         _mise += jetonHandler.baseJetons.get(finalI).get_value() ;
-                        money.setValue(money.getValue() - jetonHandler.baseJetons.get(finalI).get_value());  ;
+                        BlackJackApplication.Money.setValue(BlackJackApplication.Money.getValue() - jetonHandler.baseJetons.get(finalI).get_value());  ;
 
                         miseJoueurText.setText("Votre mise "+_mise);
 
@@ -117,9 +132,21 @@ public class miseController implements Initializable {
         }
     }
 
+    public void onAjoutezArgentButtonClick(ActionEvent actionEvent) {
+        BlackJackApplication.Money.setValue(BlackJackApplication.Money.get() + 1000);
+    }
+
     public void onValidButtonClick(ActionEvent actionEvent) {
-        BlackJackApplication.miseNotifier.notify(_mise);
-        BlackJackApplication.gameStateInitiater.notify(GameState.StartRound);
+        if(_mise > 0)
+        {
+            BlackJackApplication.miseNotifier.notify(_mise);
+            BlackJackApplication.gameStateInitiater.notify(GameState.StartRound);
+        }
+        else
+        {
+            miseJoueurText.setText("Vous ne pouvez jouer si vous misez pas.");
+        }
+
         //_mise = 0;
 
     }
