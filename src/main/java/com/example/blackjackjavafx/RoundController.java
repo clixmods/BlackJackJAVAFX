@@ -140,7 +140,7 @@ public class RoundController implements Initializable  {
         buttonStand.setVisible(value);
         buttonHit.setVisible(value);
         // On check si il peut double, sinon on cache de force le boutton
-        if(BlackJackApplication.Money.getValue() <= miseInGame*2 )
+        if(BlackJackApplication.Money.getValue() < miseInGame )
         {
             buttonDouble.setVisible(false);
         }
