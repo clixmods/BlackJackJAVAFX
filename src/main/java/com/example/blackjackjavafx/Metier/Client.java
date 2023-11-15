@@ -15,6 +15,10 @@ public class Client {
         return argent;
     }
 
+    public String getNom(){
+        return nom;
+    }
+
     public void ajouterArgent(int somme){
         argent += somme;
     }

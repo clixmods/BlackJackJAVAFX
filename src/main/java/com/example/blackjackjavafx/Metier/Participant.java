@@ -33,11 +33,12 @@ public class Participant {
         return valeurMain;
     }
 
-    public void piocher(Pioche pioche){
+    public Carte piocher(Pioche pioche){
         Carte carte = pioche.piocher();
         if (carte.getValeur() == 11){
             nbAs ++;
         }
         main.add(carte);
+        return carte;
     }
 }

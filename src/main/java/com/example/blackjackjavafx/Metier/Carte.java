@@ -6,9 +6,12 @@ public class Carte {
 
     private int valeur;
 
-    public Carte(String nom, int valeur){
+    private String imageURL;
+
+    public Carte(String nom, int valeur, String imageURL){
         this.nom = nom;
         this.valeur = valeur;
+        this.imageURL = imageURL;
     }
 
     public String getNom(){
