@@ -2,8 +2,6 @@ package com.example.blackjackjavafx.Metier;
 
 import com.example.blackjackjavafx.Application.ControleurJeu;
 
-import java.util.concurrent.TimeUnit;
-
 public class Jeu {
 
     private Client client;
@@ -36,5 +34,39 @@ public class Jeu {
         }
         carte =croupier.piocher(pioche);
         controleur.mettreAJourAffichageCartesCroupier(carte);
+        joueur.calculerValeurMain();
+        if (joueur.getValeurMain() == 21){
+            controleur.afficherBlackJack();
+        }
+        else {
+            controleur.mettreAJourAffichageValeurMainJoueur(joueur.getValeurMain());
+        }
+    }
+
+    public boolean joueurPiocheetGagne(){
+        Carte carte = joueur.piocher(pioche);
+        controleur.mettreAJourAffichageCartesJoueur(carte);
+        joueur.calculerValeurMain();
+        controleur.mettreAJourAffichageValeurMainJoueur(joueur.getValeurMain());
+        if (joueur.getValeurMain()>21){
+            defaite();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean peutDoubler(){
+        return client.getArgent()>=miseActuelle;
+    }
+    public void joueurDouble(){
+        client.retirerArgent(miseActuelle);
+        miseActuelle = miseActuelle * 2;
+        if (joueurPiocheetGagne()){
+            controleur.finDuTourJoueur();
+        }
+    }
+
+    public void defaite(){
+        controleur.afficherDefaite();
     }
 }

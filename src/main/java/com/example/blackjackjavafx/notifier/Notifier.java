@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.notifier;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

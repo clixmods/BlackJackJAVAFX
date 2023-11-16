@@ -49,6 +49,9 @@ public class RoundController implements Initializable  {
     public Label miseRoundText;
     @FXML
     public SubScene subSceneMise;
+
+    @FXML
+    public HBox buttonBoxPlayer;
     
     //endregion
     private DeckHandler deck;
@@ -95,7 +98,7 @@ public class RoundController implements Initializable  {
             @Override
             public void onEvent(Integer event) {
                 miseInGame = event;
-                miseRoundText.setText("Votre mise :"+miseInGame+ " €");
+                miseRoundText.setText("Votre mise : "+miseInGame+ " €");
             }
         });
 
@@ -137,17 +140,18 @@ public class RoundController implements Initializable  {
 
     private void SetVisiblePlayerButtons(boolean value) {
         // Disable player button
+        buttonBoxPlayer.setVisible(value);
         buttonStand.setVisible(value);
         buttonHit.setVisible(value);
         // On check si il peut double, sinon on cache de force le boutton
-        if(BlackJackApplication.Money.getValue() < miseInGame )
-        {
-            buttonDouble.setVisible(false);
-        }
-        else
-        {
-            buttonDouble.setVisible(value);
-        }
+//        if(BlackJackApplication.Money.getValue() < miseInGame )
+//        {
+//            buttonDouble.setVisible(false);
+//        }
+//        else
+//        {
+//            buttonDouble.setVisible(value);
+//        }
 
     }
 
