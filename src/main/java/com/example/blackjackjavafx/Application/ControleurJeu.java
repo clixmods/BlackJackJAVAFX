@@ -1,8 +1,11 @@
 package com.example.blackjackjavafx.Application;
 
+import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Carte;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeu;
+import com.example.blackjackjavafx.gameState.GameState;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,19 +22,48 @@ public class ControleurJeu {
     private HBox cardBoxPlayer;
 
     @FXML
-    public HBox cardBoxDealer;
+    private HBox cardBoxDealer;
+
+    @FXML
+    private HBox buttonBoxPlayer;
+
+    @FXML
+    private Label handPlayerText;
 
     @FXML
     private Button buttonRestartRound;
 
-    @FXML
-    private Button buttonDouble;
-
     public void creerJeu(Client client, int mise){
-        buttonDouble.setVisible(false);
+        buttonRestartRound.setVisible(true);
         jeu = new Jeu(client, this, mise);
+        setBoutonDouble();
         messageRoundText.setText("Distribution des cartes");
         jeu.distribuerCartes();
+        buttonBoxPlayer.setVisible(true);
+    }
+
+    private void setBoutonDouble(){
+        //Cette fonction fait apparaître le bouton buttonDouble si le joueur en a les moyens
+        if (jeu.peutDoubler()){
+            Button buttonDouble = new Button("Double");
+            buttonDouble.setScaleY(2.0);
+            buttonDouble.setScaleX(2.0);
+            buttonDouble.setScaleZ(2.0);
+            buttonDouble.setOnAction(event -> {
+                onDoubleButtonClick();
+            });
+            buttonBoxPlayer.getChildren().add(buttonDouble);
+        }
+    }
+
+    public void finDuTourJoueur(){
+        messageRoundText.setText("Fin du tour du joueur");
+        buttonBoxPlayer.setVisible(false);
+        tourCroupier();
+    }
+
+    public void tourCroupier(){
+
     }
 
     public void mettreAJourAffichageCartesJoueur(Carte carte){
@@ -42,8 +74,23 @@ public class ControleurJeu {
         cardBoxDealer.getChildren().add(carte.getImageView());
     }
 
+    public void mettreAJourAffichageValeurMainJoueur(int valeur){
+        handPlayerText.setText("Main du joueur : " + valeur);
+    }
+
+    public void afficherBlackJack(){
+        messageRoundText.setText("Blackjack !");
+        buttonRestartRound.setVisible(true);
+
+    }
+
+    public void afficherDefaite(){
+        messageRoundText.setText("Vous avez perdu");
+        buttonRestartRound.setVisible(true);
+    }
+
     public void onRestartButtonClick(){
-        System.out.println("bouton restart");
+        BlackJackApplication.gameStateInitiater.notify(GameState.SelectionMise);
     }
 
     public void onStandButtonClick(){
@@ -55,6 +102,6 @@ public class ControleurJeu {
     }
 
     public void onDoubleButtonClick(){
-        System.out.println("bouton double");
+        jeu.joueurDouble();
     }
 }

@@ -39,7 +39,9 @@ public class SceneHandler implements Initializable {
                         stackPane.getChildren().add(subSceneMise); // Ajoutez la SubScene "mise" au StackPane
                         subSceneMise.setVisible(true);
                         ControleurJeu controleurJeu = _gameFxmlLoader.getController();
-                        controleurJeu.creerJeu(new Client("Roger"), 500);
+                        Client roger = new Client("Roger");
+                        roger.ajouterArgent(50);
+                        controleurJeu.creerJeu(roger, 50);
                     }
                     case StartRound -> {
                         stackPane.getChildren().remove(subSceneMise); // Retirer la SubScene "mise" au StackPane

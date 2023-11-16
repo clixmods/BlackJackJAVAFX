@@ -22,9 +22,9 @@
          <children>
             <HBox fx:id="cardBoxDealer" alignment="CENTER" spacing="10.0" />
             <Label fx:id="deckSizeText" text="TAILLE DU DECK" textFill="WHITE" />
-            <Label fx:id="handDealerText" text="Main du croupier" textFill="WHITE" />
+            <Label fx:id="handDealerText" text="Main du croupier" textFill="WHITE" visible="false"/>
             <Label fx:id="messageRoundText" scaleX="1.5" scaleY="1.5" scaleZ="1.5" text="messageRoundText" textFill="WHITE" />
-            <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" />
+            <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" visible="false"/>
             <Label fx:id="miseRoundText" textFill="WHITE" />
             <Label fx:id="handPlayerText" textFill="WHITE" />
             <HBox fx:id="cardBoxPlayer" alignment="CENTER" spacing="10.0" />
@@ -40,11 +40,10 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="65.0" prefWidth="325.0" spacing="60.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="buttonBoxPlayer" alignment="CENTER" prefHeight="65.0" prefWidth="325.0" spacing="60.0" BorderPane.alignment="CENTER" visible="false">
          <children>
             <Button fx:id="buttonStand" onAction="#onStandButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Stand" />
             <Button fx:id="buttonHit" onAction="#onHitButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Hit" />
-            <Button fx:id="buttonDouble" mnemonicParsing="false" onAction="#onDoubleButtonClick" scaleX="1.5" scaleY="1.5" scaleZ="1.5" text="Double !" />
          </children>
       </HBox>
    </bottom>
