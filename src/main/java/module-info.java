@@ -7,6 +7,8 @@ module com.example.blackjackjavafx {
     requires com.almasb.fxgl.all;
 
     opens com.example.blackjackjavafx to javafx.fxml;
+    exports com.example.blackjackjavafx.Application;
+    opens com.example.blackjackjavafx.Application to javafx.fxml;
     exports com.example.blackjackjavafx;
     exports com.example.blackjackjavafx.card;
     opens com.example.blackjackjavafx.card to javafx.fxml;

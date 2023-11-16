@@ -12,7 +12,8 @@
 
 
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.RoundController">
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.Application.ControleurJeu">
    <center>
       <VBox alignment="CENTER" prefHeight="464.0" prefWidth="700.0" spacing="20.0">
          <padding>
