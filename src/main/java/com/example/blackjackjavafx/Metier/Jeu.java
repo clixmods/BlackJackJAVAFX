@@ -2,6 +2,8 @@ package com.example.blackjackjavafx.Metier;
 
 import com.example.blackjackjavafx.Application.ControleurJeu;
 
+import java.util.concurrent.TimeUnit;
+
 public class Jeu {
 
     private Client client;
@@ -27,7 +29,12 @@ public class Jeu {
     }
 
     public void distribuerCartes(){
-        Carte carte = joueur.piocher(pioche);
-        controleur.mettreAJourAffichageCartesJoueur(carte);
+        Carte carte;
+        for (int i = 0; i<2; i++) {
+            carte = joueur.piocher(pioche);
+            controleur.mettreAJourAffichageCartesJoueur(carte);
+        }
+        carte =croupier.piocher(pioche);
+        controleur.mettreAJourAffichageCartesCroupier(carte);
     }
 }

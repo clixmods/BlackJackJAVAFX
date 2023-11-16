@@ -1,5 +1,7 @@
 package com.example.blackjackjavafx;
 
+import com.example.blackjackjavafx.Application.ControleurJeu;
+import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.gameState.GameState;
 import com.example.blackjackjavafx.notifier.Listener;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +38,8 @@ public class SceneHandler implements Initializable {
                     case SelectionMise -> {
                         stackPane.getChildren().add(subSceneMise); // Ajoutez la SubScene "mise" au StackPane
                         subSceneMise.setVisible(true);
+                        ControleurJeu controleurJeu = _gameFxmlLoader.getController();
+                        controleurJeu.creerJeu(new Client("Roger"), 500);
                     }
                     case StartRound -> {
                         stackPane.getChildren().remove(subSceneMise); // Retirer la SubScene "mise" au StackPane
