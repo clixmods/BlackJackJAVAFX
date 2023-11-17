@@ -56,7 +56,7 @@ public class ControleurJeu {
         }
     }
 
-    public void finDuTourJoueur(){
+    public void finTourJoueur(){
         messageRoundText.setText("Fin du tour du joueur");
         buttonBoxPlayer.setVisible(false);
         tourCroupier();

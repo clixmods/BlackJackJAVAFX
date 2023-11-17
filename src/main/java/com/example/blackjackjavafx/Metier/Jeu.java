@@ -43,7 +43,7 @@ public class Jeu {
         }
     }
 
-    public boolean joueurPiocheetGagne(){
+    public boolean joueurPiocheEtGagne(){
         Carte carte = joueur.piocher(pioche);
         controleur.mettreAJourAffichageCartesJoueur(carte);
         joueur.calculerValeurMain();
@@ -61,8 +61,8 @@ public class Jeu {
     public void joueurDouble(){
         client.retirerArgent(miseActuelle);
         miseActuelle = miseActuelle * 2;
-        if (joueurPiocheetGagne()){
-            controleur.finDuTourJoueur();
+        if (joueurPiocheEtGagne()){
+            controleur.finTourJoueur();
         }
     }
 
