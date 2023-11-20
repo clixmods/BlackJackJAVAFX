@@ -36,6 +36,8 @@ public class ControleurJeu {
     public void creerJeu(Client client, int mise){
         buttonRestartRound.setVisible(true);
         jeu = new Jeu(client, this, mise);
+        cardBoxDealer.getChildren().clear();
+        cardBoxPlayer.getChildren().clear();
         setBoutonDouble();
         messageRoundText.setText("Distribution des cartes");
         jeu.distribuerCartes();
@@ -44,6 +46,9 @@ public class ControleurJeu {
 
     private void setBoutonDouble(){
         //Cette fonction fait apparaître le bouton buttonDouble si le joueur en a les moyens
+        if (buttonBoxPlayer.getChildren().size() == 3){
+            buttonBoxPlayer.getChildren().remove(2);
+        }
         if (jeu.peutDoubler()){
             Button buttonDouble = new Button("Double");
             buttonDouble.setScaleY(2.0);
