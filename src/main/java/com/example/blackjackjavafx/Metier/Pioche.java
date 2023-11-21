@@ -12,6 +12,7 @@ public class Pioche {
 
     private List<Carte> paquet;
 
+
     public Pioche(){
         this.paquet = new ArrayList<>();
         for(int i = 2 ; i <= 10 ; i++)

@@ -21,7 +21,6 @@
          </padding>
          <children>
             <HBox fx:id="cardBoxDealer" alignment="CENTER" spacing="10.0" />
-            <Label fx:id="deckSizeText" text="TAILLE DU DECK" textFill="WHITE" />
             <Label fx:id="handDealerText" text="Main du croupier" textFill="WHITE" visible="false"/>
             <Label fx:id="messageRoundText" scaleX="1.5" scaleY="1.5" scaleZ="1.5" text="messageRoundText" textFill="WHITE" />
             <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" visible="false"/>

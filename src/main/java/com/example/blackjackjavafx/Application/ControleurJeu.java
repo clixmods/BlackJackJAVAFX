@@ -16,6 +16,8 @@ public class ControleurJeu {
 
     private Jeu jeu;
 
+    private Client client;
+
     @FXML
     private Label messageRoundText;
 
@@ -38,14 +40,14 @@ public class ControleurJeu {
 
     public void creerJeu(Client client, int mise, SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
-        buttonRestartRound.setVisible(true);
         jeu = new Jeu(client, this, mise);
         cardBoxDealer.getChildren().clear();
         cardBoxPlayer.getChildren().clear();
         setBoutonDouble();
         messageRoundText.setText("Distribution des cartes");
-        jeu.distribuerCartes();
         buttonBoxPlayer.setVisible(true);
+        jeu.distribuerCartes();
+        this.client = client;
     }
 
     private void setBoutonDouble(){
@@ -68,11 +70,17 @@ public class ControleurJeu {
     public void finTourJoueur(){
         messageRoundText.setText("Fin du tour du joueur");
         buttonBoxPlayer.setVisible(false);
-        tourCroupier();
+        jeu.tourCroupier();
     }
 
-    public void tourCroupier(){
+    public void afficherVictoire(int mise){
+        messageRoundText.setText("Vous avez gagné ! \n Vous remportez "+ mise + " € !!!");
+        buttonRestartRound.setVisible(true);
+    }
 
+    public void afficherEgalite(){
+        buttonRestartRound.setVisible(true);
+        messageRoundText.setText("Égalité !");
     }
 
     public void mettreAJourAffichageCartesJoueur(Carte carte){
@@ -87,10 +95,15 @@ public class ControleurJeu {
         handPlayerText.setText("Main du joueur : " + valeur);
     }
 
-    public void afficherBlackJack(){
+    public void afficherBlackJack(int mise){
+        buttonBoxPlayer.setVisible(false);
         messageRoundText.setText("Blackjack !");
-        buttonRestartRound.setVisible(true);
-
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        afficherVictoire(mise);
     }
 
     public void afficherDefaite(){
@@ -99,15 +112,18 @@ public class ControleurJeu {
     }
 
     public void onRestartButtonClick(){
-        BlackJackApplication.gameStateInitiater.notify(GameState.SelectionMise);
+        sceneHandler.selectionnerMise(client);
     }
 
     public void onStandButtonClick(){
-        System.out.println("bouton stand");
+        jeu.tourCroupier();
+        buttonBoxPlayer.setVisible(false);
     }
 
     public void onHitButtonClick(){
         System.out.println("bouton hit");
+        jeu.joueurPiocheEtGagne();
+
     }
 
     public void onDoubleButtonClick(){
