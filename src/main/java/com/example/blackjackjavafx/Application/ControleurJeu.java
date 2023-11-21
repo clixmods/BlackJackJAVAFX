@@ -4,6 +4,7 @@ import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Carte;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeu;
+import com.example.blackjackjavafx.Vue.SceneHandler;
 import com.example.blackjackjavafx.gameState.GameState;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -33,7 +34,10 @@ public class ControleurJeu {
     @FXML
     private Button buttonRestartRound;
 
-    public void creerJeu(Client client, int mise){
+    private SceneHandler sceneHandler;
+
+    public void creerJeu(Client client, int mise, SceneHandler sceneHandler){
+        this.sceneHandler = sceneHandler;
         buttonRestartRound.setVisible(true);
         jeu = new Jeu(client, this, mise);
         cardBoxDealer.getChildren().clear();

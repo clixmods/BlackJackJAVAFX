@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx;
 
+import com.example.blackjackjavafx.Vue.SceneHandler;
 import com.example.blackjackjavafx.gameState.GameStateNotifier;
 import com.example.blackjackjavafx.mise.MiseNotifier;
 import javafx.application.Application;
@@ -14,7 +15,7 @@ public class BlackJackApplication extends Application {
 
     public static GameStateNotifier gameStateInitiater;
     public static MiseNotifier miseNotifier;
-    public static SceneHandler sceneHandler;
+    public static com.example.blackjackjavafx.Vue.SceneHandler sceneHandler;
     public static List<PlayerHandler> players;
     private static PlayerHandler _playerHandler;
     public static PlayerHandler GetClientPlayer(){ return _playerHandler; }
