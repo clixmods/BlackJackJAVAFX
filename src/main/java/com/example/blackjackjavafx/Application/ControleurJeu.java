@@ -57,7 +57,7 @@ public class ControleurJeu {
             buttonBoxPlayer.getChildren().remove(2);
         }
         if (jeu.peutDoubler()){
-            Button buttonDouble = new Button("Double");
+            Button buttonDouble = new Button("Doubler");
             buttonDouble.setScaleY(2.0);
             buttonDouble.setScaleX(2.0);
             buttonDouble.setScaleZ(2.0);
