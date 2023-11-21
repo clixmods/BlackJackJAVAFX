@@ -18,15 +18,10 @@ public class Participant {
     }
 
     public void calculerValeurMain(){
-        int somme = 0;
-        for (Carte carte : main){
-            somme += carte.getValeur();
-        }
-        while(nbAs !=0 && somme>21){
-            somme -= 10;
+        while(nbAs !=0 && valeurMain>21){
+            valeurMain -= 10;
             nbAs -= 1;
         }
-        valeurMain = somme;
     }
 
     public int getValeurMain(){
@@ -38,6 +33,7 @@ public class Participant {
         if (carte.getValeur() == 11){
             nbAs ++;
         }
+        valeurMain += carte.getValeur();
         main.add(carte);
         return carte;
     }

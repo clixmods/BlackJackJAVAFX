@@ -93,6 +93,9 @@ public class Jeu {
             client.ajouterArgent(miseActuelle);
             controleur.afficherEgalite();
         }
+        else{
+            controleur.afficherDefaite();
+        }
     }
 
 

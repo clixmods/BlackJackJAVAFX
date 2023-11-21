@@ -47,6 +47,7 @@ public class ControleurJeu {
         messageRoundText.setText("Distribution des cartes");
         buttonBoxPlayer.setVisible(true);
         jeu.distribuerCartes();
+        messageRoundText.setText("Tour joueur");
         this.client = client;
     }
 
@@ -68,7 +69,7 @@ public class ControleurJeu {
     }
 
     public void finTourJoueur(){
-        messageRoundText.setText("Fin du tour du joueur");
+        messageRoundText.setText("Tour croupier");
         buttonBoxPlayer.setVisible(false);
         jeu.tourCroupier();
     }
@@ -118,8 +119,7 @@ public class ControleurJeu {
     }
 
     public void onStandButtonClick(){
-        jeu.tourCroupier();
-        buttonBoxPlayer.setVisible(false);
+        finTourJoueur();
     }
 
     public void onHitButtonClick(){
