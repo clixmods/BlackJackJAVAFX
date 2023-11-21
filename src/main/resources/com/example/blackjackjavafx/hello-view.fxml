@@ -11,6 +11,6 @@
     </padding>
 
     <Label fx:id="clixText"/>
-    <Button text="Start a game" onAction="#onStartGameButtonClick"/>
+    <Button text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
 
 </VBox>

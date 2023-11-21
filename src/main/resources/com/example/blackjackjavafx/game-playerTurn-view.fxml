@@ -41,8 +41,8 @@
    <bottom>
       <HBox fx:id="buttonBoxPlayer" alignment="CENTER" prefHeight="65.0" prefWidth="325.0" spacing="60.0" BorderPane.alignment="CENTER" visible="false">
          <children>
-            <Button fx:id="buttonStand" onAction="#onStandButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Stand" />
-            <Button fx:id="buttonHit" onAction="#onHitButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Hit" />
+            <Button fx:id="buttonStand" onAction="#onStandButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Rester" />
+            <Button fx:id="buttonHit" onAction="#onHitButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Piocher" />
          </children>
       </HBox>
    </bottom>
