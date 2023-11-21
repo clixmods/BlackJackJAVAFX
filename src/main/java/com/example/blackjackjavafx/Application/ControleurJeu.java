@@ -116,6 +116,7 @@ public class ControleurJeu {
 
     public void onRestartButtonClick(){
         sceneHandler.selectionnerMise(client);
+        buttonRestartRound.setVisible(false);
     }
 
     public void onStandButtonClick(){
