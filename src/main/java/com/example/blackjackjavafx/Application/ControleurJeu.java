@@ -46,8 +46,8 @@ public class ControleurJeu {
         setBoutonDouble();
         messageRoundText.setText("Distribution des cartes");
         buttonBoxPlayer.setVisible(true);
-        jeu.distribuerCartes();
         messageRoundText.setText("Tour joueur");
+        jeu.distribuerCartes();
         this.client = client;
     }
 
@@ -75,7 +75,7 @@ public class ControleurJeu {
     }
 
     public void afficherVictoire(int mise){
-        messageRoundText.setText("Vous avez gagné ! \n Vous remportez "+ mise + " € !!!");
+        messageRoundText.setText("Vous avez gagné ! Vous remportez "+ mise + " € !!!");
         buttonRestartRound.setVisible(true);
     }
 
@@ -124,7 +124,6 @@ public class ControleurJeu {
     }
 
     public void onHitButtonClick(){
-        System.out.println("bouton hit");
         jeu.joueurPiocheEtGagne();
 
     }
