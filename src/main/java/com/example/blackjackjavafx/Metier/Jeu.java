@@ -36,7 +36,8 @@ public class Jeu {
         controleur.mettreAJourAffichageCartesCroupier(carte);
         joueur.calculerValeurMain();
         if (joueur.getValeurMain() == 21){
-            controleur.afficherBlackJack();
+            client.ajouterArgent(2*miseActuelle + miseActuelle/2);
+            controleur.afficherBlackJack(miseActuelle*2 + miseActuelle/2);
         }
         else {
             controleur.mettreAJourAffichageValeurMainJoueur(joueur.getValeurMain());
@@ -58,6 +59,7 @@ public class Jeu {
     public boolean peutDoubler(){
         return client.getArgent()>=miseActuelle;
     }
+
     public void joueurDouble(){
         client.retirerArgent(miseActuelle);
         miseActuelle = miseActuelle * 2;
@@ -65,6 +67,34 @@ public class Jeu {
             controleur.finTourJoueur();
         }
     }
+
+    public void tourCroupier(){
+        croupier.calculerValeurMain();
+        while (croupier.getValeurMain()<17){
+            Carte carte = croupier.piocher(pioche);
+            controleur.mettreAJourAffichageCartesCroupier(carte);
+            croupier.calculerValeurMain();
+        }
+        if (croupier.getValeurMain()>21){
+            client.ajouterArgent(miseActuelle*2);
+            controleur.afficherVictoire(miseActuelle*2);
+        }
+        else {
+            comparerResultats();
+        }
+    }
+
+    public void comparerResultats(){
+        if (joueur.getValeurMain()>croupier.getValeurMain()){
+            client.ajouterArgent(miseActuelle*2);
+            controleur.afficherVictoire(miseActuelle*2);
+        }
+        else if (joueur.getValeurMain() == croupier.getValeurMain()){
+            client.ajouterArgent(miseActuelle);
+            controleur.afficherEgalite();
+        }
+    }
+
 
     public void defaite(){
         controleur.afficherDefaite();
