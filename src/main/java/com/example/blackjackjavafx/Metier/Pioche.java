@@ -21,7 +21,7 @@ public class Pioche {
         }
         for(int i = 2 ; i <= 10 ; i++)
         {
-            paquet.add(new Carte(i+" de Coeur", i , "/images/cards/"+i+"_of_hearts.png"));
+            paquet.add(new Carte(i+" de Cœur", i , "/images/cards/"+i+"_of_hearts.png"));
         }
         for(int i = 2 ; i <= 10 ; i++)
         {
@@ -42,15 +42,15 @@ public class Pioche {
         paquet.add(new Carte("Reine de Carreau" , 10, "/images/cards/queen_of_diamonds2.png"));
         paquet.add(new Carte("As de Carreau" , 11, "/images/cards/ace_of_diamonds.png"));
 
-        paquet.add(new Carte("Valet de coeur" , 10, "/images/cards/jack_of_hearts2.png"));
-        paquet.add(new Carte("Roi de coeur" , 10, "/images/cards/king_of_hearts2.png"));
-        paquet.add(new Carte("Reine de coeur" , 10, "/images/cards/queen_of_hearts2.png"));
-        paquet.add(new Carte("As de coeur" , 11, "/images/cards/ace_of_hearts.png"));
+        paquet.add(new Carte("Valet de Cœur" , 10, "/images/cards/jack_of_hearts2.png"));
+        paquet.add(new Carte("Roi de Cœur" , 10, "/images/cards/king_of_hearts2.png"));
+        paquet.add(new Carte("Reine de Cœur" , 10, "/images/cards/queen_of_hearts2.png"));
+        paquet.add(new Carte("As de Cœur" , 11, "/images/cards/ace_of_hearts.png"));
 
-        paquet.add(new Carte("Valet de piques" , 10, "/images/cards/jack_of_spades2.png"));
-        paquet.add(new Carte("Roi de piques" , 10, "/images/cards/king_of_spades2.png"));
-        paquet.add(new Carte("Reine de piques" , 10, "/images/cards/queen_of_spades2.png"));
-        paquet.add(new Carte("As de piques" , 11, "/images/cards/ace_of_spades.png"));
+        paquet.add(new Carte("Valet de Piques" , 10, "/images/cards/jack_of_spades2.png"));
+        paquet.add(new Carte("Roi de Piques" , 10, "/images/cards/king_of_spades2.png"));
+        paquet.add(new Carte("Reine de Piques" , 10, "/images/cards/queen_of_spades2.png"));
+        paquet.add(new Carte("As de Piques" , 11, "/images/cards/ace_of_spades.png"));
     }
 
     public void melanger(){
