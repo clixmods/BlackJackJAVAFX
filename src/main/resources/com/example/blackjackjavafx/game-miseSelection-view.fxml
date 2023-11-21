@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="464.0" prefWidth="1045.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.miseController">
+<VBox alignment="CENTER" prefHeight="464.0" prefWidth="1045.0" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.Application.ControleurMise">
    <padding>
       <Insets bottom="20.0" left="80.0" right="80.0" top="20.0" />
    </padding>

@@ -45,8 +45,9 @@ public class Miser {
     }
 
     public void ajoutMise(int ajout){
-        mise +=ajout;
+        mise += ajout;
         client.retirerArgent(ajout);
+        controleurMise.mettreAJourAffichage();
     }
 
     public void annulerMise(){

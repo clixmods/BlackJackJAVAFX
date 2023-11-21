@@ -1,6 +1,10 @@
 package com.example.blackjackjavafx.Vue;
 
+import com.example.blackjackjavafx.Application.ControleurAccueil;
+import com.example.blackjackjavafx.Application.ControleurJeu;
+import com.example.blackjackjavafx.Application.ControleurMise;
 import com.example.blackjackjavafx.BlackJackApplication;
+import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.gameState.GameState;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,7 +29,7 @@ public class SceneHandler {
 
     private Stage stageApplication;
 
-    private StackPane stackPane;
+    private static StackPane stackPane;
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
@@ -43,27 +47,26 @@ public class SceneHandler {
         sceneJeu.setRoot(stackPane);
 
         stageApplication.setScene(sceneAccueil);
+        afficherAccueil();
     }
 
-    public void changerScene(GameState evenement){
-        switch (evenement) {
-            case MainMenu -> {
+    public void afficherAccueil(){
+        ControleurAccueil controleurAccueil = accueilLoader.getController();
+        controleurAccueil.initialiserAccueil(this);
+    }
 
-            }
-            case SelectionMise -> {
-                stackPane.getChildren().add(subSceneMise);
-                subSceneMise.setVisible(true);
-            }
-            case StartRound -> {
-                stackPane.getChildren().remove(subSceneMise);
-                subSceneMise.setVisible(false);
-            }
-            case DealerTurn -> {
-            }
-            case ComparateCards -> {
-            }
-            case EndOfRound -> {
-            }
-        }
+    public void selectionnerMise(Client client){
+        stageApplication.setScene(sceneJeu);
+        ControleurMise controleurMise = miseLoader.getController();
+        controleurMise.creerMise(client, this);
+        stackPane.getChildren().add(subSceneMise);
+        subSceneMise.setVisible(true);
+    }
+
+    public void commencerPartie(Client client, int mise){
+        ControleurJeu controleurJeu = jeuLoader.getController();
+        controleurJeu.creerJeu(client, mise, this);
+        stackPane.getChildren().remove(subSceneMise);
+        subSceneMise.setVisible(false);
     }
 }
