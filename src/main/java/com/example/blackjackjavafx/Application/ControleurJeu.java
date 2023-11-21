@@ -98,11 +98,13 @@ public class ControleurJeu {
     public void afficherBlackJack(int mise){
         buttonBoxPlayer.setVisible(false);
         messageRoundText.setText("Blackjack !");
-        try {
+        // J'aimerais que l'affichage affiche blackJack puis attende un peu avant d'afficher la victoire
+        /*try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+         */
         afficherVictoire(mise);
     }
 
