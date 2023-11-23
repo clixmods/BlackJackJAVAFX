@@ -5,7 +5,6 @@ import com.example.blackjackjavafx.Application.ControleurJeu;
 import com.example.blackjackjavafx.Application.ControleurMise;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
-import com.example.blackjackjavafx.gameState.GameState;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.SubScene;
