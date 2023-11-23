@@ -5,8 +5,6 @@ import com.example.blackjackjavafx.Metier.Carte;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeu;
 import com.example.blackjackjavafx.Vue.SceneHandler;
-import com.example.blackjackjavafx.gameState.GameState;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
