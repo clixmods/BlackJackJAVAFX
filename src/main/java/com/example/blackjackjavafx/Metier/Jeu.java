@@ -37,6 +37,7 @@ public class Jeu {
         joueur.calculerValeurMain();
         if (joueur.getValeurMain() == 21){
             client.ajouterArgent(2*miseActuelle + miseActuelle/2);
+            controleur.mettreAJourAffichageValeurMainJoueur(joueur.getValeurMain());
             controleur.afficherBlackJack(miseActuelle*2 + miseActuelle/2);
         }
         else {

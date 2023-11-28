@@ -110,6 +110,7 @@ public class ControleurJeu {
     public void afficherDefaite(){
         messageRoundText.setText("Vous avez perdu");
         buttonRestartRound.setVisible(true);
+        buttonBoxPlayer.setVisible(false);
     }
 
     public void onRestartButtonClick(){
@@ -123,7 +124,6 @@ public class ControleurJeu {
 
     public void onHitButtonClick(){
         jeu.joueurPiocheEtGagne();
-
     }
 
     public void onDoubleButtonClick(){
