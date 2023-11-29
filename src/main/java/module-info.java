@@ -5,6 +5,7 @@ module com.example.blackjackjavafx {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens com.example.blackjackjavafx to javafx.fxml;
     exports com.example.blackjackjavafx.Application;
