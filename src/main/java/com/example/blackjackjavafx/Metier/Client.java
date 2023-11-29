@@ -29,9 +29,9 @@ public class Client {
 
     private int argent;
 
-    public Client(String nom){
+    public Client(String nom, int argent){
         this.nom = nom;
-        this.argent = 0;
+        this.argent = argent;
     }
 
     public int getArgent(){
