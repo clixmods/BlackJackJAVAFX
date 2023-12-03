@@ -12,5 +12,6 @@
 
     <Label fx:id="clixText"/>
     <Button text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
+    <Button text="Inscription" onAction="#onInscriptionButtonClick"/>
 
 </VBox>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="258.0" style="-fx-background-color: #14561B;" />
+      <Pane layoutX="258.0" prefHeight="400.0" prefWidth="344.0" style="-fx-background-color: #46D356;">
+         <children>
+            <Label layoutX="150.0" layoutY="24.0" text="Inscription" />
+            <Label layoutX="23.0" layoutY="77.0" text="Pseudo" />
+            <TextField layoutX="23.0" layoutY="94.0" />
+            <Label layoutX="23.0" layoutY="128.0" text="Nom" />
+            <TextField layoutX="23.0" layoutY="145.0" />
+            <Label layoutX="23.0" layoutY="179.0" text="Prénom" />
+            <TextField layoutX="23.0" layoutY="196.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
