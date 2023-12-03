@@ -1,6 +1,7 @@
 package com.example.blackjackjavafx.Vue;
 
 import com.example.blackjackjavafx.Application.ControleurAccueil;
+import com.example.blackjackjavafx.Application.ControleurInscription;
 import com.example.blackjackjavafx.Application.ControleurJeu;
 import com.example.blackjackjavafx.Application.ControleurMise;
 import com.example.blackjackjavafx.BlackJackApplication;
@@ -22,9 +23,12 @@ public class SceneHandler {
 
     private static SubScene subSceneMise;
 
+    private static Scene sceneInscription;
+
     private final static FXMLLoader jeuLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-playerTurn-view.fxml"));
     private final static FXMLLoader accueilLoader = new FXMLLoader(BlackJackApplication.class.getResource("hello-view.fxml"));
     private final static FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
+    private final static FXMLLoader inscriptionLoader = new FXMLLoader(BlackJackApplication.class.getResource("inscription-view.fxml"));
 
     private Stage stageApplication;
 
@@ -35,6 +39,8 @@ public class SceneHandler {
         sceneAccueil = new Scene(accueilLoader.load(),640, 700 );
         subSceneMise = new SubScene(miseLoader.load(), 640, 700);
         sceneJeu = new Scene(jeuLoader.load(), 640, 700);
+        sceneInscription = new Scene(inscriptionLoader.load(),640,700);
+
 
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneJeu.getRoot());
@@ -52,6 +58,12 @@ public class SceneHandler {
     public void afficherAccueil(){
         ControleurAccueil controleurAccueil = accueilLoader.getController();
         controleurAccueil.initialiserAccueil(this);
+    }
+
+    public void afficherInscription(){
+        stageApplication.setScene(sceneInscription);
+        ControleurInscription controleurInscription = inscriptionLoader.getController();
+        controleurInscription.initialiserInscription(this);
     }
 
     public void selectionnerMise(Client client){
