@@ -23,15 +23,20 @@ public class Client {
         return true;
     }*/
 
-
+    private int login;
 
     private String nom;
 
     private int argent;
 
-    public Client(String nom, int argent){
+    public Client(int login, String nom, int argent){
+        this.login = login;
         this.nom = nom;
         this.argent = argent;
+    }
+
+    public int getLogin(){
+        return login;
     }
 
     public int getArgent(){
@@ -40,6 +45,10 @@ public class Client {
 
     public String getNom(){
         return nom;
+    }
+
+    public void setNom(String nom){
+        this.nom = nom;
     }
 
     public void ajouterArgent(int somme){
