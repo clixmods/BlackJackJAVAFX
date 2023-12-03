@@ -1,5 +1,7 @@
 package com.example.blackjackjavafx.Metier;
 
+import java.sql.Date;
+
 public class Client {
 
 /*    private static Client _current;
@@ -29,7 +31,7 @@ public class Client {
 
     private int argent;
 
-    public Client(int login, String nom, int argent){
+    public Client(int login, String mail, String nom, String prenom, Date dateNaissance, Date dateInscription, String telephone, int argent, String adresse, int codepostal, String ville, String pays, String password){
         this.login = login;
         this.nom = nom;
         this.argent = argent;

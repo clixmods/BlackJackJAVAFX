@@ -12,7 +12,7 @@ public class ControleurAccueil {
     }
 
     public void onStartGameButtonClick(){
-        Client roger = new Client(0,"Roger", 1000);
+        Client roger = new Client(0,"Roger", resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getDate("dateNaissance"), resultSet.getDate("dateInscription"), resultSet.getString("telephone"), 1000, resultSet.getString("adresse"), resultSet.getInt("codepostal"), resultSet.getString("ville"), resultSet.getString("pays"), resultSet.getString("password"));
         roger.ajouterArgent(500);
         sceneHandler.selectionnerMise(roger);
     }
