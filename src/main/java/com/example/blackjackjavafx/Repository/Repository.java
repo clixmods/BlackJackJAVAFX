@@ -50,9 +50,14 @@ public abstract class Repository<T> implements I_Repository<T> {
     {
         SQLUtils utils = SQLUtils.getInstance();
         Connection connection = utils.getConnection();
+
         String request = "UPDATE "+ getNomTable()+" SET ";
+
         String[] attributs = nomAttributsDansTable();
-        for(int i = 0; i < attributs.length; i++)
+
+        int startIndex = getStartIndex();
+
+        for(int i = startIndex; i < attributs.length; i++)
         {
             if (i < attributs.length - 1) {
                 request += attributs[i] + " = ?, ";
@@ -69,11 +74,18 @@ public abstract class Repository<T> implements I_Repository<T> {
 
         try(PreparedStatement statement = connection.prepareStatement(request))
         {
-            for (int i = 0; i < attributs.length; i++)
+            for (int i = startIndex; i < attributs.length; i++)
             {
-                statement.setObject(i+1 , values[i]);
+                if(startIndex == 1)
+                {
+                    statement.setObject(i , values[i-1]);
+                }
+                else
+                {
+                    statement.setObject(i , values[i]);
+                }
             }
-            statement.setObject(attributs.length+1, getClePrimaireValeur(element));
+            statement.setObject(attributs.length, getClePrimaireValeur(element));
 
             statement.executeUpdate();
         }
@@ -99,7 +111,6 @@ public abstract class Repository<T> implements I_Repository<T> {
         }
     }
 
-    @Override
     public T recupere(int valeurClePrimaire) {
         SQLUtils utils = SQLUtils.getInstance();
         Connection connection = utils.getConnection();
@@ -125,7 +136,6 @@ public abstract class Repository<T> implements I_Repository<T> {
         return resultList.get(0);
     }
 
-    @Override
     public List<T> recupereTout() {
         SQLUtils utils = SQLUtils.getInstance();
         Connection connection = utils.getConnection();

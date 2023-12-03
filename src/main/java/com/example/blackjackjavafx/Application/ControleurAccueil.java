@@ -11,7 +11,7 @@ public class ControleurAccueil {
     }
 
     public void onStartGameButtonClick(){
-        Client roger = new Client("Roger", 1000);
+        Client roger = new Client(0,"Roger", 1000);
         roger.ajouterArgent(500);
         sceneHandler.selectionnerMise(roger);
     }

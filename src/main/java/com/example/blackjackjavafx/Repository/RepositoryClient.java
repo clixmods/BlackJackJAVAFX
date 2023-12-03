@@ -26,7 +26,7 @@ public class RepositoryClient extends Repository<Client> {
 
     @Override
     protected Object getClePrimaireValeur(Client object) {
-        return object.getNom();
+        return object.getLogin();
     }
 
     @Override
@@ -35,6 +35,6 @@ public class RepositoryClient extends Repository<Client> {
     }
     @Override
     protected Client creerObjetDepuisResultat(ResultSet resultSet) throws SQLException {
-        return new Client(resultSet.getString("nom"), resultSet.getInt("argent"));
+        return new Client(resultSet.getInt("login"),resultSet.getString("nom"), resultSet.getInt("argent"));
     }
 }

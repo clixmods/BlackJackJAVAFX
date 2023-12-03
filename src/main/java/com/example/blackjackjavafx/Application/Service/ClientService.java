@@ -18,7 +18,7 @@ public class ClientService {
 
     public void creerClient(String nom, int argent)
     {
-        Client client = new Client(nom,argent);
+        Client client = new Client(-1,nom,argent);
         repository.inserer(client);
     }
 
@@ -37,9 +37,9 @@ public class ClientService {
         repository.supprimer(id);
     }
 
-    public void mettreAJourClient()
+    public void mettreAJourClient(Client client)
     {
-        // TODO: Implement...
+        repository.mettreAJour(client);
     }
 
 }
