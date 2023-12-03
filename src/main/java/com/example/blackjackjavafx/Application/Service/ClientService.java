@@ -18,7 +18,7 @@ public class ClientService {
 
     public void creerClient(String nom, int argent)
     {
-        Client client = new Client(-1,nom,argent);
+        Client client = new Client(-1,nom, resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getDate("dateNaissance"), resultSet.getDate("dateInscription"), resultSet.getString("telephone"), argent, resultSet.getString("adresse"), resultSet.getInt("codepostal"), resultSet.getString("ville"), resultSet.getString("pays"), resultSet.getString("password"));
         repository.inserer(client);
     }
 
