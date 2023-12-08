@@ -18,11 +18,19 @@ public abstract class Repository<T> implements I_Repository<T> {
     }
 
     /**
+     * Il faut que l'ordre des attributs soient le même que celui de la base de donnée.
      * @return Retourne le nom de chaque attributs présent dans la table,
      * La première doit être la clé primaire
      */
     protected abstract String[] nomAttributsDansTable();
 
+
+    /**
+     * Il est OBLIGATOIRE de l'implanter pour s'assurer du bon fonctionnement du repository
+     * Cette méthode est principalement utilisé pour les requêtes SQL.
+     * @param object Objet pour lequel on va récupérer chaque attribut
+     * @return Retourne un tableau d'Object, ce tableau est composé des différents attributs dans T qui sont castés en tant qu'Object
+     */
     protected abstract Object[] convertirValeursAttributsEnTableauObjets(T object);
 
     protected abstract Object getClePrimaireValeur(T object);
@@ -76,14 +84,7 @@ public abstract class Repository<T> implements I_Repository<T> {
         {
             for (int i = startIndex; i < attributs.length; i++)
             {
-                if(startIndex == 1)
-                {
-                    statement.setObject(i , values[i-1]);
-                }
-                else
-                {
-                    statement.setObject(i , values[i]);
-                }
+                statement.setObject(i , values[i]);
             }
             statement.setObject(attributs.length, getClePrimaireValeur(element));
 
@@ -123,6 +124,31 @@ public abstract class Repository<T> implements I_Repository<T> {
         try(PreparedStatement statement = connection.prepareStatement(request))
         {
             statement.setInt(1, valeurClePrimaire);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                T item = creerObjetDepuisResultat(resultSet);
+                resultList.add(item);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultList.get(0);
+    }
+
+    public T recupereBy(String nomColonne, String valeur) {
+        SQLUtils utils = SQLUtils.getInstance();
+        Connection connection = utils.getConnection();
+        String request = "SELECT * FROM "+ getNomTable();
+
+        request += " WHERE "+nomColonne+" = ?";
+
+        List<T> resultList = new ArrayList<>();
+
+        try(PreparedStatement statement = connection.prepareStatement(request))
+        {
+            statement.setString(1, valeur);
 
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -186,15 +212,7 @@ public abstract class Repository<T> implements I_Repository<T> {
         {
             for (int i = startIndex; i < attributs.length; i++)
             {
-                if(startIndex == 1)
-                {
-                    statement.setObject(i , values[i-1]);
-                }
-                else
-                {
-                    statement.setObject(i , values[i]);
-                }
-
+                statement.setObject(i , values[i]);
             }
 
             statement.executeUpdate();

@@ -24,25 +24,33 @@ public class Client {
         _current = newClient;
         return true;
     }*/
+    //region VARIABLES
+    private int id;
 
-    private int login;
+    private String login;
+
+    private String mail;
 
     private String nom;
 
+    private String prenom;
+
     private int argent;
 
-    public Client(int login, String mail, String nom, String prenom, Date dateNaissance, Date dateInscription, String telephone, int argent, String adresse, int codepostal, String ville, String pays, String password){
-        this.login = login;
-        this.nom = nom;
-        this.argent = argent;
+    private String password;
+    //endregion
+
+    //region PROPERTIES
+    public int getId(){
+        return id;
     }
 
-    public int getLogin(){
+    public String getLogin(){
         return login;
     }
 
-    public int getArgent(){
-        return argent;
+    public String getMail() {
+        return mail;
     }
 
     public String getNom(){
@@ -53,6 +61,29 @@ public class Client {
         this.nom = nom;
     }
 
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public int getArgent(){
+        return argent;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+    //endregion
+
+    public Client(int id, String login, String mail, String nom, String prenom, int argent,String password){
+        this.id = id;
+        this.login = login;
+        this.mail = mail;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.argent = argent;
+        this.password = password;
+    }
+
     public void ajouterArgent(int somme){
         argent += somme;
     }
@@ -60,4 +91,6 @@ public class Client {
     public void retirerArgent(int somme){
         argent -= somme;
     }
+
+
 }

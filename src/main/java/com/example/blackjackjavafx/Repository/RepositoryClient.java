@@ -14,32 +14,31 @@ public class RepositoryClient extends Repository<Client> {
     @Override
     protected String[] nomAttributsDansTable() {
         return new String[]{
+                "id",
                 "login",
                 "mail",
                 "nom",
                 "prenom",
-                "dateNaissance",
-                "dateInscription",
-                "telephone",
                 "argent",
-                "adresse",
-                "codepostal",
-                "ville",
-                "pays",
                 "password"};
     }
 
     @Override
     protected Object[] convertirValeursAttributsEnTableauObjets(Client object) {
         return new Object[]{
+                object.getId(),
+                object.getLogin(),
+                object.getMail(),
                 object.getNom(),
-                object.getArgent()
+                object.getPrenom(),
+                object.getArgent(),
+                object.getPassword()
         };
     }
 
     @Override
     protected Object getClePrimaireValeur(Client object) {
-        return object.getLogin();
+        return object.getId();
     }
 
     @Override
@@ -49,18 +48,12 @@ public class RepositoryClient extends Repository<Client> {
     @Override
     protected Client creerObjetDepuisResultat(ResultSet resultSet) throws SQLException {
         return new Client(
-                resultSet.getInt("login"),
+                resultSet.getInt("id"),
+                resultSet.getString("login"),
                 resultSet.getString("mail"),
                 resultSet.getString("nom"),
                 resultSet.getString("prenom"),
-                resultSet.getDate("dateNaissance"),
-                resultSet.getDate("dateInscription"),
-                resultSet.getString("telephone"),
                 resultSet.getInt("argent"),
-                resultSet.getString("adresse"),
-                resultSet.getInt("codepostal"),
-                resultSet.getString("ville"),
-                resultSet.getString("pays"),
                 resultSet.getString("password"));
 
     }
