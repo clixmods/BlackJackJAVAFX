@@ -1,4 +1,4 @@
-package com.example.blackjackjavafx.Application;
+package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeton;

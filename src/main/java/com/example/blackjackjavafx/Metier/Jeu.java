@@ -1,6 +1,6 @@
 package com.example.blackjackjavafx.Metier;
 
-import com.example.blackjackjavafx.Application.ControleurJeu;
+import com.example.blackjackjavafx.Application.controller.ControleurJeu;
 
 public class Jeu {
 

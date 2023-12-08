@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ClientService {
-    private final static ClientService INSTANCE = new ClientService();
+    private static ClientService INSTANCE;
 
     private RepositoryClient repository = new RepositoryClient();
 
@@ -18,6 +18,10 @@ public class ClientService {
     private ClientService() {}
 
     public static ClientService getInstance() {
+        if(INSTANCE == null)
+        {
+            INSTANCE = new ClientService();
+        }
         return INSTANCE;
     }
 
