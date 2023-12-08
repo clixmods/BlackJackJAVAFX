@@ -54,6 +54,11 @@ public class ClientService {
         return repository.recupereBy("login", login);
     }
 
+    public Client getClientByMail(String mail)
+    {
+        return repository.recupereBy("mail", mail);
+    }
+
     public void supprimeClient(int id)
     {
         repository.supprimer(id);

@@ -73,7 +73,7 @@ public class ControleurInscription
         ClientService clientService = ClientService.getInstance();
         Password passwordService = new Password();
 
-        if(InscriptionHelper.IsLoginAvailable(login)
+        if(InscriptionHelper.isLoginAvailable(login)
         && InscriptionHelper.isMailAvailable(mail)
         && passwordService.isSecure(password)
         && password.equals(passwordConfirm)
