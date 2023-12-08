@@ -18,6 +18,11 @@ public class ControleurInscription
     public TextField inputPrenom;
     public TextField inputNom;
     public TextField inputMail;
+    public TextField inputPhoneNumber;
+    public TextField inputAddress;
+    public TextField inputPostalCode;
+    public TextField inputCity;
+    public TextField inputCountry;
     private SceneHandler sceneHandler;
     public void initialiserInscription(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
@@ -52,12 +57,12 @@ public class ControleurInscription
         String prenom = inputPrenom.getText();
         int argent = 5000;
         String password = inputPassword1.getText();
-        String adresse = null;
-        int codePostal = 0;
-        String ville = null;
-        Date dateNaissance = null;
-        Date dateInscription = null;
-        String telephone = null;
+        String adresse = inputAddress.getText();
+        int codePostal = 34000;
+        String ville = inputCity.getText();
+        Date dateNaissance = new Date();
+        Date dateInscription = new Date();
+        String telephone = "0467834609";
 
         ClientService clientService = ClientService.getInstance();
         clientService.creerClient(-1,login, mail, nom, prenom, argent,password

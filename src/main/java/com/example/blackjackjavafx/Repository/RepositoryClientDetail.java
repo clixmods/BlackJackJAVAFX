@@ -46,7 +46,7 @@ public class RepositoryClientDetail extends Repository<ClientDetail> {
 
     @Override
     protected boolean EstClePrimaireAutoGenerer() {
-        return true;
+        return false;
     }
     @Override
     protected ClientDetail creerObjetDepuisResultat(ResultSet resultSet) throws SQLException {
