@@ -163,6 +163,10 @@ public abstract class Repository<T> implements I_Repository<T> {
         catch (SQLException e) {
             e.printStackTrace();
         }
+        if(resultList.size() == 0)
+        {
+            return null;
+        }
         return resultList.get(0);
     }
 
