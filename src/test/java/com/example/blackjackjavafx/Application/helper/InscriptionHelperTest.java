@@ -1,7 +1,9 @@
-package com.example.blackjackjavafx.Application.Service;
+package com.example.blackjackjavafx.Application.helper;
 
+import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Application.testUtility;
 import com.example.blackjackjavafx.Metier.Client;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -9,12 +11,12 @@ import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ClientServiceTest {
+class InscriptionHelperTest {
+
     private static ClientService clientService;
 
     private static String loginTest;
     private static String mailTest;
-
     @BeforeAll
     public static void setUp() {
         clientService = ClientService.getInstance();
@@ -22,8 +24,6 @@ class ClientServiceTest {
         mailTest = testUtility.generateRandomMail();
         testCreerClient();
     }
-
-
 
     public static void testCreerClient() {
         int initialSize = clientService.getClients().size();
@@ -35,39 +35,22 @@ class ClientServiceTest {
 
         assertEquals(initialSize + 1, newSize);
     }
-
     @Test
-    public void testGetClientById() {
-        clientService = ClientService.getInstance();
-        Client retrievedClient = clientService.getClient(loginTest);
-        assertNotNull(retrievedClient);
+    void isLoginNotAvailable() {
+        assertFalse(InscriptionHelper.isLoginAvailable(loginTest));
     }
 
     @Test
-    public void testUpdateClientByLogin() {
-        clientService = ClientService.getInstance();
-        Client retrievedClient = clientService.getClient(loginTest);
+    void isMailNotAvailable() {
+        assertFalse(InscriptionHelper.isMailAvailable(mailTest));
 
-        assertNotNull(retrievedClient);
-
-        retrievedClient.setPrenom("Johnny");
-
-        clientService.mettreAJourClient(retrievedClient);
-
-        assertEquals(retrievedClient.getPrenom(), "Johnny");
     }
 
-    @Test
-    public void testSupprimerClient() {
-        clientService = ClientService.getInstance();
-        int initialSize = clientService.getClients().size();
-        Client retrievedClient = clientService.getClient(loginTest);
-        clientService.supprimeClient(retrievedClient.getId());
-
-        int newSize = clientService.getClients().size();
-        assertEquals(initialSize-1, newSize);
+    @AfterAll
+    public static void cleanUp() {
+        Client client = clientService.getClient(loginTest);
+        clientService.supprimeClient(client.getId());
     }
-
 
 
 }
