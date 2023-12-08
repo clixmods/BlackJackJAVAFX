@@ -82,8 +82,9 @@ public class ControleurInscription
         && !adresse.isBlank()
         && codePostal > 0
         && !ville.isBlank()
-        && !telephone.isBlank())
+        && InscriptionHelper.isValidPhoneNumber(telephone))
         {
+            // TODO : Nous devons hacher le mot de passe avant de créer le client
             clientService.creerClient(-1,login, mail, nom, prenom, argent,password
                     ,adresse, codePostal, ville, dateNaissance, dateInscription,telephone);
         }
