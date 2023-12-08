@@ -82,9 +82,13 @@ public abstract class Repository<T> implements I_Repository<T> {
 
         try(PreparedStatement statement = connection.prepareStatement(request))
         {
+            // L'index parameter de SQL commence à 1...
+            int indexParameterSQL = 1;
+
             for (int i = startIndex; i < attributs.length; i++)
             {
-                statement.setObject(i , values[i]);
+                statement.setObject(indexParameterSQL , values[i]);
+                indexParameterSQL++;
             }
             statement.setObject(attributs.length, getClePrimaireValeur(element));
 
@@ -210,9 +214,13 @@ public abstract class Repository<T> implements I_Repository<T> {
 
         try(PreparedStatement statement = connection.prepareStatement(request))
         {
+            // L'index parameter de SQL commence à 1...
+            int indexParameter = 1;
+
             for (int i = startIndex; i < attributs.length; i++)
             {
-                statement.setObject(i , values[i]);
+                statement.setObject(indexParameter , values[i]);
+                indexParameter ++;
             }
 
             statement.executeUpdate();
