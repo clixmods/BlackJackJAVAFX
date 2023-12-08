@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application;
 
+import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
@@ -12,9 +13,9 @@ public class ControleurAccueil {
     }
 
     public void onStartGameButtonClick(){
-        Client roger = new Client(0,"Roger", resultSet.getString("nom"), resultSet.getString("prenom"), resultSet.getDate("dateNaissance"), resultSet.getDate("dateInscription"), resultSet.getString("telephone"), 1000, resultSet.getString("adresse"), resultSet.getInt("codepostal"), resultSet.getString("ville"), resultSet.getString("pays"), resultSet.getString("password"));
-        roger.ajouterArgent(500);
-        sceneHandler.selectionnerMise(roger);
+        ClientService clientService = ClientService.getInstance();
+        Client loggedClient = clientService.getClient(0);
+        sceneHandler.selectionnerMise(loggedClient);
     }
 
     public void onInscriptionButtonClick(ActionEvent actionEvent)
