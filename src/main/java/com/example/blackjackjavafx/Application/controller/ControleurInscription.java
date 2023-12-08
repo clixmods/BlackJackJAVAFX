@@ -1,8 +1,8 @@
-package com.example.blackjackjavafx.Application;
+package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Service.ClientService;
-import com.example.blackjackjavafx.Application.Service.InscriptionService;
-import com.example.blackjackjavafx.Application.Service.PasswordService;
+import com.example.blackjackjavafx.Application.helper.InscriptionHelper;
+import com.example.blackjackjavafx.Application.lib.Password;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class ControleurInscription
 {
+    //region FXML Variables
     public DatePicker inputDateNaissance;
     public PasswordField inputPassword2;
     public PasswordField inputPassword1;
@@ -25,6 +26,7 @@ public class ControleurInscription
     public TextField inputPostalCode;
     public TextField inputCity;
     public TextField inputCountry;
+    //endregion
     private SceneHandler sceneHandler;
     public void initialiserInscription(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
@@ -53,6 +55,7 @@ public class ControleurInscription
 
     public void OnSubmit(ActionEvent actionEvent)
     {
+        // Get inputs text
         String login = inputPseudo.getText();
         String mail = inputMail.getText();
         String nom = inputNom.getText();
@@ -68,13 +71,12 @@ public class ControleurInscription
         String telephone = "0467834609";
 
         ClientService clientService = ClientService.getInstance();
-        InscriptionService inscriptionService = new InscriptionService();
-        PasswordService passwordService = new PasswordService();
+        Password passwordService = new Password();
 
-        if(inscriptionService.IsLoginAvailable(login)
-        && inscriptionService.IsMailAvailable(mail)
+        if(InscriptionHelper.IsLoginAvailable(login)
+        && InscriptionHelper.IsMailAvailable(mail)
         && passwordService.IsSecure(password)
-        && password == passwordConfirm
+        && password.equals(passwordConfirm)
         && !nom.isBlank()
         && !prenom.isBlank()
         && !adresse.isBlank()

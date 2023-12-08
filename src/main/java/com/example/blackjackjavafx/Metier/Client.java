@@ -64,6 +64,10 @@ public class Client {
     public String getPrenom() {
         return prenom;
     }
+    public void setPrenom(String prenom)
+    {
+        this.prenom = prenom;
+    }
 
     public int getArgent(){
         return argent;
@@ -91,6 +95,7 @@ public class Client {
     public void retirerArgent(int somme){
         argent -= somme;
     }
+
 
 
 }

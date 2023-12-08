@@ -1,6 +1,6 @@
-package com.example.blackjackjavafx.Application.Service;
+package com.example.blackjackjavafx.Application.lib;
 
-public class PasswordService {
+public class Password {
     public boolean IsSecure(String password) {
         // TODO
 

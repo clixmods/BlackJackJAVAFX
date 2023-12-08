@@ -1,9 +1,9 @@
 package com.example.blackjackjavafx.Vue;
 
-import com.example.blackjackjavafx.Application.ControleurAccueil;
-import com.example.blackjackjavafx.Application.ControleurInscription;
-import com.example.blackjackjavafx.Application.ControleurJeu;
-import com.example.blackjackjavafx.Application.ControleurMise;
+import com.example.blackjackjavafx.Application.controller.ControleurAccueil;
+import com.example.blackjackjavafx.Application.controller.ControleurInscription;
+import com.example.blackjackjavafx.Application.controller.ControleurJeu;
+import com.example.blackjackjavafx.Application.controller.ControleurMise;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
