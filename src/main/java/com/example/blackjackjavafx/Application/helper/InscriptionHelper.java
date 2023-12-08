@@ -8,7 +8,7 @@ public class InscriptionHelper
         return false;
     }
 
-    public static boolean IsMailAvailable(String mail) {
+    public static boolean isMailAvailable(String mail) {
         // todo
         return false;
     }
