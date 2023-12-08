@@ -74,7 +74,7 @@ public class ControleurInscription
         Password passwordService = new Password();
 
         if(InscriptionHelper.IsLoginAvailable(login)
-        && InscriptionHelper.IsMailAvailable(mail)
+        && InscriptionHelper.isMailAvailable(mail)
         && passwordService.isSecure(password)
         && password.equals(passwordConfirm)
         && !nom.isBlank()
