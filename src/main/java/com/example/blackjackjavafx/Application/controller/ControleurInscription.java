@@ -75,7 +75,7 @@ public class ControleurInscription
 
         if(InscriptionHelper.IsLoginAvailable(login)
         && InscriptionHelper.IsMailAvailable(mail)
-        && passwordService.IsSecure(password)
+        && passwordService.isSecure(password)
         && password.equals(passwordConfirm)
         && !nom.isBlank()
         && !prenom.isBlank()
