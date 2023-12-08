@@ -57,4 +57,5 @@ public class RepositoryClient extends Repository<Client> {
                 resultSet.getString("password"));
 
     }
+
 }

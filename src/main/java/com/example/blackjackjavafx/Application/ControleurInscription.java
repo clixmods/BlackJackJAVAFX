@@ -1,6 +1,8 @@
 package com.example.blackjackjavafx.Application;
 
 import com.example.blackjackjavafx.Application.Service.ClientService;
+import com.example.blackjackjavafx.Application.Service.InscriptionService;
+import com.example.blackjackjavafx.Application.Service.PasswordService;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -57,6 +59,7 @@ public class ControleurInscription
         String prenom = inputPrenom.getText();
         int argent = 5000;
         String password = inputPassword1.getText();
+        String passwordConfirm = inputPassword2.getText();
         String adresse = inputAddress.getText();
         int codePostal = 34000;
         String ville = inputCity.getText();
@@ -65,7 +68,29 @@ public class ControleurInscription
         String telephone = "0467834609";
 
         ClientService clientService = ClientService.getInstance();
-        clientService.creerClient(-1,login, mail, nom, prenom, argent,password
-        ,adresse, codePostal, ville, dateNaissance, dateInscription,telephone);
+        InscriptionService inscriptionService = new InscriptionService();
+        PasswordService passwordService = new PasswordService();
+
+        if(inscriptionService.IsLoginAvailable(login)
+        && inscriptionService.IsMailAvailable(mail)
+        && passwordService.IsSecure(password)
+        && password == passwordConfirm
+        && !nom.isBlank()
+        && !prenom.isBlank()
+        && !adresse.isBlank()
+        && codePostal > 0
+        && !ville.isBlank()
+        && !telephone.isBlank())
+        {
+            clientService.creerClient(-1,login, mail, nom, prenom, argent,password
+                    ,adresse, codePostal, ville, dateNaissance, dateInscription,telephone);
+        }
+        else
+        {
+            System.out.println("Echec inscription");
+        }
+
+
+
     }
 }
