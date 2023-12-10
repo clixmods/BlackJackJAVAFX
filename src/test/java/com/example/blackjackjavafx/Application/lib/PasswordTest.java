@@ -47,4 +47,46 @@ public class PasswordTest {
         Password passwordChecker = new Password();
         assertFalse(passwordChecker.isSecure(null)); // Mot de passe nul
     }
+
+    @Test
+    public void testHashAndVerify() {
+        String clearPassword = "testPassword";
+        String hashedPassword = Password.hash(clearPassword);
+
+        assertNotNull(hashedPassword);
+
+        boolean isValid = Password.verify(clearPassword, hashedPassword);
+
+        assertTrue(isValid);
+    }
+    @Test
+    public void testVerifyInvalidPassword() {
+        String clearPassword = "testPassword";
+        String hashedPassword = Password.hash(clearPassword);
+
+        String wrongPassword = "wrongPassword";
+        assertFalse(Password.verify(wrongPassword, hashedPassword));
+    }
+
+    @Test
+    public void testVerifyDifferentPassword() {
+        String clearPassword1 = "testPassword";
+        String hashedPassword1 = Password.hash(clearPassword1);
+
+        String clearPassword2 = "anotherPassword";
+        String hashedPassword2 = Password.hash(clearPassword2);
+
+        assertFalse(Password.verify(clearPassword1, hashedPassword2));
+    }
+
+
+    @Test
+    public void testHashSamePasswordConsistency() {
+        String clearPassword = "testPassword";
+        String hashedPassword1 = Password.hash(clearPassword);
+        String hashedPassword2 = Password.hash(clearPassword);
+
+        assertEquals(hashedPassword1, hashedPassword2);
+    }
+
 }
