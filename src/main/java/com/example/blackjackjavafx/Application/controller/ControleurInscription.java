@@ -131,9 +131,24 @@ public class ControleurInscription
             return false;
         }
 
-        return clientService.creerClient(-1, login, mail, nom, prenom, argent, password
-                    , adresse, codePostal, ville, dateNaissance, dateInscription, telephone);
+        return clientService.creerClient(
+                -1,
+                login,
+                mail,
+                nom,
+                prenom,
+                argent,
+                password,
+                adresse,
+                codePostal,
+                ville,
+                dateNaissance,
+                dateInscription,
+                telephone
+        );
+    }
 
-
+    public void onConnexionButtonClick(ActionEvent actionEvent) {
+        sceneHandler.afficherConnexion();
     }
 }

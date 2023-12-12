@@ -5,14 +5,42 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurConnexion">
-   <children>
-      <TextField fx:id="inputLogin" layoutX="215.0" layoutY="158.0" onAction="#OnInputLoginEnter" />
-      <Label layoutX="150.0" layoutY="162.0" text="Login" />
-      <PasswordField fx:id="inputPassword" layoutX="215.0" layoutY="200.0" onAction="#OnInputPasswordEnter" />
-      <Label layoutX="99.0" layoutY="204.0" text="Mot de passe" />
-      <Button fx:id="buttonConnexion" layoutX="256.0" layoutY="245.0" mnemonicParsing="false" onAction="#OnConnexionSubmit" text="Connexion" />
-      <Label fx:id="textInfo" layoutX="211.0" layoutY="117.0" text="Essayez de vous connectez" />
-   </children>
-</AnchorPane>
+<?import javafx.scene.layout.HBox?>
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurConnexion">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="700.0">
+      <children>
+         <!-- Casino Background -->
+         <VBox style="-fx-background-color: #2E2E2E;" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"> <!-- Dark Gray Background -->
+            <!-- You can add casino-themed images, animations, or other elements here -->
+         </VBox>
+
+         <VBox alignment="CENTER_LEFT" prefHeight="640.0" prefWidth="700.0" spacing="50.0">
+            <VBox alignment="CENTER">
+               <Label prefHeight="35.0" style="-fx-font-size: 24; -fx-text-fill: #FFD700;" text="Essayez de vous connectez" />
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10.0">
+               <HBox alignment="CENTER" spacing="10.0">
+                  <Label prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #FFD700;" text="Login" />
+                  <TextField fx:id="inputLogin" onAction="#OnInputLoginEnter" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
+               </HBox>
+
+               <HBox alignment="CENTER" spacing="10.0">
+                  <Label prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #FFD700;" text="Mot de passe" />
+                  <PasswordField fx:id="inputPassword" onAction="#OnInputPasswordEnter" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
+               </HBox>
+
+               <Button fx:id="buttonConnexion" mnemonicParsing="false" onAction="#OnConnexionSubmit" text="Connexion" />
+            </VBox>
+
+            <!-- Bouton "Créer un compte" -->
+            <HBox alignment="CENTER" spacing="10.0">
+               <Label prefWidth="175.0" style="-fx-text-fill: #FFD700;" text="Vous n'avez pas de compte ?" />
+               <Button onAction="#onInscriptionButtonClick" text="Je m'inscris" />
+            </HBox>
+         </VBox>
+      </children>
+   </AnchorPane>
+</VBox>

@@ -49,5 +49,8 @@ public class ControleurConnexion {
         }
     }
 
+    public void onInscriptionButtonClick(ActionEvent actionEvent) {
+        sceneHandler.afficherInscription();
+    }
 
 }
