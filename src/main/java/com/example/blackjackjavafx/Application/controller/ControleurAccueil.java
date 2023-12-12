@@ -14,7 +14,7 @@ public class ControleurAccueil {
 
     public void onStartGameButtonClick(){
         ClientService clientService = ClientService.getInstance();
-        Client loggedClient = clientService.getClient(0);
+        Client loggedClient = clientService.getClients().get(0);
         sceneHandler.selectionnerMise(loggedClient);
     }
 
