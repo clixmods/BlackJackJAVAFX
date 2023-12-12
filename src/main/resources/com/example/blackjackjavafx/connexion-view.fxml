@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurConnexion">
+   <children>
+      <TextField fx:id="inputLogin" layoutX="215.0" layoutY="158.0" onAction="#OnInputLoginEnter" />
+      <Label layoutX="150.0" layoutY="162.0" text="Login" />
+      <PasswordField fx:id="inputPassword" layoutX="215.0" layoutY="200.0" onAction="#OnInputPasswordEnter" />
+      <Label layoutX="99.0" layoutY="204.0" text="Mot de passe" />
+      <Button fx:id="buttonConnexion" layoutX="256.0" layoutY="245.0" mnemonicParsing="false" onAction="#OnConnexionSubmit" text="Connexion" />
+      <Label fx:id="textInfo" layoutX="211.0" layoutY="117.0" text="Essayez de vous connectez" />
+   </children>
+</AnchorPane>
