@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface I_Repository<T> {
 
-    public void inserer(T element);
+    public Boolean inserer(T element);
 
     public void mettreAJour(T element);
 

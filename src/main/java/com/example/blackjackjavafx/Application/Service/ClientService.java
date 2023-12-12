@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application.Service;
 
+import com.example.blackjackjavafx.Application.lib.Password;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.ClientDetail;
 import com.example.blackjackjavafx.Repository.RepositoryClient;
@@ -25,18 +26,22 @@ public class ClientService {
         return INSTANCE;
     }
 
-    public void creerClient(int id, String login, String mail, String nom, String prenom, int argent, String password,
+    public Boolean creerClient(int id, String login, String mail, String nom, String prenom, int argent, String password,
                             String adresse, int codePostal, String ville, Date dateNaissance, Date dateInscription, String telephone)
     {
-        Client client = new Client(id,login,mail,nom,prenom, argent,password);
-        repository.inserer(client);
+        String passwordHashed = Password.hash(password);
 
+        Client client = new Client(id,login,mail,nom,prenom, argent,passwordHashed);
+        Boolean firstResult = repository.inserer(client);
+        Boolean secondResult = false;
         Client clientDansBaseDeDonnee = getClient(login);
         if(clientDansBaseDeDonnee != null)
         {
             ClientDetail clientDetail = new ClientDetail(clientDansBaseDeDonnee.getId(), adresse,codePostal,ville,dateNaissance,dateInscription,telephone);
-            repositoryClientDetail.inserer(clientDetail);
+            secondResult = repositoryClientDetail.inserer(clientDetail);
         }
+
+        return firstResult && secondResult;
     }
 
     public List<Client> getClients()
