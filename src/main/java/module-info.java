@@ -13,4 +13,8 @@ module com.example.blackjackjavafx {
     exports com.example.blackjackjavafx;
     exports com.example.blackjackjavafx.Application.controller;
     opens com.example.blackjackjavafx.Application.controller to javafx.fxml;
+    exports com.example.blackjackjavafx.Metier;
+    opens com.example.blackjackjavafx.Metier to javafx.fxml;
+    exports com.example.blackjackjavafx.Application.connection;
+    opens com.example.blackjackjavafx.Application.connection to javafx.fxml;
 }

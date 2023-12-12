@@ -1,9 +1,6 @@
 package com.example.blackjackjavafx.Vue;
 
-import com.example.blackjackjavafx.Application.controller.ControleurAccueil;
-import com.example.blackjackjavafx.Application.controller.ControleurInscription;
-import com.example.blackjackjavafx.Application.controller.ControleurJeu;
-import com.example.blackjackjavafx.Application.controller.ControleurMise;
+import com.example.blackjackjavafx.Application.controller.*;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
@@ -24,11 +21,14 @@ public class SceneHandler {
     private static SubScene subSceneMise;
 
     private static Scene sceneInscription;
+    private static Scene sceneConnexion;
 
     private final static FXMLLoader jeuLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-playerTurn-view.fxml"));
     private final static FXMLLoader accueilLoader = new FXMLLoader(BlackJackApplication.class.getResource("hello-view.fxml"));
     private final static FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
     private final static FXMLLoader inscriptionLoader = new FXMLLoader(BlackJackApplication.class.getResource("inscription-view.fxml"));
+
+    private final static FXMLLoader connexionLoader = new FXMLLoader(BlackJackApplication.class.getResource("connexion-view.fxml"));
 
     private Stage stageApplication;
 
@@ -40,6 +40,7 @@ public class SceneHandler {
         subSceneMise = new SubScene(miseLoader.load(), 640, 700);
         sceneJeu = new Scene(jeuLoader.load(), 640, 700);
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
+        sceneConnexion = new Scene(connexionLoader.load(),640,700);
 
 
         stackPane = new StackPane();
@@ -65,6 +66,13 @@ public class SceneHandler {
         ControleurInscription controleurInscription = inscriptionLoader.getController();
         controleurInscription.initialiserInscription(this);
     }
+
+    public void afficherConnexion(){
+        stageApplication.setScene(sceneConnexion);
+        ControleurConnexion controleurConnexion = connexionLoader.getController();
+        controleurConnexion.initialiserConnexion(this);
+    }
+
 
     public void selectionnerMise(Client client){
         stageApplication.setScene(sceneJeu);
