@@ -47,11 +47,11 @@ public abstract class Repository<T> implements I_Repository<T> {
     /**
      * @param element Insert un élément dans la base de donnée
      */
-    public void inserer(T element) {
+    public Boolean inserer(T element) {
         SQLUtils utils = SQLUtils.getInstance();
         Connection connection = utils.getConnection();
         String request = "INSERT INTO "+ getNomTable()+" (";
-        genereValuesEtUpdate(element, connection, request);
+        return genereValuesEtUpdate(element, connection, request);
     }
 
     public void mettreAJour(T element)
@@ -191,7 +191,7 @@ public abstract class Repository<T> implements I_Repository<T> {
         return resultList;
     }
 
-    private void genereValuesEtUpdate(T element, Connection connection, String request) {
+    private Boolean genereValuesEtUpdate(T element, Connection connection, String request) {
         String[] attributs = nomAttributsDansTable();
 
         int startIndex = getStartIndex();
@@ -231,7 +231,9 @@ public abstract class Repository<T> implements I_Repository<T> {
         }
         catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     private int getStartIndex() {
