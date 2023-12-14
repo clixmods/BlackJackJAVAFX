@@ -64,22 +64,29 @@ public class ControleurInscription
         int argent = 5000;
         String password = inputPassword1.getText();
         String passwordConfirm = inputPassword2.getText();
-        String adresse = inputAddress.getText();
-        int codePostal = 34000;
-        String ville = inputCity.getText();
+        //String adresse = inputAddress.getText();
+        //int codePostal = 34000;
+        //String ville = inputCity.getText();
         Date dateNaissance = java.sql.Date.valueOf(inputDateNaissance.getValue());
-        Date dateInscription = new Date();
-        String telephone = inputPhoneNumber.getText();
+        //Date dateInscription = new Date();
+        //String telephone = inputPhoneNumber.getText();
 
-        if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm,
-                adresse, codePostal, ville, dateNaissance, dateInscription, telephone))
+        if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm, dateNaissance))
         {
             // TODO : Ouvrir un menu pour une connection reussi
         }
 
     }
 
-    public static Boolean StartInscription(String login, String mail, String nom, String prenom, int argent, String password, String passwordConfirm, String adresse, int codePostal, String ville, Date dateNaissance, Date dateInscription, String telephone) {
+    public static Boolean StartInscription(String login,
+                                           String mail,
+                                           String nom,
+                                           String prenom,
+                                           int argent,
+                                           String password,
+                                           String passwordConfirm,
+                                            Date dateNaissance)
+    {
         ClientService clientService = ClientService.getInstance();
         Password passwordService = new Password();
         CityChecker cityChecker = new CityChecker();
@@ -110,29 +117,12 @@ public class ControleurInscription
             System.out.println("Nom et prenom est vide");
             return false;
         }
-        if(adresse.isBlank())
-        {
-            System.out.println("Adresse est vide");
-            return false;
-        }
-        if(!cityChecker.IsValidCity(ville))
-        {
-            System.out.println("Ville invalide");
-            return false;
-        }
         if(!InscriptionHelper.isMajor(dateNaissance))
         {
             System.out.println("Pas majeur");
             return false;
         }
-        if(!InscriptionHelper.isValidPhoneNumber(telephone))
-        {
-            System.out.println("Telephone non valide");
-            return false;
-        }
-
-        return clientService.creerClient(-1, login, mail, nom, prenom, argent, password
-                    , adresse, codePostal, ville, dateNaissance, dateInscription, telephone);
+        return clientService.creerClient(-1, login, mail, nom, prenom, argent, password, dateNaissance);
 
 
     }

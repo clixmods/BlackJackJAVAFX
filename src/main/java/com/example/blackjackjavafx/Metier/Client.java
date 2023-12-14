@@ -1,6 +1,6 @@
 package com.example.blackjackjavafx.Metier;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Client {
 
@@ -31,6 +31,8 @@ public class Client {
 
     private String mail;
 
+    private Date dateNaissance;
+
     private String nom;
 
     private String prenom;
@@ -51,6 +53,10 @@ public class Client {
 
     public String getMail() {
         return mail;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
     }
 
     public String getNom(){
@@ -78,7 +84,7 @@ public class Client {
     }
     //endregion
 
-    public Client(int id, String login, String mail, String nom, String prenom, int argent,String password){
+    public Client(int id, String login, String mail, String nom, String prenom, int argent,String password,Date dateNaissance){
         this.id = id;
         this.login = login;
         this.mail = mail;
@@ -86,6 +92,7 @@ public class Client {
         this.prenom = prenom;
         this.argent = argent;
         this.password = password;
+        this.dateNaissance = dateNaissance;
     }
 
     public void ajouterArgent(int somme){

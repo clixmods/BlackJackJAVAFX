@@ -17,6 +17,7 @@ public class RepositoryClient extends Repository<Client> {
                 "id",
                 "login",
                 "mail",
+                "dateNaissance",
                 "nom",
                 "prenom",
                 "argent",
@@ -29,6 +30,7 @@ public class RepositoryClient extends Repository<Client> {
                 object.getId(),
                 object.getLogin(),
                 object.getMail(),
+                object.getDateNaissance(),
                 object.getNom(),
                 object.getPrenom(),
                 object.getArgent(),
@@ -54,7 +56,8 @@ public class RepositoryClient extends Repository<Client> {
                 resultSet.getString("nom"),
                 resultSet.getString("prenom"),
                 resultSet.getInt("argent"),
-                resultSet.getString("password"));
+                resultSet.getString("password"),
+                resultSet.getDate("dateNaissance"));
 
     }
 
