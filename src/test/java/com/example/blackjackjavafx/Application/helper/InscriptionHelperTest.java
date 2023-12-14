@@ -29,7 +29,7 @@ class InscriptionHelperTest {
         int initialSize = clientService.getClients().size();
 
         clientService.creerClient(1, loginTest, mailTest, "Doe", "John", 1000, "password",
-                "123 Main St", 12345, "City", new Date(), new Date(), "123456789");
+                 new Date());
 
         int newSize = clientService.getClients().size();
 

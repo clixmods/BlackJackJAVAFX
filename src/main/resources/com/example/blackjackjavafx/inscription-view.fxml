@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -24,8 +23,12 @@
       <TabPane style="-fx-tab-min-width: 200; -fx-tab-max-width: 200; -fx-background-color: #2E2E2E;" VBox.vgrow="ALWAYS">
          <!-- Information Tab -->
          <Tab style="-fx-background-color: #FFD700; -fx-text-fill: #FFD700;" text="Informations">
-            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="953.0" spacing="10">
+            <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="953.0" spacing="20.0">
                <Label prefHeight="35.0" prefWidth="211.0" style="-fx-font-size: 24; -fx-text-fill: #FFD700;" text="Inscription" />
+               <HBox alignment="CENTER" spacing="10">
+                  <Label prefHeight="17.0" prefWidth="130.0" style="-fx-text-fill: #FFD700;" text="Adresse mail" />
+                  <TextField fx:id="inputMail" onAction="#OnMailEnter" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
+               </HBox>
 
                <HBox alignment="CENTER" spacing="10.0">
                   <Label prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #FFD700;" text="Pseudo" />
@@ -46,50 +49,6 @@
                   <Label prefHeight="17.0" prefWidth="108.0" style="-fx-text-fill: #FFD700;" text="Date de naissance" />
                   <DatePicker fx:id="inputDateNaissance" onAction="#OnDateEnter" />
                </HBox>
-            </VBox>
-         </Tab>
-
-         <!-- Contact Tab -->
-         <Tab style="-fx-background-color: #FFD700; -fx-text-fill: #FFD700;" text="Contact">
-            <VBox alignment="CENTER_LEFT" spacing="10.0">
-               <HBox alignment="CENTER" spacing="10">
-                  <Label prefHeight="17.0" prefWidth="130.0" style="-fx-text-fill: #FFD700;" text="Adresse mail" />
-                  <TextField fx:id="inputMail" onAction="#OnMailEnter" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
-               </HBox>
-
-               <HBox alignment="CENTER" spacing="10">
-                  <Label prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #FFD700;" text="Numéro de téléphone" />
-                  <TextField fx:id="inputPhoneNumber" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
-               </HBox>
-
-               <HBox alignment="CENTER" spacing="10">
-                  <Label prefHeight="17.0" prefWidth="130.0" style="-fx-text-fill: #FFD700;" text="Adresse" />
-                  <TextField fx:id="inputAddress" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
-               </HBox>
-
-               <HBox alignment="CENTER" spacing="10">
-                  <Label prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #FFD700;" text="Code postal" />
-                  <TextField fx:id="inputPostalCode" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
-               </HBox>
-
-               <HBox alignment="CENTER" spacing="10">
-                  <Label prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #FFD700;" text="Ville" />
-                  <TextField fx:id="inputCity" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
-               </HBox>
-
-               <HBox alignment="CENTER" prefWidth="953.0" spacing="10">
-                  <Label prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #FFD700;" text="Pays" />
-                  <TextField fx:id="inputCountry" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
-               </HBox>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </VBox>
-         </Tab>
-
-         <!-- Security Tab -->
-         <Tab style="-fx-background-color: #FFD700; -fx-text-fill: #FFD700;" text="Sécurité">
-            <VBox alignment="CENTER_LEFT" spacing="10">
                <HBox alignment="CENTER" spacing="10">
                   <Label prefHeight="17.0" prefWidth="133.0" style="-fx-text-fill: #FFD700;" text="Mot de passe" />
                   <PasswordField fx:id="inputPassword1" onAction="#OnPasswordEnter" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
@@ -99,12 +58,6 @@
                   <Label prefHeight="17.0" prefWidth="134.0" style="-fx-text-fill: #FFD700;" text="Confirmer mot de passe" />
                   <PasswordField fx:id="inputPassword2" onAction="#OnConfirmPasswordEnter" style="-fx-background-color: #C0C0C0; -fx-text-fill: #000000;" />
                </HBox>
-            </VBox>
-         </Tab>
-
-         <!-- Acceptance Tab -->
-         <Tab style="-fx-background-color: #FFD700; -fx-text-fill: #FFD700;" text="Acceptation">
-            <VBox alignment="CENTER_LEFT" spacing="10">
                <HBox alignment="CENTER" spacing="10">
                   <CheckBox mnemonicParsing="false" style="-fx-text-fill: #FFD700;" text="J'accepte les CGU" />
                </HBox>
