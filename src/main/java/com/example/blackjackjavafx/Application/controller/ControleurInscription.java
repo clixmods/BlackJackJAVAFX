@@ -1,7 +1,6 @@
 package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Service.ClientService;
-import com.example.blackjackjavafx.Application.helper.CityChecker;
 import com.example.blackjackjavafx.Application.helper.InscriptionHelper;
 import com.example.blackjackjavafx.Application.lib.Password;
 import com.example.blackjackjavafx.Vue.SceneHandler;
@@ -89,7 +88,6 @@ public class ControleurInscription
     {
         ClientService clientService = ClientService.getInstance();
         Password passwordService = new Password();
-        CityChecker cityChecker = new CityChecker();
 
         if(!InscriptionHelper.isLoginAvailable(login))
         {
