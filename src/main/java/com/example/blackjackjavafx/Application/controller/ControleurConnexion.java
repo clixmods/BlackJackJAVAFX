@@ -34,7 +34,7 @@ public class ControleurConnexion {
         ConnexionResult result = connexion.tryConnect(login,password);
         switch (result) {
             case SUCCESS -> {
-                textInfo.setText("Connexion réussi");
+                textInfo.setText("Connexion réussie");
                 // TODO : quest ce qu'on fait ?
             }
             case BAD_PASSWORD -> {
