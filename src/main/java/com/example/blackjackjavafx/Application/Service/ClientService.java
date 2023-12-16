@@ -63,4 +63,8 @@ public class ClientService {
         repository.mettreAJour(client);
     }
 
+    public void mettreAJourArgentClient(Client client){
+        repository.mettreAJourArgent(client);
+    }
+
 }

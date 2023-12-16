@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Carte;
 import com.example.blackjackjavafx.Metier.Client;
@@ -73,11 +74,13 @@ public class ControleurJeu {
     }
 
     public void afficherVictoire(int mise){
+        ClientService.getInstance().mettreAJourArgentClient(client);
         messageRoundText.setText("Vous avez gagné ! Vous remportez "+ mise + " € !!!");
         buttonRestartRound.setVisible(true);
     }
 
     public void afficherEgalite(){
+        ClientService.getInstance().mettreAJourArgentClient(client);
         buttonRestartRound.setVisible(true);
         messageRoundText.setText("Égalité !");
     }

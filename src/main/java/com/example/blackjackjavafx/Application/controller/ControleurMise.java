@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeton;
 import com.example.blackjackjavafx.Metier.Miser;
@@ -60,6 +61,7 @@ public class ControleurMise {
     public void onValidButtonClick(){
         if (miser.getMise() > 0) {
             sceneHandler.commencerPartie(client, miser.getMise());
+            ClientService.getInstance().mettreAJourArgentClient(client);
         }
         else {
             miseJoueurText.setText("Vous ne pouvez jouer si vous misez pas.");
