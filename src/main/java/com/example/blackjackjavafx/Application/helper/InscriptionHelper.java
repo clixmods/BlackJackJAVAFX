@@ -3,7 +3,8 @@ package com.example.blackjackjavafx.Application.helper;
 import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Metier.Client;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.regex.Pattern;
 
 public class InscriptionHelper
@@ -57,14 +58,13 @@ public class InscriptionHelper
     }
 
 
-    public static int calculerAge(Date dateNaissance) {
-        Date currentDate = new Date();
-        return  currentDate.getYear() - dateNaissance.getYear();
-
-
+    public static int calculerAge(LocalDate dateNaissance) {
+        LocalDate currentDate = LocalDate.now();
+        Period difference = Period.between(dateNaissance, currentDate);
+        return difference.getYears();
     }
-    public static boolean isMajor(Date dateNaissance) {
-        return calculerAge(dateNaissance) > 18;
+    public static boolean isMajor(LocalDate dateNaissance) {
+        return calculerAge(dateNaissance) >= 18;
     }
 
 }

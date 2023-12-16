@@ -7,6 +7,7 @@ import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ControleurInscription
@@ -66,7 +67,7 @@ public class ControleurInscription
         //String adresse = inputAddress.getText();
         //int codePostal = 34000;
         //String ville = inputCity.getText();
-        Date dateNaissance = java.sql.Date.valueOf(inputDateNaissance.getValue());
+        LocalDate dateNaissance = inputDateNaissance.getValue();
         //Date dateInscription = new Date();
         //String telephone = inputPhoneNumber.getText();
 
@@ -84,7 +85,7 @@ public class ControleurInscription
                                            int argent,
                                            String password,
                                            String passwordConfirm,
-                                            Date dateNaissance)
+                                           LocalDate dateNaissance)
     {
         ClientService clientService = ClientService.getInstance();
         Password passwordService = new Password();
@@ -120,7 +121,7 @@ public class ControleurInscription
             System.out.println("Pas majeur");
             return false;
         }
-        return clientService.creerClient(-1, login, mail, nom, prenom, argent, password, dateNaissance);
+        return clientService.creerClient(login, mail, nom, prenom, argent, password, dateNaissance);
 
 
     }
