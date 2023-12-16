@@ -43,8 +43,8 @@ public class ControleurMise {
             boutonJeton.setGraphic(jeton.getImageView());
 
             boutonJeton.setOnAction(actionEvent -> {
-                miser.ajoutMise(jeton.getValeur());
                 argentJoueur -= jeton.getValeur();
+                miser.ajoutMise(jeton.getValeur());
             }
             );
             hBoxJetons.getChildren().add(boutonJeton);

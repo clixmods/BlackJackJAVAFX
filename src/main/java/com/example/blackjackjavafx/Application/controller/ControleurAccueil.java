@@ -1,6 +1,7 @@
 package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Service.ClientService;
+import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
@@ -13,9 +14,9 @@ public class ControleurAccueil {
     }
 
     public void onStartGameButtonClick(){
-        ClientService clientService = ClientService.getInstance();
-        Client loggedClient = clientService.getClients().get(0);
-        sceneHandler.selectionnerMise(loggedClient);
+        if (Connexion.getInstance().estConnecte()) {
+            sceneHandler.selectionnerMise(Connexion.getInstance().getClientConnecte());
+        }
     }
 
     public void onInscriptionButtonClick(ActionEvent actionEvent)
