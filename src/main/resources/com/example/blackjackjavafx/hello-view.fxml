@@ -5,17 +5,23 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurAccueil">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="clixText"/>
-    <Button text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
-
-    <Button text="Connexion" onAction="#onConnexionButtonClick"/>
-
-    <Button text="Inscription" onAction="#onInscriptionButtonClick"/>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurAccueil">
 
 
-</VBox>
+    <top>
+        <fx:include source="header.fxml"/>
+    </top>
+
+
+    <center>
+        <VBox  alignment="CENTER" spacing="20">
+            <Button text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
+            <Button text="Connexion" onAction="#onConnexionButtonClick"/>
+            <Button text="Inscription" onAction="#onInscriptionButtonClick"/>
+            <Label></Label>
+            <Label></Label>
+        </VBox>
+    </center>
+
+</BorderPane>
