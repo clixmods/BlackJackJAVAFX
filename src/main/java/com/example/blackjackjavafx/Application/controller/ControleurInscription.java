@@ -61,7 +61,7 @@ public class ControleurInscription
         String mail = inputMail.getText();
         String nom = inputNom.getText();
         String prenom = inputPrenom.getText();
-        int argent = 5000;
+        int argent = 0;
         String password = inputPassword1.getText();
         String passwordConfirm = inputPassword2.getText();
         //String adresse = inputAddress.getText();
@@ -73,7 +73,7 @@ public class ControleurInscription
 
         if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm, dateNaissance))
         {
-            // TODO : Ouvrir un menu pour une connection reussi
+            // TODO : Ouvrir un menu pour une connexion reussie
         }
 
     }

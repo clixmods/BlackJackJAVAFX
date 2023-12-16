@@ -57,6 +57,7 @@ public class SceneHandler {
     }
 
     public void afficherAccueil(){
+        stageApplication.setScene(sceneAccueil);
         ControleurAccueil controleurAccueil = accueilLoader.getController();
         controleurAccueil.initialiserAccueil(this);
     }
