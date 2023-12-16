@@ -1,7 +1,10 @@
 package com.example.blackjackjavafx.Repository;
 
 import com.example.blackjackjavafx.Metier.Client;
+import com.example.blackjackjavafx.Repository.Sql.SQLUtils;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -56,6 +59,20 @@ public class RepositoryClient extends Repository<Client> {
                 resultSet.getString("password"),
                 resultSet.getDate("dateNaissance").toLocalDate());
 
+    }
+
+    public void mettreAJourArgent(Client client){
+        SQLUtils utils = SQLUtils.getInstance();
+        Connection connection = utils.getConnection();
+        String requete = "UPDATE s_clients SET argent = ? WHERE login = ?";
+        try (PreparedStatement statement = connection.prepareStatement(requete)){
+            statement.setInt(1, client.getArgent());
+            statement.setString(2, client.getLogin());
+            statement.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
 }
