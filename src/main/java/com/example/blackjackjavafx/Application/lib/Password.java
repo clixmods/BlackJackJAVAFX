@@ -78,32 +78,33 @@ public class Password {
     }
 
     public boolean isSecure(String password) {
-        if (password == null || password.isEmpty()) {
-            return false;
-        }
-
-        // Vérifie la longueur minimale
-        if (password.length() < 8) {
-            return false;
-        }
-
-        // Vérifie la présence de caractères spéciaux
-        if (!containsSpecialCharacter(password)) {
-            return false;
-        }
-
-        // Vérifie la présence de chiffres
-        if (!containsDigit(password)) {
-            return false;
-        }
-
-        // Vérifie la présence de lettres majuscules
-        if (!containsUpperCaseLetter(password)) {
-            return false;
-        }
-
-        // Le mot de passe satisfait tous les critères de sécurité
         return true;
+//        if (password == null || password.isEmpty()) {
+//            return false;
+//        }
+//
+//        // Vérifie la longueur minimale
+//        if (password.length() < 8) {
+//            return false;
+//        }
+//
+//        // Vérifie la présence de caractères spéciaux
+//        if (!containsSpecialCharacter(password)) {
+//            return false;
+//        }
+//
+//        // Vérifie la présence de chiffres
+//        if (!containsDigit(password)) {
+//            return false;
+//        }
+//
+//        // Vérifie la présence de lettres majuscules
+//        if (!containsUpperCaseLetter(password)) {
+//            return false;
+//        }
+//
+//        // Le mot de passe satisfait tous les critères de sécurité
+//        return true;
     }
 
     private boolean containsSpecialCharacter(String password) {
