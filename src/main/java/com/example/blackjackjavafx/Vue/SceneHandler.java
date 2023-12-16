@@ -22,6 +22,7 @@ public class SceneHandler {
 
     private static Scene sceneInscription;
     private static Scene sceneConnexion;
+    private static Scene sceneSettings;
 
     private final static FXMLLoader jeuLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-playerTurn-view.fxml"));
     private final static FXMLLoader accueilLoader = new FXMLLoader(BlackJackApplication.class.getResource("hello-view.fxml"));
@@ -29,6 +30,9 @@ public class SceneHandler {
     private final static FXMLLoader inscriptionLoader = new FXMLLoader(BlackJackApplication.class.getResource("inscription-view.fxml"));
 
     private final static FXMLLoader connexionLoader = new FXMLLoader(BlackJackApplication.class.getResource("connexion-view.fxml"));
+    private final static FXMLLoader settingsLoader = new FXMLLoader(BlackJackApplication.class.getResource("settings-view.fxml"));
+    private final static FXMLLoader headerLoader = new FXMLLoader(BlackJackApplication.class.getResource("header.fxml"));
+
 
     private Stage stageApplication;
 
@@ -36,12 +40,17 @@ public class SceneHandler {
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
-        sceneAccueil = new Scene(accueilLoader.load(),640, 700 );
+        sceneAccueil = new Scene(accueilLoader.load(),640, 700);
         subSceneMise = new SubScene(miseLoader.load(), 640, 700);
         sceneJeu = new Scene(jeuLoader.load(), 640, 700);
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
         sceneConnexion = new Scene(connexionLoader.load(),640,700);
+        sceneSettings = new Scene(settingsLoader.load(),640,700);
 
+        // Ici on load le header pour tous les affichages
+        headerLoader.load();
+        ControleurHeader controleurHeader = headerLoader.getController();
+        controleurHeader.initialiserHeader(this);
 
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneJeu.getRoot());
@@ -59,6 +68,13 @@ public class SceneHandler {
     public void afficherAccueil(){
         ControleurAccueil controleurAccueil = accueilLoader.getController();
         controleurAccueil.initialiserAccueil(this);
+        stageApplication.setScene(sceneAccueil);
+    }
+
+    public void afficherSettings(){
+        ControllerSettings controllerSettings = settingsLoader.getController();
+        controllerSettings.initialiserSettings(this);
+        stageApplication.setScene(sceneSettings);
     }
 
     public void afficherInscription(){
