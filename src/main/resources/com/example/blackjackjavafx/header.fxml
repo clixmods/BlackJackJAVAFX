@@ -18,7 +18,10 @@
         </HBox>
     </left>
     <center>
-        <Text fx:id="titre" text="BlackJack - Fortuna"/>
+        <HBox alignment="CENTER" spacing="65">
+            <Text fx:id="titre" text="BlackJack - Fortuna"/>
+            <Label></Label>
+        </HBox>
     </center>
     <right>
         <HBox spacing="10" alignment="CENTER_LEFT">
