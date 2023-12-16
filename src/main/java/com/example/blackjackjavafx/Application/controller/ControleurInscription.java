@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class ControleurInscription
 {
