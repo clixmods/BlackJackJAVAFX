@@ -15,11 +15,8 @@ import java.io.IOException;
 public class SceneHandler {
 
     private static Scene sceneAccueil;
-
     private static Scene sceneJeu;
-
     private static SubScene subSceneMise;
-
     private static Scene sceneInscription;
     private static Scene sceneConnexion;
     private static Scene sceneSettings;
