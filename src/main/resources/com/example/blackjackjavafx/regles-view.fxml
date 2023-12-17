@@ -3,17 +3,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.blackjackjavafx.Application.controller.ControleurRegles"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurRegles">
     <top>
         <fx:include source="header.fxml"/>
     </top>
 
     <center>
-        <VBox alignment="CENTER" spacing="20">
-            <Label text="placeholder" />
-        </VBox>
+        <BorderPane>
+            <left>
+                <Label>ㅤㅤㅤㅤㅤ</Label>
+            </left>
+            <center>
+                <VBox alignment="CENTER" spacing="10">
+                    <Label fx:id="label" text="Le joueur a plusieurs options, notamment Rester, Tirer et Doubler."/>
+                    <Label fx:id="label2" text="Rester : (stand) : Le joueur est satisfait de sa main actuelle et ne souhaite pas recevoir de nouvelles cartes.  Il attend maintenant que le croupier joue sa main."/>
+                    <Label fx:id="label3" text="Tirer : (hit) : Le joueur souhaite recevoir une nouvelle carte pour augmenter la valeur de sa main.  Il peut continuer à tirer des cartes jusqu'à ce qu'il atteigne une valeur satisfaisante ou qu'il dépasse 21."/>
+                    <Label fx:id="label4" text="Doubler : (double down) : Le joueur double sa mise initiale et reçoit une carte supplémentaire. Il ne peut tirer qu'une seule carte après cela. " />
+                </VBox>
+            </center>
+            <right>
+                <Label>ㅤㅤㅤㅤㅤ</Label>
+            </right>
+        </BorderPane>
     </center>
 </BorderPane>
