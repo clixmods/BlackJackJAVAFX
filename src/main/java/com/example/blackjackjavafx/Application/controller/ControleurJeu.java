@@ -7,15 +7,25 @@ import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeu;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+
+import java.io.IOException;
 
 public class ControleurJeu {
 
     private Jeu jeu;
 
     private Client client;
+
+    private Node vueMise;
+
+    @FXML
+    private VBox vueGlobale;
 
     @FXML
     private Label messageRoundText;
@@ -38,6 +48,7 @@ public class ControleurJeu {
     private SceneHandler sceneHandler;
 
     public void creerJeu(Client client, int mise, SceneHandler sceneHandler){
+        retirerMise();
         this.sceneHandler = sceneHandler;
         jeu = new Jeu(client, this, mise);
         cardBoxDealer.getChildren().clear();
@@ -48,6 +59,23 @@ public class ControleurJeu {
         messageRoundText.setText("Tour joueur");
         jeu.distribuerCartes();
         this.client = client;
+    }
+
+    public void afficherMise(Client client1, SceneHandler sceneHandler1){
+        FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
+        try {
+            vueMise = miseLoader.load();
+            vueGlobale.getChildren().add(vueMise);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        ControleurMise controleurMise = miseLoader.getController();
+        controleurMise.creerMise(client1, sceneHandler1);
+    }
+
+    public void retirerMise(){
+        vueGlobale.getChildren().remove(vueMise);
     }
 
     private void setBoutonDouble(){
@@ -131,5 +159,6 @@ public class ControleurJeu {
 
     public void onDoubleButtonClick(){
         jeu.joueurDouble();
+        ClientService.getInstance().mettreAJourArgentClient(client);
     }
 }
