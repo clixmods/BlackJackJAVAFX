@@ -38,7 +38,7 @@ public class SceneHandler {
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
         sceneAccueil = new Scene(accueilLoader.load(),640, 700 );
-        subSceneMise = new SubScene(miseLoader.load(), 640, 700);
+        subSceneMise = new SubScene(miseLoader.load(), 1000, 150);
         sceneJeu = new Scene(jeuLoader.load(), 640, 700);
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
         sceneConnexion = new Scene(connexionLoader.load(),640,700);
@@ -74,7 +74,6 @@ public class SceneHandler {
         ControleurConnexion controleurConnexion = connexionLoader.getController();
         controleurConnexion.initialiserConnexion(this);
     }
-
 
     public void selectionnerMise(Client client){
         stageApplication.setScene(sceneJeu);
