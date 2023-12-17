@@ -20,15 +20,16 @@ public class SceneHandler {
     private static Scene sceneInscription;
     private static Scene sceneConnexion;
     private static Scene sceneSettings;
+    private static Scene sceneRegles;
 
     private final static FXMLLoader jeuLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-playerTurn-view.fxml"));
     private final static FXMLLoader accueilLoader = new FXMLLoader(BlackJackApplication.class.getResource("hello-view.fxml"));
     private final static FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
     private final static FXMLLoader inscriptionLoader = new FXMLLoader(BlackJackApplication.class.getResource("inscription-view.fxml"));
-
     private final static FXMLLoader connexionLoader = new FXMLLoader(BlackJackApplication.class.getResource("connexion-view.fxml"));
     private final static FXMLLoader settingsLoader = new FXMLLoader(BlackJackApplication.class.getResource("settings-view.fxml"));
     private final static FXMLLoader headerLoader = new FXMLLoader(BlackJackApplication.class.getResource("header.fxml"));
+    private final static FXMLLoader reglesLoader = new FXMLLoader(BlackJackApplication.class.getResource("regles-view.fxml"));
 
 
     private Stage stageApplication;
@@ -43,6 +44,7 @@ public class SceneHandler {
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
         sceneConnexion = new Scene(connexionLoader.load(),640,700);
         sceneSettings = new Scene(settingsLoader.load(),640,700);
+        sceneRegles = new Scene(reglesLoader.load(),640,700);
 
         // Ici on load le header pour tous les affichages
         headerLoader.load();
@@ -84,6 +86,12 @@ public class SceneHandler {
         stageApplication.setScene(sceneConnexion);
         ControleurConnexion controleurConnexion = connexionLoader.getController();
         controleurConnexion.initialiserConnexion(this);
+    }
+
+    public void afficherRegles(){
+        stageApplication.setScene(sceneRegles);
+        ControleurRegles controleurRegles = reglesLoader.getController();
+        controleurRegles.initialiserRegles(this);
     }
 
 
