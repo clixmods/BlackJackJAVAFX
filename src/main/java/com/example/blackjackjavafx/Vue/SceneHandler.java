@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class SceneHandler {
 
+
     private static Scene sceneAccueil;
 
     private static Scene sceneJeu;
