@@ -7,13 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <!-- Attention utilisez bien xmlns:fx="http://javafx.com/fxml" pour eviter de spécifiez la version afin de pas avoir de message de warning au démarrage du jeu -->
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurConnexion">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0"  xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurConnexion">
    <children>
-      <TextField fx:id="inputLogin" layoutX="215.0" layoutY="158.0" onAction="#OnInputLoginEnter" />
-      <Label layoutX="150.0" layoutY="162.0" text="Login" />
-      <PasswordField fx:id="inputPassword" layoutX="215.0" layoutY="200.0" onAction="#OnInputPasswordEnter" />
-      <Label layoutX="99.0" layoutY="204.0" text="Mot de passe" />
-      <Button fx:id="buttonConnexion" layoutX="256.0" layoutY="245.0" mnemonicParsing="false" onAction="#OnConnexionSubmit" text="Connexion" />
-      <Label fx:id="textInfo" layoutX="211.0" layoutY="117.0" text="Essayez de vous connectez" />
+      <TextField fx:id="inputLogin" layoutX="226.0" layoutY="158.0" onAction="#OnInputLoginEnter" />
+      <Label layoutX="144.0" layoutY="162.0" text="Login" />
+      <PasswordField fx:id="inputPassword" layoutX="226.0" layoutY="200.0" onAction="#OnInputPasswordEnter" />
+      <Label layoutX="144.0" layoutY="204.0" text="Mot de passe" />
+      <Button fx:id="buttonConnexion" layoutX="264.0" layoutY="244.0" mnemonicParsing="false" onAction="#OnConnexionSubmit" text="Connexion" />
+      <Label fx:id="textInfo" layoutX="229.0" layoutY="117.0" text="Essayez de vous connectez" />
+      <Button fx:id="buttonRetour" layoutX="275.0" layoutY="279.0" mnemonicParsing="false" onAction="#OnRetourButton" text="Retour" />
    </children>
 </AnchorPane>

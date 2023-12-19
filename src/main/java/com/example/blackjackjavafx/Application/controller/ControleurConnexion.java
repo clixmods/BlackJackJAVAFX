@@ -34,8 +34,7 @@ public class ControleurConnexion {
         ConnexionResult result = connexion.tryConnect(login,password);
         switch (result) {
             case SUCCESS -> {
-                textInfo.setText("Connexion réussie");
-                sceneHandler.afficherAccueil();
+                textInfo.setText("Connexion réussie ! ");
                 // TODO : quest ce qu'on fait ?
             }
             case BAD_PASSWORD -> {
@@ -51,4 +50,7 @@ public class ControleurConnexion {
     }
 
 
+    public void OnRetourButton(ActionEvent actionEvent) {
+        sceneHandler.afficherAccueil();
+    }
 }

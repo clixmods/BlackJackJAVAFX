@@ -12,20 +12,25 @@ import java.time.LocalDate;
 public class ControleurInscription
 {
     //region FXML Variables
+
     public DatePicker inputDateNaissance;
+
     public PasswordField inputPassword2;
+
     public PasswordField inputPassword1;
+
     public TextField inputPseudo;
+
     public Label messageInfo;
+
     public Button submitInscription;
+
     public TextField inputPrenom;
+
     public TextField inputNom;
+
     public TextField inputMail;
-    public TextField inputPhoneNumber;
-    public TextField inputAddress;
-    public TextField inputPostalCode;
-    public TextField inputCity;
-    public TextField inputCountry;
+
     //endregion
     private SceneHandler sceneHandler;
     public void initialiserInscription(SceneHandler sceneHandler){
@@ -53,8 +58,7 @@ public class ControleurInscription
     public void OnDateEnter(ActionEvent actionEvent) {
     }
 
-    public void OnSubmit(ActionEvent actionEvent)
-    {
+    public void OnSubmit(ActionEvent actionEvent) throws InterruptedException {
         // Get inputs text
         String login = inputPseudo.getText();
         String mail = inputMail.getText();
@@ -72,12 +76,15 @@ public class ControleurInscription
 
         if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm, dateNaissance))
         {
+            messageInfo.setText("Inscription réussi "+nom+" "+prenom+" ! Vous allez être rediriger vers la page de connexion.");
+            //wait(4000);
+            sceneHandler.afficherConnexion();
             // TODO : Ouvrir un menu pour une connexion reussie
         }
 
     }
 
-    public static Boolean StartInscription(String login,
+    public Boolean StartInscription(String login,
                                            String mail,
                                            String nom,
                                            String prenom,
@@ -89,39 +96,47 @@ public class ControleurInscription
         ClientService clientService = ClientService.getInstance();
         Password passwordService = new Password();
 
-        if(!InscriptionHelper.isLoginAvailable(login))
+        if(login.isBlank() || !InscriptionHelper.isLoginAvailable(login))
         {
             System.out.println("login not available");
+            messageInfo.setText("Login non disponible");
             return false;
         }
 
-        if(!InscriptionHelper.isMailAvailable(mail))
+        if(mail.isBlank() || !InscriptionHelper.isMailAvailable(mail))
         {
             System.out.println("Mail not available");
+            messageInfo.setText("Email non disponible");
             return false;
         }
-        if(!passwordService.isSecure(password))
+        if(password.isBlank() || !passwordService.isSecure(password))
         {
             System.out.println("Password is not secure");
+            messageInfo.setText("Mot de passe pas assez sécurisé (Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial");
             return false;
         }
         if(!password.equals(passwordConfirm))
         {
             System.out.println("Passwords is not equals");
+            messageInfo.setText("Les mots de passes ne correspondent pas");
             return false;
         }
         if(nom.isBlank() || prenom.isBlank())
         {
             System.out.println("Nom et prenom est vide");
+            messageInfo.setText("Nom et/ou prénom incomplet");
             return false;
         }
         if(!InscriptionHelper.isMajor(dateNaissance))
         {
             System.out.println("Pas majeur");
+            messageInfo.setText("Vous devez être majeur pour pouvoir vous inscrire.");
             return false;
         }
         return clientService.creerClient(login, mail, nom, prenom, argent, password, dateNaissance);
+    }
 
-
+    public void OnRetourButton(ActionEvent actionEvent) {
+        sceneHandler.afficherAccueil();
     }
 }
