@@ -15,9 +15,7 @@ public class ControleurMise {
 
     private Client client;
     private int argentJoueur;
-
     private SceneHandler sceneHandler;
-
     private Miser miser;
 
     @FXML
@@ -28,6 +26,7 @@ public class ControleurMise {
     private HBox hBoxJetons;
     @FXML
     private Label miseJoueurText;
+
     public void creerMise(Client client, SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
         miser = new Miser(client, this);
@@ -63,7 +62,7 @@ public class ControleurMise {
     public void mettreAJourAffichage(){
         genererJetons();
         miseJoueurText.setText("Votre mise : " + miser.getMise());
-        argentJoueurText.setText("Argent du joueur : " + argentJoueur + " €");
+        argentJoueurText.setText("Votre argent : " + argentJoueur + " €");
     }
 
     public void onValidButtonClick(){
@@ -72,7 +71,7 @@ public class ControleurMise {
             ClientService.getInstance().mettreAJourArgentClient(client);
         }
         else {
-            miseJoueurText.setText("Vous ne pouvez jouer si vous misez pas.");
+            miseJoueurText.setText("Vous ne pouvez jouer si vous ne misez pas.");
         }
     }
 
