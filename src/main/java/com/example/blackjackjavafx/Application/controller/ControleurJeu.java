@@ -52,13 +52,12 @@ public class ControleurJeu {
         this.sceneHandler = sceneHandler;
         jeu = new Jeu(client, this, mise);
         this.client = client;
-        cardBoxDealer.getChildren().clear();
-        cardBoxPlayer.getChildren().clear();
         setBoutonDouble();
         messageRoundText.setText("Distribution des cartes");
         buttonBoxPlayer.setVisible(true);
         messageRoundText.setText("Tour joueur");
         jeu.distribuerCartes();
+        handPlayerText.setVisible(true);
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){
@@ -113,6 +112,13 @@ public class ControleurJeu {
         messageRoundText.setText("Égalité !");
     }
 
+    public void reinitialiserVue(){
+        messageRoundText.setText("Sélectionnez votre mise");
+        cardBoxDealer.getChildren().clear();
+        cardBoxPlayer.getChildren().clear();
+        handPlayerText.setVisible(false);
+    }
+
     public void mettreAJourAffichageCartesJoueur(Carte carte){
         cardBoxPlayer.getChildren().add(carte.getImageView());
     }
@@ -147,6 +153,7 @@ public class ControleurJeu {
     public void onRestartButtonClick(){
         sceneHandler.selectionnerMise(client);
         buttonRestartRound.setVisible(false);
+        reinitialiserVue();
     }
 
     public void onStandButtonClick(){
