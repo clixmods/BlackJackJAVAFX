@@ -51,6 +51,7 @@ public class ControleurJeu {
         retirerMise();
         this.sceneHandler = sceneHandler;
         jeu = new Jeu(client, this, mise);
+        this.client = client;
         cardBoxDealer.getChildren().clear();
         cardBoxPlayer.getChildren().clear();
         setBoutonDouble();
@@ -58,7 +59,6 @@ public class ControleurJeu {
         buttonBoxPlayer.setVisible(true);
         messageRoundText.setText("Tour joueur");
         jeu.distribuerCartes();
-        this.client = client;
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){
