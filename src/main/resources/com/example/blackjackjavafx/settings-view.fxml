@@ -10,11 +10,6 @@
 
 <?import javafx.scene.layout.VBox?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControllerSettings">
-
-    <top>
-        <fx:include source="header.fxml"/>
-    </top>
-
     <center>
         <VBox alignment="CENTER" spacing="20">
             <Label text="Paramètres"/>
