@@ -6,11 +6,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurAccueil">
-
-    <top>
-        <fx:include source="header.fxml"/>
-    </top>
-
     <center>
         <VBox  alignment="CENTER" spacing="20">
             <Button text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
@@ -21,5 +16,4 @@
             <Label></Label>
         </VBox>
     </center>
-
 </BorderPane>

@@ -7,13 +7,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import org.controlsfx.control.cell.MediaImageCell?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.blackjackjavafx.Application.controller.ControleurHeader">
     <left>
         <HBox spacing="10" alignment="CENTER_LEFT">
-            <Button fx:id="boutonHome" onAction="#handleHome" text="Home">
-            </Button>
+            <ImageView fx:id="boutonHome" onMouseClicked="#handleHome"></ImageView>
             <Label fx:id="labelNomCompte" text="Nom du joueur"/>
         </HBox>
     </left>
@@ -26,8 +28,7 @@
     <right>
         <HBox spacing="10" alignment="CENTER_LEFT">
             <Label fx:id="labelArgent" text="0€"/>
-            <Button fx:id="boutonSettings" onAction="#handleSettings" text="Settings">
-            </Button>
+            <ImageView fx:id="boutonSettings" onMouseClicked="#handleSettings"></ImageView>
         </HBox>
     </right>
     <bottom>

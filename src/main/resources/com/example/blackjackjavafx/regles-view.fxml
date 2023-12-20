@@ -7,10 +7,6 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.blackjackjavafx.Application.controller.ControleurRegles"
             prefHeight="400.0" prefWidth="600.0">
-    <top>
-        <fx:include source="header.fxml"/>
-    </top>
-
     <center>
         <VBox alignment="CENTER" spacing="20">
             <Label text="placeholder" />
