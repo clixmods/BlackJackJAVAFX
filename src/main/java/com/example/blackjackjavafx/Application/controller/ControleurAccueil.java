@@ -24,6 +24,10 @@ public class ControleurAccueil {
         sceneHandler.afficherInscription();
     }
 
+    public void onRegleButtonClick(ActionEvent actionEvent){
+        sceneHandler.afficherRegles();
+    }
+
     public void onConnexionButtonClick(ActionEvent actionEvent) {
         sceneHandler.afficherConnexion();
     }
