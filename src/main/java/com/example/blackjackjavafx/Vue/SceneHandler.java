@@ -79,6 +79,7 @@ public class SceneHandler {
         stageApplication.setScene(sceneJeu);
         ControleurJeu controleurJeu= jeuLoader.getController();
         controleurJeu.afficherMise(client, this);
+
     }
 
     public void commencerPartie(Client client, int mise){
