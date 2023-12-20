@@ -38,9 +38,6 @@ public class ControleurHeader {
             boutonHome.setFitHeight(25);
         }
 
-
-
-
         InputStream inputStream2 = getClass().getResourceAsStream("/images.header/settings.png");
         if(inputStream != null) {
             Image settingsImage = new Image(inputStream2);

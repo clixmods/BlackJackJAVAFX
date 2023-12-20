@@ -34,20 +34,20 @@ public class SceneHandler {
 
 
     private Stage stageApplication;
-
+    private VueGenerale vueGenerale;
     private static StackPane stackPane;
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
-        headerLoader.load();
-        sceneAccueil = new Scene(accueilLoader.load(), 640, 700);
-
+        sceneAccueil = new Scene(accueilLoader.load());
         subSceneMise = new SubScene(miseLoader.load(), 640, 700);
-        sceneJeu = new Scene(jeuLoader.load(), 640, 700);
-        sceneInscription = new Scene(inscriptionLoader.load(), 640, 700);
-        sceneConnexion = new Scene(connexionLoader.load(), 640, 700);
-        sceneSettings = new Scene(settingsLoader.load(), 640, 700);
-        sceneRegles = new Scene(reglesLoader.load(), 640, 700);
+        sceneJeu = new Scene(jeuLoader.load());
+        sceneInscription = new Scene(inscriptionLoader.load());
+        sceneConnexion = new Scene(connexionLoader.load());
+        sceneSettings = new Scene(settingsLoader.load());
+        sceneRegles = new Scene(reglesLoader.load());
+
+        vueGenerale = new VueGenerale(headerLoader, this);
 
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneJeu.getRoot());
@@ -58,8 +58,16 @@ public class SceneHandler {
         stackPane.setBackground(backgroundJeu);
         sceneJeu.setRoot(stackPane);
 
-        stageApplication.setScene(sceneAccueil);
+        Scene sceneGenerale = new Scene(vueGenerale, 1000,700);
+        stageApplication.setScene(sceneGenerale);
+
+
+        //  ATTENTION SOLUTION DEGUEU IL FAUT CHANGER CA
+
+        afficherSettings();
         afficherAccueil();
+
+        //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
 
@@ -67,46 +75,37 @@ public class SceneHandler {
         ControleurAccueil controleurAccueil = accueilLoader.getController();
         controleurAccueil.initialiserAccueil(this);
 
-        ajouterHeader(sceneAccueil);
-
-        stageApplication.setScene(sceneAccueil);
+        vueGenerale.setCentre(sceneAccueil.getRoot());
     }
 
     public void afficherSettings() {
+
         ControllerSettings controllerSettings = settingsLoader.getController();
         controllerSettings.initialiserSettings(this);
 
-        ajouterHeader(sceneSettings);
-
-        stageApplication.setScene(sceneSettings);
+        vueGenerale.setCentre(sceneSettings.getRoot());
     }
 
     public void afficherInscription() {
         ControleurInscription controleurInscription = inscriptionLoader.getController();
         controleurInscription.initialiserInscription(this);
 
-        ajouterHeader(sceneInscription);
-
-        stageApplication.setScene(sceneInscription);
-
+        vueGenerale.setCentre(sceneInscription.getRoot());
     }
 
     public void afficherConnexion() {
         ControleurConnexion controleurConnexion = connexionLoader.getController();
         controleurConnexion.initialiserConnexion(this);
 
-        ajouterHeader(sceneConnexion);
-
-        stageApplication.setScene(sceneConnexion);
+        vueGenerale.setCentre(sceneConnexion.getRoot());
     }
 
     public void afficherRegles() {
         ControleurRegles controleurRegles = reglesLoader.getController();
         controleurRegles.initialiserRegles(this);
 
-        ajouterHeader(sceneRegles);
+        vueGenerale.setCentre(sceneRegles.getRoot());
 
-        stageApplication.setScene(sceneRegles);
     }
 
 
@@ -126,15 +125,15 @@ public class SceneHandler {
     }
 
     // ajoute le header à une scene
-    private void ajouterHeader(Scene scene) {
-        ControleurHeader controleurHeader = headerLoader.getController();
-        controleurHeader.initialiserHeader(this);
-
-        BorderPane rootBorderPane = new BorderPane();
-        rootBorderPane.setCenter(scene.getRoot());
-        rootBorderPane.setTop(headerLoader.getRoot());
-
-        scene.setRoot(rootBorderPane);
-    }
+//    private void ajouterHeader(Scene scene) {
+//        ControleurHeader controleurHeader = headerLoader.getController();
+//        controleurHeader.initialiserHeader(this);
+//
+//        BorderPane rootBorderPane = new BorderPane();
+//        rootBorderPane.setCenter(scene.getRoot());
+//        rootBorderPane.setTop(headerLoader.getRoot());
+//
+//        scene.setRoot(rootBorderPane);
+//    }
 
 }
