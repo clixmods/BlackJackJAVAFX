@@ -5,6 +5,7 @@ import com.example.blackjackjavafx.Metier.Client;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,8 +29,8 @@ class ClientServiceTest {
     public static void testCreerClient() {
         int initialSize = clientService.getClients().size();
 
-        clientService.creerClient(1, loginTest, mailTest, "Doe", "John", 1000, "password",
-                 new Date());
+        clientService.creerClient(loginTest, mailTest, "Doe", "John", 1000, "password",
+                LocalDate.now());
 
         int newSize = clientService.getClients().size();
 
@@ -62,7 +63,7 @@ class ClientServiceTest {
         clientService = ClientService.getInstance();
         int initialSize = clientService.getClients().size();
         Client retrievedClient = clientService.getClient(loginTest);
-        clientService.supprimeClient(retrievedClient.getId());
+        clientService.supprimeClient(retrievedClient.getLogin());
 
         int newSize = clientService.getClients().size();
         assertEquals(initialSize-1, newSize);

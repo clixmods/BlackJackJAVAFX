@@ -7,8 +7,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +32,7 @@ class ControleurInscriptionTest {
         String adresse = "123 Rue Example";
         int codePostal = 34000;
         String ville = "Montpellier";
-        Date dateNaissance = new Date(98, Calendar.JUNE,13);
+        LocalDate dateNaissance = LocalDate.of(98, Calendar.JUNE, 13);
         Date dateInscription = new Date();
         String telephone = "1234567890";
 
@@ -40,7 +42,7 @@ class ControleurInscriptionTest {
         Client clientCreated = clientService.getClient("pseudo");
         assertNotNull(clientCreated);
 
-        clientService.supprimeClient(clientCreated.getId());
+        clientService.supprimeClient(clientCreated.getLogin());
 
     }
 
@@ -61,7 +63,7 @@ class ControleurInscriptionTest {
         String adresse = "123 Rue Example";
         int codePostal = 34000;
         String ville = "Montpellier";
-        Date dateNaissance = new Date();
+        LocalDate dateNaissance = LocalDate.now();
         Date dateInscription = new Date();
         String telephone = "1234567890";
 
@@ -87,7 +89,7 @@ class ControleurInscriptionTest {
         String adresse = "123 Rue Example";
         int codePostal = 34000;
         String ville = "Montpellier";
-        Date dateNaissance = new Date();
+        LocalDate dateNaissance = LocalDate.now();
         Date dateInscription = new Date();
         String telephone = "1234567890";
 
@@ -113,7 +115,7 @@ class ControleurInscriptionTest {
         String adresse = "123 Rue Example";
         int codePostal = 34000;
         String ville = "Skyrim Bordeciel";
-        Date dateNaissance = new Date();
+        LocalDate dateNaissance = LocalDate.now();
         Date dateInscription = new Date();
         String telephone = "1234567890";
 

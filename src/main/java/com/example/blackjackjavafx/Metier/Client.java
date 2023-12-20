@@ -1,6 +1,6 @@
 package com.example.blackjackjavafx.Metier;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Client {
 
@@ -25,13 +25,12 @@ public class Client {
         return true;
     }*/
     //region VARIABLES
-    private int id;
 
     private String login;
 
     private String mail;
 
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
 
     private String nom;
 
@@ -43,9 +42,6 @@ public class Client {
     //endregion
 
     //region PROPERTIES
-    public int getId(){
-        return id;
-    }
 
     public String getLogin(){
         return login;
@@ -55,7 +51,7 @@ public class Client {
         return mail;
     }
 
-    public Date getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return dateNaissance;
     }
 
@@ -84,8 +80,7 @@ public class Client {
     }
     //endregion
 
-    public Client(int id, String login, String mail, String nom, String prenom, int argent,String password,Date dateNaissance){
-        this.id = id;
+    public Client(String login, String mail, String nom, String prenom, int argent,String password,LocalDate dateNaissance){
         this.login = login;
         this.mail = mail;
         this.nom = nom;

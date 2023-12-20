@@ -35,6 +35,7 @@ public class ControleurConnexion {
         switch (result) {
             case SUCCESS -> {
                 textInfo.setText("Connexion réussie");
+                sceneHandler.afficherAccueil();
                 // TODO : quest ce qu'on fait ?
             }
             case BAD_PASSWORD -> {
