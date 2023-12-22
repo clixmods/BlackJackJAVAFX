@@ -62,6 +62,7 @@ public class ControleurJeu {
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){
+        retirerMise();
         FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
         try {
             vueMise = miseLoader.load();
