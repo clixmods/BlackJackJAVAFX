@@ -51,8 +51,6 @@ public class ControleurJeu {
         retirerMise();
         this.sceneHandler = sceneHandler;
         jeu = new Jeu(client, this, mise);
-        cardBoxDealer.getChildren().clear();
-        cardBoxPlayer.getChildren().clear();
         setBoutonDouble();
         messageRoundText.setText("Distribution des cartes");
         buttonBoxPlayer.setVisible(true);
@@ -62,6 +60,7 @@ public class ControleurJeu {
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){
+        //Cette fonction permet d'afficher l'écran de mise de la vue du jeu. Comme il ne peut y avoir qu'une mise, elle s'assure de d'abord retirer la potentielle mise précédente de l'écran
         retirerMise();
         FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
         try {
@@ -76,6 +75,7 @@ public class ControleurJeu {
     }
 
     public void retirerMise(){
+        //Cette fonction permet de retirer l'affichage de la mise (si présente) de l'écran de jeu
         vueGlobale.getChildren().remove(vueMise);
     }
 
@@ -114,6 +114,13 @@ public class ControleurJeu {
         messageRoundText.setText("Égalité !");
     }
 
+    public void reinitialiserVue(){
+        messageRoundText.setText("Sélectionnez votre mise");
+        cardBoxDealer.getChildren().clear();
+        cardBoxPlayer.getChildren().clear();
+        handPlayerText.setVisible(false);
+    }
+
     public void mettreAJourAffichageCartesJoueur(Carte carte){
         cardBoxPlayer.getChildren().add(carte.getImageView());
     }
@@ -148,6 +155,7 @@ public class ControleurJeu {
     public void onRestartButtonClick(){
         sceneHandler.selectionnerMise(client);
         buttonRestartRound.setVisible(false);
+        reinitialiserVue();
     }
 
     public void onStandButtonClick(){

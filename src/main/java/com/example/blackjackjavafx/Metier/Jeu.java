@@ -71,7 +71,7 @@ public class Jeu {
 
     public void tourCroupier(){
         croupier.calculerValeurMain();
-        while (croupier.getValeurMain()<17){
+        while (croupier.getValeurMain()<17 && croupier.getValeurMain()< joueur.getValeurMain()){
             Carte carte = croupier.piocher(pioche);
             controleur.mettreAJourAffichageCartesCroupier(carte);
             croupier.calculerValeurMain();
