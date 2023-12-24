@@ -58,6 +58,7 @@ public class SceneHandler {
     }
 
     public void afficherAccueil(){
+        //Cette fonction permet d'afficher la page d'accueil
         stageApplication.setScene(sceneAccueil);
         ControleurAccueil controleurAccueil = accueilLoader.getController();
         controleurAccueil.initialiserAccueil(this);
