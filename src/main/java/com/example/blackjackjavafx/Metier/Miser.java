@@ -8,11 +8,8 @@ import java.util.List;
 public class Miser {
 
     private List<Jeton> listeJetons;
-
     private int mise;
-
     private ControleurMise controleurMise;
-
     private Client client;
 
     public Miser(Client client, ControleurMise controleurMise){
