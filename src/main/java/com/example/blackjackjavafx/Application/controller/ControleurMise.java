@@ -6,6 +6,7 @@ import com.example.blackjackjavafx.Metier.Jeton;
 import com.example.blackjackjavafx.Metier.Miser;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -14,9 +15,7 @@ public class ControleurMise {
 
     private Client client;
     private int argentJoueur;
-
     private SceneHandler sceneHandler;
-
     private Miser miser;
 
     @FXML
@@ -27,6 +26,7 @@ public class ControleurMise {
     private HBox hBoxJetons;
     @FXML
     private Label miseJoueurText;
+
     public void creerMise(Client client, SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
         miser = new Miser(client, this);
@@ -42,6 +42,13 @@ public class ControleurMise {
             boutonJeton.maxWidth(100);
             boutonJeton.maxHeight(100);
             boutonJeton.setGraphic(jeton.getImageView());
+            boutonJeton.setStyle(
+                    "-fx-background-radius: 140em; " +
+                    "-fx-min-width: 82px; " +
+                    "-fx-min-height: 82px; " +
+                    "-fx-max-width: 82; " +
+                    "-fx-max-height: 82px;");
+            boutonJeton.setPadding(Insets.EMPTY);
 
             boutonJeton.setOnAction(actionEvent -> {
                 argentJoueur -= jeton.getValeur();
@@ -55,7 +62,7 @@ public class ControleurMise {
     public void mettreAJourAffichage(){
         genererJetons();
         miseJoueurText.setText("Votre mise : " + miser.getMise());
-        argentJoueurText.setText("Argent du joueur : " + argentJoueur + " €");
+        argentJoueurText.setText("Votre argent : " + argentJoueur + " €");
     }
 
     public void onValidButtonClick(){
@@ -64,7 +71,7 @@ public class ControleurMise {
             ClientService.getInstance().mettreAJourArgentClient(client);
         }
         else {
-            miseJoueurText.setText("Vous ne pouvez jouer si vous misez pas.");
+            miseJoueurText.setText("Vous ne pouvez jouer si vous ne misez pas.");
         }
     }
 

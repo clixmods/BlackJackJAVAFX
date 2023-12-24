@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class SceneHandler {
 
+
     private static Scene sceneAccueil;
 
     private static Scene sceneJeu;
@@ -25,7 +26,7 @@ public class SceneHandler {
 
     private final static FXMLLoader jeuLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-playerTurn-view.fxml"));
     private final static FXMLLoader accueilLoader = new FXMLLoader(BlackJackApplication.class.getResource("hello-view.fxml"));
-    private final static FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
+    //private final static FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
     private final static FXMLLoader inscriptionLoader = new FXMLLoader(BlackJackApplication.class.getResource("inscription-view.fxml"));
 
     private final static FXMLLoader connexionLoader = new FXMLLoader(BlackJackApplication.class.getResource("connexion-view.fxml"));
@@ -36,9 +37,9 @@ public class SceneHandler {
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
-        sceneAccueil = new Scene(accueilLoader.load(),640, 700 );
-        subSceneMise = new SubScene(miseLoader.load(), 640, 700);
-        sceneJeu = new Scene(jeuLoader.load(), 640, 700);
+        sceneAccueil = new Scene(accueilLoader.load(),900, 700);
+        //subSceneMise = new SubScene(miseLoader.load(), 1000, 150);
+        sceneJeu = new Scene(jeuLoader.load(), 1280, 900);
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
         sceneConnexion = new Scene(connexionLoader.load(),640,700);
 
@@ -74,19 +75,14 @@ public class SceneHandler {
         controleurConnexion.initialiserConnexion(this);
     }
 
-
     public void selectionnerMise(Client client){
         stageApplication.setScene(sceneJeu);
-        ControleurMise controleurMise = miseLoader.getController();
-        controleurMise.creerMise(client, this);
-        stackPane.getChildren().add(subSceneMise);
-        subSceneMise.setVisible(true);
+        ControleurJeu controleurJeu= jeuLoader.getController();
+        controleurJeu.afficherMise(client, this);
     }
 
     public void commencerPartie(Client client, int mise){
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.creerJeu(client, mise, this);
-        stackPane.getChildren().remove(subSceneMise);
-        subSceneMise.setVisible(false);
     }
 }
