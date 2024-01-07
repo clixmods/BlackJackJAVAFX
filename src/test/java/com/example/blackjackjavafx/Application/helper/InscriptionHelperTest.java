@@ -7,7 +7,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,8 +28,8 @@ class InscriptionHelperTest {
     public static void testCreerClient() {
         int initialSize = clientService.getClients().size();
 
-        clientService.creerClient(loginTest, mailTest, "Doe", "John", 1000, "password",
-                LocalDate.now());
+        clientService.creerClient(1, loginTest, mailTest, "Doe", "John", 1000, "password",
+                 new Date());
 
         int newSize = clientService.getClients().size();
 
@@ -50,7 +49,7 @@ class InscriptionHelperTest {
     @AfterAll
     public static void cleanUp() {
         Client client = clientService.getClient(loginTest);
-        clientService.supprimeClient(client.getLogin());
+        clientService.supprimeClient(client.getId());
     }
 
 

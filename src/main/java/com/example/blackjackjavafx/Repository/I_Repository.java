@@ -8,7 +8,7 @@ public interface I_Repository<T> {
 
     public void mettreAJour(T element);
 
-    public void supprimer(String id);
+    public void supprimer(int id);
 
     public T recupere(int id);
 
