@@ -1,22 +1,20 @@
 package com.example.blackjackjavafx.Repository;
 
 import com.example.blackjackjavafx.Metier.Client;
-import com.example.blackjackjavafx.Repository.Sql.SQLUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RepositoryClient extends Repository<Client> {
     @Override
     protected String getNomTable() {
-        return "s_clients";
+        return "temp_client";
     }
 
     @Override
     protected String[] nomAttributsDansTable() {
         return new String[]{
+                "id",
                 "login",
                 "mail",
                 "dateNaissance",
@@ -29,6 +27,7 @@ public class RepositoryClient extends Repository<Client> {
     @Override
     protected Object[] convertirValeursAttributsEnTableauObjets(Client object) {
         return new Object[]{
+                object.getId(),
                 object.getLogin(),
                 object.getMail(),
                 object.getDateNaissance(),
@@ -41,38 +40,25 @@ public class RepositoryClient extends Repository<Client> {
 
     @Override
     protected Object getClePrimaireValeur(Client object) {
-        return object.getLogin();
+        return object.getId();
     }
 
     @Override
     protected boolean EstClePrimaireAutoGenerer() {
-        return false;
+        return true;
     }
     @Override
     protected Client creerObjetDepuisResultat(ResultSet resultSet) throws SQLException {
         return new Client(
+                resultSet.getInt("id"),
                 resultSet.getString("login"),
                 resultSet.getString("mail"),
                 resultSet.getString("nom"),
                 resultSet.getString("prenom"),
                 resultSet.getInt("argent"),
                 resultSet.getString("password"),
-                resultSet.getDate("dateNaissance").toLocalDate());
+                resultSet.getDate("dateNaissance"));
 
-    }
-
-    public void mettreAJourArgent(Client client){
-        SQLUtils utils = SQLUtils.getInstance();
-        Connection connection = utils.getConnection();
-        String requete = "UPDATE s_clients SET argent = ? WHERE login = ?";
-        try (PreparedStatement statement = connection.prepareStatement(requete)){
-            statement.setInt(1, client.getArgent());
-            statement.setString(2, client.getLogin());
-            statement.executeUpdate();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
     }
 
 }

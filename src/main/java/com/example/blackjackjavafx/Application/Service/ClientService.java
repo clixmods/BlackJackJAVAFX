@@ -4,7 +4,7 @@ import com.example.blackjackjavafx.Application.lib.Password;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Repository.RepositoryClient;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class ClientService {
@@ -22,17 +22,18 @@ public class ClientService {
         return INSTANCE;
     }
 
-    public Boolean creerClient(String login,
+    public Boolean creerClient(int id,
+                               String login,
                                String mail,
                                String nom,
                                String prenom,
                                int argent,
                                String password,
-                               LocalDate dateNaissance)
+                               Date dateNaissance)
     {
         String passwordHashed = Password.hash(password);
 
-        Client client = new Client(login,mail,nom,prenom, argent,passwordHashed,dateNaissance);
+        Client client = new Client(id,login,mail,nom,prenom, argent,passwordHashed,dateNaissance);
         Boolean firstResult = repository.inserer(client);
 
         return firstResult;
@@ -41,6 +42,11 @@ public class ClientService {
     public List<Client> getClients()
     {
         return repository.recupereTout();
+    }
+
+    public Client getClient(int id)
+    {
+        return repository.recupere(id);
     }
 
     public Client getClient(String login)
@@ -53,18 +59,14 @@ public class ClientService {
         return repository.recupereBy("mail", mail);
     }
 
-    public void supprimeClient(String login)
+    public void supprimeClient(int id)
     {
-        repository.supprimer(login);
+        repository.supprimer(id);
     }
 
     public void mettreAJourClient(Client client)
     {
         repository.mettreAJour(client);
-    }
-
-    public void mettreAJourArgentClient(Client client){
-        repository.mettreAJourArgent(client);
     }
 
 }
