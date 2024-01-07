@@ -61,7 +61,6 @@ public class InscriptionHelper
         Date currentDate = new Date();
         return  currentDate.getYear() - dateNaissance.getYear();
 
-
     }
     public static boolean isMajor(Date dateNaissance) {
         return calculerAge(dateNaissance) > 18;
