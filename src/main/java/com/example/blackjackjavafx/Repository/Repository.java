@@ -99,24 +99,7 @@ public abstract class Repository<T> implements I_Repository<T> {
         }
     }
 
-//    public void supprimer(int valeurClePrimaire) {
-//        SQLUtils utils = SQLUtils.getInstance();
-//        Connection connection = utils.getConnection();
-//        String request = "DELETE FROM "+ getNomTable();
-//
-//        request += " WHERE "+ getNomClePrimaire()+" = ?";
-//
-//        try(PreparedStatement statement = connection.prepareStatement(request))
-//        {
-//            statement.setInt(1, valeurClePrimaire);
-//            statement.executeUpdate();
-//        }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    public void supprimer(String valeurClePrimaire) {
+    public void supprimer(int valeurClePrimaire) {
         SQLUtils utils = SQLUtils.getInstance();
         Connection connection = utils.getConnection();
         String request = "DELETE FROM "+ getNomTable();
@@ -125,7 +108,7 @@ public abstract class Repository<T> implements I_Repository<T> {
 
         try(PreparedStatement statement = connection.prepareStatement(request))
         {
-            statement.setString(1, valeurClePrimaire);
+            statement.setInt(1, valeurClePrimaire);
             statement.executeUpdate();
         }
         catch (SQLException e) {
