@@ -1,12 +1,10 @@
 package com.example.blackjackjavafx.Application.controller;
 
-import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeton;
 import com.example.blackjackjavafx.Metier.Miser;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -43,17 +41,10 @@ public class ControleurMise {
             boutonJeton.maxWidth(100);
             boutonJeton.maxHeight(100);
             boutonJeton.setGraphic(jeton.getImageView());
-            boutonJeton.setStyle(
-                    "-fx-background-radius: 140em; " +
-                    "-fx-min-width: 82px; " +
-                    "-fx-min-height: 82px; " +
-                    "-fx-max-width: 82; " +
-                    "-fx-max-height: 82px;");
-            boutonJeton.setPadding(Insets.EMPTY);
 
             boutonJeton.setOnAction(actionEvent -> {
-                argentJoueur -= jeton.getValeur();
                 miser.ajoutMise(jeton.getValeur());
+                argentJoueur -= jeton.getValeur();
             }
             );
             hBoxJetons.getChildren().add(boutonJeton);
@@ -69,7 +60,6 @@ public class ControleurMise {
     public void onValidButtonClick(){
         if (miser.getMise() > 0) {
             sceneHandler.commencerPartie(client, miser.getMise());
-            ClientService.getInstance().mettreAJourArgentClient(client);
         }
         else {
             miseJoueurText.setText("Vous ne pouvez jouer si vous misez pas.");

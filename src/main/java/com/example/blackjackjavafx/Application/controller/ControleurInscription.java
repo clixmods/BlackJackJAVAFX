@@ -7,7 +7,7 @@ import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class ControleurInscription
 {
@@ -60,19 +60,19 @@ public class ControleurInscription
         String mail = inputMail.getText();
         String nom = inputNom.getText();
         String prenom = inputPrenom.getText();
-        int argent = 0;
+        int argent = 5000;
         String password = inputPassword1.getText();
         String passwordConfirm = inputPassword2.getText();
         //String adresse = inputAddress.getText();
         //int codePostal = 34000;
         //String ville = inputCity.getText();
-        LocalDate dateNaissance = inputDateNaissance.getValue();
+        Date dateNaissance = java.sql.Date.valueOf(inputDateNaissance.getValue());
         //Date dateInscription = new Date();
         //String telephone = inputPhoneNumber.getText();
 
         if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm, dateNaissance))
         {
-            // TODO : Ouvrir un menu pour une connexion reussie
+            // TODO : Ouvrir un menu pour une connection reussi
         }
 
     }
@@ -84,7 +84,7 @@ public class ControleurInscription
                                            int argent,
                                            String password,
                                            String passwordConfirm,
-                                           LocalDate dateNaissance)
+                                            Date dateNaissance)
     {
         ClientService clientService = ClientService.getInstance();
         Password passwordService = new Password();
@@ -120,7 +120,7 @@ public class ControleurInscription
             System.out.println("Pas majeur");
             return false;
         }
-        return clientService.creerClient(login, mail, nom, prenom, argent, password, dateNaissance);
+        return clientService.creerClient(-1, login, mail, nom, prenom, argent, password, dateNaissance);
 
 
     }

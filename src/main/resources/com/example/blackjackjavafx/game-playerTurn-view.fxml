@@ -10,11 +10,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-
-
-<!-- Attention utilisez bien xmlns:fx="http://javafx.com/fxml" pour eviter de spécifiez la version afin de pas avoir de message de warning au démarrage du jeu -->
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurJeu" fx:id="vueGlobale">
-   <BorderPane>
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurJeu">
    <center>
       <VBox alignment="CENTER" prefHeight="464.0" prefWidth="700.0" spacing="20.0">
          <padding>
@@ -23,7 +19,7 @@
          <children>
             <HBox fx:id="cardBoxDealer" alignment="CENTER" spacing="10.0" />
             <Label fx:id="handDealerText" text="Main du croupier" textFill="WHITE" visible="false"/>
-            <Label fx:id="messageRoundText" scaleX="1.5" scaleY="1.5" scaleZ="1.5" text="Sélectionnez votre mise" textFill="WHITE" />
+            <Label fx:id="messageRoundText" scaleX="1.5" scaleY="1.5" scaleZ="1.5" text="messageRoundText" textFill="WHITE" />
             <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" visible="false"/>
             <Label fx:id="miseRoundText" textFill="WHITE" />
             <Label fx:id="handPlayerText" textFill="WHITE" />
@@ -50,5 +46,4 @@
    <padding>
       <Insets bottom="50.0" top="50.0" />
    </padding>
-   </BorderPane>
-</VBox>
+</BorderPane>

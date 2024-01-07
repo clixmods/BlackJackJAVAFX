@@ -16,8 +16,6 @@ public class SceneHandler {
 
 
     private static Scene sceneAccueil;
-
-    private static Scene sceneAccueil;
     private static Scene sceneJeu;
     private static SubScene subSceneMise;
     private static Scene sceneInscription;
@@ -27,7 +25,7 @@ public class SceneHandler {
 
     private final static FXMLLoader jeuLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-playerTurn-view.fxml"));
     private final static FXMLLoader accueilLoader = new FXMLLoader(BlackJackApplication.class.getResource("hello-view.fxml"));
-    //private final static FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
+    private final static FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
     private final static FXMLLoader inscriptionLoader = new FXMLLoader(BlackJackApplication.class.getResource("inscription-view.fxml"));
     private final static FXMLLoader connexionLoader = new FXMLLoader(BlackJackApplication.class.getResource("connexion-view.fxml"));
     private final static FXMLLoader settingsLoader = new FXMLLoader(BlackJackApplication.class.getResource("settings-view.fxml"));
@@ -113,13 +111,17 @@ public class SceneHandler {
 
     public void selectionnerMise(Client client) {
         stageApplication.setScene(sceneJeu);
-        ControleurJeu controleurJeu= jeuLoader.getController();
-        controleurJeu.afficherMise(client, this);
+        ControleurMise controleurMise = miseLoader.getController();
+        controleurMise.creerMise(client, this);
+        stackPane.getChildren().add(subSceneMise);
+        subSceneMise.setVisible(true);
     }
 
     public void commencerPartie(Client client, int mise) {
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.creerJeu(client, mise, this);
+        stackPane.getChildren().remove(subSceneMise);
+        subSceneMise.setVisible(false);
     }
 
     // ajoute le header à une scene

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class Connexion
 {
-    private static Client clientConnecte;
+    private static Client loggedClient;
     private static Connexion connexion;
     public static Connexion getInstance() {
         if(connexion == null)
@@ -29,7 +29,7 @@ public class Connexion
 
         if(Password.verify(password,client.getPassword()))
         {
-            clientConnecte = client;
+            loggedClient = client;
             return ConnexionResult.SUCCESS;
         }
         else
@@ -37,23 +37,6 @@ public class Connexion
             return ConnexionResult.BAD_PASSWORD;
         }
 
-    }
-
-    public boolean estConnecte(){
-        if (clientConnecte == null){
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
-    public Client getClientConnecte(){
-        return clientConnecte;
-    }
-
-    public void deconnecter(){
-        clientConnecte = null;
     }
 
 
