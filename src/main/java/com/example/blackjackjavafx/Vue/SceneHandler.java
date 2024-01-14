@@ -104,11 +104,20 @@ public class SceneHandler {
 
 
     public void selectionnerMise(Client client){
+        vueGenerale.setCentre(sceneJeu.getRoot());
+        ControleurMise controleurMise = miseLoader.getController();
+        controleurMise.creerMise(client, this);
+        stackPane.getChildren().add(subSceneMise);
+        subSceneMise.setVisible(true);
+
+        // Code pour afficher sans le header (outdated)
+        /*
         stageApplication.setScene(sceneJeu);
         ControleurMise controleurMise = miseLoader.getController();
         controleurMise.creerMise(client, this);
         stackPane.getChildren().add(subSceneMise);
         subSceneMise.setVisible(true);
+         */
     }
 
     public void commencerPartie(Client client, int mise){

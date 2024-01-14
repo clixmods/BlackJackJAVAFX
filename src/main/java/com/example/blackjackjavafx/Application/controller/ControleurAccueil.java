@@ -26,4 +26,8 @@ public class ControleurAccueil {
     public void onConnexionButtonClick(ActionEvent actionEvent) {
         sceneHandler.afficherConnexion();
     }
+
+    public void onRegleButtonClick(ActionEvent actionEvent){
+        sceneHandler.afficherRegles();
+    }
 }
