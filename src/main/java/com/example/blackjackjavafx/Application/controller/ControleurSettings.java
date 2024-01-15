@@ -38,6 +38,6 @@ public class ControleurSettings {
         System.out.println("Langue sélectionnée : " + langue);
         System.out.println("Difficulté sélectionnée : " + difficulte);
 
-        sceneHandler.afficherAccueil();
+        sceneHandler.enleverSettings();
     }
 }

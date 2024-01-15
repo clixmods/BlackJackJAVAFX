@@ -43,11 +43,10 @@ public class SceneHandler {
         sceneJeu = new Scene(jeuLoader.load(), 640, 700);
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
         sceneConnexion = new Scene(connexionLoader.load(),640,700);
-        sceneSettings = new Scene(settingsLoader.load());
         sceneRegles = new Scene(reglesLoader.load());
 
 
-        vueGenerale = new VueGenerale(headerLoader, this);
+        vueGenerale = new VueGenerale(headerLoader, settingsLoader, this);
 
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneJeu.getRoot());
@@ -74,10 +73,11 @@ public class SceneHandler {
 
     public void afficherSettings() {
 
-        ControleurSettings controllerSettings = settingsLoader.getController();
-        controllerSettings.initialiserSettings(this);
+        vueGenerale.setParametres();
+    }
 
-        vueGenerale.setCentre(sceneSettings.getRoot());
+    public void enleverSettings(){
+        vueGenerale.unsetParametres();
     }
 
     public void afficherInscription() {

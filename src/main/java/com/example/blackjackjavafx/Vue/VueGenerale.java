@@ -1,22 +1,37 @@
 package com.example.blackjackjavafx.Vue;
 
 import com.example.blackjackjavafx.Application.controller.ControleurHeader;
+import com.example.blackjackjavafx.Application.controller.ControleurSettings;
 import com.example.blackjackjavafx.BlackJackApplication;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.SubScene;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
+import java.util.Stack;
 
 public class VueGenerale extends BorderPane {
 
     private ControleurHeader controleurHeader;
 
-    public VueGenerale(FXMLLoader headerLoader, SceneHandler sceneHandler){
+    private StackPane centre;
+
+    private SubScene parametres;
+
+    private ControleurSettings controleurSettings;
+
+    public VueGenerale(FXMLLoader headerLoader, FXMLLoader settingsLoader, SceneHandler sceneHandler){
+        centre = new StackPane();
+        setCenter(centre);
         try{
             setTop(headerLoader.load());
+            parametres = new SubScene(settingsLoader.load(), 800, 800);
             controleurHeader = headerLoader.getController();
             controleurHeader.initialiserHeader(sceneHandler);
+            controleurSettings = settingsLoader.getController();
+            controleurSettings.initialiserSettings(sceneHandler);
         }
         catch(IOException e){
             e.printStackTrace();
@@ -28,6 +43,15 @@ public class VueGenerale extends BorderPane {
     }
 
     public void setCentre(javafx.scene.Node centre){
-        setCenter(centre);
+        this.centre.getChildren().clear();
+        this.centre.getChildren().add(centre);
+    }
+
+    public void setParametres(){
+        centre.getChildren().add(parametres);
+    }
+
+    public void unsetParametres(){
+        centre.getChildren().remove(parametres);
     }
 }
