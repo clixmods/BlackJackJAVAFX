@@ -38,6 +38,13 @@ public class ControleurSettings {
         System.out.println("Langue sélectionnée : " + langue);
         System.out.println("Difficulté sélectionnée : " + difficulte);
 
-        sceneHandler.afficherAccueil();
+        String gameState = sceneHandler.getGameState();
+
+        if (gameState == "accueil") sceneHandler.afficherAccueil();
+        else if (gameState == "inscription") sceneHandler.afficherInscription();
+        else if (gameState == "connexion") sceneHandler.afficherConnexion();
+        else if (gameState == "regles") sceneHandler.afficherRegles();
+
+
     }
 }

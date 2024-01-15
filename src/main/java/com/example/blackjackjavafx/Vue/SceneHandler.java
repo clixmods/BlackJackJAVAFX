@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class SceneHandler {
 
+    private String gameState;
     private static Scene sceneAccueil;
     private static Scene sceneJeu;
     private static SubScene subSceneMise;
@@ -46,6 +47,7 @@ public class SceneHandler {
         sceneSettings = new Scene(settingsLoader.load());
         sceneRegles = new Scene(reglesLoader.load());
 
+        gameState = "accueil";
 
         vueGenerale = new VueGenerale(headerLoader, this);
 
@@ -70,10 +72,10 @@ public class SceneHandler {
         controleurAccueil.initialiserAccueil(this);
 
         vueGenerale.setCentre(sceneAccueil.getRoot());
+        gameState = "accueil";
     }
 
     public void afficherSettings() {
-
         ControleurSettings controllerSettings = settingsLoader.getController();
         controllerSettings.initialiserSettings(this);
 
@@ -85,6 +87,7 @@ public class SceneHandler {
         controleurInscription.initialiserInscription(this);
 
         vueGenerale.setCentre(sceneInscription.getRoot());
+        gameState = "inscription";
     }
 
     public void afficherConnexion() {
@@ -92,6 +95,7 @@ public class SceneHandler {
         controleurConnexion.initialiserConnexion(this);
 
         vueGenerale.setCentre(sceneConnexion.getRoot());
+        gameState = "connexion";
     }
 
     public void afficherRegles() {
@@ -99,7 +103,7 @@ public class SceneHandler {
         controleurRegles.initialiserRegles(this);
 
         vueGenerale.setCentre(sceneRegles.getRoot());
-
+        gameState = "regles";
     }
 
 
@@ -118,6 +122,8 @@ public class SceneHandler {
         stackPane.getChildren().add(subSceneMise);
         subSceneMise.setVisible(true);
          */
+
+        gameState = "mise";
     }
 
     public void commencerPartie(Client client, int mise){
@@ -125,5 +131,10 @@ public class SceneHandler {
         controleurJeu.creerJeu(client, mise, this);
         stackPane.getChildren().remove(subSceneMise);
         subSceneMise.setVisible(false);
+        gameState = "jeu";
+    }
+
+    public String getGameState(){
+        return gameState;
     }
 }

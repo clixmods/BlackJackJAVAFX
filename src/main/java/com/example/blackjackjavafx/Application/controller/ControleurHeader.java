@@ -51,12 +51,19 @@ public class ControleurHeader {
     }
     @FXML
     public void handleHome() {
-        sceneHandler.afficherAccueil();
+        String gameState = sceneHandler.getGameState();
+        if(!(gameState == "jeu")){
+            sceneHandler.afficherAccueil();
+        }
     }
 
     @FXML
     public void handleSettings() {
-        sceneHandler.afficherSettings();
+        String gameState = sceneHandler.getGameState();
+        System.out.println(gameState);
+        if(gameState != "jeu" && gameState != "mise"){
+            sceneHandler.afficherSettings();
+        }
     }
 
     public void setNomCompte(String nomCompte) {
