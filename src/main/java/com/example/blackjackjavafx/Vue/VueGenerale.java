@@ -54,4 +54,12 @@ public class VueGenerale extends BorderPane {
     public void unsetParametres(){
         centre.getChildren().remove(parametres);
     }
+
+    public void activerBoutonHome(boolean active){
+        controleurHeader.activerBoutonHome(active);
+    }
+
+    public void activerBoutonSettings(boolean active){
+        controleurHeader.activerBoutonSettings(active);
+    }
 }

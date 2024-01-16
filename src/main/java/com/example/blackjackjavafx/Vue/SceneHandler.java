@@ -104,13 +104,18 @@ public class SceneHandler {
 
 
     public void selectionnerMise(Client client){
-        stageApplication.setScene(sceneJeu);
-        ControleurJeu controleurJeu = jeuLoader.getController();
-        controleurJeu.afficherMise(client, this);
+        vueGenerale.setCentre(sceneJeu.getRoot());
+        ControleurMise controleurMise = miseLoader.getController();
+        controleurMise.creerMise(client, this);
+        stackPane.getChildren().add(subSceneMise);
+        subSceneMise.setVisible(true);
     }
 
     public void commencerPartie(Client client, int mise){
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.creerJeu(client, mise, this);
+        stackPane.getChildren().remove(subSceneMise);
+        subSceneMise.setVisible(false);
+        vueGenerale.activerBoutonHome(false);
     }
 }
