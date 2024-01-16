@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 public class ControleurAccueil {
 
     private SceneHandler sceneHandler;
+
     public void initialiserAccueil(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
     }
