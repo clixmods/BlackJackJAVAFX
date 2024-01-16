@@ -61,6 +61,7 @@ public class ControleurMise {
 
     public void mettreAJourAffichage(){
         genererJetons();
+        sceneHandler.mettreAJourHeader();
         miseJoueurText.setText("Votre mise : " + miser.getMise());
         argentJoueurText.setText("Votre argent : " + argentJoueur + " €");
     }
