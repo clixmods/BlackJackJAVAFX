@@ -10,8 +10,6 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-
-
 <!-- Attention utilisez bien xmlns:fx="http://javafx.com/fxml" pour eviter de spécifiez la version afin de pas avoir de message de warning au démarrage du jeu -->
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurJeu" fx:id="vueGlobale">
    <BorderPane>
