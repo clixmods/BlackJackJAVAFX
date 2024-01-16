@@ -33,13 +33,16 @@ public class ControleurConnexion {
 
     private SceneHandler sceneHandler;
 
-    public ControleurConnexion(){
+    public void initialiserConnexion(SceneHandler sceneHandler) {
+        afficherTexte();
+        this.sceneHandler = sceneHandler;
+    }
+
+    private void afficherTexte(){
         loginFieldDescriptor.setText(LangageManager.getInstance().getText("connexion_loginFieldDescriptor"));
         passwordFieldDescriptor.setText(LangageManager.getInstance().getText("connexion_passwordFieldDescriptor"));
-        textInfo.setText(LangageManager.getInstance().getText(""));
-    }
-    public void initialiserConnexion(SceneHandler sceneHandler) {
-        this.sceneHandler = sceneHandler;
+        textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_tryConnect"));
+        buttonConnexion.setText(LangageManager.getInstance().getText("connexion_connexionButton"));
     }
 
     public void OnInputLoginEnter(ActionEvent actionEvent) {
@@ -56,18 +59,18 @@ public class ControleurConnexion {
         ConnexionResult result = connexion.tryConnect(login,password);
         switch (result) {
             case SUCCESS -> {
-                textInfo.setText("Connexion réussie ! ");
+                textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_successfulConnection"));
                 sceneHandler.mettreAJourHeader();
                 // TODO : quest ce qu'on fait ?
             }
             case BAD_PASSWORD -> {
-                textInfo.setText("Mot de passe incorrect");
+                textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_incorrectPassword"));
             }
             case UNDEFINED_LOGIN -> {
-                textInfo.setText("Login inexistant");
+                textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_missingLogin"));
             }
             case UNKNOWN_ERROR -> {
-                textInfo.setText("Erreur inconnue");
+                textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_unknown_error"));
             }
         }
     }
