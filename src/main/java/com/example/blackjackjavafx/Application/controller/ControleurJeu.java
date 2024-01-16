@@ -103,13 +103,15 @@ public class ControleurJeu {
     public void afficherVictoire(int mise){
         ClientService.getInstance().mettreAJourArgentClient(client);
         messageRoundText.setText("Vous avez gagné ! Vous remportez "+ mise + " € !!!");
+        sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
     }
 
     public void afficherEgalite(){
-        ClientService.getInstance().mettreAJourArgentClient(client);
-        buttonRestartRound.setVisible(true);
         messageRoundText.setText("Égalité !");
+        ClientService.getInstance().mettreAJourArgentClient(client);
+        sceneHandler.mettreAJourHeader();
+        buttonRestartRound.setVisible(true);
     }
 
     public void reinitialiserVue(){
