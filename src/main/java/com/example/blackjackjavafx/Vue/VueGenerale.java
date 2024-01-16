@@ -2,6 +2,7 @@ package com.example.blackjackjavafx.Vue;
 
 import com.example.blackjackjavafx.Application.controller.ControleurHeader;
 import com.example.blackjackjavafx.BlackJackApplication;
+import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
@@ -29,5 +30,16 @@ public class VueGenerale extends BorderPane {
 
     public void setCentre(javafx.scene.Node centre){
         setCenter(centre);
+    }
+
+    public void miseAJourHeader(Client client){
+        if (client == null){
+            controleurHeader.setArgent(0);
+            controleurHeader.setNomCompte("Non connecté");
+        }
+        else {
+            controleurHeader.setNomCompte(client.getNom());
+            controleurHeader.setArgent(client.getArgent());
+        }
     }
 }

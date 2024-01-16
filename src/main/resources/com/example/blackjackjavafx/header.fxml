@@ -16,7 +16,7 @@
     <left>
         <HBox spacing="10" alignment="CENTER_LEFT">
             <ImageView fx:id="boutonHome" onMouseClicked="#handleHome"></ImageView>
-            <Label fx:id="labelNomCompte" text="Nom du joueur"/>
+            <Label fx:id="labelNomCompte" text="Non connecté"/>
         </HBox>
     </left>
     <center>
@@ -27,7 +27,7 @@
     </center>
     <right>
         <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label fx:id="labelArgent" text="0€"/>
+            <Label fx:id="labelArgent" text="0$"/>
             <ImageView fx:id="boutonSettings" onMouseClicked="#handleSettings"></ImageView>
         </HBox>
     </right>

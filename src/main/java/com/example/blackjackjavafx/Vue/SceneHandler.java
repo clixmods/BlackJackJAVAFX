@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Vue;
 
+import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Application.controller.*;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
@@ -107,6 +108,11 @@ public class SceneHandler {
         stageApplication.setScene(sceneJeu);
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.afficherMise(client, this);
+    }
+
+    public void mettreAJourHeader(){
+        Client client = Connexion.getInstance().getClientConnecte();
+        vueGenerale.miseAJourHeader(client);
     }
 
     public void commencerPartie(Client client, int mise){

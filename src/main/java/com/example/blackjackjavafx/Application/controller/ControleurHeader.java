@@ -18,7 +18,7 @@ public class ControleurHeader {
     @FXML
     private Label labelNomCompte;
     @FXML
-    private Label labelArgentCourant;
+    private Label labelArgent;
 
     @FXML
     private ImageView boutonSettings;
@@ -64,6 +64,6 @@ public class ControleurHeader {
     }
 
     public void setArgent(double argent) {
-        labelArgentCourant.setText(argent + "$");
+        labelArgent.setText(argent + "$");
     }
 }
