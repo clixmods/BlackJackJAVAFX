@@ -27,7 +27,7 @@
     </center>
     <right>
         <HBox spacing="10" alignment="CENTER_LEFT">
-            <Label fx:id="labelArgent" text="0€"/>
+            <Label fx:id="labelArgent" text="0$"/>
             <ImageView fx:id="boutonSettings" onMouseClicked="#handleSettings"></ImageView>
         </HBox>
     </right>
