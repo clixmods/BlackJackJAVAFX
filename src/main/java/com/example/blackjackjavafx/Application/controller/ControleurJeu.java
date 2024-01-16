@@ -11,10 +11,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class ControleurJeu {
 
@@ -57,6 +60,7 @@ public class ControleurJeu {
         buttonBoxPlayer.setVisible(true);
         messageRoundText.setText("Tour joueur");
         jeu.distribuerCartes();
+        afficherCarteFaceCacheeCroupier();
         handPlayerText.setVisible(true);
     }
 
@@ -97,6 +101,7 @@ public class ControleurJeu {
     public void finTourJoueur(){
         messageRoundText.setText("Tour croupier");
         buttonBoxPlayer.setVisible(false);
+        cardBoxDealer.getChildren().remove(cardBoxDealer.getChildren().size()-1);
         jeu.tourCroupier();
     }
 
@@ -105,6 +110,18 @@ public class ControleurJeu {
         messageRoundText.setText("Vous avez gagné ! Vous remportez "+ mise + " € !!!");
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
+    }
+
+    public void afficherCarteFaceCacheeCroupier(){
+        ImageView imageCarteDos = new ImageView();
+        InputStream inputStream = getClass().getResourceAsStream("/images/back_card.png");
+        if (inputStream != null){
+            imageCarteDos.setImage(new Image(inputStream));
+            imageCarteDos.setFitWidth(100);
+            imageCarteDos.setPreserveRatio(true);
+            imageCarteDos.setSmooth(true);
+        }
+        cardBoxDealer.getChildren().add(imageCarteDos);
     }
 
     public void afficherEgalite(){
