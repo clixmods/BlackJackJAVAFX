@@ -12,25 +12,25 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings">
     <center>
         <VBox alignment="CENTER" spacing="20">
-            <Label text="Paramètres"/>
+            <Label fx:id="settingsLabel" text="Paramètres"/>
 
-            <Label text="Volume de la musique"/>
+            <Label fx:id="musicVolumeLabel" text="Volume de la musique"/>
             <Slider fx:id="sliderMusique" maxWidth="500" min="0.0" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0"/>
 
-            <Label text="Volume des effets sonores"/>
+            <Label fx:id="effectsVolumeLabel" text="Volume des effets sonores"/>
             <Slider fx:id="sliderEffets" maxWidth="500" min="0.0" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0"/>
 
-            <Label text="Langue"/>
+            <Label fx:id="languageLabel" text="Langue"/>
             <ComboBox fx:id="langueBox" value="Français">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Français"/>
-                        <String fx:value="Anglais"/>
+                        <String fx:value="English"/>
                     </FXCollections>
                 </items>
             </ComboBox>
 
-            <Button text="Appliquer" onAction="#handleAppliquer"/>
+            <Button fx:id="submitButton" text="Appliquer" onAction="#handleAppliquer"/>
 
         </VBox>
     </center>

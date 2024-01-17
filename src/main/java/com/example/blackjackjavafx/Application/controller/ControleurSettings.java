@@ -6,7 +6,9 @@ import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.helper.SoundsHelper;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
 public class ControleurSettings implements Controleur{
@@ -19,6 +21,21 @@ public class ControleurSettings implements Controleur{
     @FXML
     private ComboBox<String> langueBox;
 
+    @FXML
+    private Label settingsLabel;
+
+    @FXML
+    private Label musicVolumeLabel;
+
+    @FXML
+    private Label effectsVolumeLabel;
+
+    @FXML
+    private Label languageLabel;
+
+    @FXML
+    private Button submitButton;
+
     private double volumeMusique;
     private double volumeEffets;
     private String langue;
@@ -30,7 +47,11 @@ public class ControleurSettings implements Controleur{
 
     @Override
     public void changerLangue() {
-
+        settingsLabel.setText(LangageManager.getInstance().getText("settings_settingsLabel"));
+        musicVolumeLabel.setText(LangageManager.getInstance().getText("settings_musicVolumeLabel"));
+        effectsVolumeLabel.setText(LangageManager.getInstance().getText("settings_effectsVolumeLabel"));
+        languageLabel.setText(LangageManager.getInstance().getText("settings_languageLabel"));
+        submitButton.setText(LangageManager.getInstance().getText("settings_submitButton"));
     }
 
     @FXML
@@ -42,9 +63,8 @@ public class ControleurSettings implements Controleur{
 
         sceneHandler.reglerVolumeMusique(volumeMusique);
         SoundsHelper.setVolume(volumeEffets);
-        System.out.println("Langue sélectionnée : " + langue);
 
-        //Cette partie permet de changer la langue si elle a été modifiée. Elle fonctionne mais n'est pas très propre (ça ne respecte pas vraiment le principe Open/Close), il faudra la recoder
+        //Cette partie permet de changer la langue si elle a été modifiée. Elle fonctionne mais n'est pas très propre (ça ne respecte pas vraiment le principe Open/Close), il faudra la repenser
         if (langue.equals("Français")){
             if (!LangageManager.getInstance().getText("connexion_passwordFieldDescriptor").equals("Mot de passe")){
                 LangageManager.setInstance(LangageFR.getInstance());
