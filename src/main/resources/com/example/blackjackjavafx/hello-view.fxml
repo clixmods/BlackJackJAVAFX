@@ -9,7 +9,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <Button text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
-    <Button text="Connexion" onAction="#onConnexionButtonClick"/>
-    <Button text="Inscription" onAction="#onInscriptionButtonClick"/>
+    <Button text="Démarrer une partie" onAction="#onStartGameButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+    <Button text="Connexion" onAction="#onConnexionButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+    <Button text="Inscription" onAction="#onInscriptionButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
 </VBox>
