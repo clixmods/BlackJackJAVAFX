@@ -27,6 +27,8 @@ public class ControleurJeu implements Controleur{
 
     private Node vueMise;
 
+    private ControleurMise controleurMise;
+
     @FXML
     private VBox vueGlobale;
 
@@ -67,10 +69,11 @@ public class ControleurJeu implements Controleur{
 
     @Override
     public void changerLangue() {
-
+        controleurMise.changerLangue();
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){
+        reinitialiserVue();
         FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
         try {
             vueMise = miseLoader.load();
@@ -79,7 +82,7 @@ public class ControleurJeu implements Controleur{
         catch (IOException e){
             e.printStackTrace();
         }
-        ControleurMise controleurMise = miseLoader.getController();
+        controleurMise = miseLoader.getController();
         controleurMise.creerMise(client1, sceneHandler1);
     }
 
@@ -116,6 +119,7 @@ public class ControleurJeu implements Controleur{
         messageRoundText.setText("Vous avez gagné ! Vous remportez "+ mise + " € !!!");
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
+        sceneHandler.activerBoutonHome(true);
     }
 
     public void afficherCarteFaceCacheeCroupier(){
@@ -135,12 +139,14 @@ public class ControleurJeu implements Controleur{
         ClientService.getInstance().mettreAJourArgentClient(client);
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
+        sceneHandler.activerBoutonHome(true);
     }
 
     public void reinitialiserVue(){
         messageRoundText.setText("Sélectionnez votre mise");
         cardBoxDealer.getChildren().clear();
         cardBoxPlayer.getChildren().clear();
+        vueGlobale.getChildren().remove(vueMise);
         handPlayerText.setVisible(false);
     }
 
@@ -173,12 +179,12 @@ public class ControleurJeu implements Controleur{
         messageRoundText.setText("Vous avez perdu");
         buttonRestartRound.setVisible(true);
         buttonBoxPlayer.setVisible(false);
+        sceneHandler.activerBoutonHome(true);
     }
 
     public void onRestartButtonClick(){
         sceneHandler.selectionnerMise(client);
         buttonRestartRound.setVisible(false);
-        reinitialiserVue();
     }
 
     public void onStandButtonClick(){

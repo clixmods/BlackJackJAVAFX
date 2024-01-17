@@ -26,6 +26,7 @@ public class LangageFR implements Langage{
         dictionnaire.put("mise_miseText_select", "Sélectionnez votre mise");
         dictionnaire.put("mise_miseText_playersBet", "Votre mise : ");
         dictionnaire.put("mise_miseText_cantBet", "Vous ne pouvez jouer si vous ne misez pas.");
+        dictionnaire.put("mise_miseText_notEnoughMoney", "Vous n'avez plus assez d'argent pour miser autant.");
         dictionnaire.put("mise_validerMiseButton", "Je valide ma mise");
     }
 
