@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.Bloom?>
 
 <!-- Attention utilisez bien xmlns:fx="http://javafx.com/fxml" pour eviter de spécifiez la version afin de pas avoir de message de warning au démarrage du jeu -->
 
@@ -16,15 +17,33 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
    </padding>
 
-   <Label fx:id="textInfo" layoutX="229.0" layoutY="117.0" text="Connectez vous" style="-fx-text-fill: #6718fb; -fx-font-size: 32;"/>
+   <Label style="-fx-font-size: 32; -fx-text-fill: #6718fb;" text="Connexion">
+      <effect>
+         <Bloom threshold="-1"/>
+      </effect>
+   </Label>
+
+   <Label fx:id="textInfo" text="Connectez vous" style="-fx-text-fill: #6718fb; -fx-font-size: 32;">
+      <effect>
+         <Bloom threshold="-1"/>
+      </effect>
+   </Label>
 
    <HBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #24074a;">
-      <Label layoutX="144.0" layoutY="162.0" text="Login" style="-fx-text-fill: #6718fb; -fx-font-size: 20;"/>
+      <Label layoutX="144.0" layoutY="162.0" text="Login" style="-fx-text-fill: #6718fb; -fx-font-size: 20;">
+         <effect>
+            <Bloom threshold="-0.5"/>
+         </effect>
+      </Label>
       <TextField fx:id="inputLogin" layoutX="226.0" layoutY="158.0" onAction="#OnInputLoginEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"/>
    </HBox>
 
    <HBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #24074a;">
-      <Label layoutX="144.0" layoutY="204.0" text="Mot de passe" style="-fx-text-fill: #6718fb; -fx-font-size: 20;"/>
+      <Label layoutX="144.0" layoutY="204.0" text="Mot de passe" style="-fx-text-fill: #6718fb; -fx-font-size: 20;">
+         <effect>
+            <Bloom threshold="-0.5"/>
+         </effect>
+      </Label>
       <PasswordField fx:id="inputPassword" layoutX="226.0" layoutY="200.0" onAction="#OnInputPasswordEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"/>
    </HBox>
 
