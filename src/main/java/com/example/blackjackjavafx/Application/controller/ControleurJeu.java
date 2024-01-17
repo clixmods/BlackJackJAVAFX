@@ -119,6 +119,7 @@ public class ControleurJeu implements Controleur{
         messageRoundText.setText("Vous avez gagné ! Vous remportez "+ mise + " € !!!");
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
+        sceneHandler.activerBoutonHome(true);
     }
 
     public void afficherCarteFaceCacheeCroupier(){
@@ -138,6 +139,7 @@ public class ControleurJeu implements Controleur{
         ClientService.getInstance().mettreAJourArgentClient(client);
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
+        sceneHandler.activerBoutonHome(true);
     }
 
     public void reinitialiserVue(){
@@ -177,6 +179,7 @@ public class ControleurJeu implements Controleur{
         messageRoundText.setText("Vous avez perdu");
         buttonRestartRound.setVisible(true);
         buttonBoxPlayer.setVisible(false);
+        sceneHandler.activerBoutonHome(true);
     }
 
     public void onRestartButtonClick(){
