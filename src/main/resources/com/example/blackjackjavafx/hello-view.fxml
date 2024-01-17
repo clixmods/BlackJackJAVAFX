@@ -13,11 +13,11 @@
     </padding>
 
     <Label fx:id="clixText"/>
-    <Button text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
+    <Button fx:id="startGameButton" text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
 
-    <Button text="Connexion" onAction="#onConnexionButtonClick"/>
+    <Button fx:id="connectionButton" text="Connexion" onAction="#onConnexionButtonClick"/>
 
-    <Button text="Inscription" onAction="#onInscriptionButtonClick"/>
+    <Button fx:id="inscriptionButton" text="Inscription" onAction="#onInscriptionButtonClick"/>
 
 
 </VBox>
