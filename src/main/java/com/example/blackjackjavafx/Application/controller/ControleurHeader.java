@@ -1,5 +1,7 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Langage.LangageManager;
+import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -10,25 +12,26 @@ import javafx.scene.image.ImageView;
 
 import java.io.InputStream;
 
-public class ControleurHeader {
+public class ControleurHeader implements Controleur{
 
+    private boolean boutonHomeActif;
     private static SceneHandler sceneHandler;
     @FXML
     private ImageView boutonHome;
     @FXML
     private Label labelNomCompte;
     @FXML
-    private Label labelArgentCourant;
+    private Label labelArgent;
 
     @FXML
     private ImageView boutonSettings;
 
 
-    public void initialiserHeader(SceneHandler sceneHandlerp){
+    public void initialiserHeader(SceneHandler sceneHandler){
 
-        if(sceneHandler == null) {
-            this.sceneHandler = sceneHandlerp;
-        }
+        ControleurHeader.sceneHandler = sceneHandler;
+
+        changerLangue();
 
         InputStream inputStream = getClass().getResourceAsStream("/images.header/home.png");
         if(inputStream != null) {
@@ -46,12 +49,19 @@ public class ControleurHeader {
             boutonSettings.setFitHeight(25);
         }
 
-
+        boutonHomeActif = true;
 
     }
+
+    public void changerLangue(){
+        if (!Connexion.getInstance().estConnecte()) {
+            labelNomCompte.setText(LangageManager.getInstance().getText("header_nomCompteLabel_disconnected"));
+        }
+    }
+
     @FXML
     public void handleHome() {
-        sceneHandler.afficherAccueil();
+        if(boutonHomeActif) sceneHandler.afficherAccueil();
     }
 
     @FXML
@@ -64,6 +74,12 @@ public class ControleurHeader {
     }
 
     public void setArgent(double argent) {
-        labelArgentCourant.setText(argent + "$");
+        labelArgent.setText(argent + "$");
+    }
+
+    public void activerBoutonHome(boolean active){
+        boutonHomeActif = active;
+        if(active) boutonHome.setOpacity(1.0);
+        else boutonHome.setOpacity(0.5);
     }
 }

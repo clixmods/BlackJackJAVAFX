@@ -1,6 +1,7 @@
 package com.example.blackjackjavafx;
 
 import com.example.blackjackjavafx.Application.Service.ClientService;
+import com.example.blackjackjavafx.Application.helper.SoundsHelper;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.application.Application;
@@ -15,6 +16,7 @@ public class BlackJackApplication extends Application {
 
 
     public static com.example.blackjackjavafx.Vue.SceneHandler sceneHandler;
+    public static SoundsHelper soundsHelper;
     public static IntegerProperty Money = new SimpleIntegerProperty(1000);
 
     @Override

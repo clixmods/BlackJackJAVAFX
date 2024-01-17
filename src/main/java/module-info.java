@@ -6,6 +6,7 @@ module com.example.blackjackjavafx {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires javafx.media;
 
     opens com.example.blackjackjavafx to javafx.fxml;
     exports com.example.blackjackjavafx;
@@ -15,4 +16,6 @@ module com.example.blackjackjavafx {
     opens com.example.blackjackjavafx.Metier to javafx.fxml;
     exports com.example.blackjackjavafx.Application.connection;
     opens com.example.blackjackjavafx.Application.connection to javafx.fxml;
+    exports com.example.blackjackjavafx.Application.helper;
+    opens com.example.blackjackjavafx.Application.helper to javafx.fxml;
 }
