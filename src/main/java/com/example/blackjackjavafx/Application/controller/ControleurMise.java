@@ -47,7 +47,7 @@ public class ControleurMise implements Controleur{
         argentJoueurText.setText(LangageManager.getInstance().getText("mise_argentText") + argentJoueur + " $");
         buttonValidMise.setText(LangageManager.getInstance().getText("mise_validerMiseButton"));
         if (miseJoueurTextState.equals("mise_miseText_playersBet")){
-            miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_playersBet" + miser.getMise()));
+            miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_playersBet") + miser.getMise());
         }
         else {
             miseJoueurText.setText(LangageManager.getInstance().getText(miseJoueurTextState));

@@ -1,5 +1,7 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Langage.LangageManager;
+import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -29,6 +31,8 @@ public class ControleurHeader implements Controleur{
 
         ControleurHeader.sceneHandler = sceneHandler;
 
+        changerLangue();
+
         InputStream inputStream = getClass().getResourceAsStream("/images.header/home.png");
         if(inputStream != null) {
             Image homeImage = new Image(inputStream);
@@ -50,6 +54,9 @@ public class ControleurHeader implements Controleur{
     }
 
     public void changerLangue(){
+        if (!Connexion.getInstance().estConnecte()) {
+            labelNomCompte.setText(LangageManager.getInstance().getText("header_nomCompteLabel_disconnected"));
+        }
     }
 
     @FXML
