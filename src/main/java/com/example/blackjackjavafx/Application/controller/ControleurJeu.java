@@ -2,6 +2,11 @@ package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.Service.ClientService;
+import com.example.blackjackjavafx.Application.helper.SoundsHelper;
+import com.example.blackjackjavafx.Application.sound.Abstract_SoundJeu;
+import com.example.blackjackjavafx.Application.sound.SoundBlackJack;
+import com.example.blackjackjavafx.Application.sound.SoundCarte;
+import com.example.blackjackjavafx.Application.sound.SoundVictoire;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Carte;
 import com.example.blackjackjavafx.Metier.Client;
@@ -21,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class ControleurJeu implements Controleur{
+
 
     private Jeu jeu;
 
@@ -94,6 +100,8 @@ public class ControleurJeu implements Controleur{
         jeu.distribuerCartes();
         afficherCarteFaceCacheeCroupier();
         handPlayerText.setVisible(true);
+        sonVictoire = new SoundVictoire();
+        sonCarte = new SoundCarte();
     }
 
     @Override
@@ -163,6 +171,9 @@ public class ControleurJeu implements Controleur{
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
         sceneHandler.activerBoutonHome(true);
+
+
+        jouerSonVictoire();
     }
 
     public void afficherCarteFaceCacheeCroupier(){
@@ -246,10 +257,20 @@ public class ControleurJeu implements Controleur{
 
     public void onHitButtonClick(){
         jeu.joueurPiocheEtGagne();
+        jouerSonCarte();
     }
 
     public void onDoubleButtonClick(){
         jeu.joueurDouble();
         ClientService.getInstance().mettreAJourArgentClient(client);
+        jouerSonCarte();
+    }
+
+    public void jouerSonCarte(){
+        sonCarte.play(SoundsHelper.getVolume());
+    }
+
+    public void jouerSonVictoire(){
+        sonVictoire.play(SoundsHelper.getVolume());
     }
 }

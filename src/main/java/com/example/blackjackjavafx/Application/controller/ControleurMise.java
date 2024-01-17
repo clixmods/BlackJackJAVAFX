@@ -2,6 +2,9 @@ package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.Service.ClientService;
+import com.example.blackjackjavafx.Application.helper.SoundsHelper;
+import com.example.blackjackjavafx.Application.sound.SoundCarte;
+import com.example.blackjackjavafx.Application.sound.SoundJeton;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeton;
 import com.example.blackjackjavafx.Metier.Miser;
@@ -80,6 +83,8 @@ public class ControleurMise implements Controleur{
         miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_playersBet") + miser.getMise());
         miseJoueurTextState = "mise_miseText_playersBet";
         argentJoueurText.setText(LangageManager.getInstance().getText("mise_argentText") + argentJoueur + " $");
+
+        jouerSonJeton();
     }
 
     public void onValidButtonClick(){
@@ -101,5 +106,9 @@ public class ControleurMise implements Controleur{
 
     public void onAjoutezArgentButtonClick(){
 
+    }
+
+    public void jouerSonJeton(){
+        new SoundJeton().play(SoundsHelper.getVolume());
     }
 }
