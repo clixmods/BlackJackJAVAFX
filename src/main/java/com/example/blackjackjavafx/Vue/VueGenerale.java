@@ -42,4 +42,8 @@ public class VueGenerale extends BorderPane {
             controleurHeader.setArgent(client.getArgent());
         }
     }
+
+    public void activerBoutonHome(boolean active){
+        controleurHeader.activerBoutonHome(active);
+    }
 }

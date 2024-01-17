@@ -12,6 +12,7 @@ import java.io.InputStream;
 
 public class ControleurHeader {
 
+    private boolean boutonHomeActif;
     private static SceneHandler sceneHandler;
     @FXML
     private ImageView boutonHome;
@@ -47,11 +48,11 @@ public class ControleurHeader {
         }
 
 
-
+        boutonHomeActif = true;
     }
     @FXML
     public void handleHome() {
-        sceneHandler.afficherAccueil();
+        if(boutonHomeActif) sceneHandler.afficherAccueil();
     }
 
     @FXML
@@ -65,5 +66,10 @@ public class ControleurHeader {
 
     public void setArgent(double argent) {
         labelArgent.setText(argent + "$");
+    }
+
+    public void activerBoutonHome(boolean active){
+        boutonHomeActif = active;
+        boutonHome.setOpacity(active ? 1.0 : 0.5);
     }
 }

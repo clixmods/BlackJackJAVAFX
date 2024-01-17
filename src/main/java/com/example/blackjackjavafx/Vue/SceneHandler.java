@@ -105,9 +105,10 @@ public class SceneHandler {
 
 
     public void selectionnerMise(Client client){
-        stageApplication.setScene(sceneJeu);
+        vueGenerale.setCentre(sceneJeu.getRoot());
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.afficherMise(client, this);
+        vueGenerale.activerBoutonHome(true);
     }
 
     public void mettreAJourHeader(){
@@ -118,5 +119,6 @@ public class SceneHandler {
     public void commencerPartie(Client client, int mise){
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.creerJeu(client, mise, this);
+        vueGenerale.activerBoutonHome(false);
     }
 }
