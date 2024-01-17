@@ -6,7 +6,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<!-- Attention utilisez bien xmlns:fx="http://javafx.com/fxml" pour eviter de spécifiez la version afin de pas avoir de message de warning au démarrage du jeu -->
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurAccueil" >
 
     <padding>
@@ -25,7 +24,7 @@
 
     <Button fx:id="inscriptionButton" text="Inscription" onAction="#onInscriptionButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
 
-    <Button fx:id="rulesButton" text="Règles" onAction="#onRulesButtonClick"/>
+    <Button fx:id="rulesButton" text="Règles" onAction="#onRulesButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
 
 
 </VBox>
