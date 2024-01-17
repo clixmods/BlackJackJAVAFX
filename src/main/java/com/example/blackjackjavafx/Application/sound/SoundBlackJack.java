@@ -8,7 +8,7 @@ public class SoundBlackJack extends Abstract_SoundJeu {
     private MediaPlayer mediaPlayer;
 
     public SoundBlackJack() {
-        String sonJeton = getClass().getResource("/sound.effects/sound_tirer_carte.mp3").toExternalForm();
+        String sonJeton = getClass().getResource("/sound.effects/sound_blackjack.mp3").toExternalForm();
         Media media = new Media(sonJeton);
         mediaPlayer = new MediaPlayer(media);
     }
