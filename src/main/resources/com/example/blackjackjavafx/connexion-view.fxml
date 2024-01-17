@@ -11,11 +11,11 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0"  xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurConnexion">
    <children>
       <TextField fx:id="inputLogin" layoutX="226.0" layoutY="158.0" onAction="#OnInputLoginEnter" />
-      <Label layoutX="144.0" layoutY="162.0" text="Login" />
+      <Label fx:id="loginFieldDescriptor" layoutX="144.0" layoutY="162.0" text="Login" />
       <PasswordField fx:id="inputPassword" layoutX="226.0" layoutY="200.0" onAction="#OnInputPasswordEnter" />
-      <Label layoutX="144.0" layoutY="204.0" text="Mot de passe" />
+      <Label fx:id="passwordFieldDescriptor" layoutX="144.0" layoutY="204.0" text="Mot de passe" />
       <Button fx:id="buttonConnexion" layoutX="264.0" layoutY="244.0" mnemonicParsing="false" onAction="#OnConnexionSubmit" text="Connexion" />
-      <Label fx:id="textInfo" layoutX="229.0" layoutY="117.0" text="Essayez de vous connectez" />
+      <Label fx:id="textInfo" layoutX="229.0" layoutY="117.0" text="Essayez de vous connecter" />
       <Button fx:id="buttonRetour" layoutX="275.0" layoutY="279.0" mnemonicParsing="false" onAction="#OnRetourButton" text="Retour" />
    </children>
 </AnchorPane>

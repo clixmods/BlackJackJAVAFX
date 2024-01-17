@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeton;
@@ -11,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-public class ControleurMise {
+public class ControleurMise implements Controleur{
 
     private Client client;
     private int argentJoueur;
@@ -27,12 +28,27 @@ public class ControleurMise {
     @FXML
     private Label miseJoueurText;
 
+    private String miseJoueurTextState;
+
     public void creerMise(Client client, SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        miseJoueurTextState = "mise_miseText_select";
+        changerLangue();
         miser = new Miser(client, this);
         argentJoueur = client.getArgent();
         this.client = client;
         mettreAJourAffichage();
+    }
+
+    public void changerLangue(){
+        argentJoueurText.setText(LangageManager.getInstance().getText("mise_argentText") + argentJoueur + " $");
+        buttonValidMise.setText(LangageManager.getInstance().getText("mise_validerMiseButton"));
+        if (miseJoueurTextState.equals("mise_miseText_playersBet")){
+            miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_playersBet" + miser.getMise()));
+        }
+        else {
+            miseJoueurText.setText(LangageManager.getInstance().getText(miseJoueurTextState));
+        }
     }
 
     private void genererJetons(){
@@ -62,8 +78,9 @@ public class ControleurMise {
     public void mettreAJourAffichage(){
         genererJetons();
         sceneHandler.mettreAJourHeader();
-        miseJoueurText.setText("Votre mise : " + miser.getMise());
-        argentJoueurText.setText("Votre argent : " + argentJoueur + " €");
+        miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_playersBet") + miser.getMise());
+        miseJoueurTextState = "mise_miseText_playersBet";
+        argentJoueurText.setText(LangageManager.getInstance().getText("mise_argentText") + argentJoueur + " $");
     }
 
     public void onValidButtonClick(){
@@ -72,7 +89,8 @@ public class ControleurMise {
             ClientService.getInstance().mettreAJourArgentClient(client);
         }
         else {
-            miseJoueurText.setText("Vous ne pouvez jouer si vous ne misez pas.");
+            miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_cantBet"));
+            miseJoueurTextState = "mise_miseText_cantBet";
         }
     }
 
