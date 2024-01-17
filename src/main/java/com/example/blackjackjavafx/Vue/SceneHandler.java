@@ -59,25 +59,14 @@ public class SceneHandler {
 
         vueGenerale = new VueGenerale(headerLoader, settingsLoader, this);
 
-        stackpaneJeu = new StackPane();
-        stackpaneJeu.getChildren().add(sceneJeu.getRoot());
+        stackPane = new StackPane();
+        stackPane.getChildren().add(sceneJeu.getRoot());
 
-        Image img = new Image("/backgroundJeu.png");
-        BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        Image img = new Image("/opera_y1iB56RCrT.png");
+        BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background backgroundJeu = new Background(bImg);
-
-        stackpaneJeu.setBackground(backgroundJeu);
-        sceneJeu.setRoot(stackpaneJeu);
-
-        stackpaneAccueil = new StackPane();
-        stackpaneAccueil.getChildren().add(sceneAccueil.getRoot());
-
-        Image imgAccueil = new Image("/fondecranaccueil.png");
-        BackgroundImage bImgAccueil = new BackgroundImage(imgAccueil, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundAccueil = new Background(bImgAccueil);
-
-        stackpaneAccueil.setBackground(backgroundAccueil);
-        sceneAccueil.setRoot(stackpaneAccueil);
+        stackPane.setBackground(backgroundJeu);
+        sceneJeu.setRoot(stackPane);
 
         Scene sceneGenerale = new Scene(vueGenerale, 1000,700);
         stageApplication.setScene(sceneGenerale);
