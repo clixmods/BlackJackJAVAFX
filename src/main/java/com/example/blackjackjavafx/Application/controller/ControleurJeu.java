@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Carte;
@@ -35,6 +36,8 @@ public class ControleurJeu implements Controleur{
     @FXML
     private Label messageRoundText;
 
+    private String messageRoundTextState = "jeu_messageRoundText_selectMise";
+
     @FXML
     private HBox cardBoxPlayer;
 
@@ -48,20 +51,46 @@ public class ControleurJeu implements Controleur{
     private Label handPlayerText;
 
     @FXML
+    private Label handDealerText;
+
+    @FXML
     private Button buttonRestartRound;
 
+    @FXML
+    private Button buttonStand;
+
+    @FXML
+    private Button buttonHit;
+
+    private Button buttonDouble;
+
+    private int gain;
+
     private SceneHandler sceneHandler;
+
+    private void creerBoutonDoubler(){
+        buttonDouble = new Button(LangageManager.getInstance().getText("jeu_doubleButton"));
+        buttonDouble.setScaleY(2.0);
+        buttonDouble.setScaleX(2.0);
+        buttonDouble.setScaleZ(2.0);
+        buttonDouble.setOnAction(event -> {
+            onDoubleButtonClick();
+        });
+    }
 
     public void creerJeu(Client client, int mise, SceneHandler sceneHandler){
         retirerMise();
         this.sceneHandler = sceneHandler;
-        changerLangue();
+        creerBoutonDoubler();
         jeu = new Jeu(client, this, mise);
+        changerLangue();
         this.client = client;
         setBoutonDouble();
-        messageRoundText.setText("Distribution des cartes");
+        messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_cardDistribution"));
+        messageRoundTextState = "jeu_messageRoundText_cardDistribution";
         buttonBoxPlayer.setVisible(true);
-        messageRoundText.setText("Tour joueur");
+        messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_playerTurn"));
+        messageRoundTextState = "jeu_messageRoundText_playerTurn";
         jeu.distribuerCartes();
         afficherCarteFaceCacheeCroupier();
         handPlayerText.setVisible(true);
@@ -70,6 +99,22 @@ public class ControleurJeu implements Controleur{
     @Override
     public void changerLangue() {
         controleurMise.changerLangue();
+        if (jeu != null) {
+            if (messageRoundTextState.equals("jeu_messageRoundText_victory")){
+                messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_victory") + gain + " $");
+            }
+            mettreAJourAffichageValeurMainJoueur(jeu.getValeurMainJoueur());
+            mettreAJourAffichageValeurMainCroupier(jeu.getValeurMainCroupier());
+        }
+        else {
+            messageRoundText.setText(LangageManager.getInstance().getText(messageRoundTextState));
+        }
+        buttonStand.setText(LangageManager.getInstance().getText("jeu_standButton"));
+        buttonHit.setText(LangageManager.getInstance().getText("jeu_hitButton"));
+        if (buttonDouble != null) {
+            buttonDouble.setText(LangageManager.getInstance().getText("jeu_doubleButton"));
+        }
+        buttonRestartRound.setText(LangageManager.getInstance().getText("jeu_restartButton"));
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){
@@ -92,31 +137,26 @@ public class ControleurJeu implements Controleur{
 
     private void setBoutonDouble(){
         //Cette fonction fait apparaître le bouton buttonDouble si le joueur en a les moyens
-        if (buttonBoxPlayer.getChildren().size() == 3){
-            buttonBoxPlayer.getChildren().remove(2);
-        }
         if (jeu.peutDoubler()){
-            Button buttonDouble = new Button("Doubler");
-            buttonDouble.setScaleY(2.0);
-            buttonDouble.setScaleX(2.0);
-            buttonDouble.setScaleZ(2.0);
-            buttonDouble.setOnAction(event -> {
-                onDoubleButtonClick();
-            });
             buttonBoxPlayer.getChildren().add(buttonDouble);
         }
     }
 
     public void finTourJoueur(){
-        messageRoundText.setText("Tour croupier");
+        messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_dealerTurn"));
+        messageRoundTextState = "jeu_messageRoundText_dealerTurn";
         buttonBoxPlayer.setVisible(false);
         cardBoxDealer.getChildren().remove(cardBoxDealer.getChildren().size()-1);
         jeu.tourCroupier();
+        handDealerText.setVisible(true);
     }
 
-    public void afficherVictoire(int mise){
+    public void afficherVictoire(int gain){
+        //Affiche l'écran de victoire avec le gain passé en paramètres.
+        this.gain = gain;
         ClientService.getInstance().mettreAJourArgentClient(client);
-        messageRoundText.setText("Vous avez gagné ! Vous remportez "+ mise + " € !!!");
+        messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_victory")+ gain + " $ !!!");
+        messageRoundTextState = "jeu_messageRoundText_victory";
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
         sceneHandler.activerBoutonHome(true);
@@ -135,7 +175,8 @@ public class ControleurJeu implements Controleur{
     }
 
     public void afficherEgalite(){
-        messageRoundText.setText("Égalité !");
+        messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_draw"));
+        messageRoundTextState = "jeu_messageRoundText_draw";
         ClientService.getInstance().mettreAJourArgentClient(client);
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
@@ -143,11 +184,14 @@ public class ControleurJeu implements Controleur{
     }
 
     public void reinitialiserVue(){
-        messageRoundText.setText("Sélectionnez votre mise");
+        messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_selectMise"));
+        messageRoundTextState = "jeu_messageRoundText_selectMise";
+        buttonBoxPlayer.getChildren().remove(buttonDouble);
         cardBoxDealer.getChildren().clear();
         cardBoxPlayer.getChildren().clear();
         vueGlobale.getChildren().remove(vueMise);
         handPlayerText.setVisible(false);
+        handDealerText.setVisible(false);
     }
 
     public void mettreAJourAffichageCartesJoueur(Carte carte){
@@ -159,10 +203,15 @@ public class ControleurJeu implements Controleur{
     }
 
     public void mettreAJourAffichageValeurMainJoueur(int valeur){
-        handPlayerText.setText("Main du joueur : " + valeur);
+        //Met à jour l'affichage de la valeur de la main du joueur
+        handPlayerText.setText(LangageManager.getInstance().getText("jeu_handPlayerText") + valeur);
     }
 
-    public void afficherBlackJack(int mise){
+    public void mettreAJourAffichageValeurMainCroupier(int valeur){
+        handDealerText.setText(LangageManager.getInstance().getText("jeu_handDealerText") + valeur);
+    }
+
+    public void afficherBlackJack(int gain){
         buttonBoxPlayer.setVisible(false);
         messageRoundText.setText("Blackjack !");
         // J'aimerais que l'affichage affiche blackJack puis attende un peu avant d'afficher la victoire
@@ -172,11 +221,12 @@ public class ControleurJeu implements Controleur{
             throw new RuntimeException(e);
         }
          */
-        afficherVictoire(mise);
+        afficherVictoire(gain);
     }
 
     public void afficherDefaite(){
-        messageRoundText.setText("Vous avez perdu");
+        messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_lose"));
+        messageRoundTextState = "jeu_messageRoundText_lose";
         buttonRestartRound.setVisible(true);
         buttonBoxPlayer.setVisible(false);
         sceneHandler.activerBoutonHome(true);

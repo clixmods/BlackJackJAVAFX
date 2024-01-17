@@ -28,6 +28,20 @@ public class LangageEN implements Langage{
         dictionnaire.put("mise_miseText_cantBet", "You can't play if you don't bet.");
         dictionnaire.put("mise_miseText_notEnoughMoney", "You no longer have enough money to bet so much.");
         dictionnaire.put("mise_validerMiseButton", "I validate my bet");
+
+        dictionnaire.put("jeu_handDealerText", "Dealer's hand : ");
+        dictionnaire.put("jeu_handPlayerText", "Player's hand : ");
+        dictionnaire.put("jeu_messageRoundText_selectMise", "Select your bet");
+        dictionnaire.put("jeu_messageRoundText_cardDistribution", "Card distribution");
+        dictionnaire.put("jeu_messageRoundText_playerTurn", "Player's turn");
+        dictionnaire.put("jeu_messageRoundText_dealerTurn", "Dealer's turn");
+        dictionnaire.put("jeu_messageRoundText_victory", "You've won! You win ");
+        dictionnaire.put("jeu_messageRoundText_draw", "Draw !");
+        dictionnaire.put("jeu_messageRoundText_lose", "You've lost");
+        dictionnaire.put("jeu_standButton", "Stay");
+        dictionnaire.put("jeu_hitButton", "Hit");
+        dictionnaire.put("jeu_doubleButton", "Double");
+        dictionnaire.put("jeu_restartButton", "Restart");
     }
 
     public static LangageEN getInstance(){
