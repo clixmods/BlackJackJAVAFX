@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.effect.Bloom?>
+
+<!-- Attention utilisez bien xmlns:fx="http://javafx.com/fxml" pour eviter de spécifiez la version afin de pas avoir de message de warning au démarrage du jeu -->
+
+<VBox spacing="50.0" alignment="CENTER" xmlns:fx="http://javafx.com/fxml/" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurInscription" style="-fx-background-color: #24074a;">
+
+    <Label  style="-fx-font-size: 24; -fx-text-fill: #56d9fb;" text="Inscription">
+        <effect>
+            <Bloom threshold="-1"/>
+        </effect>
+    </Label>
+
+    <Label fx:id="messageInfo" alignment="CENTER" style="-fx-font-size: 20; -fx-text-fill: #56d9fb;" text="Inscrivez vous pour rejoindre la plateforme">
+        <effect>
+            <Bloom threshold="-1"/>
+        </effect>
+    </Label>
+
+    <VBox alignment="CENTER" spacing="20.0">
+
+        <HBox alignment="CENTER" spacing="10">
+            <Label fx:id="mailFieldDescriptor" prefHeight="17.0" prefWidth="130.0" style="-fx-text-fill: #56d9fb;" text="Adresse mail">
+                <effect>
+                    <Bloom threshold="-0.4"/>
+                </effect>
+            </Label>
+            <TextField fx:id="inputMail" onAction="#OnMailEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"  />
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="10.0">
+            <Label fx:id="loginFieldDescriptor" prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #56d9fb;" text="Login" >
+                <effect>
+                    <Bloom threshold="-0.4"/>
+                </effect>
+            </Label>
+            <TextField fx:id="inputPseudo" onAction="#OnPseudoEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"  />
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="10.0">
+            <Label fx:id="nameFieldDescriptor" prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #56d9fb;" text="Nom">
+                <effect>
+                    <Bloom threshold="-0.4"/>
+                </effect>
+            </Label>
+            <TextField fx:id="inputNom" onAction="#OnNomEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"  />
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="10">
+            <Label fx:id="firstNameFieldDescriptor" prefHeight="17.0" prefWidth="129.0" style="-fx-text-fill: #56d9fb;" text="Prénom" >
+                <effect>
+                    <Bloom threshold="-0.4"/>
+                </effect>
+            </Label>
+            <TextField fx:id="inputPrenom" onAction="#OnPrenomEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"  />
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="10">
+            <Label fx:id="birthDateFieldDescriptor" prefHeight="17.0" prefWidth="108.0" style="-fx-text-fill: #56d9fb;" text="Date de naissance" >
+                <effect>
+                    <Bloom threshold="-0.4"/>
+                </effect>
+            </Label>
+            <DatePicker fx:id="inputDateNaissance" onAction="#OnDateEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);" />
+        </HBox>
+        <HBox alignment="CENTER" spacing="10">
+            <Label fx:id="passwordFieldDescriptor" prefHeight="17.0" prefWidth="133.0" style="-fx-text-fill: #56d9fb;" text="Mot de passe" >
+                <effect>
+                    <Bloom threshold="-0.4"/>
+                </effect>
+            </Label>
+            <PasswordField fx:id="inputPassword1" onAction="#OnPasswordEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"  />
+        </HBox>
+
+        <HBox alignment="CENTER" spacing="10">
+            <Label fx:id="passwordConfirmationFieldDescriptor" prefHeight="17.0" prefWidth="140.0" style="-fx-text-fill: #56d9fb;" text="Confirmer mot de passe" >
+                <effect>
+                    <Bloom threshold="-0.4"/>
+                </effect>
+            </Label>
+            <PasswordField fx:id="inputPassword2" onAction="#OnConfirmPasswordEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"  />
+        </HBox>
+
+        <CheckBox fx:id="termsAndConditionsCheckBox" mnemonicParsing="false" style="-fx-text-fill: #56d9fb;" text="J'accepte les CGU" />
+        <Button fx:id = "CGUBouton" text="Conditions d'utilisation" onAction="#OnCGU" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+        <Button fx:id="submitInscription" onAction="#OnSubmit" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);" text="S'inscrire" />
+        <Button fx:id="retourButton" onAction="#OnRetourButton" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);" text="Retour"/>
+    </VBox>
+</VBox>

@@ -1,6 +1,6 @@
 package com.example.blackjackjavafx.Metier;
 
-import com.example.blackjackjavafx.Application.ControleurMise;
+import com.example.blackjackjavafx.Application.controller.ControleurMise;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +8,8 @@ import java.util.List;
 public class Miser {
 
     private List<Jeton> listeJetons;
-
     private int mise;
-
     private ControleurMise controleurMise;
-
     private Client client;
 
     public Miser(Client client, ControleurMise controleurMise){
