@@ -84,8 +84,13 @@ public class ControleurMise implements Controleur{
 
     public void onValidButtonClick(){
         if (miser.getMise() > 0) {
-            sceneHandler.commencerPartie(client, miser.getMise());
-            ClientService.getInstance().mettreAJourArgentClient(client);
+            if (miser.getMise()>ClientService.getInstance().getClient(client.getLogin()).getArgent()){
+                miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_notEnoughMoney"));
+            }
+            else {
+                sceneHandler.commencerPartie(client, miser.getMise());
+                ClientService.getInstance().mettreAJourArgentClient(client);
+            }
             sceneHandler.mettreAJourHeader();
         }
         else {
