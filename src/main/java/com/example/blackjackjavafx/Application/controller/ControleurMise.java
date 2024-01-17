@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
-public class ControleurMise {
+public class ControleurMise implements Controleur{
 
     private Client client;
     private int argentJoueur;
@@ -29,10 +29,15 @@ public class ControleurMise {
 
     public void creerMise(Client client, SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        changerLangue();
         miser = new Miser(client, this);
         argentJoueur = client.getArgent();
         this.client = client;
         mettreAJourAffichage();
+    }
+
+    public void changerLangue(){
+
     }
 
     private void genererJetons(){

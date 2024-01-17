@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class ControleurConnexion {
+public class ControleurConnexion implements Controleur{
 
     @FXML
     private TextField inputLogin;
@@ -23,7 +23,12 @@ public class ControleurConnexion {
     private Button buttonConnexion;
 
     @FXML
+    private Button buttonRetour;
+
+    @FXML
     private Label textInfo;
+
+    private String textInfoState;
 
     @FXML
     private Label passwordFieldDescriptor;
@@ -34,15 +39,17 @@ public class ControleurConnexion {
     private SceneHandler sceneHandler;
 
     public void initialiserConnexion(SceneHandler sceneHandler) {
-        afficherTexte();
         this.sceneHandler = sceneHandler;
+        textInfoState = "connexion_textInfo_tryConnect";
+        changerLangue();
     }
 
-    private void afficherTexte(){
+    public void changerLangue(){
         loginFieldDescriptor.setText(LangageManager.getInstance().getText("connexion_loginFieldDescriptor"));
         passwordFieldDescriptor.setText(LangageManager.getInstance().getText("connexion_passwordFieldDescriptor"));
-        textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_tryConnect"));
+        textInfo.setText(LangageManager.getInstance().getText(textInfoState));
         buttonConnexion.setText(LangageManager.getInstance().getText("connexion_connexionButton"));
+        buttonRetour.setText(LangageManager.getInstance().getText("connexion_retourButton"));
     }
 
     public void OnInputLoginEnter(ActionEvent actionEvent) {
@@ -60,17 +67,21 @@ public class ControleurConnexion {
         switch (result) {
             case SUCCESS -> {
                 textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_successfulConnection"));
+                textInfoState = "connexion_textInfo_successfulConnection";
                 sceneHandler.mettreAJourHeader();
                 // TODO : quest ce qu'on fait ?
             }
             case BAD_PASSWORD -> {
                 textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_incorrectPassword"));
+                textInfoState = "connexion_textInfo_incorrectPassword";
             }
             case UNDEFINED_LOGIN -> {
                 textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_missingLogin"));
+                textInfoState = "connexion_textInfo_missingLogin";
             }
             case UNKNOWN_ERROR -> {
                 textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_unknown_error"));
+                textInfoState = "connexion_textInfo_unknown_error";
             }
         }
     }

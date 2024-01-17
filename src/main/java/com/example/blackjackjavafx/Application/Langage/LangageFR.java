@@ -14,8 +14,9 @@ public class LangageFR implements Langage{
         dictionnaire.put("connexion_loginFieldDescriptor", "Login");
         dictionnaire.put("connexion_passwordFieldDescriptor", "Mot de passe");
         dictionnaire.put("connexion_connexionButton", "Connexion");
+        dictionnaire.put("connexion_retourButton", "Retour");
         dictionnaire.put("connexion_textInfo_tryConnect", "Essayez de vous connecter");
-        dictionnaire.put("connexion_textInfo_successfulConnection", "Conenxion réussie");
+        dictionnaire.put("connexion_textInfo_successfulConnection", "Connexion réussie");
         dictionnaire.put("connexion_textInfo_incorrectPassword", "Mot de passe incorrect");
         dictionnaire.put("connexion_textInfo_missingLogin", "Login inexistant");
         dictionnaire.put("connexion_textInfo_unknown_error", "Erreur inconnue");
