@@ -30,6 +30,16 @@ public class ControleurAccueil implements Controleur{
         sceneHandler.afficherInscription();
     }
 
+    public void onRulesButtonClick(ActionEvent actionEvent)
+    {
+        sceneHandler.afficherRegles();
+    }
+
+    public void onCGUButtonClick(ActionEvent actionEvent)
+    {
+        sceneHandler.afficherCGU();
+    }
+
     public void onConnexionButtonClick(ActionEvent actionEvent) {
         sceneHandler.afficherConnexion();
     }

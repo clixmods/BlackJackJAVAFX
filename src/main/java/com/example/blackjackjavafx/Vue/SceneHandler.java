@@ -25,7 +25,7 @@ public class SceneHandler {
     private static Scene sceneConnexion;
     private static Scene sceneSettings;
     private static Scene sceneRegles;
-
+    private static Scene sceneCGU;
 
     private final static FXMLLoader jeuLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-playerTurn-view.fxml"));
     private final static FXMLLoader accueilLoader = new FXMLLoader(BlackJackApplication.class.getResource("hello-view.fxml"));
@@ -35,6 +35,7 @@ public class SceneHandler {
     private final static FXMLLoader headerLoader = new FXMLLoader(BlackJackApplication.class.getResource("header.fxml"));
     private final static FXMLLoader connexionLoader = new FXMLLoader(BlackJackApplication.class.getResource("connexion-view.fxml"));
     private final static FXMLLoader reglesLoader = new FXMLLoader(BlackJackApplication.class.getResource("regles-view.fxml"));
+    private final static FXMLLoader cguLoader = new FXMLLoader(BlackJackApplication.class.getResource("cgu-view.fxml"));
 
     private Stage stageApplication;
     private VueGenerale vueGenerale;
@@ -50,6 +51,7 @@ public class SceneHandler {
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
         sceneConnexion = new Scene(connexionLoader.load(),640,700);
         sceneRegles = new Scene(reglesLoader.load());
+        sceneCGU = new Scene(cguLoader.load(), 640, 700);
 
 
         vueGenerale = new VueGenerale(headerLoader, settingsLoader, this);
@@ -109,6 +111,12 @@ public class SceneHandler {
 
         vueGenerale.setCentre(sceneRegles.getRoot(), controleurRegles);
 
+    }
+
+    public void afficherCGU(){
+        ControleurCGU controleurCGU = cguLoader.getController();
+        controleurCGU.initialiserCGU(this);
+        vueGenerale.setCentre(sceneCGU.getRoot(), controleurCGU);
     }
 
 
