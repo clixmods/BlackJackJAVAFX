@@ -1,10 +1,11 @@
 package com.example.blackjackjavafx.Application.controller;
 
-import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Metier.Client;
+import com.example.blackjackjavafx.Repository.RepositoryClient;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class ControleurUser implements Controleur{
@@ -18,6 +19,8 @@ public class ControleurUser implements Controleur{
     private Label labelEmail;
     @FXML
     private Label labelArgent;
+    @FXML
+    private ComboBox<Integer> montantComboBox;
 
 
     private SceneHandler sceneHandler;
@@ -33,7 +36,13 @@ public class ControleurUser implements Controleur{
 
     @FXML
     public void handleAjouterArgent(){
-
+        Client client = Connexion.getInstance().getClientConnecte();
+        if(montantComboBox.getValue() != null){
+            client.ajouterArgent(montantComboBox.getValue());
+            new RepositoryClient().mettreAJourArgent(client);
+        }
+        sceneHandler.mettreAJourHeader();
+        sceneHandler.afficherUser();
     }
 
     @FXML
