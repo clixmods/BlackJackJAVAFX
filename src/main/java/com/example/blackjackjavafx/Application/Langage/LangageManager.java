@@ -8,7 +8,7 @@ public abstract class LangageManager {
         return INSTANCE;
     }
 
-    public void setInstance(Langage langage){
+    public static void setInstance(Langage langage){
         INSTANCE = langage;
     }
 }

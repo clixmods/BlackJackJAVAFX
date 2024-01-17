@@ -14,6 +14,7 @@ public class LangageEN implements Langage{
         dictionnaire.put("connexion_loginFieldDescriptor", "Login");
         dictionnaire.put("connexion_passwordFieldDescriptor", "Password");
         dictionnaire.put("connexion_connexionButton", "Connection");
+        dictionnaire.put("connexion_retourButton", "Back");
         dictionnaire.put("connexion_textInfo_tryConnect", "Try to connect");
         dictionnaire.put("connexion_textInfo_successfulConnection", "Successful connection");
         dictionnaire.put("connexion_textInfo_incorrectPassword", "Incorrect password");

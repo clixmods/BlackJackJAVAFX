@@ -4,7 +4,7 @@ import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class ControleurRegles {
+public class ControleurRegles implements Controleur{
 
     @FXML
     private Label label;
@@ -17,7 +17,13 @@ public class ControleurRegles {
     private SceneHandler sceneHandler;
     public void initialiserRegles(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        changerLangue();
         LabelResponsive();
+    }
+
+    @Override
+    public void changerLangue() {
+
     }
 
     private void LabelResponsive(){

@@ -2,9 +2,9 @@ package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Vue.SceneHandler;
 
-public abstract class Controleur {
+public interface Controleur {
 
-    public void initialiser(SceneHandler sceneHandler){
+    //public void initialiser(SceneHandler sceneHandler);
 
-    };
+    void changerLangue();
 }

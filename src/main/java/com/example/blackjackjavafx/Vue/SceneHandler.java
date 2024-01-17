@@ -69,7 +69,7 @@ public class SceneHandler {
         ControleurAccueil controleurAccueil = accueilLoader.getController();
         controleurAccueil.initialiserAccueil(this);
 
-        vueGenerale.setCentre(sceneAccueil.getRoot());
+        vueGenerale.setCentre(sceneAccueil.getRoot(), controleurAccueil);
     }
 
     public void afficherSettings() {
@@ -84,21 +84,21 @@ public class SceneHandler {
         ControleurInscription controleurInscription = inscriptionLoader.getController();
         controleurInscription.initialiserInscription(this);
 
-        vueGenerale.setCentre(sceneInscription.getRoot());
+        vueGenerale.setCentre(sceneInscription.getRoot(), controleurInscription);
     }
 
     public void afficherConnexion() {
         ControleurConnexion controleurConnexion = connexionLoader.getController();
         controleurConnexion.initialiserConnexion(this);
 
-        vueGenerale.setCentre(sceneConnexion.getRoot());
+        vueGenerale.setCentre(sceneConnexion.getRoot(), controleurConnexion);
     }
 
     public void afficherRegles() {
         ControleurRegles controleurRegles = reglesLoader.getController();
         controleurRegles.initialiserRegles(this);
 
-        vueGenerale.setCentre(sceneRegles.getRoot());
+        vueGenerale.setCentre(sceneRegles.getRoot(), controleurRegles);
 
     }
 
@@ -117,5 +117,9 @@ public class SceneHandler {
     public void commencerPartie(Client client, int mise){
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.creerJeu(client, mise, this);
+    }
+
+    public void changerLangue(){
+        vueGenerale.changerLangue();
     }
 }

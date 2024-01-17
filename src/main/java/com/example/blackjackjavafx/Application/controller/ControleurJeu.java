@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class ControleurJeu {
+public class ControleurJeu implements Controleur{
 
     private Jeu jeu;
 
@@ -50,6 +50,7 @@ public class ControleurJeu {
     public void creerJeu(Client client, int mise, SceneHandler sceneHandler){
         retirerMise();
         this.sceneHandler = sceneHandler;
+        changerLangue();
         jeu = new Jeu(client, this, mise);
         this.client = client;
         setBoutonDouble();
@@ -58,6 +59,11 @@ public class ControleurJeu {
         messageRoundText.setText("Tour joueur");
         jeu.distribuerCartes();
         handPlayerText.setVisible(true);
+    }
+
+    @Override
+    public void changerLangue() {
+
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){

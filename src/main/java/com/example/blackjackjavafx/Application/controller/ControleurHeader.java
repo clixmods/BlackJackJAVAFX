@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 
 import java.io.InputStream;
 
-public class ControleurHeader {
+public class ControleurHeader implements Controleur{
 
     private static SceneHandler sceneHandler;
     @FXML
@@ -24,11 +24,9 @@ public class ControleurHeader {
     private ImageView boutonSettings;
 
 
-    public void initialiserHeader(SceneHandler sceneHandlerp){
+    public void initialiserHeader(SceneHandler sceneHandler){
 
-        if(sceneHandler == null) {
-            this.sceneHandler = sceneHandlerp;
-        }
+        ControleurHeader.sceneHandler = sceneHandler;
 
         InputStream inputStream = getClass().getResourceAsStream("/images.header/home.png");
         if(inputStream != null) {
@@ -49,6 +47,10 @@ public class ControleurHeader {
 
 
     }
+
+    public void changerLangue(){
+    }
+
     @FXML
     public void handleHome() {
         sceneHandler.afficherAccueil();

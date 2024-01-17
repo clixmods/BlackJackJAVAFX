@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 
 import java.time.LocalDate;
 
-public class ControleurInscription
+public class ControleurInscription implements Controleur
 {
     //region FXML Variables
 
@@ -35,7 +35,10 @@ public class ControleurInscription
     private SceneHandler sceneHandler;
     public void initialiserInscription(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        changerLangue();
     }
+
+    public void changerLangue(){}
 
     public void OnMailEnter(ActionEvent actionEvent) {
     }
@@ -76,7 +79,7 @@ public class ControleurInscription
 
         if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm, dateNaissance))
         {
-            messageInfo.setText("Inscription réussi "+nom+" "+prenom+" ! Vous allez être rediriger vers la page de connexion.");
+            messageInfo.setText("Inscription réussi "+nom+" "+prenom+" ! Vous allez être redirigé vers la page de connexion.");
             //wait(4000);
             sceneHandler.afficherConnexion();
             // TODO : Ouvrir un menu pour une connexion reussie

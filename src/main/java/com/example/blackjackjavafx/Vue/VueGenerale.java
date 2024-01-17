@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Vue;
 
+import com.example.blackjackjavafx.Application.controller.Controleur;
 import com.example.blackjackjavafx.Application.controller.ControleurHeader;
 import com.example.blackjackjavafx.Application.controller.ControleurSettings;
 import com.example.blackjackjavafx.BlackJackApplication;
@@ -22,6 +23,8 @@ public class VueGenerale extends BorderPane {
 
     private ControleurHeader controleurHeader;
 
+    private Controleur controleurCourant;
+
     public VueGenerale(FXMLLoader headerLoader, FXMLLoader settingsLoader, SceneHandler sceneHandler){
         centre = new StackPane();
         setCenter(centre);
@@ -42,9 +45,16 @@ public class VueGenerale extends BorderPane {
         return controleurHeader;
     }
 
-    public void setCentre(javafx.scene.Node centre){
+    public void changerLangue(){
+        controleurCourant.changerLangue();
+        controleurSettings.changerLangue();
+        controleurHeader.changerLangue();
+    }
+
+    public void setCentre(javafx.scene.Node centre, Controleur controleur){
         this.centre.getChildren().clear();
         this.centre.getChildren().add(centre);
+        controleurCourant = controleur;
     }
 
     public void setParametres(){
