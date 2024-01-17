@@ -18,6 +18,7 @@ public class Participant {
     }
 
     public void calculerValeurMain(){
+        //Met à jour la "vraie" valeur de la main, en fonction des As
         while(nbAs !=0 && valeurMain>21){
             valeurMain -= 10;
             nbAs -= 1;
@@ -29,6 +30,7 @@ public class Participant {
     }
 
     public Carte piocher(Pioche pioche){
+        //Ajoute une carte de la pioche dans la main du joueur, et ajoute sa valeur "brute" à valeurMain
         Carte carte = pioche.piocher();
         if (carte.getValeur() == 11){
             nbAs ++;

@@ -128,9 +128,9 @@ public class SceneHandler {
     }
 
     public void commencerPartie(Client client, int mise){
+        activerBoutonHome(false);
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.creerJeu(client, mise, this);
-        activerBoutonHome(false);
     }
 
     public void changerLangue(){
