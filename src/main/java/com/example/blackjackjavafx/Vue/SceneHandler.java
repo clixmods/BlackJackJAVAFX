@@ -10,6 +10,8 @@ import javafx.scene.SubScene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.IOException;
 
@@ -36,6 +38,8 @@ public class SceneHandler {
     private Stage stageApplication;
     private VueGenerale vueGenerale;
     private static StackPane stackPane;
+    private MediaPlayer mediaPlayer;
+
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
@@ -63,6 +67,22 @@ public class SceneHandler {
 
         afficherSettings();
         afficherAccueil();
+
+        // On importe la musique et on la boucle
+        try {
+            String musiqueAmbiance = getClass().getResource("/jazz_libre_de_droits.mp3").toExternalForm();
+            Media media = new Media(musiqueAmbiance);
+            mediaPlayer = new MediaPlayer(media);
+        }
+        catch(NullPointerException e){
+            System.err.println("Erreur musique : " + e.getMessage());
+        }
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
+
+
+
+
     }
 
     public void afficherAccueil() {
@@ -126,5 +146,9 @@ public class SceneHandler {
 
     public void activerBoutonHome(boolean active){
         vueGenerale.activerBoutonHome(active);
+    }
+
+    public void reglerVolumeMusique(double volume){
+        mediaPlayer.setVolume(volume);
     }
 }

@@ -43,7 +43,7 @@ public class ControleurSettings implements Controleur{
         difficulte = difficulteBox.getValue();
 
 
-        System.out.println("Volume de la musique : " + volumeMusique);
+        sceneHandler.reglerVolumeMusique(volumeMusique);
         System.out.println("Volume des effets sonores : " + volumeEffets);
         System.out.println("Langue sélectionnée : " + langue);
         System.out.println("Difficulté sélectionnée : " + difficulte);
