@@ -13,13 +13,10 @@
     <center>
         <VBox alignment="CENTER" spacing="20">
             <Label text="Paramètres"/>
-
             <Label text="Volume de la musique"/>
             <Slider fx:id="sliderMusique" maxWidth="500" min="0.0" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0"/>
-
             <Label text="Volume des effets sonores"/>
             <Slider fx:id="sliderEffets" maxWidth="500" min="0.0" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0"/>
-
             <Label text="Langue"/>
             <ComboBox fx:id="langueBox" value="Français">
                 <items>
@@ -31,8 +28,6 @@
             </ComboBox>
 
             <Button text="Appliquer" onAction="#handleAppliquer"/>
-
         </VBox>
     </center>
-
 </BorderPane>
