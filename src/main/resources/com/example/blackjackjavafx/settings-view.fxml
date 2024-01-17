@@ -30,17 +30,6 @@
                 </items>
             </ComboBox>
 
-            <Label text="Difficulté"/>
-            <ComboBox fx:id="difficulteBox" value="Moyen">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Facile"/>
-                        <String fx:value="Moyen"/>
-                        <String fx:value="Difficile"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
-
             <Button text="Appliquer" onAction="#handleAppliquer"/>
 
         </VBox>
