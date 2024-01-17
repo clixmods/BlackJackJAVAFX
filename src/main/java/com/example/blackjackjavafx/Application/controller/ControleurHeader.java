@@ -71,9 +71,11 @@ public class ControleurHeader implements Controleur{
 
     @FXML
     public void handleUser() {
-        if (Connexion.getInstance().estConnecte()){
-            sceneHandler.afficherUser();
-            sceneHandler.afficherUser();
+        if (boutonHomeActif) {
+            if (Connexion.getInstance().estConnecte()) {
+                sceneHandler.afficherUser();
+                sceneHandler.afficherUser();
+            }
         }
     }
 

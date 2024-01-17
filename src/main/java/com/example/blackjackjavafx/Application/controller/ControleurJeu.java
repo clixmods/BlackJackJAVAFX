@@ -202,6 +202,7 @@ public class ControleurJeu implements Controleur{
     }
 
     public void reinitialiserVue(){
+        buttonRestartRound.setVisible(false);
         messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_selectMise"));
         messageRoundTextState = "jeu_messageRoundText_selectMise";
         buttonBoxPlayer.getChildren().remove(buttonDouble);
@@ -253,7 +254,6 @@ public class ControleurJeu implements Controleur{
 
     public void onRestartButtonClick(){
         sceneHandler.selectionnerMise(client);
-        buttonRestartRound.setVisible(false);
     }
 
     public void onStandButtonClick(){
