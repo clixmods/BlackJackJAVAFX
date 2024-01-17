@@ -14,4 +14,8 @@ public class ControleurCGU implements Controleur{
         public void changerLangue() {
 
         }
+
+        public void retour(){
+            sceneHandler.afficherInscription();
+        }
 }

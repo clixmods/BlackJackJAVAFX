@@ -27,6 +27,5 @@
 
     <Button fx:id="rulesButton" text="Règles" onAction="#onRulesButtonClick"/>
 
-    <Button fx:id="termsAndConditionsButton" text="Conditions Générales" onAction="#onCGUButtonClick"/>
 
 </VBox>

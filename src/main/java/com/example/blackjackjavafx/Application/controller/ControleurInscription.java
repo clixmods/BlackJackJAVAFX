@@ -110,6 +110,10 @@ public class ControleurInscription implements Controleur
     public void OnDateEnter(ActionEvent actionEvent) {
     }
 
+    public void OnCGU(ActionEvent actionEvent){
+        sceneHandler.afficherCGU();
+    }
+
     public void OnSubmit(ActionEvent actionEvent) throws InterruptedException {
         // Get inputs text
         String login = inputPseudo.getText();
