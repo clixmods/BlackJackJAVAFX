@@ -3,6 +3,7 @@ package com.example.blackjackjavafx.Application.controller;
 import com.example.blackjackjavafx.Application.Langage.LangageEN;
 import com.example.blackjackjavafx.Application.Langage.LangageFR;
 import com.example.blackjackjavafx.Application.Langage.LangageManager;
+import com.example.blackjackjavafx.Application.helper.SoundsHelper;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -40,7 +41,7 @@ public class ControleurSettings implements Controleur{
 
 
         sceneHandler.reglerVolumeMusique(volumeMusique);
-        sceneHandler.reglerVolumeEffets(volumeEffets);
+        SoundsHelper.setVolume(volumeEffets);
         System.out.println("Langue sélectionnée : " + langue);
 
         //Cette partie permet de changer la langue si elle a été modifiée. Elle fonctionne mais n'est pas très propre (ça ne respecte pas vraiment le principe Open/Close), il faudra la recoder

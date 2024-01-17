@@ -6,46 +6,14 @@ import com.example.blackjackjavafx.Application.sound.SoundJeton;
 import com.example.blackjackjavafx.Application.sound.SoundVictoire;
 
 public class SoundsHelper {
-    private static SoundsHelper instance;
-    private SoundJeton soundJeton;
-    private SoundCarte soundCarte;
-    private SoundVictoire soundVictoire;
-    private SoundBlackJack soundBlackJack;
+    private static double volume = 0.5;
 
-    private SoundsHelper(){
-        soundCarte = SoundCarte.getInstance();
-        soundVictoire = SoundVictoire.getInstance();
-        soundBlackJack = SoundBlackJack.getInstance();
-        soundJeton = SoundJeton.getInstance();
+    public static void setVolume(double v){
+        volume = v;
     }
 
-    public static SoundsHelper getInstance() {
-        if (instance == null) {
-            instance = new SoundsHelper();
-        }
-        return instance;
+    public static double getVolume(){
+        return volume;
     }
 
-    public void setVolume(double volume){
-        SoundJeton.getInstance().setVolume(volume);
-        SoundCarte.getInstance().setVolume(volume);
-        SoundVictoire.getInstance().setVolume(volume);
-        SoundBlackJack.getInstance().setVolume(volume);
-    }
-
-    public void jouerSonCarte(){
-        soundCarte.play();
-    }
-
-    public void jouerSonJeton(){
-        soundJeton.play();
-    }
-
-    public void jouerSonVictoire(){
-        soundVictoire.play();
-    }
-
-    public void jouerSonBlackJack(){
-        soundBlackJack.play();
-    }
 }

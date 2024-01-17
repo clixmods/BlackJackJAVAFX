@@ -3,30 +3,22 @@ package com.example.blackjackjavafx.Application.sound;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class SoundVictoire implements I_SoundJeu {
+public class SoundVictoire extends Abstract_SoundJeu {
 
-    private static SoundVictoire instance;
     private MediaPlayer mediaPlayer;
 
-    private SoundVictoire() {
+    public SoundVictoire() {
         String sonJeton = getClass().getResource("/sound.effects/sound_victory.mp3").toExternalForm();
         Media media = new Media(sonJeton);
         mediaPlayer = new MediaPlayer(media);
     }
 
-    public static SoundVictoire getInstance() {
-        if (instance == null) {
-            instance = new SoundVictoire();
-        }
-        return instance;
-    }
-
-    public void setVolume(double volume) {
-        mediaPlayer.setVolume(volume);
-    }
-
-    public void play() {
+    public void play(double volume){
         mediaPlayer.stop();
+        setVolume(volume);
         mediaPlayer.play();
+    }
+    public void setVolume(double volume){
+        mediaPlayer.setVolume(volume);
     }
 }

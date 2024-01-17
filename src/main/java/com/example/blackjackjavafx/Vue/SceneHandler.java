@@ -45,7 +45,6 @@ public class SceneHandler {
     private VueGenerale vueGenerale;
     private static StackPane stackPane;
     private MusicPlayer musicPlayer;
-    private SoundsHelper soundsHelper;
 
 
     public SceneHandler(Stage stage) throws IOException {
@@ -76,7 +75,6 @@ public class SceneHandler {
         afficherAccueil();
 
         musicPlayer = new MusicPlayer();
-        soundsHelper = SoundsHelper.getInstance();
 
     }
 
@@ -145,14 +143,6 @@ public class SceneHandler {
 
     public void reglerVolumeMusique(double volume){
         musicPlayer.reglerVolumeMusique(volume);
-    }
-
-    public void reglerVolumeEffets(double volume){
-        soundsHelper.setVolume(volume);
-    }
-
-    public SoundsHelper getSoundsHelper(){
-        return soundsHelper;
     }
 
 }
