@@ -1,5 +1,7 @@
 package com.example.blackjackjavafx.Metier;
 
+import com.example.blackjackjavafx.Repository.RepositoryClient;
+
 import java.time.LocalDate;
 
 public class Client {
