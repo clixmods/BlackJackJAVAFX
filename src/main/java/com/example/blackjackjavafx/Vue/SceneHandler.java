@@ -137,8 +137,8 @@ public class SceneHandler {
         vueGenerale.activerBoutonHome(active);
     }
 
-    public MusicPlayer getMusicPlayer(){
-        return musicPlayer;
+    public void reglerVolumeMusique(double volume){
+        musicPlayer.reglerVolumeMusique(volume);
     }
 
 }

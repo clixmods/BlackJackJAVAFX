@@ -18,14 +18,22 @@ public class MusicPlayer {
         }
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         reglerVolumeMusique(0.5);
-        mediaPlayer.play();
+        play();
     }
 
     public void reglerVolumeMusique(double volume){
         mediaPlayer.setVolume(volume);
-        mediaPlayer.play();
+        play();
         if(volume == 0.0){
-            mediaPlayer.pause();
+            pause();
         }
+    }
+
+    public void play(){
+        mediaPlayer.play();
+    }
+
+    public void pause(){
+        mediaPlayer.pause();
     }
 }
