@@ -48,6 +48,7 @@ public class SceneHandler {
     private VueGenerale vueGenerale;
     private static StackPane stackPane;
     private static StackPane stackpaneAccueil;
+    private static StackPane stackpaneCGU;
     private MusicPlayer musicPlayer;
 
 
@@ -80,6 +81,14 @@ public class SceneHandler {
         Background backgroundAccueil = new Background(bgimgAccueil);
         stackpaneAccueil.setBackground(backgroundAccueil);
         sceneAccueil.setRoot(stackpaneAccueil);
+
+        stackpaneCGU =new StackPane();
+        stackpaneCGU.getChildren().add(sceneCGU.getRoot());
+        Image bgCGU =new Image("/backgroundAccueil.png");
+        BackgroundImage bgimgCGU = new BackgroundImage(bgCGU,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundCGU = new Background(bgimgCGU);
+        stackpaneCGU.setBackground(backgroundCGU);
+        sceneCGU.setRoot(stackpaneCGU);
 
         Scene sceneGenerale = new Scene(vueGenerale, 1000,700);
         stageApplication.setScene(sceneGenerale);
