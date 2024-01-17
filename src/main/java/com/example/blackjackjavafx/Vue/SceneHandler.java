@@ -2,6 +2,7 @@ package com.example.blackjackjavafx.Vue;
 
 import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Application.controller.*;
+import com.example.blackjackjavafx.Application.music.MusicPlayer;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.SubScene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.IOException;
 
@@ -36,6 +39,8 @@ public class SceneHandler {
     private Stage stageApplication;
     private VueGenerale vueGenerale;
     private static StackPane stackPane;
+    private MusicPlayer musicPlayer;
+
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
@@ -63,6 +68,10 @@ public class SceneHandler {
 
         afficherSettings();
         afficherAccueil();
+
+        musicPlayer = new MusicPlayer();
+
+
     }
 
     public void afficherAccueil() {
@@ -127,4 +136,9 @@ public class SceneHandler {
     public void activerBoutonHome(boolean active){
         vueGenerale.activerBoutonHome(active);
     }
+
+    public void reglerVolumeMusique(double volume){
+        musicPlayer.reglerVolumeMusique(volume);
+    }
+
 }
