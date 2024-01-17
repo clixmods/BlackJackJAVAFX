@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.Integer?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurUser">
 
     <center>
@@ -21,7 +23,17 @@
 
             <HBox spacing="10" alignment="CENTER">
                 <Label text="Ajouter de l'argent:" />
-                <TextField fx:id="montant" />
+                <ComboBox fx:id="montantComboBox" promptText="Sélectionnez un montant">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Integer fx:value="1" />
+                            <Integer fx:value="5" />
+                            <Integer fx:value="10" />
+                            <Integer fx:value="100" />
+                            <Integer fx:value="500" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
                 <Button text="Ajouter" fx:id="boutonNom"  onAction="#handleAjouterArgent" />
             </HBox>
 
