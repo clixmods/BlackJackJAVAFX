@@ -19,9 +19,9 @@
 
     <Button fx:id="inscriptionButton" text="Inscription" onAction="#onInscriptionButtonClick"/>
 
-    <Button text="Règles" onAction="#onRulesButtonClick"/>
+    <Button fx:id="rulesButton" text="Règles" onAction="#onRulesButtonClick"/>
 
-    <Button text="Conditions Générales" onAction="#onCGUButtonClick"/>
+    <Button fx:id="termsAndConditionsButton" text="Conditions Générales" onAction="#onCGUButtonClick"/>
 
 
 
