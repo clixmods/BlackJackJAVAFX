@@ -48,6 +48,8 @@ public class LangageFR implements Langage{
         dictionnaire.put("accueil_startGameButton", "Démarrer une partie");
         dictionnaire.put("accueil_connectionButton", "Connexion");
         dictionnaire.put("accueil_inscriptionButton", "Inscription");
+        dictionnaire.put("accueil_rulesButton", "Règles");
+        dictionnaire.put("accueil_termsAndConditionsButton", "Conditions Générales");
 
         dictionnaire.put("inscription_title", "Inscription");
         dictionnaire.put("inscription_messageInfo_inscription", "Inscrivez vous pour rejoindre la plateforme");

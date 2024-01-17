@@ -20,6 +20,12 @@ public class ControleurAccueil implements Controleur{
     @FXML
     private Button inscriptionButton;
 
+    @FXML
+    private Button rulesButton;
+
+    @FXML
+    private Button termsAndConditionsButton;
+
     private SceneHandler sceneHandler;
 
     public void initialiserAccueil(SceneHandler sceneHandler){
@@ -37,6 +43,8 @@ public class ControleurAccueil implements Controleur{
         startGameButton.setText(LangageManager.getInstance().getText("accueil_startGameButton"));
         connectionButton.setText(LangageManager.getInstance().getText("accueil_connectionButton"));
         inscriptionButton.setText(LangageManager.getInstance().getText("accueil_inscriptionButton"));
+        rulesButton.setText(LangageManager.getInstance().getText("accueil_rulesButton"));
+        termsAndConditionsButton.setText(LangageManager.getInstance().getText("accueil_termsAndConditionsButton"));
     }
 
     public void onInscriptionButtonClick(ActionEvent actionEvent)

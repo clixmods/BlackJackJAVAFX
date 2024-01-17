@@ -48,6 +48,8 @@ public class LangageEN implements Langage{
         dictionnaire.put("accueil_startGameButton", "Start a game");
         dictionnaire.put("accueil_connectionButton", "Login");
         dictionnaire.put("accueil_inscriptionButton", "Sign up");
+        dictionnaire.put("accueil_rulesButton", "Rules");
+        dictionnaire.put("accueil_termsAndConditionsButton", "Terms and Conditions");
 
         dictionnaire.put("inscription_title", "Inscription");
         dictionnaire.put("inscription_messageInfo_inscription", "Register to join the platform");
