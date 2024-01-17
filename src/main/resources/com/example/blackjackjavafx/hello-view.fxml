@@ -19,5 +19,10 @@
 
     <Button text="Inscription" onAction="#onInscriptionButtonClick"/>
 
+    <Button text="Règles" onAction="#onRulesButtonClick"/>
+
+    <Button text="Conditions Générales" onAction="#onCGUButtonClick"/>
+
+
 
 </VBox>
