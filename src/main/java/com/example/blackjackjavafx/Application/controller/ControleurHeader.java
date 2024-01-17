@@ -12,6 +12,7 @@ import java.io.InputStream;
 
 public class ControleurHeader implements Controleur{
 
+    private boolean boutonHomeActif;
     private static SceneHandler sceneHandler;
     @FXML
     private ImageView boutonHome;
@@ -44,7 +45,7 @@ public class ControleurHeader implements Controleur{
             boutonSettings.setFitHeight(25);
         }
 
-
+        boutonHomeActif = true;
 
     }
 
@@ -53,7 +54,7 @@ public class ControleurHeader implements Controleur{
 
     @FXML
     public void handleHome() {
-        sceneHandler.afficherAccueil();
+        if(boutonHomeActif) sceneHandler.afficherAccueil();
     }
 
     @FXML
@@ -67,5 +68,11 @@ public class ControleurHeader implements Controleur{
 
     public void setArgent(double argent) {
         labelArgent.setText(argent + "$");
+    }
+
+    public void activerBoutonHome(boolean active){
+        boutonHomeActif = active;
+        if(active) boutonHome.setOpacity(1.0);
+        else boutonHome.setOpacity(0.5);
     }
 }
