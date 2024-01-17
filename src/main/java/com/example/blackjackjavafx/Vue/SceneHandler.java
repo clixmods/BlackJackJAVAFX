@@ -52,7 +52,7 @@ public class SceneHandler {
         stackpaneJeu = new StackPane();
         stackpaneJeu.getChildren().add(sceneJeu.getRoot());
 
-        Image img = new Image("/opera_y1iB56RCrT.png");
+        Image img = new Image("/backgroundJeu.png");
         BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         Background backgroundJeu = new Background(bImg);
 
