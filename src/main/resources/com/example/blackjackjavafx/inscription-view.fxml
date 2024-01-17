@@ -91,6 +91,7 @@
         </HBox>
 
         <CheckBox fx:id="termsAndConditionsCheckBox" mnemonicParsing="false" style="-fx-text-fill: #56d9fb;" text="J'accepte les CGU" />
+        <Button fx:id = "CGUBouton" text="Conditions d'utilisation" onAction="#OnCGU" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
         <Button fx:id="submitInscription" onAction="#OnSubmit" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);" text="S'inscrire" />
         <Button fx:id="retourButton" onAction="#OnRetourButton" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);" text="Retour"/>
     </VBox>
