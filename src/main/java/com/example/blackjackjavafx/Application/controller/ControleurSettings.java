@@ -1,11 +1,14 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Langage.LangageEN;
+import com.example.blackjackjavafx.Application.Langage.LangageFR;
+import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 
-public class ControleurSettings {
+public class ControleurSettings implements Controleur{
 
     private SceneHandler sceneHandler;
     @FXML
@@ -24,7 +27,14 @@ public class ControleurSettings {
 
     public void initialiserSettings(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        changerLangue();
     }
+
+    @Override
+    public void changerLangue() {
+
+    }
+
     @FXML
     public void handleAppliquer() {
         volumeMusique = sliderMusique.getValue();
@@ -38,6 +48,20 @@ public class ControleurSettings {
         System.out.println("Langue sélectionnée : " + langue);
         System.out.println("Difficulté sélectionnée : " + difficulte);
 
-        sceneHandler.afficherAccueil();
+        //Cette partie permet de changer la langue si elle a été modifiée. Elle fonctionne mais n'est pas très propre (ça ne respecte pas vraiment le principe Open/Close), il faudra la recoder
+        if (langue.equals("Français")){
+            if (!LangageManager.getInstance().getText("connexion_passwordFieldDescriptor").equals("Mot de passe")){
+                LangageManager.setInstance(LangageFR.getInstance());
+                sceneHandler.changerLangue();
+            }
+        }
+        else {
+            if (!LangageManager.getInstance().getText("connexion_passwordFieldDescriptor").equals("Password")){
+                LangageManager.setInstance(LangageEN.getInstance());
+                sceneHandler.changerLangue();
+            }
+        }
+
+        sceneHandler.enleverSettings();
     }
 }

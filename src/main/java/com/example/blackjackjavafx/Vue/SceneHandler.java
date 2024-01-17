@@ -44,11 +44,10 @@ public class SceneHandler {
         sceneJeu = new Scene(jeuLoader.load(), 640, 700);
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
         sceneConnexion = new Scene(connexionLoader.load(),640,700);
-        sceneSettings = new Scene(settingsLoader.load());
         sceneRegles = new Scene(reglesLoader.load());
 
 
-        vueGenerale = new VueGenerale(headerLoader, this);
+        vueGenerale = new VueGenerale(headerLoader, settingsLoader, this);
 
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneJeu.getRoot());
@@ -70,36 +69,36 @@ public class SceneHandler {
         ControleurAccueil controleurAccueil = accueilLoader.getController();
         controleurAccueil.initialiserAccueil(this);
 
-        vueGenerale.setCentre(sceneAccueil.getRoot());
+        vueGenerale.setCentre(sceneAccueil.getRoot(), controleurAccueil);
     }
 
     public void afficherSettings() {
+        vueGenerale.setParametres();
+    }
 
-        ControleurSettings controllerSettings = settingsLoader.getController();
-        controllerSettings.initialiserSettings(this);
-
-        vueGenerale.setCentre(sceneSettings.getRoot());
+    public void enleverSettings(){
+        vueGenerale.unsetParametres();
     }
 
     public void afficherInscription() {
         ControleurInscription controleurInscription = inscriptionLoader.getController();
         controleurInscription.initialiserInscription(this);
 
-        vueGenerale.setCentre(sceneInscription.getRoot());
+        vueGenerale.setCentre(sceneInscription.getRoot(), controleurInscription);
     }
 
     public void afficherConnexion() {
         ControleurConnexion controleurConnexion = connexionLoader.getController();
         controleurConnexion.initialiserConnexion(this);
 
-        vueGenerale.setCentre(sceneConnexion.getRoot());
+        vueGenerale.setCentre(sceneConnexion.getRoot(), controleurConnexion);
     }
 
     public void afficherRegles() {
         ControleurRegles controleurRegles = reglesLoader.getController();
         controleurRegles.initialiserRegles(this);
 
-        vueGenerale.setCentre(sceneRegles.getRoot());
+        vueGenerale.setCentre(sceneRegles.getRoot(), controleurRegles);
 
     }
 
@@ -118,5 +117,9 @@ public class SceneHandler {
     public void commencerPartie(Client client, int mise){
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.creerJeu(client, mise, this);
+    }
+
+    public void changerLangue(){
+        vueGenerale.changerLangue();
     }
 }

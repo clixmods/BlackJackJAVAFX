@@ -6,17 +6,23 @@ import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
 
-public class ControleurAccueil {
+public class ControleurAccueil implements Controleur{
 
     private SceneHandler sceneHandler;
+
     public void initialiserAccueil(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        changerLangue();
     }
 
     public void onStartGameButtonClick(){
         if (Connexion.getInstance().estConnecte()) {
             sceneHandler.selectionnerMise(Connexion.getInstance().getClientConnecte());
         }
+    }
+
+    public void changerLangue(){
+
     }
 
     public void onInscriptionButtonClick(ActionEvent actionEvent)
