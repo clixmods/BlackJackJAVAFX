@@ -77,7 +77,6 @@ public class ControleurMise implements Controleur{
 
     public void mettreAJourAffichage(){
         genererJetons();
-        sceneHandler.mettreAJourHeader();
         miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_playersBet") + miser.getMise());
         miseJoueurTextState = "mise_miseText_playersBet";
         argentJoueurText.setText(LangageManager.getInstance().getText("mise_argentText") + argentJoueur + " $");
@@ -87,6 +86,7 @@ public class ControleurMise implements Controleur{
         if (miser.getMise() > 0) {
             sceneHandler.commencerPartie(client, miser.getMise());
             ClientService.getInstance().mettreAJourArgentClient(client);
+            sceneHandler.mettreAJourHeader();
         }
         else {
             miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_cantBet"));

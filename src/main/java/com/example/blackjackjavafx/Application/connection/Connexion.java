@@ -49,7 +49,7 @@ public class Connexion
     }
 
     public Client getClientConnecte(){
-        return clientConnecte;
+        return ClientService.getInstance().getClient(clientConnecte.getLogin());
     }
 
     public void deconnecter(){
