@@ -1,6 +1,10 @@
 package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Service.ClientService;
+import com.example.blackjackjavafx.Application.helper.SoundsHelper;
+import com.example.blackjackjavafx.Application.sound.SoundBlackJack;
+import com.example.blackjackjavafx.Application.sound.SoundCarte;
+import com.example.blackjackjavafx.Application.sound.SoundVictoire;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Carte;
 import com.example.blackjackjavafx.Metier.Client;
@@ -202,14 +206,14 @@ public class ControleurJeu implements Controleur{
     }
 
     public void jouerSonCarte(){
-        sceneHandler.getSoundsHelper().jouerSonCarte();
+        new SoundCarte().play(SoundsHelper.getVolume());
     }
 
     public void jouerSonVictoire(){
-        sceneHandler.getSoundsHelper().jouerSonVictoire();
+        new SoundVictoire().play(SoundsHelper.getVolume());
     }
 
     public void jouerSonBlackJack(){
-        sceneHandler.getSoundsHelper().jouerSonBlackJack();
+        new SoundBlackJack().play(SoundsHelper.getVolume());
     }
 }
