@@ -17,13 +17,10 @@ public class ControleurSettings implements Controleur{
     private Slider sliderEffets;
     @FXML
     private ComboBox<String> langueBox;
-    @FXML
-    private ComboBox<String> difficulteBox;
 
     private double volumeMusique;
     private double volumeEffets;
     private String langue;
-    private String difficulte;
 
     public void initialiserSettings(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
@@ -40,13 +37,11 @@ public class ControleurSettings implements Controleur{
         volumeMusique = sliderMusique.getValue();
         volumeEffets = sliderEffets.getValue();
         langue = langueBox.getValue();
-        difficulte = difficulteBox.getValue();
 
 
         sceneHandler.reglerVolumeMusique(volumeMusique);
-        System.out.println("Volume des effets sonores : " + volumeEffets);
+        sceneHandler.reglerVolumeEffets(volumeEffets);
         System.out.println("Langue sélectionnée : " + langue);
-        System.out.println("Difficulté sélectionnée : " + difficulte);
 
         //Cette partie permet de changer la langue si elle a été modifiée. Elle fonctionne mais n'est pas très propre (ça ne respecte pas vraiment le principe Open/Close), il faudra la recoder
         if (langue.equals("Français")){

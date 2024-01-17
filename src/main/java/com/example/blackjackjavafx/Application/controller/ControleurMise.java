@@ -80,6 +80,8 @@ public class ControleurMise implements Controleur{
         miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_playersBet") + miser.getMise());
         miseJoueurTextState = "mise_miseText_playersBet";
         argentJoueurText.setText(LangageManager.getInstance().getText("mise_argentText") + argentJoueur + " $");
+
+        jouerSonJeton();
     }
 
     public void onValidButtonClick(){
@@ -101,5 +103,9 @@ public class ControleurMise implements Controleur{
 
     public void onAjoutezArgentButtonClick(){
 
+    }
+
+    public void jouerSonJeton(){
+        sceneHandler.getSoundsHelper().jouerSonJeton();
     }
 }

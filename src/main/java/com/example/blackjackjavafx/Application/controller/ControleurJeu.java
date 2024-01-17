@@ -21,6 +21,7 @@ import java.io.InputStream;
 
 public class ControleurJeu implements Controleur{
 
+
     private Jeu jeu;
 
     private Client client;
@@ -120,6 +121,9 @@ public class ControleurJeu implements Controleur{
         sceneHandler.mettreAJourHeader();
         buttonRestartRound.setVisible(true);
         sceneHandler.activerBoutonHome(true);
+
+
+        jouerSonVictoire();
     }
 
     public void afficherCarteFaceCacheeCroupier(){
@@ -165,14 +169,9 @@ public class ControleurJeu implements Controleur{
     public void afficherBlackJack(int mise){
         buttonBoxPlayer.setVisible(false);
         messageRoundText.setText("Blackjack !");
-        // J'aimerais que l'affichage affiche blackJack puis attende un peu avant d'afficher la victoire
-        /*try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-         */
         afficherVictoire(mise);
+
+        jouerSonBlackJack();
     }
 
     public void afficherDefaite(){
@@ -193,10 +192,24 @@ public class ControleurJeu implements Controleur{
 
     public void onHitButtonClick(){
         jeu.joueurPiocheEtGagne();
+        jouerSonCarte();
     }
 
     public void onDoubleButtonClick(){
         jeu.joueurDouble();
         ClientService.getInstance().mettreAJourArgentClient(client);
+        jouerSonCarte();
+    }
+
+    public void jouerSonCarte(){
+        sceneHandler.getSoundsHelper().jouerSonCarte();
+    }
+
+    public void jouerSonVictoire(){
+        sceneHandler.getSoundsHelper().jouerSonVictoire();
+    }
+
+    public void jouerSonBlackJack(){
+        sceneHandler.getSoundsHelper().jouerSonBlackJack();
     }
 }

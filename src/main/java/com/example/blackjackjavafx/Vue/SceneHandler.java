@@ -2,7 +2,12 @@ package com.example.blackjackjavafx.Vue;
 
 import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Application.controller.*;
+import com.example.blackjackjavafx.Application.helper.SoundsHelper;
 import com.example.blackjackjavafx.Application.music.MusicPlayer;
+import com.example.blackjackjavafx.Application.sound.SoundBlackJack;
+import com.example.blackjackjavafx.Application.sound.SoundCarte;
+import com.example.blackjackjavafx.Application.sound.SoundJeton;
+import com.example.blackjackjavafx.Application.sound.SoundVictoire;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
@@ -40,6 +45,7 @@ public class SceneHandler {
     private VueGenerale vueGenerale;
     private static StackPane stackPane;
     private MusicPlayer musicPlayer;
+    private SoundsHelper soundsHelper;
 
 
     public SceneHandler(Stage stage) throws IOException {
@@ -70,7 +76,7 @@ public class SceneHandler {
         afficherAccueil();
 
         musicPlayer = new MusicPlayer();
-
+        soundsHelper = SoundsHelper.getInstance();
 
     }
 
@@ -139,6 +145,14 @@ public class SceneHandler {
 
     public void reglerVolumeMusique(double volume){
         musicPlayer.reglerVolumeMusique(volume);
+    }
+
+    public void reglerVolumeEffets(double volume){
+        soundsHelper.setVolume(volume);
+    }
+
+    public SoundsHelper getSoundsHelper(){
+        return soundsHelper;
     }
 
 }
