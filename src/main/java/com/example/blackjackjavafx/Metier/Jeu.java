@@ -1,6 +1,6 @@
 package com.example.blackjackjavafx.Metier;
 
-import com.example.blackjackjavafx.Application.ControleurJeu;
+import com.example.blackjackjavafx.Application.controller.ControleurJeu;
 
 public class Jeu {
 
@@ -46,6 +46,7 @@ public class Jeu {
     }
 
     public boolean joueurPiocheEtGagne(){
+        //Cette fonction retourne le boolean indiquant si le joueur ne perd pas après avoir pioché
         Carte carte = joueur.piocher(pioche);
         controleur.mettreAJourAffichageCartesJoueur(carte);
         joueur.calculerValeurMain();
@@ -75,6 +76,7 @@ public class Jeu {
             Carte carte = croupier.piocher(pioche);
             controleur.mettreAJourAffichageCartesCroupier(carte);
             croupier.calculerValeurMain();
+            controleur.mettreAJourAffichageValeurMainCroupier(croupier.getValeurMain());
         }
         if (croupier.getValeurMain()>21){
             client.ajouterArgent(miseActuelle*2);
@@ -102,5 +104,15 @@ public class Jeu {
 
     public void defaite(){
         controleur.afficherDefaite();
+    }
+
+    public int getValeurMainJoueur(){
+        joueur.calculerValeurMain();
+        return joueur.getValeurMain();
+    }
+
+    public int getValeurMainCroupier(){
+        croupier.calculerValeurMain();
+        return croupier.getValeurMain();
     }
 }

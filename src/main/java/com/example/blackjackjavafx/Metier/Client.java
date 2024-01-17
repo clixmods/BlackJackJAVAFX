@@ -1,5 +1,9 @@
 package com.example.blackjackjavafx.Metier;
 
+import com.example.blackjackjavafx.Repository.RepositoryClient;
+
+import java.time.LocalDate;
+
 public class Client {
 
 /*    private static Client _current;
@@ -22,25 +26,35 @@ public class Client {
         _current = newClient;
         return true;
     }*/
+    //region VARIABLES
 
-    private int login;
+    private String login;
+
+    private String mail;
+
+    private LocalDate dateNaissance;
 
     private String nom;
 
+    private String prenom;
+
     private int argent;
 
-    public Client(int login, String nom, int argent){
-        this.login = login;
-        this.nom = nom;
-        this.argent = argent;
-    }
+    private String password;
+    //endregion
 
-    public int getLogin(){
+    //region PROPERTIES
+
+    public String getLogin(){
         return login;
     }
 
-    public int getArgent(){
-        return argent;
+    public String getMail() {
+        return mail;
+    }
+
+    public LocalDate getDateNaissance() {
+        return dateNaissance;
     }
 
     public String getNom(){
@@ -51,6 +65,33 @@ public class Client {
         this.nom = nom;
     }
 
+    public String getPrenom() {
+        return prenom;
+    }
+    public void setPrenom(String prenom)
+    {
+        this.prenom = prenom;
+    }
+
+    public int getArgent(){
+        return argent;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+    //endregion
+
+    public Client(String login, String mail, String nom, String prenom, int argent,String password,LocalDate dateNaissance){
+        this.login = login;
+        this.mail = mail;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.argent = argent;
+        this.password = password;
+        this.dateNaissance = dateNaissance;
+    }
+
     public void ajouterArgent(int somme){
         argent += somme;
     }
@@ -58,4 +99,7 @@ public class Client {
     public void retirerArgent(int somme){
         argent -= somme;
     }
+
+
+
 }
