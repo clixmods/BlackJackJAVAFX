@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
@@ -8,10 +9,21 @@
 <!-- Attention utilisez bien xmlns:fx="http://javafx.com/fxml" pour eviter de spécifiez la version afin de pas avoir de message de warning au démarrage du jeu -->
 <HBox alignment="CENTER" spacing="20" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurMise">
    <VBox alignment="CENTER" spacing="10">
-      <Label fx:id="argentJoueurText" text="Votre argent : 0" textFill="white"/>
-      <Label fx:id="miseJoueurText" text="Sélectionnez votre mise" textFill="white"/>
-      <Button fx:id="buttonValidMise" mnemonicParsing="false" onAction="#onValidButtonClick" text="Je valide ma mise"/>
+
+      <Label fx:id="argentJoueurText" text="Votre argent : 0" textFill="white"  style="-fx-font-size: 32; -fx-text-fill: #56d9fb;">
+         <effect>
+            <Bloom threshold="-1"/>
+         </effect>
+      </Label>
+
+      <Label fx:id="miseJoueurText" text="Sélectionnez votre mise" textFill="white" style="-fx-font-size: 32; -fx-text-fill: #56d9fb;">
+         <effect>
+            <Bloom threshold="-1"/>
+         </effect>
+      </Label>
+
+      <Button fx:id="buttonValidMise" mnemonicParsing="false" onAction="#onValidButtonClick" text="Je valide ma mise" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
       <!-- <Button fx:id="buttonValidMise1" mnemonicParsing="false" onAction="#onAjoutezArgentButtonClick" text="Ajouter de l'argent"/> -->
    </VBox>
-   <HBox alignment="CENTER" spacing="20" fx:id="hBoxJetons" prefHeight="158.0" prefWidth="834.0"> </HBox>
+   <HBox alignment="CENTER" spacing="20" fx:id="hBoxJetons" prefHeight="158.0" prefWidth="834.0"/>
 </HBox>
