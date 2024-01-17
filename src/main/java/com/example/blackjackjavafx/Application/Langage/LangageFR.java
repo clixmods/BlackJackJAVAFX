@@ -68,6 +68,11 @@ public class LangageFR implements Langage{
         dictionnaire.put("inscription_passwordConfirmationFieldDescriptor", "Confirmer le mot de passe");
         dictionnaire.put("inscription_termsAndConditionsCheckBox", "J'accepte les CGU");
         dictionnaire.put("inscription_submitButton", "S'inscrire");
+
+        dictionnaire.put("regles_label1", "Le joueur a plusieurs options, à savoir Rester, Tirer et Doubler.");
+        dictionnaire.put("regles_label2", "Rester : Le joueur est satisfait de sa main actuelle et ne souhaite pas recevoir de nouvelles cartes.  Il attend maintenant que le croupier joue sa main.");
+        dictionnaire.put("regles_label3", "Tirer : Le joueur souhaite recevoir une nouvelle carte pour augmenter la valeur de sa main.  Il peut continuer à tirer des cartes jusqu'à ce qu'il atteigne une valeur satisfaisante ou qu'il dépasse 21.");
+        dictionnaire.put("regles_label4", "Doubler : Le joueur double sa mise initiale et reçoit une carte supplémentaire. Il ne peut plus tirer de carte après ça.");
     }
 
     public static LangageFR getInstance(){
