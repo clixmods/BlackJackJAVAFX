@@ -27,6 +27,8 @@ public class ControleurJeu implements Controleur{
 
     private Node vueMise;
 
+    private ControleurMise controleurMise;
+
     @FXML
     private VBox vueGlobale;
 
@@ -67,7 +69,7 @@ public class ControleurJeu implements Controleur{
 
     @Override
     public void changerLangue() {
-
+        controleurMise.changerLangue();
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){
@@ -80,7 +82,7 @@ public class ControleurJeu implements Controleur{
         catch (IOException e){
             e.printStackTrace();
         }
-        ControleurMise controleurMise = miseLoader.getController();
+        controleurMise = miseLoader.getController();
         controleurMise.creerMise(client1, sceneHandler1);
     }
 

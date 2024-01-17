@@ -26,6 +26,7 @@ public class LangageEN implements Langage{
         dictionnaire.put("mise_miseText_select", "Select your bet");
         dictionnaire.put("mise_miseText_playersBet", "Your bet : ");
         dictionnaire.put("mise_miseText_cantBet", "You can't play if you don't bet.");
+        dictionnaire.put("mise_miseText_notEnoughMoney", "You no longer have enough money to bet so much.");
         dictionnaire.put("mise_validerMiseButton", "I validate my bet");
     }
 
