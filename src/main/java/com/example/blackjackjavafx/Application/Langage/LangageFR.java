@@ -48,6 +48,26 @@ public class LangageFR implements Langage{
         dictionnaire.put("accueil_startGameButton", "Démarrer une partie");
         dictionnaire.put("accueil_connectionButton", "Connexion");
         dictionnaire.put("accueil_inscriptionButton", "Inscription");
+
+        dictionnaire.put("inscription_title", "Inscription");
+        dictionnaire.put("inscription_messageInfo_inscription", "Inscrivez vous pour rejoindre la plateforme");
+        dictionnaire.put("inscription_messageInfo_successful1", "Inscription réussie ");
+        dictionnaire.put("inscription_messageInfo_successful2", "Vous allez être redirigé vers la page de connexion.");
+        dictionnaire.put("inscription_messageInfo_loginNotAvailable", "Login non disponible");
+        dictionnaire.put("inscription_messageInfo_mailNotAvailable", "Email non disponible");
+        dictionnaire.put("inscription_messageInfo_passwordNotSecure", "Mot de passe pas assez sécurisé (Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial)");
+        dictionnaire.put("inscription_messageInfo_passwordNotEquals", "Les mots de passes ne correspondent pas");
+        dictionnaire.put("inscription_messageInfo_namesMissing", "Nom et/ou prénom incomplet");
+        dictionnaire.put("inscription_messageInfo_notOfAge", "Vous devez être majeur pour pouvoir vous inscrire");
+        dictionnaire.put("inscription_mailFieldDescriptor", "Adresse mail");
+        dictionnaire.put("inscription_loginFieldDescriptor", "Login");
+        dictionnaire.put("inscription_nameFieldDescriptor", "Nom");
+        dictionnaire.put("inscription_firstNameFieldDescriptor","Prénom");
+        dictionnaire.put("inscription_birthDateFieldDescriptor", "Date de naissance");
+        dictionnaire.put("inscription_passwordFieldDescriptor", "Mot de passe");
+        dictionnaire.put("inscription_passwordConfirmationFieldDescriptor", "Confirmer le mot de passe");
+        dictionnaire.put("inscription_termsAndConditionsCheckBox", "J'accepte les CGU");
+        dictionnaire.put("inscription_submitButton", "S'inscrire");
     }
 
     public static LangageFR getInstance(){
