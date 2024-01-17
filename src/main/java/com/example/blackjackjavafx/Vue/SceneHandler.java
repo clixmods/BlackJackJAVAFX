@@ -107,7 +107,6 @@ public class SceneHandler {
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.afficherMise(client, this);
         vueGenerale.setCentre(sceneJeu.getRoot(), controleurJeu);
-        activerBoutonHome(true);
     }
 
     public void mettreAJourHeader(){
