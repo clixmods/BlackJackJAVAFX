@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Metier.Client;
@@ -9,6 +10,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class ControleurAccueil implements Controleur{
+
+    @FXML
+    private Button startGameButton;
+
+    @FXML
+    private Button connectionButton;
 
     @FXML
     private Button inscriptionButton;
@@ -27,7 +34,9 @@ public class ControleurAccueil implements Controleur{
     }
 
     public void changerLangue(){
-
+        startGameButton.setText(LangageManager.getInstance().getText("accueil_startGameButton"));
+        connectionButton.setText(LangageManager.getInstance().getText("accueil_connectionButton"));
+        inscriptionButton.setText(LangageManager.getInstance().getText("accueil_inscriptionButton"));
     }
 
     public void onInscriptionButtonClick(ActionEvent actionEvent)

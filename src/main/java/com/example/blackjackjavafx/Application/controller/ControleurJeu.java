@@ -103,6 +103,9 @@ public class ControleurJeu implements Controleur{
             if (messageRoundTextState.equals("jeu_messageRoundText_victory")){
                 messageRoundText.setText(LangageManager.getInstance().getText("jeu_messageRoundText_victory") + gain + " $");
             }
+            else {
+                messageRoundText.setText(LangageManager.getInstance().getText(messageRoundTextState));
+            }
             mettreAJourAffichageValeurMainJoueur(jeu.getValeurMainJoueur());
             mettreAJourAffichageValeurMainCroupier(jeu.getValeurMainCroupier());
         }
