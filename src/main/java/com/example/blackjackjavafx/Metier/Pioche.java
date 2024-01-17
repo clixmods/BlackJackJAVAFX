@@ -11,10 +11,6 @@ public class Pioche {
 
     public Pioche(){
         this.paquet = new ArrayList<>();
-
-        paquet.add(new Carte("Reine de Carreau" , 10, "/images/cards/queen_of_diamonds2.png"));
-        paquet.add(new Carte("As de Carreau" , 11, "/images/cards/ace_of_diamonds.png"));
-
         for(int i = 2 ; i <= 10 ; i++)
         {
             paquet.add(new Carte(i+" de Piques", i , "/images/cards/"+i+"_of_spades.png"));

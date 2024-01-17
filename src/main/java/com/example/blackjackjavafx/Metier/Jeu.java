@@ -23,7 +23,7 @@ public class Jeu {
         this.joueur = new Joueur(client.getNom());
         this.croupier = new Participant();
         this.pioche = new Pioche();
-        //pioche.melanger();
+        pioche.melanger();
     }
 
     public void distribuerCartes(){
