@@ -140,7 +140,13 @@ public class SceneHandler {
     }
 
     public void mettreAJourHeader(){
-        Client client = Connexion.getInstance().getClientConnecte();
+        Client client;
+        if (!Connexion.getInstance().estConnecte()){
+            client = null;
+        }
+        else {
+            client = Connexion.getInstance().getClientConnecte();
+        }
         vueGenerale.miseAJourHeader(client);
     }
 

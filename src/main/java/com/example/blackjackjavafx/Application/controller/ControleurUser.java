@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Vue.SceneHandler;
@@ -37,7 +38,9 @@ public class ControleurUser implements Controleur{
 
     @FXML
     public void handleDeconnexion(){
-
+        Connexion.getInstance().deconnecter();
+        sceneHandler.mettreAJourHeader();
+        sceneHandler.afficherAccueil();
     }
 
     private void updateLabels() {
