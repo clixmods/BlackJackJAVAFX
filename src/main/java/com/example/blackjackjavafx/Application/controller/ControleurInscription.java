@@ -1,17 +1,43 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Application.helper.InscriptionHelper;
 import com.example.blackjackjavafx.Application.lib.Password;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
 
 public class ControleurInscription implements Controleur
 {
-    //region FXML Variables
+    //region FXML
+
+    @FXML
+    private Label mailFieldDescriptor;
+
+    @FXML
+    private Label loginFieldDescriptor;
+
+    @FXML
+    private Label nameFieldDescriptor;
+
+    @FXML
+    private Label firstNameFieldDescriptor;
+
+    @FXML
+    private Label birthDateFieldDescriptor;
+
+    @FXML
+    private Label passwordFieldDescriptor;
+
+    @FXML
+    private Label passwordConfirmationFieldDescriptor;
+
+    @FXML
+    private CheckBox termsAndConditionsCheckBox;
 
     public DatePicker inputDateNaissance;
 
@@ -38,7 +64,9 @@ public class ControleurInscription implements Controleur
         changerLangue();
     }
 
-    public void changerLangue(){}
+    public void changerLangue(){
+        mailFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_mailFieldDescriptor"));
+    }
 
     public void OnMailEnter(ActionEvent actionEvent) {
     }
@@ -79,7 +107,7 @@ public class ControleurInscription implements Controleur
 
         if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm, dateNaissance))
         {
-            messageInfo.setText("Inscription réussi "+nom+" "+prenom+" ! Vous allez être redirigé vers la page de connexion.");
+            messageInfo.setText("Inscription réussie "+nom+" "+prenom+" ! Vous allez être redirigé vers la page de connexion.");
             //wait(4000);
             sceneHandler.afficherConnexion();
             // TODO : Ouvrir un menu pour une connexion reussie
