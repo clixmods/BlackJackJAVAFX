@@ -65,6 +65,7 @@ public class ControleurJeu {
     }
 
     public void afficherMise(Client client1, SceneHandler sceneHandler1){
+        reinitialiserVue();
         FXMLLoader miseLoader = new FXMLLoader(BlackJackApplication.class.getResource("game-miseSelection-view.fxml"));
         try {
             vueMise = miseLoader.load();
@@ -135,6 +136,7 @@ public class ControleurJeu {
         messageRoundText.setText("Sélectionnez votre mise");
         cardBoxDealer.getChildren().clear();
         cardBoxPlayer.getChildren().clear();
+        vueGlobale.getChildren().remove(vueMise);
         handPlayerText.setVisible(false);
     }
 
@@ -172,7 +174,6 @@ public class ControleurJeu {
     public void onRestartButtonClick(){
         sceneHandler.selectionnerMise(client);
         buttonRestartRound.setVisible(false);
-        reinitialiserVue();
     }
 
     public void onStandButtonClick(){
