@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Application.controller;
 
+import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -23,7 +24,10 @@ public class ControleurRegles implements Controleur{
 
     @Override
     public void changerLangue() {
-
+        label.setText(LangageManager.getInstance().getText("regles_label1"));
+        label2.setText(LangageManager.getInstance().getText("regles_label2"));
+        label3.setText(LangageManager.getInstance().getText("regles_label3"));
+        label4.setText(LangageManager.getInstance().getText("regles_labeel4"));
     }
 
     private void LabelResponsive(){
@@ -35,9 +39,5 @@ public class ControleurRegles implements Controleur{
         label3.setMaxWidth(Double.MAX_VALUE);
         label4.setWrapText(true);
         label4.setMaxWidth(Double.MAX_VALUE);
-    }
-
-    public void updateTexte(String texte){
-        label.setText(texte);
     }
 }
