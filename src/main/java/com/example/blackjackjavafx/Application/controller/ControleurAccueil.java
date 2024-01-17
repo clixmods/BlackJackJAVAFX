@@ -57,11 +57,6 @@ public class ControleurAccueil implements Controleur{
         sceneHandler.afficherRegles();
     }
 
-    public void onCGUButtonClick(ActionEvent actionEvent)
-    {
-        sceneHandler.afficherCGU();
-    }
-
     public void onConnexionButtonClick(ActionEvent actionEvent) {
         sceneHandler.afficherConnexion();
     }

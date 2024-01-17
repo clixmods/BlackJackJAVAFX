@@ -24,6 +24,11 @@
             <right>
                 <Label>ㅤㅤㅤㅤㅤ</Label>
             </right>
+            <bottom>
+                <HBox alignment="CENTER">
+                <Button text="Retour" onAction="#retour" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+                </HBox>
+            </bottom>
         </BorderPane>
     </center>
 </BorderPane>
