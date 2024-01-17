@@ -69,6 +69,14 @@ public class ControleurHeader implements Controleur{
         sceneHandler.afficherSettings();
     }
 
+    @FXML
+    public void handleUser() {
+        if (Connexion.getInstance().estConnecte()){
+            sceneHandler.afficherUser();
+            sceneHandler.afficherUser();
+        }
+    }
+
     public void setNomCompte(String nomCompte) {
         labelNomCompte.setText(nomCompte);
     }

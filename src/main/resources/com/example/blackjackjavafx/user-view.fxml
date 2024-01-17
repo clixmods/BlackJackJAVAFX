@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurUser">
+
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <Label text="Informations Utilisateur">
+                <font>
+                    <Font size="20" />
+                </font>
+            </Label>
+
+            <Label fx:id="labelNom" text="Nom:" />
+            <Label fx:id="labelPrenom" text="Prénom:" />
+            <Label fx:id="labelEmail" text="Email:" />
+            <Label fx:id="labelArgent" text="Argent sur le compte:" />
+
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Ajouter de l'argent:" />
+                <TextField fx:id="montant" />
+                <Button text="Ajouter" fx:id="boutonNom"  onAction="#handleAjouterArgent" />
+            </HBox>
+
+            <Button text="Déconnexion" fx:id="boutonDeconnexion"  onAction="#handleDeconnexion" />
+        </VBox>
+    </center>
+</BorderPane>
