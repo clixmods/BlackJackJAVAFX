@@ -11,7 +11,6 @@ public class InscriptionHelper
 {
     public static boolean isLoginAvailable(String login)
     {
-        // Todo : Requete trop lourde pour check, il faudrait faire une requete dédier au lieu de recuperer le client entier
         ClientService clientService = ClientService.getInstance();
         Client client = clientService.getClient(login);
         Boolean condition = client == null;
@@ -23,7 +22,6 @@ public class InscriptionHelper
     }
 
     public static boolean isMailAvailable(String mail) {
-        // Todo : Requete trop lourde pour check, il faudrait faire une requete dédier au lieu de recuperer le client entier
         ClientService clientService = ClientService.getInstance();
         Client client = clientService.getClientByMail(mail);
 

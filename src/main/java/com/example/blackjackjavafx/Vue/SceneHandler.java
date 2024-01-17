@@ -1,6 +1,13 @@
 package com.example.blackjackjavafx.Vue;
 
+import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Application.controller.*;
+import com.example.blackjackjavafx.Application.helper.SoundsHelper;
+import com.example.blackjackjavafx.Application.music.MusicPlayer;
+import com.example.blackjackjavafx.Application.sound.SoundBlackJack;
+import com.example.blackjackjavafx.Application.sound.SoundCarte;
+import com.example.blackjackjavafx.Application.sound.SoundJeton;
+import com.example.blackjackjavafx.Application.sound.SoundVictoire;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +16,8 @@ import javafx.scene.SubScene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.IOException;
 
@@ -34,8 +43,9 @@ public class SceneHandler {
 
     private Stage stageApplication;
     private VueGenerale vueGenerale;
-    private static StackPane stackpaneJeu;
-    private static StackPane stackpaneAccueil;
+    private static StackPane stackPane;
+    private MusicPlayer musicPlayer;
+
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
@@ -44,10 +54,10 @@ public class SceneHandler {
         sceneJeu = new Scene(jeuLoader.load(), 640, 700);
         sceneInscription = new Scene(inscriptionLoader.load(),640,700);
         sceneConnexion = new Scene(connexionLoader.load(),640,700);
-        sceneSettings = new Scene(settingsLoader.load());
         sceneRegles = new Scene(reglesLoader.load());
 
-        vueGenerale = new VueGenerale(headerLoader, this);
+
+        vueGenerale = new VueGenerale(headerLoader, settingsLoader, this);
 
         stackpaneJeu = new StackPane();
         stackpaneJeu.getChildren().add(sceneJeu.getRoot());
@@ -74,54 +84,76 @@ public class SceneHandler {
 
         afficherSettings();
         afficherAccueil();
+
+        musicPlayer = new MusicPlayer();
+
     }
 
     public void afficherAccueil() {
         ControleurAccueil controleurAccueil = accueilLoader.getController();
         controleurAccueil.initialiserAccueil(this);
 
-        vueGenerale.setCentre(sceneAccueil.getRoot());
+        vueGenerale.setCentre(sceneAccueil.getRoot(), controleurAccueil);
     }
 
     public void afficherSettings() {
+        vueGenerale.setParametres();
+    }
 
-        ControleurSettings controllerSettings = settingsLoader.getController();
-        controllerSettings.initialiserSettings(this);
-
-        vueGenerale.setCentre(sceneSettings.getRoot());
+    public void enleverSettings(){
+        vueGenerale.unsetParametres();
     }
 
     public void afficherInscription() {
         ControleurInscription controleurInscription = inscriptionLoader.getController();
         controleurInscription.initialiserInscription(this);
 
-        vueGenerale.setCentre(sceneInscription.getRoot());
+        vueGenerale.setCentre(sceneInscription.getRoot(), controleurInscription);
     }
 
     public void afficherConnexion() {
         ControleurConnexion controleurConnexion = connexionLoader.getController();
         controleurConnexion.initialiserConnexion(this);
 
-        vueGenerale.setCentre(sceneConnexion.getRoot());
+        vueGenerale.setCentre(sceneConnexion.getRoot(), controleurConnexion);
     }
 
     public void afficherRegles() {
         ControleurRegles controleurRegles = reglesLoader.getController();
         controleurRegles.initialiserRegles(this);
 
-        vueGenerale.setCentre(sceneRegles.getRoot());
+        vueGenerale.setCentre(sceneRegles.getRoot(), controleurRegles);
 
     }
 
 
     public void selectionnerMise(Client client){
-        stageApplication.setScene(sceneJeu);
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.afficherMise(client, this);
+        vueGenerale.setCentre(sceneJeu.getRoot(), controleurJeu);
+    }
+
+    public void mettreAJourHeader(){
+        Client client = Connexion.getInstance().getClientConnecte();
+        vueGenerale.miseAJourHeader(client);
     }
 
     public void commencerPartie(Client client, int mise){
+        activerBoutonHome(false);
         ControleurJeu controleurJeu = jeuLoader.getController();
         controleurJeu.creerJeu(client, mise, this);
     }
+
+    public void changerLangue(){
+        vueGenerale.changerLangue();
+    }
+
+    public void activerBoutonHome(boolean active){
+        vueGenerale.activerBoutonHome(active);
+    }
+
+    public void reglerVolumeMusique(double volume){
+        musicPlayer.reglerVolumeMusique(volume);
+    }
+
 }

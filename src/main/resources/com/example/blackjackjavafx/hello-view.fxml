@@ -10,12 +10,24 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
+<<<<<<< src/main/resources/com/example/blackjackjavafx/hello-view.fxml
     <ImageView fx:id="logo" fitWidth="300" fitHeight="300">
         <image>
             <Image url="/logoBJFortuna.png" />
         </image>
     </ImageView>
-    <Button text="Démarrer une partie" onAction="#onStartGameButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-    <Button text="Connexion" onAction="#onConnexionButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-    <Button text="Inscription" onAction="#onInscriptionButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+    <Button fx:id="startGameButton" text="Démarrer une partie" onAction="#onStartGameButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+    <Button fx:id="connectionButton" text="Connexion" onAction="#onConnexionButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+    <Button fx:id="inscriptionButton" text="Inscription" onAction="#onInscriptionButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+=======
+
+    <Label fx:id="clixText"/>
+    <Button fx:id="startGameButton" text="Démarrer une partie" onAction="#onStartGameButtonClick"/>
+
+    <Button fx:id="connectionButton" text="Connexion" onAction="#onConnexionButtonClick"/>
+
+    <Button fx:id="inscriptionButton" text="Inscription" onAction="#onInscriptionButtonClick"/>
+
+
+>>>>>>> src/main/resources/com/example/blackjackjavafx/hello-view.fxml
 </VBox>
