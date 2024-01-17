@@ -25,8 +25,8 @@
 
     <Button fx:id="inscriptionButton" text="Inscription" onAction="#onInscriptionButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
 
-    <Button fx:id="rulesButton" text="Règles" onAction="#onRulesButtonClick"/>
+    <Button fx:id="rulesButton" text="Règles" onAction="#onRulesButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
 
-    <Button fx:id="termsAndConditionsButton" text="Conditions Générales" onAction="#onCGUButtonClick"/>
+    <Button fx:id="termsAndConditionsButton" text="Conditions Générales" onAction="#onCGUButtonClick" style="-fx-font-size: 24; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
 
 </VBox>
