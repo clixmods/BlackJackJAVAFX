@@ -2,6 +2,7 @@ package com.example.blackjackjavafx.Vue;
 
 import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Application.controller.*;
+import com.example.blackjackjavafx.Application.music.MusicPlayer;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +39,7 @@ public class SceneHandler {
     private Stage stageApplication;
     private VueGenerale vueGenerale;
     private static StackPane stackPane;
-    private MediaPlayer mediaPlayer;
+    private MusicPlayer musicPlayer;
 
 
     public SceneHandler(Stage stage) throws IOException {
@@ -68,19 +69,7 @@ public class SceneHandler {
         afficherSettings();
         afficherAccueil();
 
-        // On importe la musique et on la boucle
-        try {
-            String musiqueAmbiance = getClass().getResource("/jazz_libre_de_droits.mp3").toExternalForm();
-            Media media = new Media(musiqueAmbiance);
-            mediaPlayer = new MediaPlayer(media);
-        }
-        catch(NullPointerException e){
-            System.err.println("Erreur musique : " + e.getMessage());
-        }
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
-
-
+        musicPlayer = new MusicPlayer();
 
 
     }
@@ -148,7 +137,8 @@ public class SceneHandler {
         vueGenerale.activerBoutonHome(active);
     }
 
-    public void reglerVolumeMusique(double volume){
-        mediaPlayer.setVolume(volume);
+    public MusicPlayer getMusicPlayer(){
+        return musicPlayer;
     }
+
 }
