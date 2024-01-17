@@ -45,6 +45,7 @@ public class SceneHandler {
     private Stage stageApplication;
     private VueGenerale vueGenerale;
     private static StackPane stackPane;
+    private static StackPane stackpaneAccueil;
     private MusicPlayer musicPlayer;
 
 
@@ -63,12 +64,19 @@ public class SceneHandler {
 
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneJeu.getRoot());
-
-        Image img = new Image("/opera_y1iB56RCrT.png");
+        Image img = new Image("/backgroundJeu.png");
         BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         Background backgroundJeu = new Background(bImg);
         stackPane.setBackground(backgroundJeu);
         sceneJeu.setRoot(stackPane);
+
+        stackpaneAccueil =new StackPane();
+        stackpaneAccueil.getChildren().add(sceneAccueil.getRoot());
+        Image bgAccueil =new Image("/backgroundAccueil.png");
+        BackgroundImage bgimgAccueil = new BackgroundImage(bgAccueil,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        Background backgroundAccueil = new Background(bgimgAccueil);
+        stackpaneAccueil.setBackground(backgroundAccueil);
+        sceneAccueil.setRoot(stackpaneAccueil);
 
         Scene sceneGenerale = new Scene(vueGenerale, 1000,700);
         stageApplication.setScene(sceneGenerale);
