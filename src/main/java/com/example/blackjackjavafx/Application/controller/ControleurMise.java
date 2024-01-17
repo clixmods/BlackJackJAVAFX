@@ -33,8 +33,11 @@ public class ControleurMise implements Controleur{
 
     private String miseJoueurTextState;
 
+    private SoundJeton sonJeton;
+
     public void creerMise(Client client, SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        this.sonJeton = new SoundJeton();
         miseJoueurTextState = "mise_miseText_select";
         changerLangue();
         miser = new Miser(client, this);
@@ -109,6 +112,6 @@ public class ControleurMise implements Controleur{
     }
 
     public void jouerSonJeton(){
-        new SoundJeton().play(SoundsHelper.getVolume());
+        sonJeton.play(SoundsHelper.getVolume());
     }
 }

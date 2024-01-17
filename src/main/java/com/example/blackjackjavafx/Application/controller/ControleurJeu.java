@@ -74,6 +74,10 @@ public class ControleurJeu implements Controleur{
 
     private SceneHandler sceneHandler;
 
+    private Abstract_SoundJeu sonVictoire;
+
+    private SoundCarte sonCarte;
+
     private void creerBoutonDoubler(){
         buttonDouble = new Button(LangageManager.getInstance().getText("jeu_doubleButton"));
         buttonDouble.setScaleY(2.0);
@@ -228,6 +232,7 @@ public class ControleurJeu implements Controleur{
     public void afficherBlackJack(int gain){
         buttonBoxPlayer.setVisible(false);
         messageRoundText.setText("Blackjack !");
+        sonVictoire = new SoundBlackJack();
         // J'aimerais que l'affichage affiche blackJack puis attende un peu avant d'afficher la victoire
         /*try {
             Thread.sleep(3000);
