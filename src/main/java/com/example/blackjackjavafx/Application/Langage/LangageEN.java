@@ -44,6 +44,10 @@ public class LangageEN implements Langage{
         dictionnaire.put("jeu_restartButton", "Restart");
 
         dictionnaire.put("header_nomCompteLabel_disconnected", "Not connected");
+
+        dictionnaire.put("accueil_startGameButton", "Starting a game");
+        dictionnaire.put("accueil_connectionButton", "Login");
+        dictionnaire.put("accueil_inscriptionButton", "Sign up");
     }
 
     public static LangageEN getInstance(){
