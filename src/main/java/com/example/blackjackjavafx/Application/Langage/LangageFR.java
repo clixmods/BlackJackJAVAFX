@@ -55,7 +55,7 @@ public class LangageFR implements Langage{
         dictionnaire.put("inscription_messageInfo_successful2", "Vous allez être redirigé vers la page de connexion.");
         dictionnaire.put("inscription_messageInfo_loginNotAvailable", "Login non disponible");
         dictionnaire.put("inscription_messageInfo_mailNotAvailable", "Email non disponible");
-        dictionnaire.put("inscription_messageInfo_passwordNotSecure", "Mot de passe pas assez sécurisé (Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial");
+        dictionnaire.put("inscription_messageInfo_passwordNotSecure", "Mot de passe pas assez sécurisé (Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial)");
         dictionnaire.put("inscription_messageInfo_passwordNotEquals", "Les mots de passes ne correspondent pas");
         dictionnaire.put("inscription_messageInfo_namesMissing", "Nom et/ou prénom incomplet");
         dictionnaire.put("inscription_messageInfo_notOfAge", "Vous devez être majeur pour pouvoir vous inscrire");

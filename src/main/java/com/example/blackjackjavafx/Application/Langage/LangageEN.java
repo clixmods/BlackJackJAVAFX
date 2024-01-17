@@ -48,6 +48,26 @@ public class LangageEN implements Langage{
         dictionnaire.put("accueil_startGameButton", "Starting a game");
         dictionnaire.put("accueil_connectionButton", "Login");
         dictionnaire.put("accueil_inscriptionButton", "Sign up");
+
+        dictionnaire.put("inscription_title", "Inscription");
+        dictionnaire.put("inscription_messageInfo_inscription", "Register to join the platform");
+        dictionnaire.put("inscription_messageInfo_successful1", "Successful registration ");
+        dictionnaire.put("inscription_messageInfo_successful2", "You will be redirected to the login page.");
+        dictionnaire.put("inscription_messageInfo_loginNotAvailable", "Login not available");
+        dictionnaire.put("inscription_messageInfo_mailNotAvailable", "Email not available");
+        dictionnaire.put("inscription_messageInfo_passwordNotSecure", "Password not secure enough (Minimum 8 characters, 1 uppercase, 1 number, 1 special character)");
+        dictionnaire.put("inscription_messageInfo_passwordNotEquals", "Passwords don't match");
+        dictionnaire.put("inscription_messageInfo_namesMissing", "Incomplete first and/or last name");
+        dictionnaire.put("inscription_messageInfo_notOfAge", "You must be 18 or over to register");
+        dictionnaire.put("inscription_mailFieldDescriptor", "E-mail address");
+        dictionnaire.put("inscription_loginFieldDescriptor", "Login");
+        dictionnaire.put("inscription_nameFieldDescriptor", "Name");
+        dictionnaire.put("inscription_firstNameFieldDescriptor","First name");
+        dictionnaire.put("inscription_birthDateFieldDescriptor", "Birth Date");
+        dictionnaire.put("inscription_passwordFieldDescriptor", "Password");
+        dictionnaire.put("inscription_passwordConfirmationFieldDescriptor", "Confirm password");
+        dictionnaire.put("inscription_termsAndConditionsCheckBox", "I accept the terms and conditions of use");
+        dictionnaire.put("inscription_submitButton", "Register");
     }
 
     public static LangageEN getInstance(){

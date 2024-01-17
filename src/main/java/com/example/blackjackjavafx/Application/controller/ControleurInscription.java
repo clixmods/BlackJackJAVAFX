@@ -49,6 +49,8 @@ public class ControleurInscription implements Controleur
 
     public Label messageInfo;
 
+    private String messageInfoState;
+
     public Button submitInscription;
 
     public TextField inputPrenom;
@@ -57,15 +59,34 @@ public class ControleurInscription implements Controleur
 
     public TextField inputMail;
 
+    private String nom;
+
+    private String prenom;
+
     //endregion
     private SceneHandler sceneHandler;
     public void initialiserInscription(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        messageInfoState = "inscription_messageInfo_inscription";
         changerLangue();
     }
 
     public void changerLangue(){
+        if (messageInfoState.equals("inscription_messageInfo_successful1")){
+            afficherInscriptionReussie(nom, prenom);
+        }
+        else {
+            messageInfo.setText(LangageManager.getInstance().getText(messageInfoState));
+        }
         mailFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_mailFieldDescriptor"));
+        loginFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_loginFieldDescriptor"));
+        nameFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_nameFieldDescriptor"));
+        firstNameFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_firstNameFieldDescriptor"));
+        birthDateFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_birthDateFieldDescriptor"));
+        passwordFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_passwordFieldDescriptor"));
+        passwordConfirmationFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_passwordConfirmationFieldDescriptor"));
+        termsAndConditionsCheckBox.setText(LangageManager.getInstance().getText("inscription_termsAndConditionsCheckBox"));
+        submitInscription.setText(LangageManager.getInstance().getText("inscription_submitButton"));
     }
 
     public void OnMailEnter(ActionEvent actionEvent) {
@@ -107,12 +128,19 @@ public class ControleurInscription implements Controleur
 
         if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm, dateNaissance))
         {
-            messageInfo.setText("Inscription réussie "+nom+" "+prenom+" ! Vous allez être redirigé vers la page de connexion.");
+            afficherInscriptionReussie(nom, prenom);
             //wait(4000);
             sceneHandler.afficherConnexion();
             // TODO : Ouvrir un menu pour une connexion reussie
         }
 
+    }
+
+    private void afficherInscriptionReussie(String nom, String prenom){
+        messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_successful1") +nom+" "+prenom+ LangageManager.getInstance().getText("inscription_messageInfo_successful2"));
+        messageInfoState = "inscription_messageInfo_successful1";
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     public Boolean StartInscription(String login,
@@ -130,38 +158,44 @@ public class ControleurInscription implements Controleur
         if(login.isBlank() || !InscriptionHelper.isLoginAvailable(login))
         {
             System.out.println("login not available");
-            messageInfo.setText("Login non disponible");
+            messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_loginNotAvailable"));
+            messageInfoState = "inscription_messageInfo_loginNotAvailable";
             return false;
         }
 
         if(mail.isBlank() || !InscriptionHelper.isMailAvailable(mail))
         {
             System.out.println("Mail not available");
-            messageInfo.setText("Email non disponible");
+            messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_mailNotAvailable"));
+            messageInfoState = "inscription_messageInfo_mailNotAvailable";
             return false;
         }
         if(password.isBlank() || !passwordService.isSecure(password))
         {
             System.out.println("Password is not secure");
-            messageInfo.setText("Mot de passe pas assez sécurisé (Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial");
+            messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_passwordNotSecure"));
+            messageInfoState = "inscription_messageInfo_passwordNotSecure";
             return false;
         }
         if(!password.equals(passwordConfirm))
         {
             System.out.println("Passwords is not equals");
-            messageInfo.setText("Les mots de passes ne correspondent pas");
+            messageInfo.setText("inscription_messageInfo_passwordNotEquals");
+            messageInfoState = "inscription_messageInfo_passwordNotEquals";
             return false;
         }
         if(nom.isBlank() || prenom.isBlank())
         {
             System.out.println("Nom et prenom est vide");
-            messageInfo.setText("Nom et/ou prénom incomplet");
+            messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_namesMissing"));
+            messageInfoState = "inscription_messageInfo_namesMissing";
             return false;
         }
         if(!InscriptionHelper.isMajor(dateNaissance))
         {
             System.out.println("Pas majeur");
-            messageInfo.setText("Vous devez être majeur pour pouvoir vous inscrire.");
+            messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_notOfAge"));
+            messageInfoState = "inscription_messageInfo_notOfAge";
             return false;
         }
         return clientService.creerClient(login, mail, nom, prenom, argent, password, dateNaissance);
