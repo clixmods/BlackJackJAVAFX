@@ -29,7 +29,7 @@
             </effect>
          </Label>
 
-         <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" visible="false"/>
+         <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" visible="false" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
          <Label fx:id="miseRoundText" textFill="WHITE"/>
 
          <Label fx:id="handPlayerText" style="-fx-font-size: 32; -fx-text-fill: #56d9fb;">
