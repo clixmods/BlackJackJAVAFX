@@ -2,6 +2,7 @@ package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Application.helper.SoundsHelper;
+import com.example.blackjackjavafx.Application.sound.Abstract_SoundJeu;
 import com.example.blackjackjavafx.Application.sound.SoundBlackJack;
 import com.example.blackjackjavafx.Application.sound.SoundCarte;
 import com.example.blackjackjavafx.Application.sound.SoundVictoire;
@@ -57,6 +58,10 @@ public class ControleurJeu implements Controleur{
 
     private SceneHandler sceneHandler;
 
+    private Abstract_SoundJeu sonVictoire;
+
+    private SoundCarte sonCarte;
+
     public void creerJeu(Client client, int mise, SceneHandler sceneHandler){
         retirerMise();
         this.sceneHandler = sceneHandler;
@@ -70,6 +75,8 @@ public class ControleurJeu implements Controleur{
         jeu.distribuerCartes();
         afficherCarteFaceCacheeCroupier();
         handPlayerText.setVisible(true);
+        sonVictoire = new SoundVictoire();
+        sonCarte = new SoundCarte();
     }
 
     @Override
@@ -173,9 +180,8 @@ public class ControleurJeu implements Controleur{
     public void afficherBlackJack(int mise){
         buttonBoxPlayer.setVisible(false);
         messageRoundText.setText("Blackjack !");
+        sonVictoire = new SoundBlackJack();
         afficherVictoire(mise);
-
-        jouerSonBlackJack();
     }
 
     public void afficherDefaite(){
@@ -206,14 +212,10 @@ public class ControleurJeu implements Controleur{
     }
 
     public void jouerSonCarte(){
-        new SoundCarte().play(SoundsHelper.getVolume());
+        sonCarte.play(SoundsHelper.getVolume());
     }
 
     public void jouerSonVictoire(){
-        new SoundVictoire().play(SoundsHelper.getVolume());
-    }
-
-    public void jouerSonBlackJack(){
-        new SoundBlackJack().play(SoundsHelper.getVolume());
+        sonVictoire.play(SoundsHelper.getVolume());
     }
 }
