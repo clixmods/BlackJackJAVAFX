@@ -2,12 +2,7 @@ package com.example.blackjackjavafx.Vue;
 
 import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Application.controller.*;
-import com.example.blackjackjavafx.Application.helper.SoundsHelper;
 import com.example.blackjackjavafx.Application.music.MusicPlayer;
-import com.example.blackjackjavafx.Application.sound.SoundBlackJack;
-import com.example.blackjackjavafx.Application.sound.SoundCarte;
-import com.example.blackjackjavafx.Application.sound.SoundJeton;
-import com.example.blackjackjavafx.Application.sound.SoundVictoire;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +11,6 @@ import javafx.scene.SubScene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 import java.io.IOException;
 
@@ -69,7 +62,9 @@ public class SceneHandler {
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneJeu.getRoot());
         Image img = new Image("/backgroundJeu.png");
-        BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundSize backgroundSize = new BackgroundSize(1.0, 1.0, true, true, true, true);
+        BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
+
         Background backgroundJeu = new Background(bImg);
         stackPane.setBackground(backgroundJeu);
         sceneJeu.setRoot(stackPane);
