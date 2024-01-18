@@ -39,10 +39,18 @@
             </Label>
 
             <HBox spacing="10" alignment="CENTER">
-                <Label fx:id="addMoneyLabel" text="Ajouter de l'argent:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;"> </Label>
-                <ComboBox fx:id="montantComboBox" promptText="Sélectionnez un montant" style="-fx-font-size: 16; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
-                    <items>
 
+                <Label fx:id="addMoneyLabel" text="Ajouter de l'argent:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;">
+                    <effect>
+                        <Bloom threshold="0.4"/>
+                    </effect>
+                </Label>
+
+                <ComboBox fx:id="montantComboBox" promptText="Sélectionnez un montant" style="-fx-font-size: 16; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
+                    <value>
+                        <Text text="Français" style="-fx-font-size: 20; -fx-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+                    </value>
+                    <items>
                         <FXCollections fx:factory="observableArrayList">
                             <Integer fx:value="1" />
                             <Integer fx:value="5" />
