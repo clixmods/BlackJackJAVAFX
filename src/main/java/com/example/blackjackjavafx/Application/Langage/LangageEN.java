@@ -81,6 +81,16 @@ public class LangageEN implements Langage{
         dictionnaire.put("settings_effectsVolumeLabel", "Sound effects volume");
         dictionnaire.put("settings_languageLabel", "Language");
         dictionnaire.put("settings_submitButton", "Apply");
+
+        dictionnaire.put("user_userInformationTitle", "User Informations");
+        dictionnaire.put("user_nameLabel", "Name : ");
+        dictionnaire.put("user_firstNameLabel", "First Name : ");
+        dictionnaire.put("user_mailLabel", "Email : ");
+        dictionnaire.put("user_moneyLabel", "Money on account : ");
+        dictionnaire.put("user_addMoneyLabel", "Add money : ");
+        dictionnaire.put("user_selectAmount", "Select an amount");
+        dictionnaire.put("user_addMoneyButton", "Add");
+        dictionnaire.put("user_logoutButton", "Logout");
     }
 
     public static LangageEN getInstance(){
