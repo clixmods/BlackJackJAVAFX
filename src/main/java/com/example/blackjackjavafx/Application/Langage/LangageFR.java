@@ -81,6 +81,16 @@ public class LangageFR implements Langage{
         dictionnaire.put("settings_effectsVolumeLabel", "Volume des effets sonores");
         dictionnaire.put("settings_languageLabel", "Langue");
         dictionnaire.put("settings_submitButton", "Appliquer");
+
+        dictionnaire.put("user_userInformationTitle", "Informations Utilisateur");
+        dictionnaire.put("user_nameLabel", "Nom : ");
+        dictionnaire.put("user_firstNameLabel", "Prénom : ");
+        dictionnaire.put("user_mailLabel", "Email : ");
+        dictionnaire.put("user_moneyLabel", "Argent sur le compte : ");
+        dictionnaire.put("user_addMoneyLabel", "Ajouter de l'argent : ");
+        dictionnaire.put("user_selectAmount", "Sélectionnez un montant");
+        dictionnaire.put("user_addMoneyButton", "Ajouter");
+        dictionnaire.put("user_logoutButton", "Déconnexion");
     }
 
     public static LangageFR getInstance(){

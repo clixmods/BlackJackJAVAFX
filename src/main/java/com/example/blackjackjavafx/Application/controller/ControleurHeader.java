@@ -2,6 +2,7 @@ package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.connection.Connexion;
+import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -56,6 +57,12 @@ public class ControleurHeader implements Controleur{
     public void changerLangue(){
         if (!Connexion.getInstance().estConnecte()) {
             labelNomCompte.setText(LangageManager.getInstance().getText("header_nomCompteLabel_disconnected"));
+            labelArgent.setText("0 $");
+        }
+        else {
+            Client client = Connexion.getInstance().getClientConnecte();
+            labelNomCompte.setText(client.getNom());
+            labelArgent.setText(client.getArgent() + " $");
         }
     }
 
@@ -77,14 +84,6 @@ public class ControleurHeader implements Controleur{
                 sceneHandler.afficherUser();
             }
         }
-    }
-
-    public void setNomCompte(String nomCompte) {
-        labelNomCompte.setText(nomCompte);
-    }
-
-    public void setArgent(double argent) {
-        labelArgent.setText(argent + "$");
     }
 
     public void activerBoutonHome(boolean active){
