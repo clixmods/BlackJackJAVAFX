@@ -58,6 +58,7 @@ public class VueGenerale extends BorderPane {
     }
 
     public void setParametres(){
+        unsetParametres();
         centre.getChildren().add(parametres);
     }
 
