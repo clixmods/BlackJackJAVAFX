@@ -15,7 +15,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ControleurMise implements Controleur{
+
+    private class ButtonJetonData
+    {
+        public Button button;
+        public Jeton jeton;
+
+        public ButtonJetonData(Button button , Jeton jeton)
+        {
+            this.button = button;
+            this.jeton = jeton;
+        }
+    }
 
     private Client client;
     private int argentJoueur;
@@ -35,6 +50,8 @@ public class ControleurMise implements Controleur{
 
     private SoundJeton sonJeton;
 
+    private List<ButtonJetonData> buttonsJeton;
+
     public void creerMise(Client client, SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
         this.sonJeton = new SoundJeton();
@@ -43,7 +60,15 @@ public class ControleurMise implements Controleur{
         miser = new Miser(client, this);
         argentJoueur = client.getArgent();
         this.client = client;
+
+        // On initialise les jetons ici au lieu de le faire à chaque clique
+        // A executer avant de mettre a jour l'affichage
+        genererJetons();
+
         mettreAJourAffichage();
+
+
+
     }
 
     public void changerLangue(){
@@ -59,7 +84,13 @@ public class ControleurMise implements Controleur{
 
     private void genererJetons(){
         hBoxJetons.getChildren().clear();
+
+        buttonsJeton = new ArrayList<>();
+
+        int index = 0;
         for (Jeton jeton : miser.obtenirJetons()){
+
+            // On genere le bouton
             Button boutonJeton = new Button();
             boutonJeton.maxWidth(100);
             boutonJeton.maxHeight(100);
@@ -72,22 +103,38 @@ public class ControleurMise implements Controleur{
                     "-fx-max-height: 82px;");
             boutonJeton.setPadding(Insets.EMPTY);
 
+            // On set laction du bouton
             boutonJeton.setOnAction(actionEvent -> {
                 argentJoueur -= jeton.getValeur();
                 miser.ajoutMise(jeton.getValeur());
-            }
-            );
+            });
+
+            // On conserve le bouton dans une liste
+            buttonsJeton.add( new ButtonJetonData(boutonJeton, miser.obtenirJetons().get(index)));
+            index++;
+
+            // On ajoute le bouton au HBOX
             hBoxJetons.getChildren().add(boutonJeton);
         }
     }
 
     public void mettreAJourAffichage(){
-        genererJetons();
+        mettreAJourJetons();
+
         miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_playersBet") + miser.getMise());
         miseJoueurTextState = "mise_miseText_playersBet";
         argentJoueurText.setText(LangageManager.getInstance().getText("mise_argentText") + argentJoueur + " $");
 
         jouerSonJeton();
+    }
+
+    private void mettreAJourJetons()
+    {
+        for (int i = 0; i < buttonsJeton.size(); i++)
+        {
+            buttonsJeton.get(i).button.setVisible(miser.obtenirJetons().contains(buttonsJeton.get(i).jeton));
+        }
+        hBoxJetons.setVisible(true);
     }
 
     public void onValidButtonClick(){
