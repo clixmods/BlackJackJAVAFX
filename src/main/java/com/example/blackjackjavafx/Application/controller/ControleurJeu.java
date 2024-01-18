@@ -80,6 +80,7 @@ public class ControleurJeu implements Controleur{
 
     private void creerBoutonDoubler(){
         buttonDouble = new Button(LangageManager.getInstance().getText("jeu_doubleButton"));
+        buttonDouble.setStyle("-fx-font-size: 12; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);");
         buttonDouble.setScaleY(2.0);
         buttonDouble.setScaleX(2.0);
         buttonDouble.setScaleZ(2.0);
