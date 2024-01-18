@@ -10,33 +10,32 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.effect.Bloom?>
 
-<?import javafx.scene.text.Text?>
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings" style="-fx-background-color: #24074a;">
     <center>
         <VBox alignment="CENTER" spacing="20">
-            <Label fx:id="settingsLabel" text="Paramètres" style="-fx-text-fill: #56d9fb;">
+            <Label fx:id="settingsLabel" text="Paramètres" style="-fx-text-fill: #56d9fb; -fx-font-size: 32;">
                 <effect>
                     <Bloom threshold="-1"/>
                 </effect>
             </Label>
 
-            <Label fx:id="musicVolumeLabel" text="Volume de la musique" style="-fx-text-fill: #56d9fb;">
+            <Label fx:id="musicVolumeLabel" text="Volume de la musique" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
                 <effect>
                     <Bloom threshold="-1"/>
                 </effect>
             </Label>
 
-            <Slider fx:id="sliderMusique" maxWidth="500" min="0.0" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #24074a;"/>
+            <Slider fx:id="sliderMusique" maxWidth="500" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #24074a;"/>
 
-            <Label fx:id="effectsVolumeLabel" text="Volume des effets sonores" style="-fx-text-fill: #56d9fb;">
+            <Label fx:id="effectsVolumeLabel" text="Volume des effets sonores" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
                 <effect>
                     <Bloom threshold="-1"/>
                 </effect>
             </Label>
 
-            <Slider fx:id="sliderEffets" maxWidth="500" min="0.0" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #24074a;"/>
+            <Slider fx:id="sliderEffets" maxWidth="500" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #24074a;"/>
 
-            <Label fx:id="languageLabel" text="Langue" style="-fx-text-fill: #56d9fb;">
+            <Label fx:id="languageLabel" text="Langue" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
                 <effect>
                     <Bloom threshold="-1"/>
                 </effect>
