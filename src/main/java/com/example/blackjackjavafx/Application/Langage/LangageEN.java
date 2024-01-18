@@ -67,7 +67,7 @@ public class LangageEN implements Langage{
         dictionnaire.put("inscription_loginFieldDescriptor", "Login");
         dictionnaire.put("inscription_nameFieldDescriptor", "Name");
         dictionnaire.put("inscription_firstNameFieldDescriptor","First name");
-        dictionnaire.put("inscription_birthDateFieldDescriptor", "Birth Date");
+        dictionnaire.put("inscription_birthDateFieldDescriptor", "Birth date");
         dictionnaire.put("inscription_passwordFieldDescriptor", "Password");
         dictionnaire.put("inscription_passwordConfirmationFieldDescriptor", "Confirm password");
         dictionnaire.put("inscription_termsAndConditionsCheckBox", "I accept the terms and conditions of use");
@@ -86,9 +86,9 @@ public class LangageEN implements Langage{
         dictionnaire.put("settings_languageLabel", "Language");
         dictionnaire.put("settings_submitButton", "Apply");
 
-        dictionnaire.put("user_userInformationTitle", "User Informations");
+        dictionnaire.put("user_userInformationTitle", "User informations");
         dictionnaire.put("user_nameLabel", "Name : ");
-        dictionnaire.put("user_firstNameLabel", "First Name : ");
+        dictionnaire.put("user_firstNameLabel", "First name : ");
         dictionnaire.put("user_mailLabel", "Email : ");
         dictionnaire.put("user_moneyLabel", "Money on account : ");
         dictionnaire.put("user_addMoneyLabel", "Add money : ");

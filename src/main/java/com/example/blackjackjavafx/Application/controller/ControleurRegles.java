@@ -27,7 +27,7 @@ public class ControleurRegles implements Controleur{
         label.setText(LangageManager.getInstance().getText("regles_label1"));
         label2.setText(LangageManager.getInstance().getText("regles_label2"));
         label3.setText(LangageManager.getInstance().getText("regles_label3"));
-        label4.setText(LangageManager.getInstance().getText("regles_labeel4"));
+        label4.setText(LangageManager.getInstance().getText("regles_label4"));
     }
 
     private void LabelResponsive(){
