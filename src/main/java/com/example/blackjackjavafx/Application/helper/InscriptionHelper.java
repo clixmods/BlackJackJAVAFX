@@ -14,10 +14,6 @@ public class InscriptionHelper
         ClientService clientService = ClientService.getInstance();
         Client client = clientService.getClient(login);
         Boolean condition = client == null;
-        if(condition)
-        {
-            System.out.println("Inscription : Login disponible");
-        }
         return condition;
     }
 
@@ -26,35 +22,8 @@ public class InscriptionHelper
         Client client = clientService.getClientByMail(mail);
 
         Boolean condition = client == null;
-        if(condition)
-        {
-            System.out.println("Inscription : Mail disponible");
-        }
         return condition;
     }
-
-    public static boolean isValidPhoneNumber(String phoneNumber) {
-        // Vérifie si le numéro de téléphone n'est pas nul et a une longueur minimale
-        if (phoneNumber == null || phoneNumber.length() < 10) {
-            System.out.println("Numero telephone invalide");
-            return false;
-        }
-
-        // Vérifie si le numéro de téléphone contient uniquement des chiffres
-        if (!isNumeric(phoneNumber))
-        {
-            System.out.println("Numero telephone n'est pas numerique");
-            return false;
-        }
-
-        return true;
-    }
-
-    private static boolean isNumeric(String str) {
-        // Vérifie si la chaîne est composée uniquement de chiffres
-        return Pattern.compile("\\d+").matcher(str).matches();
-    }
-
 
     public static int calculerAge(LocalDate dateNaissance) {
         LocalDate currentDate = LocalDate.now();
