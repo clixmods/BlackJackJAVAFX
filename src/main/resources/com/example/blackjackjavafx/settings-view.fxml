@@ -41,13 +41,16 @@
                 </effect>
             </Label>
 
-            <ComboBox fx:id="langueBox" value="Français">
+            <ComboBox fx:id="langueBox" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Français"/>
                         <String fx:value="English"/>
                     </FXCollections>
                 </items>
+                <value>
+                    <Label text="Français" style="-fx-font-size: 20; -fx-text-fill: #9e63f9;"/>
+                </value>
             </ComboBox>
 
             <Button fx:id="submitButton" text="Appliquer" onAction="#handleAppliquer" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
