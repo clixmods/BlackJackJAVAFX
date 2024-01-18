@@ -42,10 +42,7 @@
                 </effect>
             </Label>
 
-            <ComboBox fx:id="langueBox"  style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
-                <value>
-                    <Text text="Français" style="-fx-font-size: 20; -fx-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"></Text>
-                </value>
+            <ComboBox fx:id="langueBox" value="Français" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Français"/>
