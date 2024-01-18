@@ -60,7 +60,9 @@ public class LangageFR implements Langage{
         dictionnaire.put("inscription_messageInfo_passwordNotSecure", "Mot de passe pas assez sécurisé (Minimum 8 caractères, 1 majuscule, 1 chiffre, 1 caractère spécial)");
         dictionnaire.put("inscription_messageInfo_passwordNotEquals", "Les mots de passes ne correspondent pas");
         dictionnaire.put("inscription_messageInfo_namesMissing", "Nom et/ou prénom incomplet");
+        dictionnaire.put("inscription_messageInfo_dateNotValid", "Veuillez rentrer une date de naissance valide (AAAA-MM-JJ)");
         dictionnaire.put("inscription_messageInfo_notOfAge", "Vous devez être majeur pour pouvoir vous inscrire");
+        dictionnaire.put("inscription_termsAndConditionsNotChecked", "Vous devez accepter les CGU pour vous inscrire");
         dictionnaire.put("inscription_mailFieldDescriptor", "Adresse mail");
         dictionnaire.put("inscription_loginFieldDescriptor", "Login");
         dictionnaire.put("inscription_nameFieldDescriptor", "Nom");
@@ -69,7 +71,9 @@ public class LangageFR implements Langage{
         dictionnaire.put("inscription_passwordFieldDescriptor", "Mot de passe");
         dictionnaire.put("inscription_passwordConfirmationFieldDescriptor", "Confirmer le mot de passe");
         dictionnaire.put("inscription_termsAndConditionsCheckBox", "J'accepte les CGU");
+        dictionnaire.put("inscription_termsAndConditionsButton", "Conditions d'utilisation");
         dictionnaire.put("inscription_submitButton", "S'inscrire");
+        dictionnaire.put("inscription_backButton", "Retour");
 
         dictionnaire.put("regles_label1", "Le joueur a plusieurs options, à savoir Rester, Tirer et Doubler.");
         dictionnaire.put("regles_label2", "Rester : Le joueur est satisfait de sa main actuelle et ne souhaite pas recevoir de nouvelles cartes.  Il attend maintenant que le croupier joue sa main.");
@@ -81,6 +85,16 @@ public class LangageFR implements Langage{
         dictionnaire.put("settings_effectsVolumeLabel", "Volume des effets sonores");
         dictionnaire.put("settings_languageLabel", "Langue");
         dictionnaire.put("settings_submitButton", "Appliquer");
+
+        dictionnaire.put("user_userInformationTitle", "Informations Utilisateur");
+        dictionnaire.put("user_nameLabel", "Nom : ");
+        dictionnaire.put("user_firstNameLabel", "Prénom : ");
+        dictionnaire.put("user_mailLabel", "Email : ");
+        dictionnaire.put("user_moneyLabel", "Argent sur le compte : ");
+        dictionnaire.put("user_addMoneyLabel", "Ajouter de l'argent : ");
+        dictionnaire.put("user_selectAmount", "Sélectionnez un montant");
+        dictionnaire.put("user_addMoneyButton", "Ajouter");
+        dictionnaire.put("user_logoutButton", "Déconnexion");
     }
 
     public static LangageFR getInstance(){

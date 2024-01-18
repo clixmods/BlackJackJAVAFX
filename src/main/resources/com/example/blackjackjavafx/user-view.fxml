@@ -11,7 +11,7 @@
 
     <center>
         <VBox alignment="CENTER" spacing="10">
-            <Label text="Informations Utilisateur" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+            <Label fx:id="userInformationTitle" text="Informations Utilisateur" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
                 <effect>
                     <Bloom threshold="0.4"/>
                 </effect>
@@ -39,7 +39,7 @@
             </Label>
 
             <HBox spacing="10" alignment="CENTER">
-                <Label text="Ajouter de l'argent:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;"> </Label>
+                <Label fx:id="addMoneyLabel" text="Ajouter de l'argent:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;"> </Label>
                 <ComboBox fx:id="montantComboBox" promptText="Sélectionnez un montant" style="-fx-font-size: 16; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
@@ -51,7 +51,7 @@
                         </FXCollections>
                     </items>
                 </ComboBox>
-                <Button text="Ajouter" fx:id="boutonNom"  onAction="#handleAjouterArgent" style="-fx-font-size: 16; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+                <Button text="Ajouter" fx:id="boutonAjouter"  onAction="#handleAjouterArgent" style="-fx-font-size: 16; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
             </HBox>
 
             <Button text="Déconnexion" fx:id="boutonDeconnexion"  onAction="#handleDeconnexion" style="-fx-font-size: 16; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>

@@ -65,15 +65,8 @@ public class VueGenerale extends BorderPane {
         centre.getChildren().remove(parametres);
     }
 
-    public void miseAJourHeader(Client client){
-        if (client == null){
-            controleurHeader.setArgent(0);
-            controleurHeader.setNomCompte("Non connecté");
-        }
-        else {
-            controleurHeader.setNomCompte(client.getNom());
-            controleurHeader.setArgent(client.getArgent());
-        }
+    public void miseAJourHeader(){
+        controleurHeader.changerLangue();
     }
 
     public void activerBoutonHome(boolean active){

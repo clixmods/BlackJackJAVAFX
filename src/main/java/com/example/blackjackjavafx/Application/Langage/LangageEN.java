@@ -60,7 +60,9 @@ public class LangageEN implements Langage{
         dictionnaire.put("inscription_messageInfo_passwordNotSecure", "Password not secure enough (Minimum 8 characters, 1 uppercase, 1 number, 1 special character)");
         dictionnaire.put("inscription_messageInfo_passwordNotEquals", "Passwords don't match");
         dictionnaire.put("inscription_messageInfo_namesMissing", "Incomplete first and/or last name");
+        dictionnaire.put("inscription_messageInfo_dateNotValid", "Please enter a valid date of birth (YYYY-MM-DD)");
         dictionnaire.put("inscription_messageInfo_notOfAge", "You must be 18 or over to register");
+        dictionnaire.put("inscription_termsAndConditionsNotChecked", "You must accept the T&Cs to register");
         dictionnaire.put("inscription_mailFieldDescriptor", "E-mail address");
         dictionnaire.put("inscription_loginFieldDescriptor", "Login");
         dictionnaire.put("inscription_nameFieldDescriptor", "Name");
@@ -69,7 +71,9 @@ public class LangageEN implements Langage{
         dictionnaire.put("inscription_passwordFieldDescriptor", "Password");
         dictionnaire.put("inscription_passwordConfirmationFieldDescriptor", "Confirm password");
         dictionnaire.put("inscription_termsAndConditionsCheckBox", "I accept the terms and conditions of use");
+        dictionnaire.put("inscription_termsAndConditionsButton", "Conditions of use");
         dictionnaire.put("inscription_submitButton", "Register");
+        dictionnaire.put("inscription_backButton", "Back");
 
         dictionnaire.put("regles_label1", "The player has several options, including Remain, Shoot and Double.");
         dictionnaire.put("regles_label2", "Stay : The player is satisfied with their current hand and does not wish to receive any new cards. They now waits for the dealer to play his hand.");
@@ -81,6 +85,16 @@ public class LangageEN implements Langage{
         dictionnaire.put("settings_effectsVolumeLabel", "Sound effects volume");
         dictionnaire.put("settings_languageLabel", "Language");
         dictionnaire.put("settings_submitButton", "Apply");
+
+        dictionnaire.put("user_userInformationTitle", "User Informations");
+        dictionnaire.put("user_nameLabel", "Name : ");
+        dictionnaire.put("user_firstNameLabel", "First Name : ");
+        dictionnaire.put("user_mailLabel", "Email : ");
+        dictionnaire.put("user_moneyLabel", "Money on account : ");
+        dictionnaire.put("user_addMoneyLabel", "Add money : ");
+        dictionnaire.put("user_selectAmount", "Select an amount");
+        dictionnaire.put("user_addMoneyButton", "Add");
+        dictionnaire.put("user_logoutButton", "Logout");
     }
 
     public static LangageEN getInstance(){
