@@ -105,7 +105,7 @@ public class SceneHandler {
         stackPaneUser.setBackground(backgroundMenu);
         sceneUser.setRoot(stackPaneUser);
 
-        Scene sceneGenerale = new Scene(vueGenerale, 1000,700);
+        Scene sceneGenerale = new Scene(vueGenerale, 1400,900);
         stageApplication.setScene(sceneGenerale);
 
         afficherSettings();

@@ -5,14 +5,9 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.Bloom?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurCGU" >
-
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurCGU">
     <center>
-        <BorderPane>
-            <left>
-                <Label>ㅤㅤㅤㅤㅤ</Label>
-            </left>
-            <center>
+        <VBox alignment="CENTER" spacing="20">
                 <ScrollPane fitToHeight="true" fitToWidth="true">
                     <VBox alignment="CENTER" spacing="10" style="-fx-background-color: #24074a;">
 
@@ -23,15 +18,9 @@
                         </Text>
                     </VBox>
                 </ScrollPane>
-            </center>
-            <right>
-                <Label>ㅤㅤㅤㅤㅤ</Label>
-            </right>
-            <bottom>
                 <HBox alignment="CENTER">
                 <Button text="Retour" onAction="#retour" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
                 </HBox>
-            </bottom>
-        </BorderPane>
+        </VBox>
     </center>
 </BorderPane>
