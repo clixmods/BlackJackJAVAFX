@@ -86,7 +86,7 @@ public class LangageFR implements Langage{
         dictionnaire.put("settings_languageLabel", "Langue");
         dictionnaire.put("settings_submitButton", "Appliquer");
 
-        dictionnaire.put("user_userInformationTitle", "Informations Utilisateur");
+        dictionnaire.put("user_userInformationTitle", "Informations utilisateur");
         dictionnaire.put("user_nameLabel", "Nom : ");
         dictionnaire.put("user_firstNameLabel", "Prénom : ");
         dictionnaire.put("user_mailLabel", "Email : ");
