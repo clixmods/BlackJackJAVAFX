@@ -13,7 +13,7 @@
         <!--<effect>
             <BoxBlur height="10" width="10" iterations="3"/>
         </effect>-->
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings" style="-fx-background-color: rgba(36, 7, 74, 0.9); -fx-background-radius: 40;">
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings" style="-fx-background-color: rgba(36, 7, 74, 1); -fx-background-radius: 40;">
     <center>
         <VBox alignment="CENTER" spacing="40">
             <Label fx:id="settingsLabel" text="Paramètres" style="-fx-text-fill: #56d9fb; -fx-font-size: 32;">
@@ -39,7 +39,7 @@
                         <Bloom threshold="-1"/>
                     </effect>
                 </Label>
-                <ComboBox fx:id="langueBox" value="Français" style="-fx-font-size: 20; -fx-fill: #ffffff; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 25, 0.5, 0, 0.8);" >
+                <ComboBox fx:id="langueBox" value="Français" style="-fx-font-size: 20; -fx-fill: #ffffff; -fx-background-color: #56d9fb; -fx-effect: dropshadow(gaussian, #6718fb, 25, 0.5, 0, 0.8);" >
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Français"/>
