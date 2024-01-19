@@ -16,14 +16,12 @@ public class BlackJackApplication extends Application {
 
 
     public static com.example.blackjackjavafx.Vue.SceneHandler sceneHandler;
-    public static SoundsHelper soundsHelper;
-    public static IntegerProperty Money = new SimpleIntegerProperty(1000);
 
     @Override
     public void start(Stage stage) throws IOException {
-        Money = new SimpleIntegerProperty(1000);
         sceneHandler = new SceneHandler(stage);
         stage.setTitle("Black Jack");
+        stage.resizableProperty().set(false);
         stage.show();
     }
 
