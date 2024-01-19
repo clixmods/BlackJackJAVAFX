@@ -27,7 +27,7 @@ public class VueGenerale extends BorderPane {
         setCenter(centre);
         try{
             setTop(headerLoader.load());
-            parametres = new SubScene(settingsLoader.load(), 800, 800);
+            parametres = new SubScene(settingsLoader.load(), 600, 600);
             controleurHeader = headerLoader.getController();
             controleurHeader.initialiserHeader(sceneHandler);
             controleurSettings = settingsLoader.getController();
