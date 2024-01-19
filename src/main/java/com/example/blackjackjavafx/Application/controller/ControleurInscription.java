@@ -8,8 +8,10 @@ import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.util.StringConverter;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 public class ControleurInscription implements Controleur
 {
@@ -39,6 +41,12 @@ public class ControleurInscription implements Controleur
     @FXML
     private CheckBox termsAndConditionsCheckBox;
 
+    @FXML
+    private Button CGUButton;
+
+    @FXML
+    private Button retourButton;
+
     public DatePicker inputDateNaissance;
 
     public PasswordField inputPassword2;
@@ -67,8 +75,41 @@ public class ControleurInscription implements Controleur
     private SceneHandler sceneHandler;
     public void initialiserInscription(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;
+        datePickerExceptionHandler();
         messageInfoState = "inscription_messageInfo_inscription";
         changerLangue();
+    }
+
+    private void datePickerExceptionHandler(){
+        inputDateNaissance.setConverter(new StringConverter<LocalDate>() {
+            @Override
+            public String toString(LocalDate localDate) {
+                String affichage = "";
+                if (localDate == null){
+                    return affichage;
+                }
+                else{
+                    return localDate.toString();
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String s) {
+                try{
+                    return LocalDate.parse(s);
+                }
+                catch (DateTimeParseException e){
+                    return null;
+                }
+            }
+        });
+        inputDateNaissance.setOnAction(actionEvent -> {
+            LocalDate dateNaissance = inputDateNaissance.getValue();
+            if (dateNaissance == null){
+                messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_dateNotValid"));
+                messageInfoState = "inscription_messageInfo_dateNotValid";
+            }
+        });
     }
 
     public void changerLangue(){
@@ -87,6 +128,8 @@ public class ControleurInscription implements Controleur
         passwordConfirmationFieldDescriptor.setText(LangageManager.getInstance().getText("inscription_passwordConfirmationFieldDescriptor"));
         termsAndConditionsCheckBox.setText(LangageManager.getInstance().getText("inscription_termsAndConditionsCheckBox"));
         submitInscription.setText(LangageManager.getInstance().getText("inscription_submitButton"));
+        CGUButton.setText(LangageManager.getInstance().getText("inscription_termsAndConditionsButton"));
+        retourButton.setText(LangageManager.getInstance().getText("inscription_backButton"));
     }
 
     public void OnMailEnter(ActionEvent actionEvent) {
@@ -114,7 +157,7 @@ public class ControleurInscription implements Controleur
         sceneHandler.afficherCGU();
     }
 
-    public void OnSubmit(ActionEvent actionEvent) throws InterruptedException {
+    public void OnSubmit(ActionEvent actionEvent){
         // Get inputs text
         String login = inputPseudo.getText();
         String mail = inputMail.getText();
@@ -123,19 +166,12 @@ public class ControleurInscription implements Controleur
         int argent = 0;
         String password = inputPassword1.getText();
         String passwordConfirm = inputPassword2.getText();
-        //String adresse = inputAddress.getText();
-        //int codePostal = 34000;
-        //String ville = inputCity.getText();
         LocalDate dateNaissance = inputDateNaissance.getValue();
-        //Date dateInscription = new Date();
-        //String telephone = inputPhoneNumber.getText();
 
         if( StartInscription(login, mail, nom, prenom, argent, password, passwordConfirm, dateNaissance))
         {
             afficherInscriptionReussie(nom, prenom);
-            //wait(4000);
             sceneHandler.afficherConnexion();
-            // TODO : Ouvrir un menu pour une connexion reussie
         }
 
     }
@@ -161,7 +197,6 @@ public class ControleurInscription implements Controleur
 
         if(login.isBlank() || !InscriptionHelper.isLoginAvailable(login))
         {
-            System.out.println("login not available");
             messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_loginNotAvailable"));
             messageInfoState = "inscription_messageInfo_loginNotAvailable";
             return false;
@@ -169,37 +204,42 @@ public class ControleurInscription implements Controleur
 
         if(mail.isBlank() || !InscriptionHelper.isMailAvailable(mail))
         {
-            System.out.println("Mail not available");
             messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_mailNotAvailable"));
             messageInfoState = "inscription_messageInfo_mailNotAvailable";
             return false;
         }
-        if(password.isBlank() || !passwordService.isSecure(password))
+        if(!passwordService.isSecure(password))
         {
-            System.out.println("Password is not secure");
             messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_passwordNotSecure"));
             messageInfoState = "inscription_messageInfo_passwordNotSecure";
             return false;
         }
         if(!password.equals(passwordConfirm))
         {
-            System.out.println("Passwords is not equals");
-            messageInfo.setText("inscription_messageInfo_passwordNotEquals");
+            messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_passwordNotEquals"));
             messageInfoState = "inscription_messageInfo_passwordNotEquals";
             return false;
         }
         if(nom.isBlank() || prenom.isBlank())
         {
-            System.out.println("Nom et prenom est vide");
             messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_namesMissing"));
             messageInfoState = "inscription_messageInfo_namesMissing";
             return false;
         }
+        if (dateNaissance == null){
+            messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_dateNotValid"));
+            messageInfoState = "inscription_messageInfo_dateNotValid";
+            return false;
+        }
         if(!InscriptionHelper.isMajor(dateNaissance))
         {
-            System.out.println("Pas majeur");
             messageInfo.setText(LangageManager.getInstance().getText("inscription_messageInfo_notOfAge"));
             messageInfoState = "inscription_messageInfo_notOfAge";
+            return false;
+        }
+        if(!termsAndConditionsCheckBox.isSelected()){
+            messageInfo.setText(LangageManager.getInstance().getText("inscription_termsAndConditionsNotChecked"));
+            messageInfoState = "inscription_termsAndConditionsNotChecked";
             return false;
         }
         return clientService.creerClient(login, mail, nom, prenom, argent, password, dateNaissance);
