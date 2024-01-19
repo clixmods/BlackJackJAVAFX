@@ -14,7 +14,6 @@ public class ControleurUser implements Controleur{
 
     @FXML
     private Label userInformationTitle;
-
     @FXML
     private Label labelNom;
     @FXML
@@ -23,20 +22,14 @@ public class ControleurUser implements Controleur{
     private Label labelEmail;
     @FXML
     private Label labelArgent;
-
     @FXML
     private Label addMoneyLabel;
-
     @FXML
     private ComboBox<Integer> montantComboBox;
-
     @FXML
     private Button boutonAjouter;
-
     @FXML
     private Button boutonDeconnexion;
-
-
     private SceneHandler sceneHandler;
     public void initialiserUser(SceneHandler sceneHandler){
         this.sceneHandler = sceneHandler;

@@ -10,50 +10,45 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.effect.Bloom?>
 
-<?import javafx.scene.text.Text?>
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings" style="-fx-background-color: #24074a;">
+        <!--<effect>
+            <BoxBlur height="10" width="10" iterations="3"/>
+        </effect>-->
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings" style="-fx-background-color: rgba(36, 7, 74, 1); -fx-background-radius: 40;">
     <center>
-        <VBox alignment="CENTER" spacing="20">
-            <Label fx:id="settingsLabel" text="Paramètres" style="-fx-text-fill: #56d9fb;">
+        <VBox alignment="CENTER" spacing="40">
+            <Label fx:id="settingsLabel" text="Paramètres" style="-fx-text-fill: #56d9fb; -fx-font-size: 32;">
                 <effect>
                     <Bloom threshold="-1"/>
                 </effect>
             </Label>
-
-            <Label fx:id="musicVolumeLabel" text="Volume de la musique" style="-fx-text-fill: #56d9fb;">
-                <effect>
-                    <Bloom threshold="-1"/>
-                </effect>
-            </Label>
-
-            <Slider fx:id="sliderMusique" maxWidth="500" min="0.0" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #24074a; -fx-background-color: #24074a; -fx-thumb-background-color: #6718fb; -fx-tick-label-fill: #ffffff;"/>
-
-            <Label fx:id="effectsVolumeLabel" text="Volume des effets sonores" style="-fx-text-fill: #56d9fb;">
-                <effect>
-                    <Bloom threshold="-1"/>
-                </effect>
-            </Label>
-
-            <Slider fx:id="sliderEffets" maxWidth="500" min="0.0" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #24074a; -fx-background-color: #24074a; -fx-thumb-background-color: #6718fb; -fx-tick-label-fill: #ffffff;"/>
-
-            <Label fx:id="languageLabel" text="Langue" style="-fx-text-fill: #56d9fb;">
-                <effect>
-                    <Bloom threshold="-1"/>
-                </effect>
-            </Label>
-
-            <ComboBox fx:id="langueBox" value="Français" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Français"/>
-                        <String fx:value="English"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
-
-            <Button fx:id="submitButton" text="Appliquer" onAction="#handleAppliquer" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-
+            <VBox alignment="CENTER" spacing="20">
+                <Label fx:id="musicVolumeLabel" text="Volume de la musique" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+                    <effect>
+                        <Bloom threshold="-1"/>
+                    </effect>
+                </Label>
+                <Slider fx:id="sliderMusique" maxWidth="500" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #3a7ab5;"/>
+                <Label fx:id="effectsVolumeLabel" text="Volume des effets sonores" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+                    <effect>
+                        <Bloom threshold="-1"/>
+                    </effect>
+                </Label>
+                <Slider fx:id="sliderEffets" maxWidth="500" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #3a7ab5;"/>
+                <Label fx:id="languageLabel" text="Langue" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+                    <effect>
+                        <Bloom threshold="-1"/>
+                    </effect>
+                </Label>
+                <ComboBox fx:id="langueBox" value="Français" style="-fx-font-size: 20; -fx-fill: #ffffff; -fx-background-color: #56d9fb; -fx-effect: dropshadow(gaussian, #6718fb, 25, 0.5, 0, 0.8);" >
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Français"/>
+                            <String fx:value="English"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button fx:id="submitButton" text="Appliquer" onAction="#handleAppliquer" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 25, 0.5, 0, 0.8);"/>
+            </VBox>
         </VBox>
     </center>
-
 </BorderPane>
