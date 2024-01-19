@@ -41,7 +41,7 @@
                             <Bloom threshold="0.4"/>
                         </effect>
                     </Label>
-                    <ComboBox fx:id="montantComboBox" promptText="Sélectionnez un montant" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
+                    <ComboBox fx:id="montantComboBox" promptText="Sélectionnez un montant" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #56d9fb; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
                         <items>
                             <FXCollections fx:factory="observableArrayList">
                                 <Integer fx:value="1" />
