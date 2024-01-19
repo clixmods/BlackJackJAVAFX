@@ -5,9 +5,9 @@
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="30" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurRegles" style="-fx-background-color: #24074a;">
+<VBox alignment="CENTER" spacing="30" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurRegles" >
     <padding>
-        <Insets bottom="100.0" left="100.0" right="100.0" top="100.0"/>
+        <Insets bottom="100.0" left="200.0" right="200.0" top="100.0"/>
     </padding>
 
     <Label style="-fx-text-fill: #56d9fb; -fx-font-size: 20; " fx:id="label" text="Le joueur a plusieurs options, notamment Rester, Tirer et Doubler.">

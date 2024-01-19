@@ -5,7 +5,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.Integer?>
 <?import javafx.scene.effect.Bloom?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurUser" style="-fx-background-color: #24074a;">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurUser">
     <center>
         <VBox alignment="CENTER" spacing="50">
             <VBox alignment="CENTER" spacing="20">

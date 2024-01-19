@@ -1,6 +1,5 @@
 package com.example.blackjackjavafx.Vue;
 
-import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Application.controller.*;
 import com.example.blackjackjavafx.Application.music.MusicPlayer;
 import com.example.blackjackjavafx.BlackJackApplication;
@@ -42,8 +41,11 @@ public class SceneHandler {
     private static StackPane stackPane;
     private static StackPane stackpaneAccueil;
     private static StackPane stackpaneCGU;
+    private static StackPane stackPaneConnexion;
+    private static StackPane stackPaneInscription;
+    private static StackPane stackPaneRegles;
+    private static StackPane stackPaneUser;
     private MusicPlayer musicPlayer;
-
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
@@ -56,7 +58,6 @@ public class SceneHandler {
         sceneCGU = new Scene(cguLoader.load(), 640, 700);
         sceneUser = new Scene(userLoader.load(), 640, 700);
 
-
         vueGenerale = new VueGenerale(headerLoader, settingsLoader, this);
 
         stackPane = new StackPane();
@@ -64,7 +65,6 @@ public class SceneHandler {
         Image img = new Image("/backgroundJeu.png");
         BackgroundSize backgroundSize = new BackgroundSize(1.0, 1.0, true, true, true, true);
         BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
-
         Background backgroundJeu = new Background(bImg);
         stackPane.setBackground(backgroundJeu);
         sceneJeu.setRoot(stackPane);
@@ -72,18 +72,38 @@ public class SceneHandler {
         stackpaneAccueil =new StackPane();
         stackpaneAccueil.getChildren().add(sceneAccueil.getRoot());
         Image bgAccueil =new Image("/backgroundAccueil.png");
-        BackgroundImage bgimgAccueil = new BackgroundImage(bgAccueil,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundImage bgimgAccueil = new BackgroundImage(bgAccueil,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, true, true));
         Background backgroundAccueil = new Background(bgimgAccueil);
         stackpaneAccueil.setBackground(backgroundAccueil);
         sceneAccueil.setRoot(stackpaneAccueil);
 
         stackpaneCGU =new StackPane();
         stackpaneCGU.getChildren().add(sceneCGU.getRoot());
-        Image bgCGU =new Image("/backgroundAccueil.png");
-        BackgroundImage bgimgCGU = new BackgroundImage(bgCGU,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundCGU = new Background(bgimgCGU);
-        stackpaneCGU.setBackground(backgroundCGU);
+        Image bgCGU =new Image("/backgroundMenu.jpg");
+        BackgroundImage bgimgCGU = new BackgroundImage(bgCGU,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false));
+        Background backgroundMenu = new Background(bgimgCGU);
+        stackpaneCGU.setBackground(backgroundMenu);
         sceneCGU.setRoot(stackpaneCGU);
+
+        stackPaneConnexion =new StackPane();
+        stackPaneConnexion.getChildren().add(sceneConnexion.getRoot());
+        stackPaneConnexion.setBackground(backgroundMenu);
+        sceneConnexion.setRoot(stackPaneConnexion);
+
+        stackPaneInscription = new StackPane();
+        stackPaneInscription.getChildren().add(sceneInscription.getRoot());
+        stackPaneInscription.setBackground(backgroundMenu);
+        sceneInscription.setRoot(stackPaneInscription);
+
+        stackPaneRegles = new StackPane();
+        stackPaneRegles.getChildren().add(sceneRegles.getRoot());
+        stackPaneRegles.setBackground(backgroundMenu);
+        sceneRegles.setRoot(stackPaneRegles);
+
+        stackPaneUser = new StackPane();
+        stackPaneUser.getChildren().add(sceneUser.getRoot());
+        stackPaneUser.setBackground(backgroundMenu);
+        sceneUser.setRoot(stackPaneUser);
 
         Scene sceneGenerale = new Scene(vueGenerale, 1000,700);
         stageApplication.setScene(sceneGenerale);

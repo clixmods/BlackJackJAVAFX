@@ -12,7 +12,7 @@
 
 <!-- Attention utilisez bien xmlns:fx="http://javafx.com/fxml" pour eviter de spécifiez la version afin de pas avoir de message de warning au démarrage du jeu -->
 
-<VBox spacing="50.0" alignment="CENTER" xmlns:fx="http://javafx.com/fxml/" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurInscription" style="-fx-background-color: #24074a;">
+<VBox spacing="40.0" alignment="CENTER" xmlns:fx="http://javafx.com/fxml/" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurInscription" >
 
     <Label  style="-fx-font-size: 32; -fx-text-fill: #56d9fb;" text="Inscription">
         <effect>
@@ -90,7 +90,7 @@
             <PasswordField fx:id="inputPassword2" onAction="#OnConfirmPasswordEnter" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"  />
         </HBox>
 
-        <Button fx:id = "CGUButton" text="Conditions d'utilisation" onAction="#OnCGU" style="-fx-font-size: 14; -fx-text-fill: #56d9fb; -fx-background-color: #24074a; -fx-underline: true; "/>
+        <Button fx:id = "CGUButton" text="Conditions d'utilisation" onAction="#OnCGU" style="-fx-font-size: 14; -fx-text-fill: #56d9fb; -fx-underline: true; -fx-background-color: transparent;"/>
         <CheckBox fx:id="termsAndConditionsCheckBox" mnemonicParsing="false" style="-fx-text-fill: #56d9fb; -fx-font-size: 14;" text="J'accepte les CGU"/>
         <Button fx:id="submitInscription" onAction="#OnSubmit" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 30, 0, 0, 0.8);" text="S'inscrire" />
         <Button fx:id="retourButton" onAction="#OnRetourButton" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 30, 0, 0, 0.8);" text="Retour"/>
