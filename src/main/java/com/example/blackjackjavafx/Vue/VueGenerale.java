@@ -3,11 +3,8 @@ package com.example.blackjackjavafx.Vue;
 import com.example.blackjackjavafx.Application.controller.Controleur;
 import com.example.blackjackjavafx.Application.controller.ControleurHeader;
 import com.example.blackjackjavafx.Application.controller.ControleurSettings;
-import com.example.blackjackjavafx.BlackJackApplication;
-import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.SubScene;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
