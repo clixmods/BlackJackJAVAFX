@@ -40,6 +40,7 @@ public class ControleurConnexion implements Controleur{
 
     public void initialiserConnexion(SceneHandler sceneHandler) {
         this.sceneHandler = sceneHandler;
+        reinitialiserVue();
         textInfoState = "connexion_textInfo_tryConnect";
         changerLangue();
     }
@@ -52,13 +53,18 @@ public class ControleurConnexion implements Controleur{
         buttonRetour.setText(LangageManager.getInstance().getText("connexion_retourButton"));
     }
 
-    public void OnInputLoginEnter(ActionEvent actionEvent) {
+    private void reinitialiserVue(){
+        inputPassword.setText("");
+        inputLogin.setText("");
     }
 
-    public void OnInputPasswordEnter(ActionEvent actionEvent) {
+    public void OnInputLoginEnter() {
     }
 
-    public void OnConnexionSubmit(ActionEvent actionEvent) 
+    public void OnInputPasswordEnter() {
+    }
+
+    public void OnConnexionSubmit()
     {
         String login = inputLogin.getText();
         String password = inputPassword.getText();
@@ -87,7 +93,7 @@ public class ControleurConnexion implements Controleur{
     }
 
 
-    public void OnRetourButton(ActionEvent actionEvent) {
+    public void OnRetourButton() {
         sceneHandler.afficherAccueil();
     }
 }
