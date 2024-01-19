@@ -1,13 +1,7 @@
 package com.example.blackjackjavafx.Vue;
 
-import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Application.controller.*;
-import com.example.blackjackjavafx.Application.helper.SoundsHelper;
 import com.example.blackjackjavafx.Application.music.MusicPlayer;
-import com.example.blackjackjavafx.Application.sound.SoundBlackJack;
-import com.example.blackjackjavafx.Application.sound.SoundCarte;
-import com.example.blackjackjavafx.Application.sound.SoundJeton;
-import com.example.blackjackjavafx.Application.sound.SoundVictoire;
 import com.example.blackjackjavafx.BlackJackApplication;
 import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +10,6 @@ import javafx.scene.SubScene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 import java.io.IOException;
 
@@ -49,8 +41,11 @@ public class SceneHandler {
     private static StackPane stackPane;
     private static StackPane stackpaneAccueil;
     private static StackPane stackpaneCGU;
+    private static StackPane stackPaneConnexion;
+    private static StackPane stackPaneInscription;
+    private static StackPane stackPaneRegles;
+    private static StackPane stackPaneUser;
     private MusicPlayer musicPlayer;
-
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
@@ -63,13 +58,13 @@ public class SceneHandler {
         sceneCGU = new Scene(cguLoader.load(), 640, 700);
         sceneUser = new Scene(userLoader.load(), 640, 700);
 
-
         vueGenerale = new VueGenerale(headerLoader, settingsLoader, this);
 
         stackPane = new StackPane();
         stackPane.getChildren().add(sceneJeu.getRoot());
         Image img = new Image("/backgroundJeu.png");
-        BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundSize backgroundSize = new BackgroundSize(1.0, 1.0, true, true, true, true);
+        BackgroundImage bImg = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
         Background backgroundJeu = new Background(bImg);
         stackPane.setBackground(backgroundJeu);
         sceneJeu.setRoot(stackPane);
@@ -77,20 +72,40 @@ public class SceneHandler {
         stackpaneAccueil =new StackPane();
         stackpaneAccueil.getChildren().add(sceneAccueil.getRoot());
         Image bgAccueil =new Image("/backgroundAccueil.png");
-        BackgroundImage bgimgAccueil = new BackgroundImage(bgAccueil,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundImage bgimgAccueil = new BackgroundImage(bgAccueil,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, true, true));
         Background backgroundAccueil = new Background(bgimgAccueil);
         stackpaneAccueil.setBackground(backgroundAccueil);
         sceneAccueil.setRoot(stackpaneAccueil);
 
         stackpaneCGU =new StackPane();
         stackpaneCGU.getChildren().add(sceneCGU.getRoot());
-        Image bgCGU =new Image("/backgroundAccueil.png");
-        BackgroundImage bgimgCGU = new BackgroundImage(bgCGU,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        Background backgroundCGU = new Background(bgimgCGU);
-        stackpaneCGU.setBackground(backgroundCGU);
+        Image bgCGU =new Image("/backgroundMenu.jpg");
+        BackgroundImage bgimgCGU = new BackgroundImage(bgCGU,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false));
+        Background backgroundMenu = new Background(bgimgCGU);
+        stackpaneCGU.setBackground(backgroundMenu);
         sceneCGU.setRoot(stackpaneCGU);
 
-        Scene sceneGenerale = new Scene(vueGenerale, 1000,700);
+        stackPaneConnexion =new StackPane();
+        stackPaneConnexion.getChildren().add(sceneConnexion.getRoot());
+        stackPaneConnexion.setBackground(backgroundMenu);
+        sceneConnexion.setRoot(stackPaneConnexion);
+
+        stackPaneInscription = new StackPane();
+        stackPaneInscription.getChildren().add(sceneInscription.getRoot());
+        stackPaneInscription.setBackground(backgroundMenu);
+        sceneInscription.setRoot(stackPaneInscription);
+
+        stackPaneRegles = new StackPane();
+        stackPaneRegles.getChildren().add(sceneRegles.getRoot());
+        stackPaneRegles.setBackground(backgroundMenu);
+        sceneRegles.setRoot(stackPaneRegles);
+
+        stackPaneUser = new StackPane();
+        stackPaneUser.getChildren().add(sceneUser.getRoot());
+        stackPaneUser.setBackground(backgroundMenu);
+        sceneUser.setRoot(stackPaneUser);
+
+        Scene sceneGenerale = new Scene(vueGenerale, 1400,900);
         stageApplication.setScene(sceneGenerale);
 
         afficherSettings();
@@ -157,14 +172,7 @@ public class SceneHandler {
     }
 
     public void mettreAJourHeader(){
-        Client client;
-        if (!Connexion.getInstance().estConnecte()){
-            client = null;
-        }
-        else {
-            client = Connexion.getInstance().getClientConnecte();
-        }
-        vueGenerale.miseAJourHeader(client);
+        vueGenerale.miseAJourHeader();
     }
 
     public void commencerPartie(Client client, int mise){

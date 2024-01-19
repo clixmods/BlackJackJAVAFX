@@ -2,63 +2,60 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
 <?import javafx.collections.FXCollections?>
 <?import java.lang.Integer?>
 <?import javafx.scene.effect.Bloom?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurUser" style="-fx-background-color: #24074a;">
-
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurUser">
     <center>
-        <VBox alignment="CENTER" spacing="10">
-            <Label text="Informations Utilisateur" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
-                <effect>
-                    <Bloom threshold="0.4"/>
-                </effect>
-            </Label>
-
-            <Label fx:id="labelNom" text="Nom:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;">
-                <effect>
-                    <Bloom threshold="0.4"/>
-                </effect>
-            </Label>
-            <Label fx:id="labelPrenom" text="Prénom:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;">
-                <effect>
-                    <Bloom threshold="0.4"/>
-                </effect>
-            </Label>
-            <Label fx:id="labelEmail" text="Email:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;">
-                <effect>
-                    <Bloom threshold="0.4"/>
-                </effect>
-            </Label>
-            <Label fx:id="labelArgent" text="Argent sur le compte:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;">
-                <effect>
-                    <Bloom threshold="0.4"/>
-                </effect>
-            </Label>
-
-            <HBox spacing="10" alignment="CENTER">
-                <Label text="Ajouter de l'argent:" style="-fx-text-fill: #56d9fb; -fx-font-size: 16;">
+        <VBox alignment="CENTER" spacing="50">
+            <VBox alignment="CENTER" spacing="20">
+                <Label fx:id="userInformationTitle" text="Informations utilisateur" style="-fx-text-fill: #56d9fb; -fx-font-size: 32;">
                     <effect>
                         <Bloom threshold="0.4"/>
                     </effect>
                 </Label>
-                <ComboBox fx:id="montantComboBox" promptText="Sélectionnez un montant" >
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <Integer fx:value="1" />
-                            <Integer fx:value="5" />
-                            <Integer fx:value="10" />
-                            <Integer fx:value="100" />
-                            <Integer fx:value="500" />
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-                <Button text="Ajouter" fx:id="boutonNom"  onAction="#handleAjouterArgent" style="-fx-font-size: 16; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-            </HBox>
 
-            <Button text="Déconnexion" fx:id="boutonDeconnexion"  onAction="#handleDeconnexion" style="-fx-font-size: 16; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+                <Label fx:id="labelNom" text="Nom:" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+                    <effect>
+                        <Bloom threshold="0.4"/>
+                    </effect>
+                </Label>
+                <Label fx:id="labelPrenom" text="Prénom:" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+                    <effect>
+                        <Bloom threshold="0.4"/>
+                    </effect>
+                </Label>
+                <Label fx:id="labelEmail" text="Email:" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+                    <effect>
+                        <Bloom threshold="0.4"/>
+                    </effect>
+                </Label>
+                <Label fx:id="labelArgent" text="Argent sur le compte:" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+                    <effect>
+                        <Bloom threshold="0.4"/>
+                    </effect>
+                </Label>
+                <HBox spacing="20" alignment="CENTER">
+                    <Label fx:id="addMoneyLabel" text="Ajouter de l'argent:" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
+                        <effect>
+                            <Bloom threshold="0.4"/>
+                        </effect>
+                    </Label>
+                    <ComboBox fx:id="montantComboBox" promptText="Sélectionnez un montant" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #56d9fb; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <Integer fx:value="1" />
+                                <Integer fx:value="5" />
+                                <Integer fx:value="10" />
+                                <Integer fx:value="100" />
+                                <Integer fx:value="500" />
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <Button text="Ajouter" fx:id="boutonAjouter"  onAction="#handleAjouterArgent" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
+                </HBox>
+            </VBox>
+            <Button text="Déconnexion" fx:id="boutonDeconnexion"  onAction="#handleDeconnexion" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
         </VBox>
     </center>
 </BorderPane>

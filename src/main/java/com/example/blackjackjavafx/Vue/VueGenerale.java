@@ -3,11 +3,8 @@ package com.example.blackjackjavafx.Vue;
 import com.example.blackjackjavafx.Application.controller.Controleur;
 import com.example.blackjackjavafx.Application.controller.ControleurHeader;
 import com.example.blackjackjavafx.Application.controller.ControleurSettings;
-import com.example.blackjackjavafx.BlackJackApplication;
-import com.example.blackjackjavafx.Metier.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.SubScene;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -30,7 +27,7 @@ public class VueGenerale extends BorderPane {
         setCenter(centre);
         try{
             setTop(headerLoader.load());
-            parametres = new SubScene(settingsLoader.load(), 800, 800);
+            parametres = new SubScene(settingsLoader.load(), 600, 600);
             controleurHeader = headerLoader.getController();
             controleurHeader.initialiserHeader(sceneHandler);
             controleurSettings = settingsLoader.getController();
@@ -58,6 +55,7 @@ public class VueGenerale extends BorderPane {
     }
 
     public void setParametres(){
+        unsetParametres();
         centre.getChildren().add(parametres);
     }
 
@@ -65,15 +63,8 @@ public class VueGenerale extends BorderPane {
         centre.getChildren().remove(parametres);
     }
 
-    public void miseAJourHeader(Client client){
-        if (client == null){
-            controleurHeader.setArgent(0);
-            controleurHeader.setNomCompte("Non connecté");
-        }
-        else {
-            controleurHeader.setNomCompte(client.getNom());
-            controleurHeader.setArgent(client.getArgent());
-        }
+    public void miseAJourHeader(){
+        controleurHeader.changerLangue();
     }
 
     public void activerBoutonHome(boolean active){
