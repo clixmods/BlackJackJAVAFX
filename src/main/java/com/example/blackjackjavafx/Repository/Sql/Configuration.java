@@ -16,6 +16,11 @@ public class Configuration
 
     private Configuration() {}
 
+    public static boolean estPresente()
+    {
+        return Configuration.class.getResource(FICHIER) != null;
+    }
+
     public static String get(String cle)
     {
         if (properties == null)

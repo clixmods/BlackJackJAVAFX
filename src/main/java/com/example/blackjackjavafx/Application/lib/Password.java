@@ -13,7 +13,13 @@ public class Password {
 
     private static final String ALGORITHM = "HmacSHA256";
 
+    // Utilisé uniquement en mode hors ligne, où les comptes ne sont jamais enregistrés
+    private static final String PEPPER_HORS_LIGNE = "blackjack-hors-ligne";
+
     private static String pepper() {
+        if (!Configuration.estPresente()) {
+            return PEPPER_HORS_LIGNE;
+        }
         return Configuration.get("password.pepper");
     }
 

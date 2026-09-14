@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RepositoryClient extends Repository<Client> {
+public class RepositoryClient extends Repository<Client> implements I_RepositoryClient {
     @Override
     protected String getNomTable() {
         return "s_clients";

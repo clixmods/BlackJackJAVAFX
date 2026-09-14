@@ -1,9 +1,9 @@
 package com.example.blackjackjavafx.Application.controller;
 
 import com.example.blackjackjavafx.Application.Langage.LangageManager;
+import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Metier.Client;
-import com.example.blackjackjavafx.Repository.RepositoryClient;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,7 +54,7 @@ public class ControleurUser implements Controleur{
         Client client = Connexion.getInstance().getClientConnecte();
         if(montantComboBox.getValue() != null){
             client.ajouterArgent(montantComboBox.getValue());
-            new RepositoryClient().mettreAJourArgent(client);
+            ClientService.getInstance().mettreAJourArgentClient(client);
         }
         sceneHandler.mettreAJourHeader();
         changerLangue();

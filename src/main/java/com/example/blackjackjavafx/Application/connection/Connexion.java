@@ -39,6 +39,11 @@ public class Connexion
 
     }
 
+    public void connecterInvite()
+    {
+        clientConnecte = ClientService.getInstance().getClient(ClientService.LOGIN_INVITE);
+    }
+
     public boolean estConnecte(){
         if (clientConnecte == null){
             return false;
