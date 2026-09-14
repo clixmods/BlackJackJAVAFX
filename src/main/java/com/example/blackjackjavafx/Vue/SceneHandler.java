@@ -106,6 +106,7 @@ public class SceneHandler {
         sceneUser.setRoot(stackPaneUser);
 
         Scene sceneGenerale = new Scene(vueGenerale, 1400,900);
+        FeedbackVisuel.installer(sceneGenerale);
         stageApplication.setScene(sceneGenerale);
 
         afficherSettings();
