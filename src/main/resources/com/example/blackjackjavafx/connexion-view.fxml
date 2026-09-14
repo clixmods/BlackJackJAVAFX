@@ -5,43 +5,30 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.effect.Bloom?>
 
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurConnexion">
 
+    <VBox styleClass="panneau" alignment="CENTER" spacing="22" maxWidth="600" maxHeight="-Infinity">
 
-   <VBox alignment="CENTER" spacing="30" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurConnexion">
+        <Label fx:id="textInfo" styleClass="titre-page" text="Essayez de vous connecter" wrapText="true" textAlignment="CENTER"/>
 
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-   </padding>
+        <VBox spacing="16" fillWidth="true">
+            <VBox spacing="7">
+                <Label fx:id="loginFieldDescriptor" styleClass="libelle-champ" text="Login"/>
+                <TextField fx:id="inputLogin"/>
+            </VBox>
+            <VBox spacing="7">
+                <Label fx:id="passwordFieldDescriptor" styleClass="libelle-champ" text="Mot de passe"/>
+                <PasswordField fx:id="inputPassword"/>
+            </VBox>
+        </VBox>
 
-   <Label fx:id="textInfo" text="Essayez de vous connecter" style="-fx-text-fill: #56d9fb; -fx-font-size: 32;">
-      <effect>
-         <Bloom threshold="-1"/>
-      </effect>
-   </Label>
+        <HBox alignment="CENTER" spacing="14">
+            <Button fx:id="buttonRetour" styleClass="bouton-secondaire" mnemonicParsing="false" onAction="#OnRetourButton" text="Retour"/>
+            <Button fx:id="buttonConnexion" styleClass="bouton-principal" mnemonicParsing="false" onAction="#OnConnexionSubmit" text="Connexion" defaultButton="true"/>
+        </HBox>
 
-   <HBox alignment="CENTER" spacing="20.0" >
-      <Label fx:id="loginFieldDescriptor" prefHeight="17.0" prefWidth="133.0" text="Login" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
-         <effect>
-            <Bloom threshold="-0.5"/>
-         </effect>
-      </Label>
-      <TextField fx:id="inputLogin" layoutX="226.0" layoutY="158.0" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);"/>
-   </HBox>
-
-   <HBox alignment="CENTER" spacing="20.0" >
-      <Label fx:id="passwordFieldDescriptor" prefHeight="17.0" prefWidth="133.0" text="Mot de passe" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
-         <effect>
-            <Bloom threshold="-0.5"/>
-         </effect>
-      </Label>
-      <PasswordField fx:id="inputPassword" layoutX="226.0" layoutY="200.0" style="-fx-background-color: #1d1135; -fx-text-fill: #ffffff; -fx-border-color: #6718fb; -fx-border-width: 2; -fx-border-radius: 5; -fx-effect: dropshadow(gaussian, #6718fb, 5, 0, 0, 0.8);" />
-   </HBox>
-
-   <Button fx:id="buttonConnexion" layoutX="264.0" layoutY="244.0" mnemonicParsing="false" onAction="#OnConnexionSubmit" text="Connexion" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-   <Button fx:id="buttonRetour" layoutX="275.0" layoutY="279.0" mnemonicParsing="false" onAction="#OnRetourButton" text="Retour" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-
-</VBox>
+    </VBox>
+</StackPane>

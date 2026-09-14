@@ -7,6 +7,8 @@ import java.io.InputStream;
 
 public class Carte {
 
+    public static final double LARGEUR = 130;
+
     private String nom;
 
     private int valeur;
@@ -29,7 +31,8 @@ public class Carte {
         {
             Image cardImage = new Image(inputStream);
             ImageView cardImageView = new ImageView(cardImage);
-            cardImageView.setFitWidth(100); // Ajustez la largeur de la carte
+            cardImageView.setFitWidth(LARGEUR);
+            cardImageView.getStyleClass().add("carte");
             cardImageView.setPreserveRatio(true);
             cardImageView.setSmooth(true);
             return cardImageView;

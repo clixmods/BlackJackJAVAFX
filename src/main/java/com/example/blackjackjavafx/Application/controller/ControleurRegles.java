@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 public class ControleurRegles implements Controleur{
 
     @FXML
+    private Label titre;
+    @FXML
     private Label label;
     @FXML
     private Label label2;
@@ -24,6 +26,7 @@ public class ControleurRegles implements Controleur{
 
     @Override
     public void changerLangue() {
+        titre.setText(LangageManager.getInstance().getText("regles_titre"));
         label.setText(LangageManager.getInstance().getText("regles_label1"));
         label2.setText(LangageManager.getInstance().getText("regles_label2"));
         label3.setText(LangageManager.getInstance().getText("regles_label3"));

@@ -78,12 +78,17 @@ public class ControleurJeu implements Controleur{
 
     private SoundCarte sonCarte;
 
+    @FXML
+    private void initialize(){
+        // Les éléments masqués ne réservent plus de place dans la mise en page
+        for (Node noeud : new Node[]{handDealerText, handPlayerText, buttonRestartRound, buttonBoxPlayer}) {
+            noeud.managedProperty().bind(noeud.visibleProperty());
+        }
+    }
+
     private void creerBoutonDoubler(){
         buttonDouble = new Button(LangageManager.getInstance().getText("jeu_doubleButton"));
-        buttonDouble.setStyle("-fx-font-size: 12; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);");
-        buttonDouble.setScaleY(2.0);
-        buttonDouble.setScaleX(2.0);
-        buttonDouble.setScaleZ(2.0);
+        buttonDouble.getStyleClass().addAll("bouton-secondaire", "bouton-action");
         buttonDouble.setOnAction(event -> {
             onDoubleButtonClick();
         });
@@ -186,7 +191,8 @@ public class ControleurJeu implements Controleur{
         InputStream inputStream = getClass().getResourceAsStream("/images/back_card.png");
         if (inputStream != null){
             imageCarteDos.setImage(new Image(inputStream));
-            imageCarteDos.setFitWidth(100);
+            imageCarteDos.getStyleClass().add("carte");
+            imageCarteDos.setFitWidth(Carte.LARGEUR);
             imageCarteDos.setPreserveRatio(true);
             imageCarteDos.setSmooth(true);
         }

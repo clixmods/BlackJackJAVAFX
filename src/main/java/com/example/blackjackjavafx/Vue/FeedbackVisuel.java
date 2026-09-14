@@ -1,5 +1,6 @@
 package com.example.blackjackjavafx.Vue;
 
+import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
 import javafx.event.EventTarget;
 import javafx.scene.Cursor;
@@ -11,18 +12,17 @@ import javafx.util.Duration;
 
 /**
  * Ajoute un retour visuel à tous les éléments cliquables d'une scène :
- * agrandissement et halo au survol, léger enfoncement au clic, curseur main.
+ * léger agrandissement au survol, enfoncement au clic, curseur main.
+ * Les couleurs et halos de survol sont gérés par la feuille de style (fortuna.css).
  * Fonctionne aussi pour les boutons créés dynamiquement (jetons, bouton doubler).
  */
 public final class FeedbackVisuel {
 
-    private static final double ECHELLE_SURVOL = 1.08;
-    private static final double ECHELLE_CLIC = 0.95;
-    private static final Duration DUREE = Duration.millis(120);
-    private static final String HALO = "-fx-effect: dropshadow(gaussian, #b57bff, 25, 0.35, 0, 0);";
+    private static final double ECHELLE_SURVOL = 1.05;
+    private static final double ECHELLE_CLIC = 0.96;
+    private static final Duration DUREE = Duration.millis(140);
 
     private static final String ECHELLE_BASE = "feedback.echelleBase";
-    private static final String STYLE_BASE = "feedback.styleBase";
     private static final String TRANSITION = "feedback.transition";
 
     private FeedbackVisuel() {}
@@ -60,18 +60,10 @@ public final class FeedbackVisuel {
         // Un élément grisé (bouton désactivé, bouton home inactif) ne réagit pas
         if (entree && (noeud.isDisabled() || noeud.getOpacity() < 1.0)) return;
 
-        noeud.setCursor(entree ? Cursor.HAND : Cursor.DEFAULT);
-        animer(noeud, entree ? ECHELLE_SURVOL : 1.0);
-
-        if (noeud instanceof Button bouton) {
-            if (entree) {
-                bouton.getProperties().putIfAbsent(STYLE_BASE, bouton.getStyle());
-                bouton.setStyle(bouton.getProperties().get(STYLE_BASE) + HALO);
-            }
-            else if (bouton.getProperties().containsKey(STYLE_BASE)) {
-                bouton.setStyle((String) bouton.getProperties().remove(STYLE_BASE));
-            }
+        if (!(noeud instanceof Button)) {
+            noeud.setCursor(entree ? Cursor.HAND : Cursor.DEFAULT);
         }
+        animer(noeud, entree ? ECHELLE_SURVOL : 1.0);
     }
 
     private static void animer(Node noeud, double facteur) {
@@ -87,9 +79,10 @@ public final class FeedbackVisuel {
     private static void preparer(Node noeud) {
         if (noeud.getProperties().containsKey(TRANSITION)) return;
 
-        // L'échelle d'origine est conservée pour les boutons déjà agrandis (bouton doubler)
         noeud.getProperties().put(ECHELLE_BASE, noeud.getScaleX());
-        noeud.getProperties().put(TRANSITION, new ScaleTransition(DUREE, noeud));
+        ScaleTransition transition = new ScaleTransition(DUREE, noeud);
+        transition.setInterpolator(Interpolator.SPLINE(0.16, 1, 0.3, 1));
+        noeud.getProperties().put(TRANSITION, transition);
 
         // Quand on change de page pendant un survol, la sortie de la souris n'est pas signalée :
         // on remet l'élément dans son état normal pour qu'il ne reste pas agrandi
@@ -102,8 +95,5 @@ public final class FeedbackVisuel {
         noeud.setScaleX(base);
         noeud.setScaleY(base);
         noeud.setCursor(Cursor.DEFAULT);
-        if (noeud instanceof Button bouton && bouton.getProperties().containsKey(STYLE_BASE)) {
-            bouton.setStyle((String) bouton.getProperties().remove(STYLE_BASE));
-        }
     }
 }

@@ -49,6 +49,7 @@ public class SceneHandler {
 
     public SceneHandler(Stage stage) throws IOException {
         stageApplication = stage;
+        Theme.chargerPolices();
         sceneAccueil = new Scene(accueilLoader.load(),640, 700 );
         subSceneMise = new SubScene(miseLoader.load(), 640, 700);
         sceneJeu = new Scene(jeuLoader.load(), 640, 700);
@@ -106,7 +107,7 @@ public class SceneHandler {
         sceneUser.setRoot(stackPaneUser);
 
         Scene sceneGenerale = new Scene(vueGenerale, 1400,900);
-        FeedbackVisuel.installer(sceneGenerale);
+        Theme.appliquer(sceneGenerale);
         stageApplication.setScene(sceneGenerale);
 
         afficherSettings();

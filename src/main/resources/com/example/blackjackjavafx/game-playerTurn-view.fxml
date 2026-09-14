@@ -1,64 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.SubScene?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.effect.Bloom?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurJeu" fx:id="vueGlobale">
-   <BorderPane>
-   <center>
-      <VBox alignment="CENTER" prefHeight="464.0" prefWidth="700.0" spacing="20.0">
-         <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-         </padding>
-         <HBox fx:id="cardBoxDealer" alignment="CENTER" spacing="10.0"/>
-         <Label fx:id="handDealerText" text="Main du croupier" textFill="WHITE" visible="false" style="-fx-font-size: 32; -fx-text-fill: #56d9fb;">
-            <effect>
-               <Bloom threshold="-1"/>
-            </effect>
-         </Label>
+<!-- Table de jeu : croupier en haut, message de la manche au centre, joueur et actions en bas.
+     La vue de sélection de mise est ajoutée à la fin de vueGlobale par ControleurJeu. -->
+<VBox fx:id="vueGlobale" alignment="CENTER" spacing="22" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurJeu">
 
-         <Label fx:id="messageRoundText" scaleX="1.5" scaleY="1.5" scaleZ="1.5" text="Sélectionnez votre mise" textFill="WHITE" style="-fx-font-size: 32; -fx-text-fill: #56d9fb;">
-            <effect>
-               <Bloom threshold="-1"/>
-            </effect>
-         </Label>
+    <padding>
+        <Insets top="24" bottom="32" left="24" right="24"/>
+    </padding>
 
-         <Button fx:id="buttonRestartRound" onAction="#onRestartButtonClick" text="Restart" visible="false" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-         <Label fx:id="miseRoundText" textFill="WHITE"/>
+    <VBox alignment="CENTER" spacing="14">
+        <HBox fx:id="cardBoxDealer" alignment="CENTER" spacing="14"/>
+        <Label fx:id="handDealerText" styleClass="valeur-main" text="Main du croupier" visible="false"/>
+    </VBox>
 
-         <Label fx:id="handPlayerText" textFill="WHITE" style="-fx-font-size: 32; -fx-text-fill: #56d9fb;">
-            <effect>
-               <Bloom threshold="-1"/>
-            </effect>
-         </Label>
+    <Label fx:id="messageRoundText" styleClass="message-manche" text="Sélectionnez votre mise"/>
 
-         <HBox fx:id="cardBoxPlayer" alignment="CENTER" spacing="10.0"/>
-         <SubScene fx:id="subSceneMise" fill="WHITE" height="11.0" opacity="0.0" width="654.0">
-            <root>
-               <Region/>
-            </root>
-            <effect>
-               <ColorAdjust brightness="-0.48"/>
-            </effect>
-         </SubScene>
-      </VBox>
-   </center>
-   <bottom>
-      <HBox fx:id="buttonBoxPlayer" alignment="CENTER" prefHeight="65.0" prefWidth="325.0" spacing="80.0" BorderPane.alignment="CENTER" visible="false">
-         <Button fx:id="buttonStand" onAction="#onStandButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Rester" style="-fx-font-size: 12; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-         <Button fx:id="buttonHit" onAction="#onHitButtonClick" scaleX="2.0" scaleY="2.0" scaleZ="2.0" text="Piocher" style="-fx-font-size: 12; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 15, 0, 0, 0.8);"/>
-      </HBox>
-   </bottom>
-   <padding>
-      <Insets bottom="50.0" top="50.0" />
-   </padding>
-   </BorderPane>
+    <Button fx:id="buttonRestartRound" styleClass="bouton-principal, bouton-large" onAction="#onRestartButtonClick" text="Recommencer" visible="false"/>
+
+    <VBox alignment="CENTER" spacing="14">
+        <Label fx:id="handPlayerText" styleClass="valeur-main" visible="false"/>
+        <HBox fx:id="cardBoxPlayer" alignment="CENTER" spacing="14"/>
+    </VBox>
+
+    <HBox fx:id="buttonBoxPlayer" alignment="CENTER" spacing="16" visible="false">
+        <Button fx:id="buttonStand" styleClass="bouton-secondaire, bouton-action" onAction="#onStandButtonClick" text="Rester"/>
+        <Button fx:id="buttonHit" styleClass="bouton-principal, bouton-action" onAction="#onHitButtonClick" text="Piocher"/>
+    </HBox>
+
 </VBox>

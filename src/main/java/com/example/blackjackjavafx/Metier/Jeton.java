@@ -21,7 +21,7 @@ public class Jeton {
         {
             Image jetonImage = new Image(inputStream);
             ImageView jetonImageView = new ImageView(jetonImage);
-            jetonImageView.setFitWidth(100); // Ajustez la largeur du jeton
+            jetonImageView.setFitWidth(96);
             jetonImageView.setPreserveRatio(true);
             jetonImageView.setSmooth(true);
             return jetonImageView;

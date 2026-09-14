@@ -9,7 +9,6 @@ import com.example.blackjackjavafx.Metier.Jeton;
 import com.example.blackjackjavafx.Metier.Miser;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -88,16 +87,10 @@ public class ControleurMise implements Controleur{
 
             // On génère le bouton
             Button boutonJeton = new Button();
-            boutonJeton.maxWidth(100);
-            boutonJeton.maxHeight(100);
             boutonJeton.setGraphic(jeton.getImageView());
-            boutonJeton.setStyle(
-                    "-fx-background-radius: 140em; " +
-                    "-fx-min-width: 82px; " +
-                    "-fx-min-height: 82px; " +
-                    "-fx-max-width: 82; " +
-                    "-fx-max-height: 82px;");
-            boutonJeton.setPadding(Insets.EMPTY);
+            boutonJeton.getStyleClass().add("bouton-jeton");
+            // Un jeton trop cher est masqué sans laisser de trou dans la rangée
+            boutonJeton.managedProperty().bind(boutonJeton.visibleProperty());
 
             // On définit l'action du bouton
             boutonJeton.setOnAction(actionEvent -> {

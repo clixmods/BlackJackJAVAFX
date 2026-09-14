@@ -1,51 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.effect.Bloom?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings" style="-fx-background-color: rgba(36, 7, 74, 1); -fx-background-radius: 40;">
-    <center>
-        <VBox alignment="CENTER" spacing="40">
-            <Label fx:id="settingsLabel" text="Paramètres" style="-fx-text-fill: #56d9fb; -fx-font-size: 32;">
-                <effect>
-                    <Bloom threshold="-1"/>
-                </effect>
-            </Label>
-            <VBox alignment="CENTER" spacing="20">
-                <Label fx:id="musicVolumeLabel" text="Volume de la musique" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
-                    <effect>
-                        <Bloom threshold="-1"/>
-                    </effect>
-                </Label>
-                <Slider fx:id="sliderMusique" maxWidth="500" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #3a7ab5;"/>
-                <Label fx:id="effectsVolumeLabel" text="Volume des effets sonores" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
-                    <effect>
-                        <Bloom threshold="-1"/>
-                    </effect>
-                </Label>
-                <Slider fx:id="sliderEffets" maxWidth="500" max="1.0" value="0.5" showTickLabels="true" showTickMarks="true" majorTickUnit="0.1" minorTickCount="0" style="-fx-control-inner-background: #3a7ab5;"/>
-                <Label fx:id="languageLabel" text="Langue" style="-fx-text-fill: #56d9fb; -fx-font-size: 20;">
-                    <effect>
-                        <Bloom threshold="-1"/>
-                    </effect>
-                </Label>
-                <ComboBox fx:id="langueBox" value="Français" style="-fx-font-size: 20; -fx-fill: #ffffff; -fx-background-color: #56d9fb; -fx-effect: dropshadow(gaussian, #6718fb, 25, 0.5, 0, 0.8);" >
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Français"/>
-                            <String fx:value="English"/>
-                        </FXCollections>
-                    </items>
-                </ComboBox>
-                <Button fx:id="submitButton" text="Appliquer" onAction="#handleAppliquer" style="-fx-font-size: 20; -fx-text-fill: #9e63f9; -fx-background-color: #24074a; -fx-effect: dropshadow(gaussian, #6718fb, 25, 0.5, 0, 0.8);"/>
-            </VBox>
+<!-- Affiché dans une SubScene : la feuille de style et les couleurs du thème sont déclarées ici -->
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings"
+      stylesheets="@fortuna.css" styleClass="fortuna, panneau, panneau-parametres" alignment="CENTER" spacing="30">
+
+    <Label fx:id="settingsLabel" styleClass="titre-page" text="Paramètres"/>
+
+    <VBox spacing="22" maxWidth="420">
+        <VBox spacing="10">
+            <Label fx:id="musicVolumeLabel" styleClass="libelle-champ" text="Volume de la musique"/>
+            <Slider fx:id="sliderMusique" max="1.0" value="0.5"/>
         </VBox>
-    </center>
-</BorderPane>
+        <VBox spacing="10">
+            <Label fx:id="effectsVolumeLabel" styleClass="libelle-champ" text="Volume des effets sonores"/>
+            <Slider fx:id="sliderEffets" max="1.0" value="0.5"/>
+        </VBox>
+        <VBox spacing="10">
+            <Label fx:id="languageLabel" styleClass="libelle-champ" text="Langue"/>
+            <ComboBox fx:id="langueBox" value="Français" maxWidth="Infinity">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Français"/>
+                        <String fx:value="English"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </VBox>
+    </VBox>
+
+    <Button fx:id="submitButton" styleClass="bouton-principal, bouton-large" text="Appliquer" onAction="#handleAppliquer" defaultButton="true"/>
+
+</VBox>

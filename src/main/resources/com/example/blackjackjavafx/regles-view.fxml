@@ -1,33 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.effect.Bloom?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="30" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurRegles" >
-    <padding>
-        <Insets bottom="100.0" left="200.0" right="200.0" top="100.0"/>
-    </padding>
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurRegles">
 
-    <Label style="-fx-text-fill: #56d9fb; -fx-font-size: 20; " fx:id="label" text="Le joueur a plusieurs options, notamment Rester, Tirer et Doubler.">
-        <effect>
-            <Bloom threshold="0.4"/>
-        </effect>
-    </Label>
-    <Label style="-fx-text-fill: #56d9fb; -fx-font-size: 20; " fx:id="label2" text="Rester : Le joueur est satisfait de sa main actuelle et ne souhaite pas recevoir de nouvelles cartes.  Il attend maintenant que le croupier joue sa main.">
-        <effect>
-            <Bloom threshold="0.4"/>
-        </effect>
-    </Label>
-    <Label style="-fx-text-fill: #56d9fb; -fx-font-size: 20; " fx:id="label3" text="Tirer : Le joueur souhaite recevoir une nouvelle carte pour augmenter la valeur de sa main.  Il peut continuer à tirer des cartes jusqu'à ce qu'il atteigne une valeur satisfaisante ou qu'il dépasse 21.">
-        <effect>
-            <Bloom threshold="0.4"/>
-        </effect>
-    </Label>
-    <Label style="-fx-text-fill: #56d9fb; -fx-font-size: 20; " fx:id="label4" text="Doubler : Le joueur double sa mise initiale et reçoit une carte supplémentaire. Il ne peut tirer qu'une seule carte après cela." >
-        <effect>
-            <Bloom threshold="0.4"/>
-        </effect>
-    </Label>
-</VBox>
+    <VBox styleClass="panneau" alignment="CENTER_LEFT" spacing="20" maxWidth="820" maxHeight="-Infinity">
+
+        <Label fx:id="titre" styleClass="titre-page" text="Règles du jeu"/>
+        <Label fx:id="label" styleClass="texte-intro" text="Le joueur a plusieurs options : Rester, Tirer et Doubler."/>
+        <Region styleClass="separateur"/>
+        <Label fx:id="label2" styleClass="texte-regle" text="Rester : Le joueur est satisfait de sa main actuelle et ne souhaite pas recevoir de nouvelles cartes. Il attend maintenant que le croupier joue sa main."/>
+        <Label fx:id="label3" styleClass="texte-regle" text="Tirer : Le joueur souhaite recevoir une nouvelle carte pour augmenter la valeur de sa main. Il peut continuer à tirer des cartes jusqu'à ce qu'il atteigne une valeur satisfaisante ou qu'il dépasse 21."/>
+        <Label fx:id="label4" styleClass="texte-regle" text="Doubler : Le joueur double sa mise initiale et reçoit une carte supplémentaire. Il ne peut plus tirer de carte après ça."/>
+
+    </VBox>
+</StackPane>
