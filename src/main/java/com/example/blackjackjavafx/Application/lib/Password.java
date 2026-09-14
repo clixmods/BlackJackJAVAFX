@@ -1,5 +1,7 @@
 package com.example.blackjackjavafx.Application.lib;
 
+import com.example.blackjackjavafx.Repository.Sql.Configuration;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -10,14 +12,16 @@ import java.security.NoSuchAlgorithmException;
 public class Password {
 
     private static final String ALGORITHM = "HmacSHA256";
-    private static final String PEPPER = "REMOVED";
 
+    private static String pepper() {
+        return Configuration.get("password.pepper");
+    }
 
     public static String hash(String clearPassword) {
         try {
             // Génération de HMAC avec SHA-256
             Mac sha256Hmac = Mac.getInstance(ALGORITHM);
-            SecretKeySpec secretKey = new SecretKeySpec(PEPPER.getBytes(), ALGORITHM);
+            SecretKeySpec secretKey = new SecretKeySpec(pepper().getBytes(), ALGORITHM);
             sha256Hmac.init(secretKey);
             byte[] hmacBytes = sha256Hmac.doFinal(clearPassword.getBytes());
 
@@ -48,7 +52,7 @@ public class Password {
         try {
             // Génération de HMAC avec SHA-256
             Mac sha256Hmac = Mac.getInstance(ALGORITHM);
-            SecretKeySpec secretKey = new SecretKeySpec(PEPPER.getBytes(), ALGORITHM);
+            SecretKeySpec secretKey = new SecretKeySpec(pepper().getBytes(), ALGORITHM);
             sha256Hmac.init(secretKey);
             byte[] hmacBytes = sha256Hmac.doFinal(clearPassword.getBytes());
 

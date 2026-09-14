@@ -8,11 +8,10 @@ public class SQLUtils {
     private static SQLUtils instance = null;
     private Connection connection;
     private SQLUtils()  {
-        // Le garciac a la fin de l'url correspond au nom de votre base de donnée
-        String url = "jdbc:mariadb://webinfo.iutmontp.univ-montp2.fr:3316/garciac";
+        String url = Configuration.get("db.url");
         String driver = "org.mariadb.jdbc.Driver";
-        String user = "garciac";
-        String pass = "";
+        String user = Configuration.get("db.user");
+        String pass = Configuration.get("db.password");
         try
         {
             Class.forName(driver);
