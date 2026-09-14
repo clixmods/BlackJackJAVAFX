@@ -58,12 +58,6 @@ public class ControleurConnexion implements Controleur{
         inputLogin.setText("");
     }
 
-    public void OnInputLoginEnter() {
-    }
-
-    public void OnInputPasswordEnter() {
-    }
-
     public void OnConnexionSubmit()
     {
         String login = inputLogin.getText();
@@ -75,7 +69,6 @@ public class ControleurConnexion implements Controleur{
                 textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_successfulConnection"));
                 textInfoState = "connexion_textInfo_successfulConnection";
                 sceneHandler.mettreAJourHeader();
-                // TODO : quest ce qu'on fait ?
             }
             case BAD_PASSWORD -> {
                 textInfo.setText(LangageManager.getInstance().getText("connexion_textInfo_incorrectPassword"));

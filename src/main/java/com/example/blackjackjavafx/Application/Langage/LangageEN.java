@@ -75,10 +75,10 @@ public class LangageEN implements Langage{
         dictionnaire.put("inscription_submitButton", "Register");
         dictionnaire.put("inscription_backButton", "Back");
 
-        dictionnaire.put("regles_label1", "The player has several options, including Remain, Shoot and Double.");
-        dictionnaire.put("regles_label2", "Stay : The player is satisfied with their current hand and does not wish to receive any new cards. They now waits for the dealer to play his hand.");
-        dictionnaire.put("regles_label3", "Hit: The player wishes to receive a new card to increase the value of their hand. They may continue to draw cards until they reaches a satisfactory value or exceeds 21.");
-        dictionnaire.put("regles_label4", "Double : The player doubles they initial bet and receives an additional card. They can't draw a card after that.");
+        dictionnaire.put("regles_label1", "The player has several options: Stay, Hit and Double.");
+        dictionnaire.put("regles_label2", "Stay: The player is satisfied with their current hand and does not wish to receive any new cards. They now wait for the dealer to play their hand.");
+        dictionnaire.put("regles_label3", "Hit: The player wishes to receive a new card to increase the value of their hand. They may keep drawing cards until they reach a satisfactory value or exceed 21.");
+        dictionnaire.put("regles_label4", "Double: The player doubles their initial bet and receives one additional card. They can't draw another card after that.");
 
         dictionnaire.put("settings_settingsLabel", "Settings");
         dictionnaire.put("settings_musicVolumeLabel", "Music volume");

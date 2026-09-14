@@ -1,10 +1,5 @@
 package com.example.blackjackjavafx.Application.helper;
 
-import com.example.blackjackjavafx.Application.sound.SoundBlackJack;
-import com.example.blackjackjavafx.Application.sound.SoundCarte;
-import com.example.blackjackjavafx.Application.sound.SoundJeton;
-import com.example.blackjackjavafx.Application.sound.SoundVictoire;
-
 public class SoundsHelper {
     private static double volume = 0.5;
 

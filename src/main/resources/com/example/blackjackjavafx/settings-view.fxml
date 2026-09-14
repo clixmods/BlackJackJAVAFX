@@ -10,9 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.effect.Bloom?>
 
-        <!--<effect>
-            <BoxBlur height="10" width="10" iterations="3"/>
-        </effect>-->
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.blackjackjavafx.Application.controller.ControleurSettings" style="-fx-background-color: rgba(36, 7, 74, 1); -fx-background-radius: 40;">
     <center>
         <VBox alignment="CENTER" spacing="40">

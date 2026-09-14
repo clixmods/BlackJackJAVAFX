@@ -1,6 +1,5 @@
 package com.example.blackjackjavafx.Application.lib;
 
-import com.example.blackjackjavafx.Application.lib.Password;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

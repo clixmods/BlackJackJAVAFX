@@ -60,11 +60,10 @@ public class ControleurSettings implements Controleur{
         volumeEffets = sliderEffets.getValue();
         langue = langueBox.getValue();
 
-
         sceneHandler.reglerVolumeMusique(volumeMusique);
         SoundsHelper.setVolume(volumeEffets);
 
-        //Cette partie permet de changer la langue si elle a été modifiée. Elle fonctionne mais n'est pas très propre (ça ne respecte pas vraiment le principe Open/Close), il faudra la repenser
+        // Change la langue uniquement si elle a été modifiée
         if (langue.equals("Français")){
             if (!LangageManager.getInstance().getText("connexion_passwordFieldDescriptor").equals("Mot de passe")){
                 LangageManager.setInstance(LangageFR.getInstance());

@@ -18,16 +18,15 @@ public abstract class Repository<T> implements I_Repository<T> {
     }
 
     /**
-     * Il faut que l'ordre des attributs soient le même que celui de la base de donnée.
-     * @return Retourne le nom de chaque attributs présent dans la table,
-     * La première doit être la clé primaire
+     * L'ordre des attributs doit être le même que celui de la base de données.
+     * @return Retourne le nom de chaque attribut présent dans la table.
+     * Le premier doit être la clé primaire.
      */
     protected abstract String[] nomAttributsDansTable();
 
-
     /**
-     * Il est OBLIGATOIRE de l'implanter pour s'assurer du bon fonctionnement du repository
-     * Cette méthode est principalement utilisé pour les requêtes SQL.
+     * Il est OBLIGATOIRE de l'implémenter pour assurer le bon fonctionnement du repository.
+     * Cette méthode est principalement utilisée pour les requêtes SQL.
      * @param object Objet pour lequel on va récupérer chaque attribut
      * @return Retourne un tableau d'Object, ce tableau est composé des différents attributs dans T qui sont castés en tant qu'Object
      */
@@ -38,14 +37,15 @@ public abstract class Repository<T> implements I_Repository<T> {
     protected abstract boolean EstClePrimaireAutoGenerer();
 
     /**
-     * @param resultSet resultSet provenant généralement d'une requete SQL
-     * @return Renvoi l'objet convertit depuis un resultSet
+     * @param resultSet resultSet provenant généralement d'une requête SQL
+     * @return Renvoie l'objet converti depuis un resultSet
      * @throws SQLException
      */
     protected abstract T creerObjetDepuisResultat(ResultSet resultSet) throws SQLException;
 
     /**
-     * @param element Insert un élément dans la base de donnée
+     * Insère un élément dans la base de données.
+     * @param element élément à insérer
      */
     public Boolean inserer(T element) {
         SQLUtils utils = SQLUtils.getInstance();
@@ -76,8 +76,6 @@ public abstract class Repository<T> implements I_Repository<T> {
 
         request += " WHERE "+ getNomClePrimaire()+" = ?";
 
-        System.out.println(request);
-
         Object[] values = convertirValeursAttributsEnTableauObjets(element);
 
         try(PreparedStatement statement = connection.prepareStatement(request))
@@ -98,23 +96,6 @@ public abstract class Repository<T> implements I_Repository<T> {
             e.printStackTrace();
         }
     }
-
-//    public void supprimer(int valeurClePrimaire) {
-//        SQLUtils utils = SQLUtils.getInstance();
-//        Connection connection = utils.getConnection();
-//        String request = "DELETE FROM "+ getNomTable();
-//
-//        request += " WHERE "+ getNomClePrimaire()+" = ?";
-//
-//        try(PreparedStatement statement = connection.prepareStatement(request))
-//        {
-//            statement.setInt(1, valeurClePrimaire);
-//            statement.executeUpdate();
-//        }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public void supprimer(String valeurClePrimaire) {
         SQLUtils utils = SQLUtils.getInstance();

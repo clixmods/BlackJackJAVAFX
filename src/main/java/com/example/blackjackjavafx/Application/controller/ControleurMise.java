@@ -3,7 +3,6 @@ package com.example.blackjackjavafx.Application.controller;
 import com.example.blackjackjavafx.Application.Langage.LangageManager;
 import com.example.blackjackjavafx.Application.Service.ClientService;
 import com.example.blackjackjavafx.Application.helper.SoundsHelper;
-import com.example.blackjackjavafx.Application.sound.SoundCarte;
 import com.example.blackjackjavafx.Application.sound.SoundJeton;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Metier.Jeton;
@@ -61,14 +60,11 @@ public class ControleurMise implements Controleur{
         argentJoueur = client.getArgent();
         this.client = client;
 
-        // On initialise les jetons ici au lieu de le faire à chaque clique
-        // A executer avant de mettre a jour l'affichage
+        // Les jetons sont générés une seule fois ici plutôt qu'à chaque clic.
+        // À exécuter avant de mettre à jour l'affichage.
         genererJetons();
 
         mettreAJourAffichage();
-
-
-
     }
 
     public void changerLangue(){
@@ -90,7 +86,7 @@ public class ControleurMise implements Controleur{
         int index = 0;
         for (Jeton jeton : miser.obtenirJetons()){
 
-            // On genere le bouton
+            // On génère le bouton
             Button boutonJeton = new Button();
             boutonJeton.maxWidth(100);
             boutonJeton.maxHeight(100);
@@ -103,7 +99,7 @@ public class ControleurMise implements Controleur{
                     "-fx-max-height: 82px;");
             boutonJeton.setPadding(Insets.EMPTY);
 
-            // On set laction du bouton
+            // On définit l'action du bouton
             boutonJeton.setOnAction(actionEvent -> {
                 argentJoueur -= jeton.getValeur();
                 miser.ajoutMise(jeton.getValeur());
@@ -113,7 +109,7 @@ public class ControleurMise implements Controleur{
             buttonsJeton.add( new ButtonJetonData(boutonJeton, miser.obtenirJetons().get(index)));
             index++;
 
-            // On ajoute le bouton au HBOX
+            // On ajoute le bouton à la HBox
             hBoxJetons.getChildren().add(boutonJeton);
         }
     }
@@ -152,10 +148,6 @@ public class ControleurMise implements Controleur{
             miseJoueurText.setText(LangageManager.getInstance().getText("mise_miseText_cantBet"));
             miseJoueurTextState = "mise_miseText_cantBet";
         }
-    }
-
-    public void onAjoutezArgentButtonClick(){
-
     }
 
     public void jouerSonJeton(){

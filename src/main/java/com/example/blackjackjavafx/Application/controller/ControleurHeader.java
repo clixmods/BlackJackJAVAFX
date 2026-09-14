@@ -5,8 +5,6 @@ import com.example.blackjackjavafx.Application.connection.Connexion;
 import com.example.blackjackjavafx.Metier.Client;
 import com.example.blackjackjavafx.Vue.SceneHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,7 +41,7 @@ public class ControleurHeader implements Controleur{
         }
 
         InputStream inputStream2 = getClass().getResourceAsStream("/images.header/settings.png");
-        if(inputStream != null) {
+        if(inputStream2 != null) {
             Image settingsImage = new Image(inputStream2);
             boutonSettings.setImage(settingsImage);
             boutonSettings.setFitWidth(25);
@@ -80,7 +78,6 @@ public class ControleurHeader implements Controleur{
     public void handleUser() {
         if (boutonHomeActif) {
             if (Connexion.getInstance().estConnecte()) {
-                sceneHandler.afficherUser();
                 sceneHandler.afficherUser();
             }
         }

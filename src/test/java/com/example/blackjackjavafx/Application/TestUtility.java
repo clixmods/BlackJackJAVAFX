@@ -2,12 +2,12 @@ package com.example.blackjackjavafx.Application;
 
 import java.util.Random;
 
-public class testUtility {
+public class TestUtility {
     public static final String[] DOMAINS = {"gmail.com", "yahoo.com", "outlook.com", "example.com", "domain.com"};
     private static final String CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
     public static String generateRandomMail() {
-        String randomLogin = generateRandomLogin(8); // Utilisez la méthode précédente pour générer un login aléatoire
+        String randomLogin = generateRandomLogin(8);
         String randomDomain = getRandomDomain();
 
         return randomLogin + "@" + randomDomain;

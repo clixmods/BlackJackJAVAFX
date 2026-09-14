@@ -1,31 +1,9 @@
 package com.example.blackjackjavafx.Metier;
 
-import com.example.blackjackjavafx.Repository.RepositoryClient;
-
 import java.time.LocalDate;
 
 public class Client {
 
-/*    private static Client _current;
-    public static Client GetCurrent()
-    {
-        return _current;
-    }
-    public static boolean LogoutClient()
-    {
-        _current = null;
-        return true;
-    }
-
-    public static boolean LoginClient(Client newClient)
-    {
-        if(_current != null)
-        {
-            LogoutClient();
-        }
-        _current = newClient;
-        return true;
-    }*/
     //region VARIABLES
 
     private String login;

@@ -1,12 +1,11 @@
 package com.example.blackjackjavafx.Application.Service;
 
-import com.example.blackjackjavafx.Application.testUtility;
+import com.example.blackjackjavafx.Application.TestUtility;
 import com.example.blackjackjavafx.Metier.Client;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,8 +18,8 @@ class ClientServiceTest {
     @BeforeAll
     public static void setUp() {
         clientService = ClientService.getInstance();
-        loginTest = testUtility.generateRandomLogin(10);
-        mailTest = testUtility.generateRandomMail();
+        loginTest = TestUtility.generateRandomLogin(10);
+        mailTest = TestUtility.generateRandomMail();
         testCreerClient();
     }
 

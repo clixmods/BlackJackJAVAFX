@@ -235,13 +235,6 @@ public class ControleurJeu implements Controleur{
         buttonBoxPlayer.setVisible(false);
         messageRoundText.setText("Blackjack !");
         sonVictoire = new SoundBlackJack();
-        // J'aimerais que l'affichage affiche blackJack puis attende un peu avant d'afficher la victoire
-        /*try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-         */
         afficherVictoire(gain);
     }
 

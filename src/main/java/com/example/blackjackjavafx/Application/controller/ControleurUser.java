@@ -66,12 +66,4 @@ public class ControleurUser implements Controleur{
         sceneHandler.mettreAJourHeader();
         sceneHandler.afficherAccueil();
     }
-
-    private void updateLabels() {
-        Client client = Connexion.getInstance().getClientConnecte();
-        labelNom.setText("Nom: " + client.getNom());
-        labelPrenom.setText("Prénom: " + client.getPrenom());
-        labelEmail.setText("Mail: " + client.getMail());
-        labelArgent.setText("Argent sur le compte: $" + client.getArgent());
-    }
 }

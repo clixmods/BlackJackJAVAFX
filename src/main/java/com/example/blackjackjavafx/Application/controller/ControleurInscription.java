@@ -132,27 +132,6 @@ public class ControleurInscription implements Controleur
         retourButton.setText(LangageManager.getInstance().getText("inscription_backButton"));
     }
 
-    public void OnMailEnter(ActionEvent actionEvent) {
-    }
-
-    public void OnNomEnter(ActionEvent actionEvent) {
-    }
-
-    public void OnPrenomEnter(ActionEvent actionEvent) {
-    }
-
-    public void OnPseudoEnter(ActionEvent actionEvent) {
-    }
-
-    public void OnPasswordEnter(ActionEvent actionEvent) {
-    }
-
-    public void OnConfirmPasswordEnter(ActionEvent actionEvent) {
-    }
-
-    public void OnDateEnter(ActionEvent actionEvent) {
-    }
-
     public void OnCGU(ActionEvent actionEvent){
         sceneHandler.afficherCGU();
     }
