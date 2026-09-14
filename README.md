@@ -4,6 +4,16 @@ Jeu de BlackJack sur ordinateur, développé en Java avec JavaFX, avec gestion d
 
 Projet réalisé en équipe dans le cadre de la **SAÉ 3.01** du BUT Informatique (2ᵉ année), IUT de Montpellier-Sète.
 
+## Essayer le jeu
+
+1. Télécharger `BlackJack-1.0.0-windows.zip` depuis la page [Releases](https://github.com/clixmods/BlackJackJAVAFX/releases).
+2. Décompresser l'archive.
+3. Lancer `BlackJack.exe`.
+
+Aucune installation de Java n'est nécessaire.
+
+La version téléchargeable fonctionne **hors ligne** : vous êtes connecté automatiquement avec un compte invité doté de 1000 $. L'inscription et la connexion restent utilisables, mais rien n'est sauvegardé à la fermeture.
+
 ## Fonctionnalités
 
 - **Comptes joueurs** : inscription (vérification de l'âge, de la robustesse du mot de passe et de l'unicité du login et du mail), connexion et déconnexion.
@@ -14,7 +24,7 @@ Projet réalisé en équipe dans le cadre de la **SAÉ 3.01** du BUT Informatiqu
   - le croupier tire jusqu'à 17 ;
   - le blackjack est payé 3 pour 2 ;
   - la carte cachée du croupier n'est révélée qu'à son tour.
-- **Interface** : français et anglais (changement à chaud), musique d'ambiance et effets sonores avec réglage du volume, pages Règles et CGU.
+- **Interface** : français et anglais (changement à chaud), musique d'ambiance et effets sonores avec réglage du volume, pages Règles et CGU, animations au survol et au clic des boutons.
 
 ## Stack technique
 
@@ -42,11 +52,13 @@ src/main/java/com/example/blackjackjavafx/
 └── Vue/            SceneHandler (navigation entre les vues) et VueGenerale (header + contenu)
 ```
 
-## Installation
+## Lancer depuis les sources
 
-**Prérequis** : JDK 17 ou plus récent, et une base MariaDB contenant une table `s_clients`.
+**Prérequis** : JDK 17 ou plus récent.
 
-Structure de la table `s_clients` :
+Sans configuration, `./mvnw javafx:run` démarre l'application en mode hors ligne.
+
+Pour utiliser une base de données, il faut une base MariaDB contenant une table `s_clients` :
 
 | Colonne | Type |
 |---|---|
